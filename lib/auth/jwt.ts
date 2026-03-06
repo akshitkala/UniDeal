@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 
 export interface TokenPayload {
+    _id?: string; // Optional MongoDB ID
     uid: string;
     email: string;
     emailVerified: boolean;

@@ -1,151 +1,78 @@
-"use client";
-
-import { useState } from "react";
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "@/lib/auth/firebase";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+'use client';
+import { signInWithPopup } from 'firebase/auth';
+import { auth, googleProvider } from '@/lib/auth/firebase';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function LoginPage() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
-    const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
+    async function handleGoogleLogin() {
         setLoading(true);
-        setError(null);
-
+        setError('');
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const idToken = await userCredential.user.getIdToken();
+            const cred = await signInWithPopup(auth, googleProvider);
+            const token = await cred.user.getIdToken();
 
-            const res = await fetch("/api/auth/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ idToken }),
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ firebaseIdToken: token }),
             });
 
             if (!res.ok) {
                 const data = await res.json();
-                throw new Error(data.error || "Login failed");
+                throw new Error(data.error || 'Login failed');
             }
 
-            router.push("/");
-            router.refresh();
+            const returnTo = new URLSearchParams(window.location.search).get('returnTo') || '/';
+            router.push(returnTo);
         } catch (err: any) {
-            setError(err.message);
+            if (err.code !== 'auth/popup-closed-by-user') {
+                setError('Sign in failed. Please try again.');
+            }
         } finally {
             setLoading(false);
         }
-    };
-
-    const handleGoogleLogin = async () => {
-        setLoading(true);
-        setError(null);
-        try {
-            const provider = new GoogleAuthProvider();
-            const result = await signInWithPopup(auth, provider);
-            const idToken = await result.user.getIdToken();
-
-            const res = await fetch("/api/auth/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ idToken }),
-            });
-
-            if (!res.ok) {
-                const data = await res.json();
-                throw new Error(data.error || "Google login failed");
-            }
-
-            router.push("/");
-            router.refresh();
-        } catch (err: any) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
+    }
 
     return (
-        <div style={{
-            width: "100%", maxWidth: 400, background: "var(--surface)",
-            padding: 40, borderRadius: "var(--r-lg)", boxShadow: "var(--shadow-lg)",
-            animation: "fadeUp 0.4s var(--ease)"
-        }}>
-            <div style={{ textAlign: "center", marginBottom: 32 }}>
-                <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 28, fontWeight: 700, marginBottom: 8 }}>Welcome Back</h1>
-                <p style={{ fontSize: 14, color: "var(--ink-4)" }}>Log in to your UniDeal account</p>
-            </div>
+        <div style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)' }}>
+            <div style={{ width: 'min(440px, 92vw)', background: 'var(--surface)', borderRadius: 'var(--r-xl)', boxShadow: 'var(--shadow-md)', padding: '48px 40px', textAlign: 'center' }}>
 
-            <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                <div>
-                    <label style={{ display: "block", fontSize: 12, fontWeight: 600, marginBottom: 8, color: "var(--ink-3)" }}>UNIVERSITY EMAIL</label>
-                    <input
-                        required
-                        type="email"
-                        placeholder="your.name@lpu.in"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        style={{ width: "100%", padding: "12px", borderRadius: "var(--r)", border: "1.5px solid var(--border-2)", outline: "none", fontSize: 14 }}
-                    />
-                </div>
-
-                <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                        <label style={{ fontSize: 12, fontWeight: 600, color: "var(--ink-3)" }}>PASSWORD</label>
-                        <Link href="/forgot-password" style={{ fontSize: 11, color: "var(--amber)", textDecoration: "none", fontWeight: 600 }}>Forgot?</Link>
-                    </div>
-                    <input
-                        required
-                        type="password"
-                        placeholder="••••••••"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        style={{ width: "100%", padding: "12px", borderRadius: "var(--r)", border: "1.5px solid var(--border-2)", outline: "none", fontSize: 14 }}
-                    />
-                </div>
-
-                {error && <div style={{ color: "var(--red)", fontSize: 12, textAlign: "center" }}>⚠️ {error}</div>}
+                <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--ink)', display: 'grid', placeItems: 'center', fontSize: 22, margin: '0 auto 20px' }}>🏷</div>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: 26, fontWeight: 700, color: 'var(--ink)', marginBottom: 8 }}>Welcome to UniDeal</div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--ink-4)', marginBottom: 40 }}>LPU Campus Marketplace</div>
 
                 <button
+                    onClick={handleGoogleLogin}
                     disabled={loading}
-                    type="submit"
                     style={{
-                        width: "100%", padding: "14px", borderRadius: "var(--r)", border: "none",
-                        background: "var(--ink)", color: "white", fontWeight: 600, fontSize: 15, cursor: "pointer",
-                        marginTop: 8
+                        width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        gap: 12, padding: '13px 20px',
+                        background: 'var(--surface)', border: '1.5px solid var(--border-2)',
+                        borderRadius: 'var(--r)', cursor: loading ? 'not-allowed' : 'pointer',
+                        fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 15, color: 'var(--ink)',
+                        boxShadow: 'var(--shadow-sm)',
                     }}
                 >
-                    {loading ? "Logging in..." : "Log In"}
+                    <svg width="20" height="20" viewBox="0 0 48 48">
+                        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+                        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+                        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                    </svg>
+                    {loading ? 'Signing in…' : 'Continue with Google'}
                 </button>
-            </form>
 
-            <div style={{ position: "relative", margin: "32px 0", textAlign: "center" }}>
-                <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1, background: "var(--border-2)", zIndex: 0 }} />
-                <span style={{ position: "relative", zIndex: 1, background: "var(--surface)", padding: "0 12px", fontSize: 12, color: "var(--ink-4)" }}>OR CONTINUE WITH</span>
+                {error && <div style={{ marginTop: 16, fontSize: 13, color: 'var(--red)' }}>{error}</div>}
+
+                <div style={{ marginTop: 32, fontSize: 12, color: 'var(--ink-5)', lineHeight: 1.6 }}>
+                    By signing in you agree to our Terms of Service.
+                </div>
             </div>
-
-            <button
-                type="button"
-                onClick={handleGoogleLogin}
-                disabled={loading}
-                style={{
-                    width: "100%", padding: "12px", borderRadius: "var(--r)", border: "1.5px solid var(--border-2)",
-                    background: "var(--surface)", color: "var(--ink)", fontWeight: 600, fontSize: 14, cursor: "pointer",
-                    display: "flex", alignItems: "center", justifyContent: "center", gap: 10
-                }}
-            >
-                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/layout/google.svg" width={18} height={18} alt="" />
-                Google Account
-            </button>
-
-            <p style={{ textAlign: "center", marginTop: 32, fontSize: 14, color: "var(--ink-3)" }}>
-                Don't have an account? <Link href="/register" style={{ color: "var(--amber)", textDecoration: "none", fontWeight: 700 }}>Register now</Link>
-            </p>
         </div>
     );
 }

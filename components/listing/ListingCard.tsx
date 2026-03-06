@@ -1,8 +1,10 @@
-"use client";
+'use client'
 
-import Link from "next/link";
+import { useState } from "react";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
+import { useAuth } from "@/lib/auth/AuthProvider";
+import { useRouter } from "next/navigation";
 
 interface Props {
     listing: any;
@@ -26,11 +28,40 @@ const conditionBgColors: any = {
 
 export default function ListingCard({ listing }: Props) {
     const { title, price, negotiable, condition, images, location, createdAt, views, slug } = listing;
+    const { user } = useAuth();
+    const router = useRouter();
+    const [isSaved, setIsSaved] = useState(listing.isSaved || false);
+
+    const handleSave = async (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!user) {
+            router.push("/login");
+            return;
+        }
+
+        const previousState = isSaved;
+        setIsSaved(!previousState);
+
+        try {
+            const res = await fetch(`/api/listings/${slug}/save`, { method: "POST" });
+            if (!res.ok) throw new Error();
+            const data = await res.json();
+            setIsSaved(data.saved);
+        } catch (err) {
+            setIsSaved(previousState);
+        }
+    };
+
+    const handleClick = (e: React.MouseEvent) => {
+        if ((e.target as HTMLElement).closest('button')) return;
+        router.push(`/listings/${slug}`, { scroll: false });
+    };
 
     return (
-        <Link
-            href={`/listings/${slug}`}
-            scroll={false}
+        <div
+            onClick={handleClick}
             style={{
                 background: "var(--surface)",
                 border: "1px solid var(--border-2)",
@@ -38,26 +69,21 @@ export default function ListingCard({ listing }: Props) {
                 boxShadow: "var(--shadow-sm)",
                 cursor: "pointer",
                 overflow: "hidden",
-                textDecoration: "none",
                 transition: "transform 0.2s var(--ease), box-shadow 0.2s var(--ease)",
+                display: "block",
+                position: 'relative'
             }}
             className="listing-card"
         >
-            <style dangerouslySetInnerHTML={{
-                __html: `
-        .listing-card:hover {
-          transform: translateY(-2px);
-          box-shadow: var(--shadow-md);
-        }
-        .listing-card:hover .card-img {
-          transform: scale(1.04);
-        }
-        @media (hover: none) {
-          .listing-card:active {
-            transform: scale(0.98);
-          }
-        }
-      `}} />
+            <style jsx>{`
+                .listing-card:hover {
+                    transform: translateY(-2px);
+                    box-shadow: var(--shadow-md);
+                }
+                .listing-card:hover :global(.card-img) {
+                    transform: scale(1.05);
+                }
+            `}</style>
 
             {/* Image Zone */}
             <div style={{ position: "relative", width: "100%", aspectRatio: "4/3", overflow: "hidden" }}>
@@ -66,10 +92,9 @@ export default function ListingCard({ listing }: Props) {
                     alt={title}
                     fill
                     className="card-img"
-                    style={{ objectFit: "cover", transition: "transform 0.2s var(--ease)" }}
+                    style={{ objectFit: "cover", transition: "transform 0.3s ease" }}
                 />
 
-                {/* Overlays */}
                 <div style={{
                     position: "absolute", top: 8, left: 8, background: "rgba(0,0,0,0.5)",
                     backdropFilter: "blur(4px)", color: "white", padding: "2px 8px",
@@ -78,30 +103,22 @@ export default function ListingCard({ listing }: Props) {
                     👁 {views}
                 </div>
 
-                {negotiable && (
-                    <div style={{
-                        position: "absolute", bottom: 8, right: 8, background: "var(--amber)",
-                        color: "white", padding: "2px 8px", borderRadius: 4,
-                        fontSize: 10, fontWeight: 600, boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
-                    }}>
-                        Negotiable
-                    </div>
-                )}
-
-                {listing.seller?.emailVerified && (
-                    <div style={{
-                        position: "absolute", top: 8, right: 8, background: "white",
-                        color: "var(--blue)", padding: "2px 4px", borderRadius: "50%",
-                        fontSize: 10, display: "flex", alignItems: "center", justifyContent: "center",
-                        boxShadow: "0 2px 4px rgba(0,0,0,0.1)", border: "1px solid var(--border-2)"
-                    }} title="Verified Student">
-                        ✓
-                    </div>
-                )}
+                <button
+                    onClick={handleSave}
+                    style={{
+                        position: "absolute", bottom: 8, left: 8, background: "white",
+                        width: 28, height: 28, borderRadius: "50%", display: "flex",
+                        alignItems: "center", justifyContent: "center", border: "1px solid var(--border-2)",
+                        boxShadow: "var(--shadow-sm)", cursor: "pointer", fontSize: 14,
+                        color: isSaved ? "var(--amber)" : "var(--ink-4)", zIndex: 10
+                    }}
+                >
+                    {isSaved ? "🔖" : "♡"}
+                </button>
             </div>
 
             {/* Body */}
-            <div style={{ padding: "14px 14px" }}>
+            <div style={{ padding: "14px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
                     <span style={{ fontFamily: "var(--font-mono)", fontWeight: 600, fontSize: 16, color: "var(--ink)" }}>
                         ₹{price.toLocaleString("en-IN")}
@@ -125,7 +142,6 @@ export default function ListingCard({ listing }: Props) {
                     {title}
                 </h3>
 
-                {/* Footer */}
                 <div style={{
                     paddingTop: 12, borderTop: "1px solid var(--bg-2)",
                     display: "flex", justifyContent: "space-between", alignItems: "center",
@@ -135,6 +151,6 @@ export default function ListingCard({ listing }: Props) {
                     <span>{formatDistanceToNow(new Date(createdAt))} ago</span>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 }

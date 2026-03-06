@@ -3,6 +3,76 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+function ModerationCard({ r, onAction }: { r: any; onAction: any }) {
+    const isAiFlagged = r.listing?.aiFlagged;
+    const confidence = r.listing?.aiConfidence || 0;
+
+    const barColor = confidence > 66 ? "#dc2626" : confidence > 33 ? "#d97706" : "#16a34a";
+
+    return (
+        <div key={r._id} style={{
+            background: isAiFlagged ? "#FEF2F2" : "white",
+            padding: 20,
+            borderRadius: "var(--r-md)",
+            border: "1px solid var(--border-2)",
+            borderLeft: isAiFlagged ? "4px solid #B91C1C" : "1px solid var(--border-2)",
+            display: "flex",
+            gap: 24,
+            position: "relative"
+        }}>
+            {isAiFlagged && (
+                <div style={{
+                    position: "absolute", top: 8, right: 8,
+                    background: "#B91C1C", color: "white", padding: "3px 8px",
+                    borderRadius: 4, fontSize: 10, fontWeight: 700, zIndex: 1
+                }}>
+                    AI FLAGGED
+                </div>
+            )}
+
+            <div style={{ width: 100, height: 100, position: "relative", borderRadius: 8, overflow: "hidden", flexShrink: 0 }}>
+                <Image src={r.listing?.images?.[0] || "/placeholder.png"} alt="" fill style={{ objectFit: "cover" }} />
+            </div>
+
+            <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "var(--red)", textTransform: "uppercase", marginBottom: 4 }}>
+                    Report: {r.reason}
+                </div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>{r.listing?.title}</h3>
+                <p style={{ fontSize: 13, color: "var(--ink-3)", marginBottom: 12 }}>{r.listing?.description?.substring(0, 100)}...</p>
+
+                {isAiFlagged && (
+                    <div style={{ marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
+                        <div style={{ width: 80, height: 6, background: "var(--bg-3)", borderRadius: 3, overflow: "hidden" }}>
+                            <div style={{ width: `${confidence}%`, height: "100%", background: barColor }} />
+                        </div>
+                        <span style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-4)" }}>AI Confidence: {confidence}%</span>
+                    </div>
+                )}
+
+                <div style={{ fontSize: 12, color: "var(--ink-4)" }}>
+                    By: {r.reporter?.displayName || "System AI"} • On: {new Date(r.createdAt).toLocaleDateString()}
+                </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, justifyContent: "center" }}>
+                <button
+                    onClick={() => onAction(r._id, r.listing?._id, "resolve")}
+                    style={{ padding: "10px 20px", background: "var(--red)", color: "white", border: "none", borderRadius: "var(--r)", fontWeight: 600, cursor: "pointer" }}
+                >
+                    Remove Item
+                </button>
+                <button
+                    onClick={() => onAction(r._id, r.listing?._id, "dismiss")}
+                    style={{ padding: "10px 20px", background: "var(--bg-2)", color: "var(--ink)", border: "none", borderRadius: "var(--r)", fontWeight: 600, cursor: "pointer" }}
+                >
+                    Dismiss
+                </button>
+            </div>
+        </div>
+    );
+}
+
 export default function ModerationPage() {
     const [reports, setReports] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
@@ -27,12 +97,10 @@ export default function ModerationPage() {
         if (!confirm(`Are you sure you want to ${action === "resolve" ? "delete listing & resolve" : "dismiss"} this report?`)) return;
 
         try {
-            // 1. Update listing status if resolved (delete)
             if (action === "resolve") {
                 await fetch(`/api/listings/${listingId}`, { method: "DELETE" });
             }
 
-            // 2. Update report status
             const status = action === "resolve" ? "resolved" : "dismissed";
             await fetch(`/api/admin/moderation/${reportId}`, {
                 method: "PATCH",
@@ -60,35 +128,7 @@ export default function ModerationPage() {
             ) : (
                 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                     {reports.map((r) => (
-                        <div key={r._id} style={{ background: "white", padding: 20, borderRadius: "var(--r-md)", border: "1px solid var(--border-2)", display: "flex", gap: 24 }}>
-                            <div style={{ width: 100, height: 100, position: "relative", borderRadius: 8, overflow: "hidden", flexShrink: 0 }}>
-                                <Image src={r.listing?.images?.[0] || "/placeholder.png"} alt="" fill style={{ objectFit: "cover" }} />
-                            </div>
-                            <div style={{ flex: 1 }}>
-                                <div style={{ fontSize: 11, fontWeight: 700, color: "var(--red)", textTransform: "uppercase", marginBottom: 4 }}>
-                                    Report: {r.reason}
-                                </div>
-                                <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>{r.listing?.title}</h3>
-                                <p style={{ fontSize: 13, color: "var(--ink-3)", marginBottom: 12 }}>{r.listing?.description?.substring(0, 100)}...</p>
-                                <div style={{ fontSize: 12, color: "var(--ink-4)" }}>
-                                    By: {r.reporter?.displayName} • On: {new Date(r.createdAt).toLocaleDateString()}
-                                </div>
-                            </div>
-                            <div style={{ display: "flex", flexDirection: "column", gap: 8, justifyContent: "center" }}>
-                                <button
-                                    onClick={() => handleAction(r._id, r.listing?._id, "resolve")}
-                                    style={{ padding: "10px 20px", background: "var(--red)", color: "white", border: "none", borderRadius: "var(--r)", fontWeight: 600, cursor: "pointer" }}
-                                >
-                                    Remove Item
-                                </button>
-                                <button
-                                    onClick={() => handleAction(r._id, r.listing?._id, "dismiss")}
-                                    style={{ padding: "10px 20px", background: "var(--bg-2)", color: "var(--ink)", border: "none", borderRadius: "var(--r)", fontWeight: 600, cursor: "pointer" }}
-                                >
-                                    Dismiss
-                                </button>
-                            </div>
-                        </div>
+                        <ModerationCard key={r._id} r={r} onAction={handleAction} />
                     ))}
                 </div>
             )}

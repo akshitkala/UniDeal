@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Props {
     slug: string;
@@ -8,19 +8,22 @@ interface Props {
 }
 
 export default function ContactOverlay({ slug, onClose }: Props) {
-    const [data, setData] = useState<{ phone?: string; email?: string } | null>(null);
+    const [waLink, setWaLink] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     const fetchContact = async () => {
         try {
             setLoading(true);
-            const res = await fetch(`/api/listings/${slug}/contact`);
+            const res = await fetch(`/api/listings/${slug}/contact`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" }
+            });
             const result = await res.json();
 
             if (!res.ok) throw new Error(result.error || "Failed to fetch contact");
 
-            setData(result);
+            setWaLink(result.waLink);
         } catch (err: any) {
             setError(err.message);
         } finally {
@@ -28,10 +31,16 @@ export default function ContactOverlay({ slug, onClose }: Props) {
         }
     };
 
-    // Auto-fetch on mount
-    useState(() => {
+    useEffect(() => {
         fetchContact();
-    });
+    }, [slug]);
+
+    const handleOpenWhatsApp = () => {
+        if (waLink) {
+            window.open(waLink, "_blank");
+            onClose();
+        }
+    };
 
     return (
         <div style={{
@@ -44,12 +53,15 @@ export default function ContactOverlay({ slug, onClose }: Props) {
                 borderRadius: "var(--r-lg)", padding: 32, boxShadow: "var(--shadow-lg)",
                 animation: "fadeUp 0.3s var(--ease)", textAlign: "center"
             }}>
-                <div style={{ fontSize: 40, marginBottom: 16 }}>🤝</div>
+                <div style={{ fontSize: 40, marginBottom: 16 }}>📱</div>
                 <h2 style={{ fontFamily: "var(--font-serif)", fontSize: 22, fontWeight: 700, marginBottom: 8 }}>Contact Seller</h2>
+                <p style={{ fontSize: 14, color: "var(--ink-3)", marginBottom: 24 }}>
+                    Buyers will contact you directly via WhatsApp for faster communication.
+                </p>
 
                 {loading ? (
                     <div style={{ padding: "20px 0", color: "var(--ink-4)", fontSize: 14 }}>
-                        Securing connection...
+                        Generating secure link...
                     </div>
                 ) : error ? (
                     <div style={{ padding: "20px 0", color: "var(--red)", fontSize: 13 }}>
@@ -57,20 +69,23 @@ export default function ContactOverlay({ slug, onClose }: Props) {
                     </div>
                 ) : (
                     <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 12 }}>
-                        <div style={{ background: "var(--bg)", padding: 16, borderRadius: "var(--r)", border: "1.5px solid var(--border-2)" }}>
-                            <div style={{ fontSize: 10, fontWeight: 700, color: "var(--ink-4)", textTransform: "uppercase", marginBottom: 4 }}>PHONE</div>
-                            <div style={{ fontSize: 18, fontWeight: 700, letterSpacing: "0.05em" }}>{data?.phone || "Not provided"}</div>
-                        </div>
-                        <div style={{ background: "var(--bg)", padding: 16, borderRadius: "var(--r)", border: "1.5px solid var(--border-2)" }}>
-                            <div style={{ fontSize: 10, fontWeight: 700, color: "var(--ink-4)", textTransform: "uppercase", marginBottom: 4 }}>EMAIL</div>
-                            <div style={{ fontSize: 15, fontWeight: 600 }}>{data?.email || "Not provided"}</div>
-                        </div>
+                        <button
+                            onClick={handleOpenWhatsApp}
+                            style={{
+                                width: "100%", padding: "16px", borderRadius: "var(--r)",
+                                background: "#25D366", color: "white", fontWeight: 700, border: "none",
+                                cursor: "pointer", fontSize: 16, display: "flex", alignItems: "center",
+                                justifyContent: "center", gap: 10
+                            }}
+                        >
+                            Open WhatsApp
+                        </button>
 
                         <div style={{
                             marginTop: 12, padding: 12, background: "var(--red-bg)", color: "var(--red)",
                             fontSize: 11, borderRadius: "var(--r)", textAlign: "left", lineHeight: 1.5
                         }}>
-                            <b>SAFTY TIP:</b> Meet in public campus areas only. Inspect the item thoroughly before paying. Never share personal OTPs.
+                            <b>SAFETY TIP:</b> Meet in public campus areas only. Inspect the item thoroughly before paying. Never share personal OTPs or payment links.
                         </div>
                     </div>
                 )}
@@ -79,10 +94,11 @@ export default function ContactOverlay({ slug, onClose }: Props) {
                     onClick={onClose}
                     style={{
                         marginTop: 24, width: "100%", padding: "12px", borderRadius: "var(--r)",
-                        background: "var(--ink)", color: "white", fontWeight: 600, border: "none", cursor: "pointer"
+                        background: "none", color: "var(--ink-4)", fontWeight: 600, border: "none", cursor: "pointer",
+                        fontSize: 14
                     }}
                 >
-                    Close
+                    Cancel
                 </button>
             </div>
         </div>

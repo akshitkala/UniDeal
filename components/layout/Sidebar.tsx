@@ -1,19 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useSell } from "@/components/listing/SellProvider";
 import { useAuth } from "@/lib/auth/AuthProvider";
 
 export default function Sidebar() {
     const pathname = usePathname();
+    const router = useRouter();
     const { openSellModal } = useSell();
+    const { user } = useAuth();
     // Using query params makes it tricky with just usePathname.
     // In a real implementation we would use useSearchParams() for ?.category= matching.
     // We'll approximate for now or handle via client state later.
 
-    const { user } = useAuth();
-    const isEmailVerified = user?.emailVerified || false;
+    const handleListItem = () => {
+        if (!user) {
+            router.push("/login?returnTo=/");
+            return;
+        }
+        openSellModal();
+    };
 
     return (
         <aside
@@ -31,7 +38,7 @@ export default function Sidebar() {
             }}
         >
             <button
-                onClick={openSellModal}
+                onClick={handleListItem}
                 style={{
                     width: "100%", background: "var(--amber)", color: "white",
                     border: "none", padding: "12px", borderRadius: "var(--r)",
@@ -94,15 +101,7 @@ export default function Sidebar() {
                 ))}
             </div>
 
-            {!isEmailVerified && (
-                <div style={{
-                    marginTop: "auto", background: "var(--amber-bg)", border: "1px solid #fde68a",
-                    padding: 12, borderRadius: "var(--r)", fontSize: 12, color: "var(--amber-dim)",
-                    lineHeight: 1.4
-                }}>
-                    📧 Verify your email to post and contact sellers.
-                </div>
-            )}
+
         </aside>
     );
 }

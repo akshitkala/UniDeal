@@ -1,4 +1,8 @@
 import ListingDetailView from "@/components/listing/ListingDetailView";
+import '@/models/Listing';
+import '@/models/Category';
+import '@/models/User';
+
 
 export default async function ListingPage({
     params

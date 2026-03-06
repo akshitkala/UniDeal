@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import { requireAuth } from "@/middleware/auth";
-import cloudinary from "@/lib/auth/../../lib/cloudinary"; // Adjusted path if needed, but @/lib/cloudinary is safer
-// Wait, I put it in lib/cloudinary.ts, so @/lib/cloudinary.
 
-import { v2 as cloudinaryV2 } from "cloudinary";
+import cloudinary from "@/lib/cloudinary";
 
 export async function POST(request: Request) {
     try {
@@ -41,7 +39,7 @@ export async function POST(request: Request) {
             const buffer = Buffer.from(arrayBuffer);
 
             return new Promise<string>((resolve, reject) => {
-                const uploadStream = cloudinaryV2.uploader.upload_stream(
+                const uploadStream = cloudinary.uploader.upload_stream(
                     { folder: "listings", quality: "auto", fetch_format: "auto" },
                     (error, result) => {
                         if (error) reject(error);

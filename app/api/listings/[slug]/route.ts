@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db/connect";
 import { Listing } from "@/models/Listing";
 import { User } from "@/models/User";
+import '@/models/Listing';
+import '@/models/Category';
+import '@/models/User';
 import { requireAuth, requireOwnership } from "@/middleware/auth";
 import { TokenPayload } from "@/lib/auth/jwt";
 

@@ -1,71 +1,75 @@
-import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import admin from "@/lib/auth/firebaseAdmin";
-import { connectDB } from "@/lib/db/connect";
-import { User } from "@/models/User";
-import { signAccessToken, signRefreshToken } from "@/lib/auth/jwt";
+import { NextRequest, NextResponse } from 'next/server';
+import admin from '@/lib/auth/firebaseAdmin';
+import { connectDB } from '@/lib/db/connect';
+import { User } from '@/models/User';
+import { signAccessToken, signRefreshToken } from '@/lib/auth/jwt';
 
-export async function POST(request: Request) {
+export async function POST(req: NextRequest) {
     try {
-        const { firebaseIdToken } = await request.json();
-        if (!firebaseIdToken) return NextResponse.json({ error: "No token provided" }, { status: 400 });
+        const body = await req.json();
+        const firebaseIdToken = body?.firebaseIdToken;
 
-        const decodedToken = await admin.auth().verifyIdToken(firebaseIdToken);
+        if (!firebaseIdToken) {
+            return NextResponse.json({ error: 'No token provided' }, { status: 400 });
+        }
+
+        const decoded = await admin.auth().verifyIdToken(firebaseIdToken);
+
         await connectDB();
 
-        let user = await User.findOne({ uid: decodedToken.uid });
+        let user = await User.findOne({ uid: decoded.uid });
 
         if (!user) {
             user = await User.create({
-                uid: decodedToken.uid,
-                email: decodedToken.email,
-                emailVerified: decodedToken.email_verified || false,
-                displayName: decodedToken.name,
-                photoURL: decodedToken.picture,
+                uid: decoded.uid,
+                email: decoded.email!,
+                emailVerified: true,
+                displayName: decoded.name ?? '',
+                photoURL: decoded.picture ?? '',
             });
         } else {
-            user.emailVerified = decodedToken.email_verified || false;
+            user.emailVerified = true;
+            user.displayName = decoded.name ?? user.displayName;
+            user.photoURL = decoded.picture ?? user.photoURL;
             await user.save();
         }
 
-        if (user.isActive === false) {
-            return NextResponse.json({ error: "Account suspended" }, { status: 403 });
+        if (!user.isActive) {
+            return NextResponse.json({ error: 'Account suspended' }, { status: 403 });
         }
 
         const payload = {
             uid: user.uid,
             email: user.email,
-            emailVerified: user.emailVerified,
+            emailVerified: true,
             role: user.role,
         };
 
         const accessToken = signAccessToken(payload);
         const refreshToken = signRefreshToken(payload);
 
-        const cookieStore = await cookies();
-        cookieStore.set({
-            name: "access_token",
-            value: accessToken,
+        const response = NextResponse.json({ user: payload });
+
+        response.cookies.set('access_token', accessToken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
-            maxAge: 900,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 60 * 15,
+            path: '/',
         });
 
-        cookieStore.set({
-            name: "refresh_token",
-            value: refreshToken,
+        response.cookies.set('refresh_token', refreshToken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
-            maxAge: 604800,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 60 * 60 * 24 * 7,
+            path: '/',
         });
 
-        return NextResponse.json({ user: payload }, { status: 200 });
+        return response;
 
     } catch (err: any) {
-        if (err instanceof Response) return err;
-        console.error("Login Error:", err);
-        return NextResponse.json({ error: "Authentication failed" }, { status: 401 });
+        console.error('Login error:', err);
+        return NextResponse.json({ error: err.message ?? 'Internal server error' }, { status: 500 });
     }
 }

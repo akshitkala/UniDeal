@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db/connect";
 import { Listing } from "@/models/Listing";
-import { requireAuth } from "@/middleware/auth";
+import { User } from "@/models/User";
+import '@/models/Listing';
+import '@/models/User';
+import { requireAuth, requireVerified } from "@/middleware/auth";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-// Initialize Redis for rate limiting
 const redis = (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN)
     ? new Redis({
         url: process.env.UPSTASH_REDIS_REST_URL,
@@ -16,11 +18,11 @@ const redis = (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_R
 const ratelimit = redis
     ? new Ratelimit({
         redis: redis,
-        limiter: Ratelimit.slidingWindow(3, "30 s"),
+        limiter: Ratelimit.slidingWindow(20, "86400 s"), // 20 per 24 hours
     })
     : null;
 
-export async function GET(
+export async function POST(
     req: Request,
     { params }: { params: Promise<{ slug: string }> }
 ) {
@@ -29,37 +31,42 @@ export async function GET(
         const userOrResponse = await requireAuth();
         if (userOrResponse instanceof NextResponse) return userOrResponse;
 
+        const verifiedOrResponse = await requireVerified();
+        if (verifiedOrResponse instanceof NextResponse) return verifiedOrResponse;
+
         const user = userOrResponse;
 
-        // Rate Limit Check
         if (ratelimit) {
             const { success } = await ratelimit.limit(`contact:${user.uid}`);
             if (!success) {
-                return NextResponse.json({ error: "Too many requests. Please wait 30s." }, { status: 429 });
+                return NextResponse.json({ error: "Daily limit reached (20). Please try again tomorrow." }, { status: 429 });
             }
         }
 
         await connectDB();
-        const listing = await Listing.findOne({ slug }).select("+sellerPhone +sellerEmail");
+        const listing = await Listing.findOne({ slug, isDeleted: false, isExpired: false });
 
         if (!listing) {
-            return NextResponse.json({ error: "Listing not found" }, { status: 404 });
+            return NextResponse.json({ error: "Listing not found or inactive" }, { status: 404 });
         }
 
-        // Security check: Don't show contact info if the listing is deleted or expired
-        if (listing.isDeleted || listing.isExpired) {
-            return NextResponse.json({ error: "Listing is no longer active" }, { status: 403 });
+        const seller = await User.findById(listing.seller).select("+phone +whatsappNumber");
+        if (!seller) {
+            return NextResponse.json({ error: "Seller no longer active" }, { status: 404 });
         }
 
-        // Check if user is verified (optional but recommended)
-        // if (!user.email_verified) { ... }
+        const rawPhone = seller.whatsappNumber || seller.phone;
+        if (!rawPhone) {
+            return NextResponse.json({ error: "no_number" }, { status: 400 });
+        }
 
-        return NextResponse.json({
-            phone: listing.sellerPhone,
-            email: listing.sellerEmail
-        });
+        const digits = rawPhone.replace(/\D/g, "");
+        const msg = encodeURIComponent(`Hi! I saw your ${listing.title} on UniDeal for ₹${listing.price.toLocaleString("en-IN")}. Is it still available?`);
+        const waLink = `https://wa.me/91${digits}?text=${msg}`;
+
+        return NextResponse.json({ waLink });
     } catch (error) {
-        console.error("GET Contact Error:", error);
-        return NextResponse.json({ error: "Failed to fetch contact details" }, { status: 500 });
+        console.error("POST Contact Error:", error);
+        return NextResponse.json({ error: "Failed to generate contact link" }, { status: 500 });
     }
 }

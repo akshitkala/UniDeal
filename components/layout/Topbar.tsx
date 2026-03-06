@@ -12,6 +12,14 @@ export default function Topbar() {
     const { openSellModal } = useSell();
     const { user, logout } = useAuth();
 
+    const handleListItem = () => {
+        if (!user) {
+            router.push("/login?returnTo=/");
+            return;
+        }
+        openSellModal();
+    };
+
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -75,7 +83,7 @@ export default function Topbar() {
             {/* RIGHT ZONE */}
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <button
-                    onClick={openSellModal}
+                    onClick={handleListItem}
                     style={{
                         background: "var(--amber)", color: "white", border: "none",
                         fontFamily: "var(--font-sans)", fontWeight: 600, fontSize: 13,
@@ -109,7 +117,13 @@ export default function Topbar() {
                             overflow: "hidden"
                         }}
                     >
-                        {user?.photoURL ? <img src={user.photoURL} alt="" width={34} height={34} /> : (user?.displayName?.charAt(0) || "U")}
+                        {user?.photoURL ? (
+                            <img src={user.photoURL} alt="avatar" width={34} height={34} style={{ borderRadius: "50%", objectFit: "cover" }} />
+                        ) : (
+                            <div style={{ width: 34, height: 34, borderRadius: "50%", background: "var(--ink)", display: "grid", placeItems: "center", color: "#fff", fontWeight: 700, fontSize: 13 }}>
+                                {user?.displayName?.[0]?.toUpperCase() ?? "U"}
+                            </div>
+                        )}
                     </button>
 
                     {dropdownOpen && (
