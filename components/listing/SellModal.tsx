@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import PhotoUploadZone from "./PhotoUploadZone";
+import { useRouter } from "next/navigation";
 
 interface Props {
     isOpen: boolean;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export default function SellModal({ isOpen, onClose }: Props) {
+    const router = useRouter();
     const [step, setStep] = useState(1);
     const [categories, setCategories] = useState<any[]>([]);
     const [formData, setFormData] = useState({
@@ -54,7 +56,7 @@ export default function SellModal({ isOpen, onClose }: Props) {
             if (!res.ok) throw new Error(data.error || "Failed to post listing");
 
             onClose();
-            window.location.href = `/listings/${data.slug}`;
+            router.push(`/listings/${data.slug}`);
         } catch (err: any) {
             setError(err.message);
         } finally {

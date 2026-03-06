@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 import { useAuth } from "@/lib/auth/AuthProvider";
-import ContactOverlay from "./ContactOverlay";
+import { ContactButton } from "./ContactButton";
 import { useRouter } from "next/navigation";
 
 interface Props {
@@ -17,7 +17,6 @@ export default function ListingDetail({ slug, isModal = false }: Props) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [activeImage, setActiveImage] = useState(0);
-    const [showContact, setShowContact] = useState(false);
 
     const { user } = useAuth();
     const router = useRouter();
@@ -162,25 +161,7 @@ export default function ListingDetail({ slug, isModal = false }: Props) {
                         </div>
                     </div>
 
-                    <button
-                        onClick={() => {
-                            if (!user) {
-                                router.push("/login");
-                                return;
-                            }
-                            setShowContact(true);
-                        }}
-                        disabled={user?.uid === seller?.uid}
-                        style={{
-                            width: "100%", background: user?.uid === seller?.uid ? "var(--ink-5)" : "var(--ink)",
-                            color: "white", border: "none",
-                            borderRadius: "var(--r)", padding: "14px", fontWeight: 600, fontSize: 15,
-                            cursor: user?.uid === seller?.uid ? "not-allowed" : "pointer",
-                            transition: "opacity 0.2s var(--ease)"
-                        }}
-                    >
-                        {user?.uid === seller?.uid ? "Your Listing" : "Show Contact Info"}
-                    </button>
+                    <ContactButton listing={listing} />
 
                     <div style={{ fontSize: 11, color: "var(--ink-4)", textAlign: "center" }}>
                         Never pay in advance. Meet on campus in a public place.
@@ -252,12 +233,6 @@ export default function ListingDetail({ slug, isModal = false }: Props) {
                 </footer>
             </div>
 
-            {showContact && (
-                <ContactOverlay
-                    slug={slug}
-                    onClose={() => setShowContact(false)}
-                />
-            )}
         </div>
     );
 }

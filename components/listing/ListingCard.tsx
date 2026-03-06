@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { useRouter } from "next/navigation";
@@ -54,15 +55,14 @@ export default function ListingCard({ listing }: Props) {
         }
     };
 
-    const handleClick = (e: React.MouseEvent) => {
-        if ((e.target as HTMLElement).closest('button')) return;
-        router.push(`/listings/${slug}`, { scroll: false });
-    };
-
     return (
-        <div
-            onClick={handleClick}
+        <Link
+            href={`/listings/${slug}`}
+            scroll={false}
             style={{
+                textDecoration: "none",
+                color: "inherit",
+                display: "block",
                 background: "var(--surface)",
                 border: "1px solid var(--border-2)",
                 borderRadius: "var(--r-md)",
@@ -70,28 +70,23 @@ export default function ListingCard({ listing }: Props) {
                 cursor: "pointer",
                 overflow: "hidden",
                 transition: "transform 0.2s var(--ease), box-shadow 0.2s var(--ease)",
-                display: "block",
-                position: 'relative'
+                position: "relative",
             }}
-            className="listing-card"
+            onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow-md)";
+            }}
+            onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.transform = "";
+                (e.currentTarget as HTMLElement).style.boxShadow = "var(--shadow-sm)";
+            }}
         >
-            <style jsx>{`
-                .listing-card:hover {
-                    transform: translateY(-2px);
-                    box-shadow: var(--shadow-md);
-                }
-                .listing-card:hover :global(.card-img) {
-                    transform: scale(1.05);
-                }
-            `}</style>
-
             {/* Image Zone */}
             <div style={{ position: "relative", width: "100%", aspectRatio: "4/3", overflow: "hidden" }}>
                 <Image
                     src={images[0] || "/placeholder-listing.png"}
                     alt={title}
                     fill
-                    className="card-img"
                     style={{ objectFit: "cover", transition: "transform 0.3s ease" }}
                 />
 
@@ -151,6 +146,6 @@ export default function ListingCard({ listing }: Props) {
                     <span>{formatDistanceToNow(new Date(createdAt))} ago</span>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }

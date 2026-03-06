@@ -10,11 +10,12 @@ import ListingDetailDrawer from '@/components/listing/ListingDetailDrawer';
 export default async function InterceptedListingPage({
     params,
 }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }) {
+    const { slug } = await params;
     await connectDB();
 
-    const listing = await Listing.findOne({ slug: params.slug })
+    const listing = await Listing.findOne({ slug })
         .populate('category', 'name icon slug')
         .populate('seller', 'displayName uid photoURL')
         .lean();

@@ -3,9 +3,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, User as FirebaseUser } from "firebase/auth";
 import { auth } from "@/lib/auth/firebase";
+import { useRouter } from "next/navigation";
+
+interface ExtendedUser extends FirebaseUser {
+    role?: string;
+}
 
 interface AuthContextType {
-    user: FirebaseUser | null;
+    user: ExtendedUser | null;
     loading: boolean;
     logout: () => Promise<void>;
 }
@@ -13,24 +18,28 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-    const [user, setUser] = useState<FirebaseUser | null>(null);
+    const [user, setUser] = useState<ExtendedUser | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-            setUser(firebaseUser);
-            setLoading(false);
-
-            // If user is logged in, ensure we have the session cookie
-            // This is helpful if the user reloads the page
             if (firebaseUser) {
                 const idToken = await firebaseUser.getIdToken();
-                await fetch("/api/auth/login", {
+                const res = await fetch("/api/auth/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ idToken }),
+                    body: JSON.stringify({ firebaseIdToken: idToken }),
                 });
+                // Read role from login response so client components can use it
+                if (res.ok) {
+                    const data = await res.json();
+                    (firebaseUser as ExtendedUser).role = data.user?.role ?? data.role;
+                }
+                setUser(firebaseUser as ExtendedUser);
+            } else {
+                setUser(null);
             }
+            setLoading(false);
         });
 
         return () => unsubscribe();
@@ -40,7 +49,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         await fetch("/api/auth/logout", { method: "POST" });
         await auth.signOut();
         setUser(null);
-        window.location.href = "/";
+        // Use window.location only after full signout so Next.js router state is clean
+        window.location.replace("/");
     };
 
     return (

@@ -1,78 +1,61 @@
-"use client";
+'use client';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/auth/AuthProvider';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+interface NavItemProps {
+    href: string;
+    icon: string;
+    label: string;
+}
+
+function NavItem({ href, icon, label }: NavItemProps) {
+    const pathname = usePathname();
+    const active = pathname === href;
+    return (
+        <Link href={href} style={{
+            display: 'flex', alignItems: 'center', gap: 10,
+            padding: '8px 16px', borderRadius: 'var(--r)', margin: '2px 8px',
+            background: active ? 'var(--bg-2)' : 'transparent',
+            fontWeight: active ? 700 : 400, fontSize: 14,
+            color: 'var(--ink-2)', textDecoration: 'none',
+        }}>
+            <span>{icon}</span>{label}
+        </Link>
+    );
+}
+
+function SectionLabel({ label }: { label: string }) {
+    return (
+        <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--ink-4)', letterSpacing: '0.12em', textTransform: 'uppercase', padding: '16px 16px 6px' }}>
+            {label}
+        </div>
+    );
+}
 
 export default function AdminSidebar() {
-    const pathname = usePathname();
-    const superadmin = true; // Placeholder for role check
+    const { user } = useAuth();
+    const isSuperadmin = user?.role === 'superadmin';
 
     return (
-        <aside
-            style={{
-                width: 240,
-                height: "100%",
-                background: "var(--surface)",
-                borderRight: "1px solid var(--border-2)",
-                position: "sticky",
-                top: 60,
-                overflowY: "auto",
-                padding: "24px 16px",
-                display: "flex",
-                flexDirection: "column"
-            }}
-        >
-            <div style={{ fontSize: 10, textTransform: "uppercase", color: "var(--ink-4)", letterSpacing: "0.12em", marginBottom: 12, paddingLeft: 8, fontWeight: 600 }}>MODERATION</div>
+        <aside style={{
+            gridArea: 'sidebar', background: 'var(--surface)',
+            borderRight: '1px solid var(--border-2)', overflowY: 'auto', paddingTop: 12,
+            width: 240, height: '100%',
+        }}>
+            <SectionLabel label="MODERATION" />
+            <NavItem href="/admin"          icon="📋" label="Pending Queue" />
+            <NavItem href="/admin/listings" icon="📦" label="All Listings"  />
+            <NavItem href="/admin/reports"  icon="⚑"  label="Reports"       />
+            <NavItem href="/admin/users"    icon="👥" label="Users"         />
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 4, marginBottom: 24 }}>
-                {[
-                    { href: "/admin", icon: "📋", label: "Pending Queue" },
-                    { href: "/admin/listings", icon: "📦", label: "All Listings" },
-                    { href: "/admin/reports", icon: "⚑", label: "Reports" },
-                    { href: "/admin/users", icon: "👥", label: "Users" },
-                    { href: "/admin/categories", icon: "🏷", label: "Categories" },
-                ].map(item => {
-                    const isActive = pathname === item.href;
-                    return (
-                        <Link key={item.href} href={item.href} style={{
-                            display: "flex", alignItems: "center", gap: 12, padding: "8px 12px",
-                            borderRadius: "var(--r)", textDecoration: "none",
-                            background: isActive ? "var(--bg-2)" : "transparent",
-                            color: "var(--ink)", fontWeight: isActive ? 600 : 400,
-                            fontSize: 14
-                        }}>
-                            <span>{item.icon}</span>
-                            <span style={{ flex: 1 }}>{item.label}</span>
-                        </Link>
-                    )
-                })}
-            </div>
-
-            {superadmin && (
+            {isSuperadmin && (
                 <>
-                    <div style={{ height: 1, background: "var(--border-2)", marginBottom: 24, marginLeft: 8, marginRight: 8 }} />
-                    <div style={{ fontSize: 10, textTransform: "uppercase", color: "var(--ink-4)", letterSpacing: "0.12em", marginBottom: 12, paddingLeft: 8, fontWeight: 600 }}>SYSTEM</div>
-
-                    <div style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1 }}>
-                        {[
-                            { href: "/super-admin/activity", icon: "📜", label: "Activity Log" },
-                            { href: "/super-admin/config", icon: "⚙", label: "System Config" },
-                        ].map(item => {
-                            const isActive = pathname.startsWith(item.href);
-                            return (
-                                <Link key={item.href} href={item.href} style={{
-                                    display: "flex", alignItems: "center", gap: 12, padding: "8px 12px",
-                                    borderRadius: "var(--r)", textDecoration: "none",
-                                    background: isActive ? "var(--bg-2)" : "transparent",
-                                    color: "var(--ink)", fontWeight: isActive ? 600 : 400,
-                                    fontSize: 14
-                                }}>
-                                    <span>{item.icon}</span>
-                                    {item.label}
-                                </Link>
-                            )
-                        })}
-                    </div>
+                    <div style={{ height: 1, background: 'var(--border-2)', margin: '8px 16px' }} />
+                    <SectionLabel label="SUPERADMIN" />
+                    <NavItem href="/super-admin/config"   icon="⚙"  label="System Config" />
+                    <NavItem href="/super-admin/activity" icon="📜" label="Activity Log"  />
+                    <NavItem href="/super-admin/users"    icon="👤" label="Manage Roles"  />
                 </>
             )}
         </aside>

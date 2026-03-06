@@ -1,38 +1,45 @@
-import Topbar from "@/components/layout/Topbar";
-import AdminSidebar from "@/components/layout/AdminSidebar";
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { verifyAccessToken } from '@/lib/auth/jwt';
+import Topbar from '@/components/layout/Topbar';
+import AdminSidebar from '@/components/layout/AdminSidebar';
+import { SellProvider } from '@/components/listing/SellProvider';
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-    return (
-        <div
-            style={{
-                display: "grid",
-                gridTemplateAreas: '"topbar topbar" "sidebar main"',
-                gridTemplateRows: "60px 1fr",
-                gridTemplateColumns: "240px 1fr",
-                height: "100dvh",
-                overflow: "hidden",
-            }}
-            className="admin-layout-grid"
-        >
-            <style dangerouslySetInnerHTML={{
-                __html: `
-        @media (max-width: 1023px) {
-          .admin-layout-grid aside { display: none !important; }
-          .admin-layout-grid {
-            grid-template-areas: "topbar" "main" !important;
-            grid-template-columns: 1fr !important;
-          }
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+    const cookieStore = await cookies();
+    const token = cookieStore.get('access_token')?.value;
+
+    if (!token) redirect('/login?returnTo=/admin');
+
+    try {
+        const user = verifyAccessToken(token);
+        if (user.role !== 'admin' && user.role !== 'superadmin') {
+            redirect('/');
         }
-      `}} />
-            <div style={{ gridArea: "topbar" }}>
-                <Topbar />
+    } catch {
+        redirect('/login?returnTo=/admin');
+    }
+
+    return (
+        <SellProvider>
+            <div style={{
+                display: 'grid',
+                gridTemplateAreas: '"topbar topbar" "sidebar main"',
+                gridTemplateRows: '60px 1fr',
+                gridTemplateColumns: '240px 1fr',
+                height: '100dvh',
+                overflow: 'hidden',
+            }}>
+                <div style={{ gridArea: 'topbar' }}>
+                    <Topbar />
+                </div>
+                <div style={{ gridArea: 'sidebar' }}>
+                    <AdminSidebar />
+                </div>
+                <main style={{ gridArea: 'main', overflowY: 'auto', background: 'var(--bg)' }}>
+                    {children}
+                </main>
             </div>
-            <div style={{ gridArea: "sidebar" }}>
-                <AdminSidebar />
-            </div>
-            <main style={{ gridArea: "main", overflowY: "auto", background: "var(--bg)" }}>
-                {children}
-            </main>
-        </div>
+        </SellProvider>
     );
 }

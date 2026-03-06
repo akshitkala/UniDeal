@@ -1,16 +1,31 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db/connect";
 import { Report } from "@/models/Report";
-import { Listing } from "@/models/Listing";
 import { User } from "@/models/User";
-import { requireAuth } from "@/middleware/auth";
+import { requireAuth, requireVerified } from "@/middleware/auth";
 import { TokenPayload } from "@/lib/auth/jwt";
 
 export async function POST(request: Request) {
     try {
         const userOrResponse = await requireAuth();
         if (userOrResponse instanceof NextResponse) return userOrResponse;
+
+        const verifiedOrResponse = await requireVerified();
+        if (verifiedOrResponse instanceof NextResponse) return verifiedOrResponse;
+
         const userPayload = userOrResponse as TokenPayload;
+
+        // Rate limit: 10 reports per 24 hours per user (only if Upstash is configured)
+        if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+            const { rateLimit } = await import('@/lib/rateLimit');
+            const { allowed } = await rateLimit(`report:${userPayload.uid}`, 10, 86400);
+            if (!allowed) {
+                return NextResponse.json(
+                    { error: "Too many reports. Try again tomorrow." },
+                    { status: 429 }
+                );
+            }
+        }
 
         const body = await request.json();
         const { listingId, reason, description } = body;
@@ -21,7 +36,6 @@ export async function POST(request: Request) {
 
         await connectDB();
 
-        // Find MongoDB ID for the user
         const user = await User.findOne({ uid: userPayload.uid });
         if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
 

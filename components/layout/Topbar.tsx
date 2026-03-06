@@ -9,7 +9,7 @@ import { useAuth } from "@/lib/auth/AuthProvider";
 export default function Topbar() {
     const router = useRouter();
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const { openSellModal } = useSell();
+    const sell = useSell();
     const { user, logout } = useAuth();
 
     const handleListItem = () => {
@@ -17,7 +17,7 @@ export default function Topbar() {
             router.push("/login?returnTo=/");
             return;
         }
-        openSellModal();
+        sell?.openSellModal();
     };
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {

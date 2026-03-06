@@ -25,8 +25,6 @@ export function SellProvider({ children }: { children: React.ReactNode }) {
 
 export function useSell() {
     const context = useContext(SellContext);
-    if (!context) {
-        throw new Error("useSell must be used within a SellProvider");
-    }
+    // Returns undefined if used outside provider — callers must guard
     return context;
 }

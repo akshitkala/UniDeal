@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/db/connect";
 import { SystemConfig } from "@/models/SystemConfig";
 import { User } from "@/models/User";
 import { requireSuperadmin } from "@/middleware/auth";
-import { AdminActivity } from "@/models/AdminActivity";
+import { logAction } from "@/lib/logAction";
 
 export async function PATCH(req: Request) {
     try {
@@ -30,23 +30,14 @@ export async function PATCH(req: Request) {
             { upsert: true, new: true }
         );
 
-        // Audit Log
-        if (maintenanceMode !== undefined) {
-            await AdminActivity.create({
-                admin: user._id,
-                action: "MAINTENANCE_MODE_CHANGED",
-                details: `Maintenance mode set to ${maintenanceMode}`,
-                ip: req.headers.get("x-forwarded-for") || "unknown"
-            });
-        }
-        if (approvalMode !== undefined) {
-            await AdminActivity.create({
-                admin: user._id,
-                action: "APPROVAL_MODE_CHANGED",
-                details: `Approval mode set to ${approvalMode}`,
-                ip: req.headers.get("x-forwarded-for") || "unknown"
-            });
-        }
+        await logAction({
+            actor: user._id.toString(),
+            actorType: 'user',
+            action: 'CONFIG_UPDATED',
+            targetModel: 'System',
+            metadata: { changes: body },
+            ipAddress: req.headers.get("x-forwarded-for") ?? 'unknown',
+        });
 
         return NextResponse.json({ success: true, config });
     } catch (error) {
@@ -54,6 +45,7 @@ export async function PATCH(req: Request) {
         return NextResponse.json({ error: "Failed to update config" }, { status: 500 });
     }
 }
+
 
 export async function GET() {
     try {

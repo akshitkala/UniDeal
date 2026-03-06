@@ -1,24 +1,30 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db/connect";
 import { Listing } from "@/models/Listing";
+import { User } from "@/models/User";
+import '@/models/Category';
 import { requireAuth } from "@/middleware/auth";
+import { TokenPayload } from "@/lib/auth/jwt";
 
-export async function GET(req: Request) {
+export async function GET() {
     try {
         const userOrResponse = await requireAuth();
         if (userOrResponse instanceof NextResponse) return userOrResponse;
-
-        const user = userOrResponse;
+        const tokenPayload = userOrResponse as TokenPayload;
 
         await connectDB();
-        const listings = await Listing.find({
-            sellerUid: user.uid,
-            isDeleted: false
-        }).sort({ createdAt: -1 }).populate("category", "name icon");
 
-        return NextResponse.json({ listings });
+        const user = await User.findOne({ uid: tokenPayload.uid });
+        if (!user) return NextResponse.json({ listings: [] });
+
+        const listings = await Listing.find({ seller: user._id, isDeleted: false })
+            .populate('category', 'name icon slug')
+            .sort({ createdAt: -1 });
+
+        return NextResponse.json({ listings: JSON.parse(JSON.stringify(listings)) });
     } catch (error) {
         console.error("GET User Listings Error:", error);
         return NextResponse.json({ error: "Failed to fetch your listings" }, { status: 500 });
     }
 }
+
