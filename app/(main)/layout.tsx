@@ -26,6 +26,8 @@ async function MaintenanceScreen() {
     );
 }
 
+import MainLayoutClient from "@/components/layout/MainLayoutClient";
+
 export default async function MainLayout({
     children,
     modal,
@@ -55,21 +57,9 @@ export default async function MainLayout({
 
     return (
         <SellProvider>
-            <div style={{ display: "flex", height: "100vh", overflow: "hidden" }}>
-                <Sidebar />
-                <main style={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    overflow: "hidden",
-                    position: "relative"
-                }}>
-                    <Topbar />
-                    <div style={{ flex: 1, overflowY: "auto", position: "relative" }}>
-                        {children}
-                    </div>
-                </main>
-            </div>
+            <MainLayoutClient>
+                {children}
+            </MainLayoutClient>
             {modal}
         </SellProvider>
     );

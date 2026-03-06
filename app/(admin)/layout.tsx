@@ -4,6 +4,7 @@ import { verifyAccessToken } from '@/lib/auth/jwt';
 import Topbar from '@/components/layout/Topbar';
 import AdminSidebar from '@/components/layout/AdminSidebar';
 import { SellProvider } from '@/components/listing/SellProvider';
+import AdminLayoutClient from '@/components/layout/AdminLayoutClient';
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
     const cookieStore = await cookies();
@@ -22,24 +23,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
     return (
         <SellProvider>
-            <div style={{
-                display: 'grid',
-                gridTemplateAreas: '"topbar topbar" "sidebar main"',
-                gridTemplateRows: '60px 1fr',
-                gridTemplateColumns: '240px 1fr',
-                height: '100dvh',
-                overflow: 'hidden',
-            }}>
-                <div style={{ gridArea: 'topbar' }}>
-                    <Topbar />
-                </div>
-                <div style={{ gridArea: 'sidebar' }}>
-                    <AdminSidebar />
-                </div>
-                <main style={{ gridArea: 'main', overflowY: 'auto', background: 'var(--bg)' }}>
-                    {children}
-                </main>
-            </div>
+            <AdminLayoutClient>
+                {children}
+            </AdminLayoutClient>
         </SellProvider>
     );
 }

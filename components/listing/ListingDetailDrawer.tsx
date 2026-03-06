@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
 import { ContactButton } from './ContactButton';
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface ListingDetailDrawerProps {
     listing: any;
@@ -13,11 +14,11 @@ interface ListingDetailDrawerProps {
 export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProps) {
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
+    const breakpoint = useBreakpoint();
+    const isMobile = breakpoint === "mobile";
 
     useEffect(() => {
-        // Small delay to trigger entry animation
         setIsOpen(true);
-
         const handleEsc = (e: KeyboardEvent) => {
             if (e.key === 'Escape') handleClose();
         };
@@ -29,47 +30,57 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
         setIsOpen(false);
         setTimeout(() => {
             router.back();
-        }, 300);
+        }, 320);
     };
 
     return (
-        <>
+        <div style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 1000,
+            display: "flex",
+            justifyContent: isMobile ? "center" : "flex-end",
+            alignItems: isMobile ? "flex-end" : "stretch",
+        }}>
             {/* Backdrop */}
             <div
                 onClick={handleClose}
                 style={{
-                    position: 'fixed',
+                    position: "absolute",
                     inset: 0,
-                    background: 'rgba(10, 9, 4, 0.4)',
-                    zIndex: 399,
+                    background: "rgba(0,0,0,0.5)",
+                    backdropFilter: "blur(4px)",
                     opacity: isOpen ? 1 : 0,
-                    transition: 'opacity 320ms ease-out'
+                    transition: "opacity 320ms ease-out",
+                    zIndex: -1
                 }}
             />
 
-            {/* Drawer */}
+            {/* Content Body */}
             <div style={{
-                position: 'fixed',
-                right: 0,
-                top: 60,
-                bottom: 0,
-                width: 'min(680px, 90vw)',
-                zIndex: 400,
+                position: 'relative',
+                width: isMobile ? "100%" : 'min(680px, 92vw)',
+                height: isMobile ? "90dvh" : "100%",
                 background: 'var(--surface)',
-                boxShadow: '-12px 0 48px rgba(0,0,0,0.14)',
-                transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
+                boxShadow: isMobile ? '0 -12px 48px rgba(0,0,0,0.14)' : '-12px 0 48px rgba(0,0,0,0.14)',
+                transform: isMobile
+                    ? (isOpen ? 'translateY(0)' : 'translateY(100%)')
+                    : (isOpen ? 'translateX(0)' : 'translateX(100%)'),
                 transition: 'transform 320ms cubic-bezier(0.16, 1, 0.3, 1)',
                 display: 'flex',
                 flexDirection: 'column',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                borderTopLeftRadius: isMobile ? 24 : 0,
+                borderTopRightRadius: isMobile ? 24 : 0,
             }}>
                 {/* Header/Image */}
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#f5f5f5' }}>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: isMobile ? '4/3' : '16/9', background: '#f5f5f5', flexShrink: 0 }}>
                     <Image
                         src={listing.images?.[0] || '/placeholder-listing.jpg'}
                         alt={listing.title}
                         fill
                         style={{ objectFit: 'cover' }}
+                        priority
                     />
                     <button
                         onClick={handleClose}
@@ -77,15 +88,21 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                             position: 'absolute', top: 20, right: 20, width: 36, height: 36,
                             borderRadius: '50%', background: 'rgba(255,255,255,0.9)', border: 'none',
                             cursor: 'pointer', display: 'grid', placeItems: 'center', fontWeight: 700,
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.1)', zIndex: 10
                         }}
                     >
                         ✕
                     </button>
+                    {isMobile && (
+                        <div style={{
+                            position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)",
+                            width: 36, height: 4, background: "rgba(255,255,255,0.4)", borderRadius: 2
+                        }} />
+                    )}
                 </div>
 
-                {/* Content */}
-                <div style={{ flex: 1, overflowY: 'auto', padding: '32px 40px' }}>
+                {/* Content Area */}
+                <div style={{ flex: 1, overflowY: 'auto', padding: isMobile ? '24px 20px' : '32px 40px' }} className="no-scrollbar">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
                         <div style={{
                             background: 'var(--amber-bg)', color: 'var(--amber)', fontSize: 12,
@@ -98,23 +115,23 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                         </div>
                     </div>
 
-                    <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 32, fontWeight: 700, marginBottom: 24, lineHeight: 1.2 }}>
+                    <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: isMobile ? 26 : 32, fontWeight: 700, marginBottom: 20, lineHeight: 1.2 }}>
                         {listing.title}
                     </h1>
 
-                    <div style={{ display: 'flex', gap: 12, marginBottom: 32 }}>
-                        <div style={{ padding: '6px 12px', borderRadius: 8, border: '1.5px solid var(--border)', fontSize: 13, fontWeight: 600 }}>
+                    <div style={{ display: 'flex', gap: 12, marginBottom: 28 }}>
+                        <div style={{ padding: '6px 12px', borderRadius: 8, border: '1.5px solid var(--border-2)', fontSize: 13, fontWeight: 600 }}>
                             {listing.condition}
                         </div>
-                        <div style={{ padding: '6px 12px', borderRadius: 8, border: '1.5px solid var(--border)', fontSize: 13, fontWeight: 600 }}>
+                        <div style={{ padding: '6px 12px', borderRadius: 8, border: '1.5px solid var(--border-2)', fontSize: 13, fontWeight: 600 }}>
                             {listing.location}
                         </div>
                     </div>
 
-                    {/* Seller Row */}
+                    {/* Seller Profile Summary */}
                     <div style={{
                         display: 'flex', alignItems: 'center', gap: 12, padding: 16,
-                        background: 'var(--bg)', borderRadius: 'var(--r-lg)', marginBottom: 32
+                        background: 'var(--bg-2)', borderRadius: 'var(--r-lg)', marginBottom: 28
                     }}>
                         {listing.seller?.photoURL ? (
                             <img src={listing.seller.photoURL} alt="" style={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover' }} />
@@ -129,29 +146,30 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                         </div>
                     </div>
 
-                    <div style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink-2)', marginBottom: 40, whiteSpace: 'pre-wrap' }}>
+                    <div style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink-2)', marginBottom: 32, whiteSpace: 'pre-wrap' }}>
                         {listing.description}
                     </div>
 
-                    <div style={{ borderTop: '1px solid var(--border)', paddingTop: 24, fontSize: 13, color: 'var(--ink-4)', display: 'flex', gap: 24 }}>
+                    <div style={{ borderTop: '1px solid var(--border-2)', paddingTop: 24, fontSize: 12, color: 'var(--ink-4)', display: 'flex', gap: 24, paddingBottom: isMobile ? 80 : 40 }}>
                         <span>Posted {formatDistanceToNow(new Date(listing.createdAt))} ago</span>
                         <span>•</span>
                         <span>{listing.views} views</span>
                     </div>
                 </div>
 
-                {/* Sticky Footer */}
+                {/* Fixed CTA Footer */}
                 <div style={{
-                    padding: '20px 40px', borderTop: '1px solid var(--border)',
-                    background: 'var(--surface)', display: 'flex', gap: 16
+                    padding: isMobile ? '16px 20px' : '20px 40px',
+                    borderTop: '1px solid var(--border-2)',
+                    background: 'var(--surface)',
+                    display: 'flex',
+                    gap: 16,
+                    paddingBottom: isMobile ? "max(16px, env(safe-area-inset-bottom))" : 20,
+                    boxShadow: isMobile ? "0 -4px 20px rgba(0,0,0,0.05)" : "none"
                 }}>
                     <ContactButton listing={listing} />
                 </div>
             </div>
-
-            <style jsx global>{`
-        body { overflow: hidden; }
-      `}</style>
-        </>
+        </div>
     );
 }

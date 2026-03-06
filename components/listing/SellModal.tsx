@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import PhotoUploadZone from "./PhotoUploadZone";
 import { useRouter } from "next/navigation";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface Props {
     isOpen: boolean;
@@ -11,6 +12,8 @@ interface Props {
 
 export default function SellModal({ isOpen, onClose }: Props) {
     const router = useRouter();
+    const breakpoint = useBreakpoint();
+    const isMobile = breakpoint === "mobile";
     const [step, setStep] = useState(1);
     const [categories, setCategories] = useState<any[]>([]);
     const [formData, setFormData] = useState({
@@ -68,13 +71,18 @@ export default function SellModal({ isOpen, onClose }: Props) {
         <div style={{
             position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
             background: "rgba(0,0,0,0.6)", zIndex: 2000,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            padding: 20
+            display: "flex", alignItems: isMobile ? "flex-end" : "center", justifyContent: "center",
+            padding: isMobile ? 0 : 20
         }}>
             <div style={{
-                width: "100%", maxWidth: 500, background: "var(--surface)",
-                borderRadius: "var(--r-lg)", overflow: "hidden", display: "flex", flexDirection: "column",
-                maxHeight: "90dvh", boxShadow: "var(--shadow-lg)", animation: "fadeUp 0.3s var(--ease)"
+                width: "100%", maxWidth: isMobile ? "none" : 500,
+                height: isMobile ? "100dvh" : "auto",
+                background: "var(--surface)",
+                borderRadius: isMobile ? 0 : "var(--r-lg)",
+                overflow: "hidden", display: "flex", flexDirection: "column",
+                maxHeight: isMobile ? "none" : "90dvh",
+                boxShadow: "var(--shadow-lg)",
+                animation: isMobile ? "slideInUp 0.3s var(--ease)" : "fadeUp 0.3s var(--ease)"
             }}>
                 <div style={{ padding: "20px 24px", borderBottom: "1px solid var(--border-2)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <h2 style={{ fontSize: 18, fontWeight: 700, fontFamily: "var(--font-serif)" }}>

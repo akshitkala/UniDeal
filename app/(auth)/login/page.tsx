@@ -3,11 +3,14 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '@/lib/auth/firebase';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useBreakpoint } from '@/hooks/useBreakpoint';
 
 export default function LoginPage() {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const breakpoint = useBreakpoint();
+    const isMobile = breakpoint === "mobile";
 
     async function handleGoogleLogin() {
         setLoading(true);
@@ -39,12 +42,38 @@ export default function LoginPage() {
     }
 
     return (
-        <div style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)' }}>
-            <div style={{ width: 'min(440px, 92vw)', background: 'var(--surface)', borderRadius: 'var(--r-xl)', boxShadow: 'var(--shadow-md)', padding: '48px 40px', textAlign: 'center' }}>
+        <div style={{
+            minHeight: '100dvh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: isMobile ? 'var(--surface)' : 'var(--bg)'
+        }}>
+            <div style={{
+                width: isMobile ? '100%' : 'min(440px, 92vw)',
+                height: isMobile ? '100%' : 'auto',
+                background: 'var(--surface)',
+                borderRadius: isMobile ? 0 : 'var(--r-xl)',
+                boxShadow: isMobile ? 'none' : 'var(--shadow-md)',
+                padding: isMobile ? '40px 24px' : '48px 40px',
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: isMobile ? 'center' : 'block'
+            }}>
 
-                <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--ink)', display: 'grid', placeItems: 'center', fontSize: 22, margin: '0 auto 20px' }}>🏷</div>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: 26, fontWeight: 700, color: 'var(--ink)', marginBottom: 8 }}>Welcome to UniDeal</div>
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--ink-4)', marginBottom: 40 }}>LPU Campus Marketplace</div>
+                <div style={{
+                    width: isMobile ? 64 : 48,
+                    height: isMobile ? 64 : 48,
+                    borderRadius: isMobile ? 16 : 12,
+                    background: 'var(--ink)',
+                    display: 'grid',
+                    placeItems: 'center',
+                    fontSize: isMobile ? 28 : 22,
+                    margin: '0 auto 20px'
+                }}>🏷</div>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: isMobile ? 32 : 26, fontWeight: 700, color: 'var(--ink)', marginBottom: 8 }}>Welcome to UniDeal</div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: isMobile ? 15 : 14, color: 'var(--ink-4)', marginBottom: 40, textTransform: 'uppercase', letterSpacing: '0.05em' }}>LPU Campus Marketplace</div>
 
                 <button
                     onClick={handleGoogleLogin}

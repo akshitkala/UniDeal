@@ -4,30 +4,37 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useSell } from "@/components/listing/SellProvider";
 import { useAuth } from "@/lib/auth/AuthProvider";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface NavItemProps {
     href: string;
     icon: string;
     label: string;
+    isCollapsed?: boolean;
 }
 
-function NavItem({ href, icon, label }: NavItemProps) {
+function NavItem({ href, icon, label, isCollapsed }: NavItemProps) {
     const pathname = usePathname();
     const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
     return (
-        <Link href={href} style={{
-            display: "flex", alignItems: "center", gap: 12, padding: "8px 12px",
-            borderRadius: "var(--r)", textDecoration: "none",
-            background: isActive ? "var(--bg-2)" : "transparent",
-            color: "var(--ink)", fontWeight: isActive ? 600 : 400, fontSize: 14,
-        }}>
-            <span>{icon}</span>
-            {label}
+        <Link href={href}
+            title={isCollapsed ? label : ""}
+            style={{
+                display: "flex", alignItems: "center", gap: 12, padding: "8px 12px",
+                borderRadius: "var(--r)", textDecoration: "none",
+                background: isActive ? "var(--bg-2)" : "transparent",
+                color: "var(--ink)", fontWeight: isActive ? 600 : 400, fontSize: 14,
+                justifyContent: isCollapsed ? "center" : "flex-start",
+            }}
+        >
+            <span style={{ fontSize: 18 }}>{icon}</span>
+            {!isCollapsed && label}
         </Link>
     );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function SectionLabel({ children, isCollapsed }: { children: React.ReactNode, isCollapsed?: boolean }) {
+    if (isCollapsed) return <div style={{ height: 1, background: "var(--border-2)", margin: "12px 8px" }} />;
     return (
         <div style={{ fontSize: 10, textTransform: "uppercase", color: "var(--ink-4)", letterSpacing: "0.12em", marginBottom: 6, paddingLeft: 8, fontWeight: 600, marginTop: 4 }}>
             {children}
@@ -35,10 +42,17 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     );
 }
 
-export default function Sidebar() {
+export default function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
     const router = useRouter();
     const { openSellModal } = useSell();
     const { user } = useAuth();
+    const breakpoint = useBreakpoint();
+
+    // On tablet, sidebar is icon-only strip (64px)
+    const isCollapsed = !isMobile && breakpoint === "tablet";
+
+    // On mobile screens, the Sidebar component is only rendered inside the MobileDrawer
+    // The Layout handles the conditional rendering of Sidebar on Desktop/Tablet
 
     const handleListItem = () => {
         if (!user) {
@@ -48,82 +62,97 @@ export default function Sidebar() {
         openSellModal();
     };
 
-    const isAdmin      = user?.role === "admin" || user?.role === "superadmin";
+    const isAdmin = user?.role === "admin" || user?.role === "superadmin";
     const isSuperadmin = user?.role === "superadmin";
 
     return (
         <aside style={{
-            width: 240, height: "100%", background: "var(--surface)",
-            borderRight: "1px solid var(--border-2)",
-            position: "sticky", top: 60, overflowY: "auto",
-            padding: "24px 16px", display: "flex", flexDirection: "column",
+            width: isCollapsed ? 64 : (isMobile ? "100%" : 240),
+            height: isMobile ? "auto" : "100%",
+            background: isMobile ? "transparent" : "var(--surface)",
+            borderRight: isMobile ? "none" : "1px solid var(--border-2)",
+            position: isMobile ? "relative" : "sticky",
+            top: isMobile ? 0 : 60,
+            overflowY: "auto",
+            padding: isCollapsed ? "16px 8px" : "24px 16px",
+            display: "flex", flexDirection: "column",
         }}>
-            <button
-                onClick={handleListItem}
-                style={{
-                    width: "100%", background: "var(--amber)", color: "white",
-                    border: "none", padding: "12px", borderRadius: "var(--r)",
-                    fontWeight: 600, fontSize: 14, marginBottom: 20, cursor: "pointer",
-                    fontFamily: "var(--font-sans)",
-                }}
-            >
-                List Item
-            </button>
+            {!isMobile && !isCollapsed && (
+                <button
+                    onClick={handleListItem}
+                    style={{
+                        width: "100%", background: "var(--amber)", color: "white",
+                        border: "none", padding: "12px", borderRadius: "var(--r)",
+                        fontWeight: 600, fontSize: 14, marginBottom: 20, cursor: "pointer",
+                        fontFamily: "var(--font-sans)",
+                    }}
+                >
+                    List Item
+                </button>
+            )}
 
-            <SectionLabel>BROWSE</SectionLabel>
+            {isCollapsed && (
+                <button
+                    onClick={handleListItem}
+                    title="List Item"
+                    style={{
+                        width: 44, height: 44, background: "var(--amber)", color: "white",
+                        border: "none", borderRadius: "var(--r)",
+                        fontSize: 20, marginBottom: 20, cursor: "pointer",
+                        display: "grid", placeItems: "center"
+                    }}
+                >
+                    ＋
+                </button>
+            )}
+
+            <SectionLabel isCollapsed={isCollapsed}>BROWSE</SectionLabel>
             <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 24 }}>
                 {[
-                    { href: "/",                         icon: "🏠", label: "All Listings"    },
-                    { href: "/?category=books-notes",    icon: "📚", label: "Books & Notes"   },
-                    { href: "/?category=electronics",    icon: "💻", label: "Electronics"     },
-                    { href: "/?category=furniture",      icon: "🪑", label: "Furniture"       },
-                    { href: "/?category=clothing",       icon: "👕", label: "Clothing"        },
-                    { href: "/?category=sports-fitness", icon: "⚽", label: "Sports & Fitness"},
-                    { href: "/?category=miscellaneous",  icon: "📦", label: "Miscellaneous"   },
-                ].map(item => {
-                    const pathname = typeof window !== "undefined" ? window.location.search : "";
-                    return (
-                        <Link key={item.href} href={item.href} style={{
-                            display: "flex", alignItems: "center", gap: 12, padding: "8px 12px",
-                            borderRadius: "var(--r)", textDecoration: "none",
-                            color: "var(--ink)", fontSize: 14,
-                        }}>
-                            <span>{item.icon}</span>{item.label}
-                        </Link>
-                    );
-                })}
+                    { href: "/", icon: "🏠", label: "All Items" },
+                    { href: "/?category=books-notes", icon: "📚", label: "Books" },
+                    { href: "/?category=electronics", icon: "💻", label: "Electronics" },
+                    { href: "/?category=furniture", icon: "🪑", label: "Furniture" },
+                    { href: "/?category=clothing", icon: "👕", label: "Clothing" },
+                    { href: "/?category=sports-fitness", icon: "⚽", label: "Sports" },
+                    { href: "/?category=miscellaneous", icon: "📦", label: "Other" },
+                ].map(item => (
+                    <NavItem
+                        key={item.href}
+                        href={item.href}
+                        icon={item.icon}
+                        label={item.label}
+                        isCollapsed={isCollapsed}
+                    />
+                ))}
             </div>
 
-            <div style={{ height: 1, background: "var(--border-2)", marginBottom: 16, marginLeft: 8, marginRight: 8 }} />
-
-            <SectionLabel>MY ACCOUNT</SectionLabel>
+            <SectionLabel isCollapsed={isCollapsed}>MY ACCOUNT</SectionLabel>
             <div style={{ display: "flex", flexDirection: "column", gap: 2, flex: 1 }}>
-                <NavItem href="/dashboard" icon="≡"  label="My Listings" />
-                <NavItem href="/saved"     icon="🔖" label="Saved"       />
-                <NavItem href="/profile"   icon="👤" label="Profile"     />
+                <NavItem href="/dashboard" icon="≡" label="My Listings" isCollapsed={isCollapsed} />
+                <NavItem href="/saved" icon="🔖" label="Saved" isCollapsed={isCollapsed} />
+                <NavItem href="/profile" icon="👤" label="Profile" isCollapsed={isCollapsed} />
             </div>
 
             {isAdmin && (
                 <>
-                    <div style={{ height: 1, background: "var(--border-2)", margin: "12px 8px" }} />
-                    <SectionLabel>ADMIN</SectionLabel>
+                    <SectionLabel isCollapsed={isCollapsed}>ADMIN</SectionLabel>
                     <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                        <NavItem href="/admin"          icon="📋" label="Pending Queue" />
-                        <NavItem href="/admin/listings" icon="📦" label="All Listings"  />
-                        <NavItem href="/admin/reports"  icon="⚑"  label="Reports"       />
-                        <NavItem href="/admin/users"    icon="👥" label="Users"         />
+                        <NavItem href="/admin" icon="📋" label="Pending" isCollapsed={isCollapsed} />
+                        <NavItem href="/admin/listings" icon="📦" label="Listings" isCollapsed={isCollapsed} />
+                        <NavItem href="/admin/reports" icon="⚑" label="Reports" isCollapsed={isCollapsed} />
+                        <NavItem href="/admin/users" icon="👥" label="Users" isCollapsed={isCollapsed} />
                     </div>
                 </>
             )}
 
             {isSuperadmin && (
                 <>
-                    <div style={{ height: 1, background: "var(--border-2)", margin: "12px 8px" }} />
-                    <SectionLabel>SUPERADMIN</SectionLabel>
+                    <SectionLabel isCollapsed={isCollapsed}>SUPER</SectionLabel>
                     <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                        <NavItem href="/super-admin/config"   icon="⚙"  label="System Config" />
-                        <NavItem href="/super-admin/activity" icon="📜"  label="Activity Log"  />
-                        <NavItem href="/super-admin/users"    icon="👤"  label="Manage Roles"  />
+                        <NavItem href="/super-admin/config" icon="⚙" label="System" isCollapsed={isCollapsed} />
+                        <NavItem href="/super-admin/activity" icon="📜" label="Activity" isCollapsed={isCollapsed} />
+                        <NavItem href="/super-admin/users" icon="👤" label="Roles" isCollapsed={isCollapsed} />
                     </div>
                 </>
             )}

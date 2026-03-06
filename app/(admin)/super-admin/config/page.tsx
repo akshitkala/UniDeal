@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 export default function SuperAdminConfigPage() {
     const [config, setConfig] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
+    const breakpoint = useBreakpoint();
+    const isMobile = breakpoint === "mobile";
 
     useEffect(() => {
         fetch("/api/super-admin/config")
@@ -38,28 +41,35 @@ export default function SuperAdminConfigPage() {
         }
     };
 
-    if (loading) return <div style={{ padding: 40 }}>Loading configurations...</div>;
+    if (loading) return <div style={{ padding: 40, color: "var(--ink-4)" }}>Loading configurations...</div>;
 
     return (
-        <div style={{ padding: 40, maxWidth: 800 }}>
-            <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 32, marginBottom: 8 }}>System Configuration</h1>
-            <p style={{ color: "var(--ink-4)", marginBottom: 32 }}>Global controls for UniDeal platform status and behavior.</p>
+        <div style={{
+            padding: isMobile ? "24px 16px 80px" : "40px",
+            maxWidth: 800,
+            minHeight: "100dvh"
+        }}>
+            <h1 style={{ fontFamily: "var(--font-serif)", fontSize: isMobile ? 28 : 32, fontWeight: 700, marginBottom: 8 }}>System Configuration</h1>
+            <p style={{ color: "var(--ink-4)", marginBottom: 32, fontSize: 13 }}>Global controls for UniDeal platform status and behavior.</p>
 
-            <div style={{ display: "grid", gap: 24 }}>
+            <div style={{ display: "grid", gap: 20 }}>
                 {/* Maintenance Mode */}
                 <div style={{
-                    padding: 24, borderRadius: "var(--r-md)", background: config.maintenanceMode ? "#FEF2F2" : "white",
+                    padding: isMobile ? 20 : 24, borderRadius: "var(--r-md)",
+                    background: config.maintenanceMode ? "#FEF2F2" : "white",
                     border: `1.5px solid ${config.maintenanceMode ? "var(--red)" : "var(--border-2)"}`,
-                    display: "flex", justifyContent: "space-between", alignItems: "center"
+                    display: "flex", flexDirection: isMobile ? "column" : "row",
+                    justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center",
+                    gap: 20
                 }}>
-                    <div>
+                    <div style={{ flex: 1 }}>
                         <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Maintenance Mode</h3>
-                        <p style={{ fontSize: 13, color: "var(--ink-3)" }}>
+                        <p style={{ fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5 }}>
                             When active, the public site shows a maintenance screen. Admins still have access.
                         </p>
                         {config.maintenanceMode && (
-                            <p style={{ fontSize: 12, color: "var(--red)", fontWeight: 600, marginTop: 8 }}>
-                                ⚠️ WARNING: Site is currently inaccessible to students.
+                            <p style={{ fontSize: 12, color: "var(--red)", fontWeight: 700, marginTop: 12, display: "flex", alignItems: "center", gap: 6 }}>
+                                ⚠️ Site is currently inaccessible to students.
                             </p>
                         )}
                     </div>
@@ -67,10 +77,12 @@ export default function SuperAdminConfigPage() {
                         disabled={saving}
                         onClick={() => updateConfig({ maintenanceMode: !config.maintenanceMode })}
                         style={{
-                            padding: "10px 20px", borderRadius: "var(--r)", fontWeight: 700, cursor: "pointer",
-                            background: config.maintenanceMode ? "var(--red)" : "var(--bg-3)",
-                            color: config.maintenanceMode ? "white" : "var(--ink-2)",
-                            border: "none", transition: "all 0.2s var(--ease)"
+                            width: isMobile ? "100%" : "auto",
+                            padding: "12px 24px", borderRadius: "var(--r)", fontWeight: 700, cursor: "pointer",
+                            background: config.maintenanceMode ? "var(--red)" : "var(--ink)",
+                            color: "white",
+                            border: "none", transition: "all 0.2s var(--ease)",
+                            fontSize: 14
                         }}
                     >
                         {config.maintenanceMode ? "Disable Maintenance" : "Enable Maintenance"}
@@ -79,13 +91,15 @@ export default function SuperAdminConfigPage() {
 
                 {/* Approval Mode */}
                 <div style={{
-                    padding: 24, borderRadius: "var(--r-md)", background: "white",
+                    padding: isMobile ? 20 : 24, borderRadius: "var(--r-md)", background: "white",
                     border: "1.5px solid var(--border-2)",
-                    display: "flex", justifyContent: "space-between", alignItems: "center"
+                    display: "flex", flexDirection: isMobile ? "column" : "row",
+                    justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center",
+                    gap: 16
                 }}>
-                    <div>
+                    <div style={{ flex: 1 }}>
                         <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Listing Approval Strategy</h3>
-                        <p style={{ fontSize: 13, color: "var(--ink-3)" }}>
+                        <p style={{ fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5 }}>
                             Control how new listings are published to the site.
                         </p>
                     </div>
@@ -93,7 +107,11 @@ export default function SuperAdminConfigPage() {
                         disabled={saving}
                         value={config.approvalMode}
                         onChange={(e) => updateConfig({ approvalMode: e.target.value })}
-                        style={{ padding: "10px", borderRadius: "var(--r)", border: "1.5px solid var(--border-2)", fontWeight: 600, cursor: "pointer" }}
+                        style={{
+                            width: isMobile ? "100%" : "auto",
+                            padding: "12px", borderRadius: "var(--r)", border: "1.5px solid var(--border-2)", fontWeight: 600, cursor: "pointer",
+                            background: "var(--surface)", fontFamily: "var(--font-sans)", fontSize: 14
+                        }}
                     >
                         <option value="automatic">Automatic (Instant)</option>
                         <option value="manual">Manual (Admin Queue)</option>
@@ -103,13 +121,15 @@ export default function SuperAdminConfigPage() {
 
                 {/* Allow New Listings */}
                 <div style={{
-                    padding: 24, borderRadius: "var(--r-md)", background: "white",
+                    padding: isMobile ? 20 : 24, borderRadius: "var(--r-md)", background: "white",
                     border: "1.5px solid var(--border-2)",
-                    display: "flex", justifyContent: "space-between", alignItems: "center"
+                    display: "flex", flexDirection: isMobile ? "column" : "row",
+                    justifyContent: "space-between", alignItems: isMobile ? "flex-start" : "center",
+                    gap: 16
                 }}>
-                    <div>
+                    <div style={{ flex: 1 }}>
                         <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>Accept New Listings</h3>
-                        <p style={{ fontSize: 13, color: "var(--ink-3)" }}>
+                        <p style={{ fontSize: 13, color: "var(--ink-3)", lineHeight: 1.5 }}>
                             If disabled, "Sell" features will return a 503 error.
                         </p>
                     </div>
@@ -117,9 +137,10 @@ export default function SuperAdminConfigPage() {
                         disabled={saving}
                         onClick={() => updateConfig({ allowNewListings: !config.allowNewListings })}
                         style={{
-                            padding: "10px 20px", borderRadius: "var(--r)", fontWeight: 700, cursor: "pointer",
+                            width: isMobile ? "100%" : "auto",
+                            padding: "12px 24px", borderRadius: "var(--r)", fontWeight: 700, cursor: "pointer",
                             background: config.allowNewListings ? "var(--green)" : "var(--ink-4)",
-                            color: "white", border: "none"
+                            color: "white", border: "none", fontSize: 14
                         }}
                     >
                         {config.allowNewListings ? "Accepting Posts" : "Posts Paused"}

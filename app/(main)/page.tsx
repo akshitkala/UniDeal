@@ -12,8 +12,6 @@ import Link from "next/link";
 
 export const revalidate = 60; // Revalidate every minute
 
-import SortSelect from "@/components/listing/SortSelect";
-
 async function ListingsGrid({
     searchParams,
     userUid
@@ -82,8 +80,8 @@ async function ListingsGrid({
     return (
         <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-            gap: 20,
+            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+            gap: 16,
             padding: "0 20px 40px"
         }}>
             {listings.map(l => {
@@ -102,6 +100,7 @@ async function ListingsGrid({
 
 import { cookies } from "next/headers";
 import { verifyAccessToken } from "@/lib/auth/jwt";
+import BrowsePageClient from "@/components/listing/BrowsePageClient";
 
 export default async function BrowsePage({
     searchParams
@@ -109,7 +108,6 @@ export default async function BrowsePage({
     searchParams: Promise<{ category?: string; condition?: string; sort?: string; search?: string }>
 }) {
     const params = await searchParams;
-
     const cookieStore = await cookies();
     const token = cookieStore.get("access_token")?.value;
     let userUid: string | undefined;
@@ -122,56 +120,8 @@ export default async function BrowsePage({
     }
 
     return (
-        <div style={{ display: "flex", flexDirection: "column", minHeight: "100%" }}>
-            {/* Filter Row */}
-            <div style={{
-                position: "sticky", top: 0, zIndex: 10, background: "var(--bg)",
-                padding: "16px 20px", display: "flex", justifyContent: "space-between",
-                alignItems: "center", borderBottom: "1px solid var(--border-2)",
-                flexWrap: "wrap", gap: 12
-            }}>
-                <div style={{ display: "flex", gap: 8, overflowX: "auto", paddingBottom: 4 }}>
-                    {["all", "new", "like-new", "good", "used", "damaged"].map(c => {
-                        const active = (params.condition || "all") === c;
-                        return (
-                            <Link
-                                key={c}
-                                href={{ query: { ...params, condition: c === "all" ? undefined : c } }}
-                                style={{
-                                    padding: "6px 14px", borderRadius: 100, fontSize: 12,
-                                    textTransform: "capitalize", textDecoration: "none",
-                                    background: active ? "var(--ink)" : "var(--surface)",
-                                    color: active ? "white" : "var(--ink-2)",
-                                    border: `1.5px solid ${active ? "var(--ink)" : "var(--border-2)"}`,
-                                    fontWeight: active ? 600 : 500,
-                                    whiteSpace: "nowrap"
-                                }}
-                            >
-                                {c.replace("-", " ")}
-                            </Link>
-                        )
-                    })}
-                </div>
-
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <SortSelect />
-                </div>
-            </div>
-
-            <div style={{ padding: "20px 20px 8px", color: "var(--ink-4)", fontSize: 12, fontWeight: 500 }}>
-                {/* Result count would be here */}
-            </div>
-
-            <Suspense fallback={
-                <div style={{
-                    display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-                    gap: 20, padding: "0 20px 40px"
-                }}>
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map(i => <SkeletonCard key={i} />)}
-                </div>
-            }>
-                <ListingsGrid searchParams={params} userUid={userUid} />
-            </Suspense>
-        </div>
+        <BrowsePageClient params={params} userUid={userUid}>
+            <ListingsGrid searchParams={params} userUid={userUid} />
+        </BrowsePageClient>
     );
 }

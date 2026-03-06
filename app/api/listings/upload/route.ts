@@ -24,9 +24,6 @@ export async function POST(request: Request) {
             if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
                 return NextResponse.json({ error: `Invalid file type: ${file.name}` }, { status: 400 });
             }
-            if (file.size > 5 * 1024 * 1024) {
-                return NextResponse.json({ error: `File too large: ${file.name}` }, { status: 400 });
-            }
             totalSize += file.size;
         }
 

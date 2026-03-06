@@ -6,6 +6,7 @@ import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { useRouter } from "next/navigation";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface Props {
     listing: any;
@@ -31,6 +32,8 @@ export default function ListingCard({ listing }: Props) {
     const { title, price, negotiable, condition, images, location, createdAt, views, slug } = listing;
     const { user } = useAuth();
     const router = useRouter();
+    const breakpoint = useBreakpoint();
+    const isMobile = breakpoint === "mobile";
     const [isSaved, setIsSaved] = useState(listing.isSaved || false);
 
     const handleSave = async (e: React.MouseEvent) => {
@@ -113,37 +116,39 @@ export default function ListingCard({ listing }: Props) {
             </div>
 
             {/* Body */}
-            <div style={{ padding: "14px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                    <span style={{ fontFamily: "var(--font-mono)", fontWeight: 600, fontSize: 16, color: "var(--ink)" }}>
+            <div style={{ padding: isMobile ? "10px" : "14px" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: isMobile ? 4 : 8 }}>
+                    <span style={{ fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: isMobile ? 14 : 16, color: "var(--ink)" }}>
                         ₹{price.toLocaleString("en-IN")}
                     </span>
-                    <span style={{
-                        fontSize: 10, fontWeight: 700, textTransform: "uppercase",
-                        padding: "2px 8px", borderRadius: 4,
-                        background: conditionBgColors[condition],
-                        color: conditionColors[condition]
-                    }}>
-                        {condition.replace("-", " ")}
-                    </span>
+                    {!isMobile && (
+                        <span style={{
+                            fontSize: 10, fontWeight: 700, textTransform: "uppercase",
+                            padding: "2px 8px", borderRadius: 4,
+                            background: conditionBgColors[condition],
+                            color: conditionColors[condition]
+                        }}>
+                            {condition.replace("-", " ")}
+                        </span>
+                    )}
                 </div>
 
                 <h3 style={{
-                    fontSize: 13, color: "var(--ink-2)", lineHeight: 1.4,
-                    height: "2.8em", overflow: "hidden", display: "-webkit-box",
-                    WebkitLineClamp: 2, WebkitBoxOrient: "vertical", marginBottom: 12,
-                    fontWeight: 400
+                    fontSize: isMobile ? 12 : 13, color: "var(--ink-2)", lineHeight: 1.4,
+                    height: isMobile ? "2.8em" : "2.8em", overflow: "hidden", display: "-webkit-box",
+                    WebkitLineClamp: 2, WebkitBoxOrient: "vertical", marginBottom: isMobile ? 8 : 12,
+                    fontWeight: isMobile ? 500 : 400
                 }}>
                     {title}
                 </h3>
 
                 <div style={{
-                    paddingTop: 12, borderTop: "1px solid var(--bg-2)",
+                    paddingTop: isMobile ? 8 : 12, borderTop: "1px solid var(--bg-2)",
                     display: "flex", justifyContent: "space-between", alignItems: "center",
-                    fontSize: 11, color: "var(--ink-4)"
+                    fontSize: 10, color: "var(--ink-4)"
                 }}>
-                    <span>📍 {location || "LPU Campus"}</span>
-                    <span>{formatDistanceToNow(new Date(createdAt))} ago</span>
+                    <span style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "70%" }}>📍 {location || "LPU"}</span>
+                    {!isMobile && <span>{formatDistanceToNow(new Date(createdAt))} ago</span>}
                 </div>
             </div>
         </Link>

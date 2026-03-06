@@ -2,8 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 function ModerationCard({ r, onAction }: { r: any; onAction: any }) {
+    const breakpoint = useBreakpoint();
+    const isMobile = breakpoint === "mobile";
+
     const isAiFlagged = r.listing?.aiFlagged;
     const confidence = r.listing?.aiConfidence || 0;
 
@@ -12,17 +16,19 @@ function ModerationCard({ r, onAction }: { r: any; onAction: any }) {
     return (
         <div key={r._id} style={{
             background: isAiFlagged ? "#FEF2F2" : "white",
-            padding: 20,
+            padding: isMobile ? 16 : 24,
             borderRadius: "var(--r-md)",
             border: "1px solid var(--border-2)",
-            borderLeft: isAiFlagged ? "4px solid #B91C1C" : "1px solid var(--border-2)",
+            borderLeft: (isAiFlagged && !isMobile) ? "4px solid #B91C1C" : "1px solid var(--border-2)",
+            borderTop: (isAiFlagged && isMobile) ? "4px solid #B91C1C" : "1px solid var(--border-2)",
             display: "flex",
-            gap: 24,
+            flexDirection: isMobile ? "column" : "row",
+            gap: isMobile ? 16 : 24,
             position: "relative"
         }}>
             {isAiFlagged && (
                 <div style={{
-                    position: "absolute", top: 8, right: 8,
+                    position: "absolute", top: isMobile ? -12 : 8, right: 8,
                     background: "#B91C1C", color: "white", padding: "3px 8px",
                     borderRadius: 4, fontSize: 10, fontWeight: 700, zIndex: 1
                 }}>
@@ -30,7 +36,14 @@ function ModerationCard({ r, onAction }: { r: any; onAction: any }) {
                 </div>
             )}
 
-            <div style={{ width: 100, height: 100, position: "relative", borderRadius: 8, overflow: "hidden", flexShrink: 0 }}>
+            <div style={{
+                width: isMobile ? "100%" : 120,
+                height: isMobile ? 200 : 120,
+                position: "relative",
+                borderRadius: 8,
+                overflow: "hidden",
+                flexShrink: 0
+            }}>
                 <Image src={r.listing?.images?.[0] || "/placeholder.png"} alt="" fill style={{ objectFit: "cover" }} />
             </div>
 
@@ -38,7 +51,7 @@ function ModerationCard({ r, onAction }: { r: any; onAction: any }) {
                 <div style={{ fontSize: 11, fontWeight: 700, color: "var(--red)", textTransform: "uppercase", marginBottom: 4 }}>
                     Report: {r.reason}
                 </div>
-                <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>{r.listing?.title}</h3>
+                <h3 style={{ fontSize: isMobile ? 18 : 20, fontWeight: 600, marginBottom: 8 }}>{r.listing?.title}</h3>
                 <p style={{ fontSize: 13, color: "var(--ink-3)", marginBottom: 12 }}>{r.listing?.description?.substring(0, 100)}...</p>
 
                 {isAiFlagged && (
@@ -50,21 +63,28 @@ function ModerationCard({ r, onAction }: { r: any; onAction: any }) {
                     </div>
                 )}
 
-                <div style={{ fontSize: 12, color: "var(--ink-4)" }}>
+                <div style={{ fontSize: 11, color: "var(--ink-4)" }}>
                     By: {r.reporter?.displayName || "System AI"} • On: {new Date(r.createdAt).toLocaleDateString()}
                 </div>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, justifyContent: "center" }}>
+            <div style={{
+                display: "flex",
+                flexDirection: isMobile ? "row" : "column",
+                gap: 8,
+                justifyContent: isMobile ? "stretch" : "center",
+                borderTop: isMobile ? "1px solid var(--border-2)" : "none",
+                paddingTop: isMobile ? 16 : 0
+            }}>
                 <button
                     onClick={() => onAction(r._id, r.listing?._id, "resolve")}
-                    style={{ padding: "10px 20px", background: "var(--red)", color: "white", border: "none", borderRadius: "var(--r)", fontWeight: 600, cursor: "pointer" }}
+                    style={{ flex: 1, padding: "12px 20px", background: "var(--red)", color: "white", border: "none", borderRadius: "var(--r)", fontWeight: 600, cursor: "pointer", fontSize: 14 }}
                 >
                     Remove Item
                 </button>
                 <button
                     onClick={() => onAction(r._id, r.listing?._id, "dismiss")}
-                    style={{ padding: "10px 20px", background: "var(--bg-2)", color: "var(--ink)", border: "none", borderRadius: "var(--r)", fontWeight: 600, cursor: "pointer" }}
+                    style={{ flex: 1, padding: "12px 20px", background: "var(--bg-2)", color: "var(--ink)", border: "none", borderRadius: "var(--r)", fontWeight: 600, cursor: "pointer", fontSize: 14 }}
                 >
                     Dismiss
                 </button>
@@ -76,6 +96,8 @@ function ModerationCard({ r, onAction }: { r: any; onAction: any }) {
 export default function ModerationPage() {
     const [reports, setReports] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const breakpoint = useBreakpoint();
+    const isMobile = breakpoint === "mobile";
 
     const fetchReports = async () => {
         try {
@@ -115,18 +137,26 @@ export default function ModerationPage() {
     };
 
     return (
-        <div style={{ padding: 40 }}>
-            <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 32, marginBottom: 8 }}>Moderation Desk</h1>
-            <p style={{ color: "var(--ink-4)", marginBottom: 32 }}>Handle community reports and flagged content.</p>
+        <div style={{
+            padding: isMobile ? "24px 16px 100px" : "40px",
+            minHeight: "100dvh"
+        }}>
+            <h1 style={{ fontFamily: "var(--font-serif)", fontSize: isMobile ? 28 : 32, marginBottom: 8, fontWeight: 700 }}>Moderation Desk</h1>
+            <p style={{ color: "var(--ink-4)", marginBottom: 32, fontSize: 13 }}>Handle community reports and flagged content.</p>
 
             {loading ? (
-                <div>Loading queue...</div>
+                <div style={{ textAlign: "center", padding: 80, color: "var(--ink-4)" }}>
+                    <div className="spinner"></div>
+                    <p style={{ marginTop: 12 }}>Loading queue...</p>
+                </div>
             ) : reports.length === 0 ? (
-                <div style={{ padding: 80, textAlign: "center", background: "var(--bg-2)", borderRadius: "var(--r)" }}>
-                    All clear! No pending reports.
+                <div style={{ padding: 80, textAlign: "center", background: "var(--bg-2)", borderRadius: "var(--r)", border: "2px dashed var(--border-2)" }}>
+                    <div style={{ fontSize: 48, marginBottom: 16 }}>🛡️</div>
+                    <h2 style={{ fontSize: 18, fontWeight: 600 }}>All clear!</h2>
+                    <p style={{ color: "var(--ink-4)", fontSize: 14 }}>No pending reports to handle.</p>
                 </div>
             ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                     {reports.map((r) => (
                         <ModerationCard key={r._id} r={r} onAction={handleAction} />
                     ))}
