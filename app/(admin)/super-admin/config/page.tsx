@@ -34,7 +34,7 @@ export default function SuperAdminConfigPage() {
             });
     }, []);
 
-    const updateConfig = async (updates: any) => {
+    const updateConfig = async (updates: Partial<SystemConfig>) => {
         const prevConfig = { ...config };
 
         // Optimistic update
@@ -124,7 +124,7 @@ export default function SuperAdminConfigPage() {
                     <select
                         disabled={saving}
                         value={config.approvalMode}
-                        onChange={(e) => updateConfig({ approvalMode: e.target.value })}
+                        onChange={(e) => updateConfig({ approvalMode: e.target.value as SystemConfig['approvalMode'] })}
                         style={{
                             width: isMobile ? "100%" : "auto",
                             padding: "12px", borderRadius: "var(--r)", border: "1.5px solid var(--border-2)", fontWeight: 600, cursor: "pointer",
