@@ -7,22 +7,33 @@ import { useRouter } from 'next/navigation';
 export default function SuperAdminUsersPage() {
     const [users, setUsers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
-    const { user: currentUser } = useAuth();
+    const { user: currentUser, loading: authLoading } = useAuth();
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
     const router = useRouter();
 
     useEffect(() => {
-        if (currentUser && currentUser.role !== 'superadmin') {
-            router.replace('/admin');
+        if (!authLoading && (!currentUser || currentUser.role !== 'superadmin')) {
+            router.replace('/login?returnTo=/super-admin/users');
         }
-    }, [currentUser, router]);
+    }, [currentUser, authLoading, router]);
 
     useEffect(() => {
-        fetch('/api/admin/users')
-            .then(r => r.json())
-            .then(d => { setUsers(d.users ?? []); setLoading(false); });
-    }, []);
+        if (currentUser?.role === 'superadmin') {
+            fetch('/api/admin/users')
+                .then(r => r.json())
+                .then(d => { setUsers(d.users ?? []); setLoading(false); });
+        }
+    }, [currentUser]);
+
+    if (authLoading || currentUser?.role !== 'superadmin') {
+        return (
+            <div style={{ padding: 40, textAlign: 'center', color: 'var(--ink-4)', minHeight: '100dvh' }}>
+                <div className="spinner"></div>
+                <p style={{ marginTop: 12 }}>Verifying super-admin access...</p>
+            </div>
+        );
+    }
 
     async function changeRole(uid: string, role: string) {
         await fetch(`/api/super-admin/users/${uid}`, {

@@ -1,16 +1,37 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useAuth } from '@/lib/auth/AuthProvider';
+import { useRouter } from 'next/navigation';
 
 export default function AdminPage() {
     const [listings, setListings] = useState<any[]>([]);
     const [filter, setFilter] = useState<'all' | 'flagged'>('all');
     const [loading, setLoading] = useState(true);
+    const { user, loading: authLoading } = useAuth();
+    const router = useRouter();
 
     useEffect(() => {
-        fetch('/api/admin/listings')
-            .then(r => r.json())
-            .then(d => { setListings(d.listings ?? []); setLoading(false); });
-    }, []);
+        if (!authLoading && (!user || (user.role !== 'admin' && user.role !== 'superadmin'))) {
+            router.replace('/login?returnTo=/admin');
+        }
+    }, [user, authLoading, router]);
+
+    useEffect(() => {
+        if (user && (user.role === 'admin' || user.role === 'superadmin')) {
+            fetch('/api/admin/listings')
+                .then(r => r.json())
+                .then(d => { setListings(d.listings ?? []); setLoading(false); });
+        }
+    }, [user]);
+
+    if (authLoading || (!user || (user.role !== 'admin' && user.role !== 'superadmin'))) {
+        return (
+            <div style={{ padding: 40, textAlign: 'center', color: 'var(--ink-4)' }}>
+                <div className="spinner"></div>
+                <p style={{ marginTop: 12 }}>Verifying admin access...</p>
+            </div>
+        );
+    }
 
     async function approve(id: string) {
         await fetch(`/api/admin/listings/${id}`, {
@@ -56,7 +77,20 @@ export default function AdminPage() {
             </div>
 
             {loading && <p style={{ color: 'var(--ink-4)' }}>Loading…</p>}
-            {!loading && shown.length === 0 && <p style={{ color: 'var(--ink-4)' }}>Nothing to review ✓</p>}
+            {!loading && shown.length === 0 && (
+                <div style={{
+                    display: 'flex', flexDirection: 'column',
+                    alignItems: 'center', padding: '64px 24px', textAlign: 'center',
+                }}>
+                    <span style={{ fontSize: 48, marginBottom: 16 }}>✅</span>
+                    <h2 style={{ fontSize: 18, fontWeight: 800, margin: '0 0 8px' }}>
+                        All caught up
+                    </h2>
+                    <p style={{ fontSize: 14, color: 'var(--ink-4)', margin: 0 }}>
+                        No listings waiting for review
+                    </p>
+                </div>
+            )}
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {shown.map(l => (

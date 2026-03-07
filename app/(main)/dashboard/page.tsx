@@ -18,6 +18,14 @@ const TABS = [
     { label: 'Expired', value: 'expired' },
 ];
 
+const TAB_EMPTY: Record<string, { icon: string; message: string }> = {
+    active: { icon: '✅', message: 'No active listings' },
+    pending: { icon: '⏳', message: 'Nothing pending review' },
+    rejected: { icon: '❌', message: 'No rejected listings' },
+    sold: { icon: '🎉', message: 'Nothing sold yet' },
+    expired: { icon: '⏰', message: 'No expired listings' },
+};
+
 type Tab = string; // TABS[number]['value']
 
 export default function DashboardPage() {
@@ -204,21 +212,44 @@ export default function DashboardPage() {
                     <div className="spinner"></div>
                     <p style={{ marginTop: 12 }}>Loading your shop...</p>
                 </div>
-            ) : filtered.length === 0 ? (
-                <div style={{ textAlign: "center", padding: "60px 20px", background: "var(--bg-2)", borderRadius: "var(--r-lg)", border: "2px dashed var(--border-2)" }}>
-                    <div style={{ fontSize: 48, marginBottom: 16 }}>🛍</div>
-                    <h2 style={{ fontSize: 18, fontWeight: 600 }}>{tab === 'all' ? 'No listings yet' : `No ${tab} listings`}</h2>
-                    <p style={{ color: "var(--ink-4)", fontSize: 14, marginTop: 4 }}>
-                        {tab === 'all' ? 'Time to declutter your room!' : 'Nothing in this category.'}
+            ) : listings.length === 0 ? (
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    padding: '64px 24px',
+                    textAlign: 'center',
+                }}>
+                    <span style={{ fontSize: 48, marginBottom: 16 }}>📦</span>
+                    <h2 style={{ fontSize: 18, fontWeight: 800, margin: '0 0 8px' }}>
+                        No listings yet
+                    </h2>
+                    <p style={{ fontSize: 14, color: 'var(--ink-4)', margin: '0 0 24px', maxWidth: 260 }}>
+                        Start selling — list your first item in under a minute
                     </p>
-                    {tab === 'all' && (
-                        <button
-                            onClick={openSellModal}
-                            style={{ marginTop: 20, padding: "12px 24px", background: "var(--amber)", color: "white", border: "none", borderRadius: "var(--r)", fontWeight: 600, cursor: "pointer" }}
-                        >
-                            Post Your First Item
-                        </button>
-                    )}
+                    <button
+                        onClick={openSellModal}
+                        style={{
+                            background: '#1a1a1a', color: '#fff',
+                            border: 'none', borderRadius: 12,
+                            padding: '12px 24px', fontWeight: 700,
+                            fontSize: 14, cursor: 'pointer',
+                        }}
+                    >
+                        + List an Item
+                    </button>
+                </div>
+            ) : filtered.length === 0 ? (
+                <div style={{
+                    display: 'flex', flexDirection: 'column',
+                    alignItems: 'center', padding: '48px 24px', textAlign: 'center',
+                }}>
+                    <span style={{ fontSize: 40, marginBottom: 12 }}>
+                        {TAB_EMPTY[tab]?.icon ?? '📦'}
+                    </span>
+                    <p style={{ fontSize: 15, fontWeight: 600, color: 'var(--ink-3)', margin: 0 }}>
+                        {TAB_EMPTY[tab]?.message ?? 'Nothing here'}
+                    </p>
                 </div>
             ) : (
                 <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>

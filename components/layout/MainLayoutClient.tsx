@@ -7,7 +7,12 @@ import BottomNav from "@/components/layout/BottomNav";
 import MobileDrawer from "@/components/layout/MobileDrawer";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { ListingDrawerProvider, useListingDrawer } from "@/components/listing/ListingDrawerContext";
-import ListingDetailDrawer from "@/components/listing/ListingDetailDrawer";
+import dynamic from 'next/dynamic';
+
+const ListingDetailDrawer = dynamic(
+    () => import("@/components/listing/ListingDetailDrawer"),
+    { ssr: false }
+);
 
 function DrawerContainer() {
     const { isOpen, slug, initialData, closeListing } = useListingDrawer();

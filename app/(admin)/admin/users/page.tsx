@@ -6,20 +6,31 @@ import { useRouter } from 'next/navigation';
 export default function AdminUsersPage() {
     const [users, setUsers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
-    const { user: currentUser } = useAuth();
+    const { user: currentUser, loading: authLoading } = useAuth();
     const router = useRouter();
 
     useEffect(() => {
-        if (currentUser && currentUser.role !== 'superadmin') {
-            router.replace('/admin');
+        if (!authLoading && (!currentUser || (currentUser.role !== 'admin' && currentUser.role !== 'superadmin'))) {
+            router.replace('/login?returnTo=/admin/users');
         }
-    }, [currentUser, router]);
+    }, [currentUser, authLoading, router]);
 
     useEffect(() => {
-        fetch('/api/admin/users')
-            .then(r => r.json())
-            .then(d => { setUsers(d.users ?? []); setLoading(false); });
-    }, []);
+        if (currentUser && (currentUser.role === 'admin' || currentUser.role === 'superadmin')) {
+            fetch('/api/admin/users')
+                .then(r => r.json())
+                .then(d => { setUsers(d.users ?? []); setLoading(false); });
+        }
+    }, [currentUser]);
+
+    if (authLoading || (!currentUser || (currentUser.role !== 'admin' && currentUser.role !== 'superadmin'))) {
+        return (
+            <div style={{ padding: 40, textAlign: 'center', color: 'var(--ink-4)' }}>
+                <div className="spinner"></div>
+                <p style={{ marginTop: 12 }}>Verifying access...</p>
+            </div>
+        );
+    }
 
     async function toggle(uid: string, isActive: boolean) {
         // Optimistic update

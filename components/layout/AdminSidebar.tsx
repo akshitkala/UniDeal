@@ -73,6 +73,7 @@ export default function AdminSidebar({ isMobile }: { isMobile?: boolean }) {
                     <NavItem href="/super-admin/config" icon="⚙" label="System Config" />
                     <NavItem href="/super-admin/activity" icon="📜" label="Activity Log" />
                     <NavItem href="/super-admin/users" icon="👤" label="Manage Roles" />
+                    <NavItem href="/super-admin/categories" icon="🗂️" label="Categories" />
                 </>
             )}
         </aside>

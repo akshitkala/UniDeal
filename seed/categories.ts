@@ -8,7 +8,7 @@ const categories = [
     { name: 'Furniture', slug: 'furniture', icon: '🪑', order: 3, isActive: true },
     { name: 'Clothing', slug: 'clothing', icon: '👕', order: 4, isActive: true },
     { name: 'Sports', slug: 'sports', icon: '⚽', order: 5, isActive: true },
-    { name: 'Other', slug: 'other', icon: '📦', order: 6, isActive: true },
+    { name: 'Other', slug: 'other', icon: '📦', order: 999, isActive: true },
 ];
 
 async function seedCategories() {

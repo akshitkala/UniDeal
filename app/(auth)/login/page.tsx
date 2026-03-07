@@ -1,45 +1,68 @@
 'use client';
+
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '@/lib/auth/firebase';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
+import { useAuth } from '@/lib/auth/AuthProvider';
 
 export default function LoginPage() {
+    const { user, loading: authLoading } = useAuth();
     const router = useRouter();
-    const [loading, setLoading] = useState(false);
+    const [signingIn, setSigningIn] = useState(false);
     const [error, setError] = useState('');
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
 
+    useEffect(() => {
+        if (!authLoading && user) {
+            const returnTo = new URLSearchParams(window.location.search).get('returnTo') || '/';
+            router.replace(returnTo);
+        }
+    }, [user, authLoading, router]);
+
     async function handleGoogleLogin() {
-        setLoading(true);
+        if (signingIn) return;
+        setSigningIn(true);
         setError('');
         try {
-            const cred = await signInWithPopup(auth, googleProvider);
-            const token = await cred.user.getIdToken();
-
-            const res = await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ firebaseIdToken: token }),
-            });
-
-            if (!res.ok) {
-                const data = await res.json();
-                throw new Error(data.error || 'Login failed');
-            }
-
-            const returnTo = new URLSearchParams(window.location.search).get('returnTo') || '/';
-            router.push(returnTo);
+            await signInWithPopup(auth, googleProvider);
+            // Redirection is handled by the useEffect above once AuthProvider syncs
         } catch (err: any) {
             if (err.code !== 'auth/popup-closed-by-user') {
                 setError('Sign in failed. Please try again.');
             }
-        } finally {
-            setLoading(false);
+            setSigningIn(false);
         }
     }
+
+    if (authLoading) {
+        return (
+            <div style={{
+                minHeight: '100dvh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'var(--bg)',
+            }}>
+                <div style={{
+                    width: 32, height: 32,
+                    border: '3px solid var(--border)',
+                    borderTopColor: 'var(--ink)',
+                    borderRadius: '50%',
+                    animation: 'spin 0.7s linear infinite',
+                }} />
+                <style>{`
+                    @keyframes spin {
+                        to { transform: rotate(360deg); }
+                    }
+                `}</style>
+            </div>
+        );
+    }
+
+    if (user) return null;
 
     return (
         <div style={{
@@ -77,14 +100,15 @@ export default function LoginPage() {
 
                 <button
                     onClick={handleGoogleLogin}
-                    disabled={loading}
+                    disabled={signingIn}
                     style={{
                         width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                         gap: 12, padding: '13px 20px',
                         background: 'var(--surface)', border: '1.5px solid var(--border-2)',
-                        borderRadius: 'var(--r)', cursor: loading ? 'not-allowed' : 'pointer',
+                        borderRadius: 'var(--r)', cursor: signingIn ? 'not-allowed' : 'pointer',
                         fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 15, color: 'var(--ink)',
                         boxShadow: 'var(--shadow-sm)',
+                        opacity: signingIn ? 0.7 : 1,
                     }}
                 >
                     <svg width="20" height="20" viewBox="0 0 48 48">
@@ -93,7 +117,7 @@ export default function LoginPage() {
                         <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
                         <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
                     </svg>
-                    {loading ? 'Signing in…' : 'Continue with Google'}
+                    {signingIn ? 'Signing in…' : 'Continue with Google'}
                 </button>
 
                 {error && <div style={{ marginTop: 16, fontSize: 13, color: 'var(--red)' }}>{error}</div>}

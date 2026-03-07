@@ -10,13 +10,30 @@ interface Stats {
     activity: { listingsToday: number; usersToday: number; };
 }
 
+import { useAuth } from '@/lib/auth/AuthProvider';
+import { useRouter } from 'next/navigation';
+
 export default function SuperAdminDashboard() {
+    const { user, loading: authLoading } = useAuth();
     const [stats, setStats] = useState<Stats | null>(null);
     const [activities, setActivities] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
     const isTablet = breakpoint === "tablet";
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!authLoading && currentUser?.role !== 'superadmin') {
+            router.replace('/admin');
+        }
+    }, [user, authLoading, router]);
+
+    if (authLoading || user?.role !== 'superadmin') {
+        return <div style={{ padding: 40, textAlign: 'center', color: 'var(--ink-4)' }}>Verifying super-admin access...</div>;
+    }
+
+    const currentUser = user; // To match existing naming if used
 
     const fetchStats = async () => {
         try {

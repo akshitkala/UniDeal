@@ -13,6 +13,7 @@ import Link from "next/link";
 export const revalidate = 60; // Revalidate every minute
 
 import ListingsInfiniteGrid from "@/components/listing/ListingsInfiniteGrid";
+import EmptyStateHome from "@/components/listing/EmptyStateHome";
 
 async function ListingsGrid({
     searchParams,
@@ -60,22 +61,8 @@ async function ListingsGrid({
         .populate("seller", "displayName uid");
 
     if (listings.length === 0) {
-        return (
-            <div style={{
-                display: "flex", flexDirection: "column", alignItems: "center",
-                justifyContent: "center", padding: "80px 20px", color: "var(--ink-4)"
-            }}>
-                <div style={{ fontSize: 48, marginBottom: 16 }}>📭</div>
-                <div style={{ fontSize: 18, fontWeight: 600, color: "var(--ink-2)" }}>No listings found</div>
-                <p style={{ fontSize: 14, marginTop: 4 }}>Try adjusting your filters or search terms.</p>
-                <Link href="/" style={{
-                    marginTop: 20, color: "var(--amber)", textDecoration: "none",
-                    fontWeight: 600, fontSize: 14
-                }}>
-                    Clear all filters
-                </Link>
-            </div>
-        );
+        const isFilterActive = !!(searchParams.category || searchParams.condition || searchParams.search);
+        return <EmptyStateHome type={isFilterActive ? 'no-results' : 'no-listings'} />;
     }
 
     const initialListings = JSON.parse(JSON.stringify(listings)).map((l: any) => ({

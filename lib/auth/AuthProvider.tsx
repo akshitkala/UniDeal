@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { onAuthStateChanged, User as FirebaseUser } from "firebase/auth";
+import type { User as FirebaseUser } from "firebase/auth";
 import { auth } from "@/lib/auth/firebase";
 import { useRouter } from "next/navigation";
 
@@ -22,27 +22,39 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-            if (firebaseUser) {
-                const idToken = await firebaseUser.getIdToken();
-                const res = await fetch("/api/auth/login", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ firebaseIdToken: idToken }),
-                });
-                // Read role from login response so client components can use it
-                if (res.ok) {
-                    const data = await res.json();
-                    (firebaseUser as ExtendedUser).role = data.user?.role ?? data.role;
-                }
-                setUser(firebaseUser as ExtendedUser);
-            } else {
-                setUser(null);
-            }
-            setLoading(false);
-        });
+        // Dynamic import Firebase auth
+        import('firebase/auth').then(({ onAuthStateChanged, getAuth }) => {
+            const auth = getAuth();
+            const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+                if (firebaseUser) {
+                    try {
+                        const idToken = await firebaseUser.getIdToken();
+                        const res = await fetch("/api/auth/login", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ firebaseIdToken: idToken }),
+                        });
 
-        return () => unsubscribe();
+                        if (res.ok) {
+                            const data = await res.json();
+                            (firebaseUser as ExtendedUser).role = data.user?.role ?? data.role;
+                            setUser(firebaseUser as ExtendedUser);
+                        } else {
+                            console.error("Auth sync failed:", res.status);
+                            setUser(null);
+                        }
+                    } catch (err) {
+                        console.error("Auth sync error:", err);
+                        setUser(null);
+                    }
+                } else {
+                    setUser(null);
+                }
+                setLoading(false);
+            });
+
+            return () => unsubscribe();
+        });
     }, []);
 
     const logout = async () => {

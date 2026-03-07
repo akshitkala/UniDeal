@@ -8,7 +8,12 @@ import { formatDistanceToNow } from 'date-fns';
 import { ContactButton } from './ContactButton';
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import { useAuth } from "@/lib/auth/AuthProvider";
-import SellModal from './SellModal';
+import dynamic from 'next/dynamic';
+
+const SellModal = dynamic(
+    () => import('./SellModal'),
+    { ssr: false }
+);
 
 interface ListingDetailDrawerProps {
     slug: string | null;
