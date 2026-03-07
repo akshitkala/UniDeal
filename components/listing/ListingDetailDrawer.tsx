@@ -41,6 +41,15 @@ export default function ListingDetailDrawer({ slug, initialData, isOpen, onClose
     const display = fullListing ?? initialData;
 
     useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('drawer-open');
+        } else {
+            document.body.classList.remove('drawer-open');
+        }
+        return () => document.body.classList.remove('drawer-open');
+    }, [isOpen]);
+
+    useEffect(() => {
         if (!slug || !isOpen) return;
 
         setFullListing(null);
@@ -135,6 +144,7 @@ export default function ListingDetailDrawer({ slug, initialData, isOpen, onClose
                         inset: 0,
                         background: "rgba(0,0,0,0.5)",
                         backdropFilter: "blur(4px)",
+                        WebkitBackdropFilter: "blur(4px)", // Safari fallback
                         opacity: isOpen ? 1 : 0,
                         transition: "opacity 320ms ease-out",
                         zIndex: -1
@@ -143,18 +153,23 @@ export default function ListingDetailDrawer({ slug, initialData, isOpen, onClose
 
                 {/* Content Body */}
                 <div style={{
-                    position: 'relative',
-                    width: isMobile ? "100%" : 'min(680px, 92vw)',
-                    height: isMobile ? "90dvh" : "100%",
-                    background: 'var(--surface)',
-                    boxShadow: isMobile ? '0 -12px 48px rgba(0,0,0,0.14)' : '-12px 0 48px rgba(0,0,0,0.14)',
+                    position: "fixed",
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    width: isMobile ? "100%" : 'min(680px, 92vw)', // Kept original width logic for responsiveness
+                    height: isMobile ? "90dvh" : "100%", // Kept original height logic
+                    background: "var(--surface)",
+                    zIndex: 1000,
+                    boxShadow: isMobile ? '0 -12px 48px rgba(0,0,0,0.14)' : '-12px 0 48px rgba(0,0,0,0.14)', // Kept original boxShadow logic
+                    overflowY: "auto",
+                    WebkitOverflowScrolling: "touch", // Smooth iOS scroll
                     transform: isMobile
                         ? (isOpen ? 'translateY(0)' : 'translateY(100%)')
                         : (isOpen ? 'translateX(0)' : 'translateX(100%)'),
                     transition: 'transform 320ms cubic-bezier(0.16, 1, 0.3, 1)',
                     display: 'flex',
                     flexDirection: 'column',
-                    overflow: 'hidden',
                     borderTopLeftRadius: isMobile ? 24 : 0,
                     borderTopRightRadius: isMobile ? 24 : 0,
                 }}>

@@ -136,11 +136,10 @@ export default function DashboardPage() {
     const isMobile = breakpoint === "mobile";
 
     return (
-        <div style={{
+        <div className="full-height" style={{
             padding: isMobile ? "24px 16px 80px" : "40px 20px",
             maxWidth: 1000,
             margin: "0 auto",
-            minHeight: "100dvh"
         }}>
             <header style={{
                 marginBottom: isMobile ? 24 : 32,

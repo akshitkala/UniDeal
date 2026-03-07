@@ -70,11 +70,10 @@ export default function ProfilePage() {
     );
 
     return (
-        <div style={{
+        <div className="full-height" style={{
             maxWidth: 600,
             margin: '0 auto',
             padding: isMobile ? '24px 16px 100px' : '32px 24px',
-            minHeight: '100dvh'
         }}>
             <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: isMobile ? 26 : 28, fontWeight: 700, marginBottom: isMobile ? 24 : 32 }}>
                 Profile Settings

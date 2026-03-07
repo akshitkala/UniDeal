@@ -112,8 +112,59 @@ body {
   scrollbar-width: none;
 }
 
+/* Safari doesn't support dvh — use this pattern instead */
+.full-height {
+  height: 100vh;
+  height: -webkit-fill-available;
+  height: 100dvh;
+}
+
+/* Prevent iOS Safari input zoom */
+@media (max-width: 768px) {
+
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Safari flexbox gap fallback */
+@supports not (gap: 1px) {
+  .flex-gap-4>*+* {
+    margin-left: 4px;
+  }
+
+  .flex-gap-8>*+* {
+    margin-left: 8px;
+  }
+
+  .flex-gap-12>*+* {
+    margin-left: 12px;
+  }
+
+  .flex-gap-16>*+* {
+    margin-left: 16px;
+  }
+
+  .flex-gap-20>*+* {
+    margin-left: 20px;
+  }
+
+  .flex-gap-24>*+* {
+    margin-left: 24px;
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* iOS scroll lock fix */
+body.drawer-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }

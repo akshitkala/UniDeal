@@ -4,6 +4,8 @@ export default function NotFound() {
     return (
         <div style={{
             minHeight: '100vh',
+            // @ts-ignore
+            minHeight: '-webkit-fill-available',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

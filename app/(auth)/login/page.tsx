@@ -1,6 +1,6 @@
 'use client';
 
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, signInWithRedirect, getRedirectResult } from 'firebase/auth';
 import { auth, googleProvider } from '@/lib/auth/firebase';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
@@ -8,28 +8,70 @@ import { useBreakpoint } from '@/hooks/useBreakpoint';
 import { useAuth } from '@/lib/auth/AuthProvider';
 
 export default function LoginPage() {
-    const { user, loading: authLoading } = useAuth();
+    const { user, loading, setUser } = useAuth();
     const router = useRouter();
     const [signingIn, setSigningIn] = useState(false);
     const [error, setError] = useState('');
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
 
+    // This effect must watch BOTH user and loading
+    // Only redirect when loading is false AND user exists
     useEffect(() => {
-        if (!authLoading && user) {
+        if (!loading && user) {
             const returnTo = new URLSearchParams(window.location.search).get('returnTo') || '/';
             router.replace(returnTo);
         }
-    }, [user, authLoading, router]);
+    }, [user, loading, router]);
+
+    useEffect(() => {
+        // Handle redirect result from Safari OAuth fallback
+        getRedirectResult(auth)
+            .then((result) => {
+                if (result?.user) {
+                    // AuthProvider's onAuthStateChanged will pick this up
+                }
+            })
+            .catch((err) => {
+                console.error("Redirect auth error:", err);
+                if (err.code !== 'auth/popup-closed-by-user') {
+                    setError('Sign in failed. Please try again.');
+                }
+                setSigningIn(false);
+            });
+    }, []);
 
     async function handleGoogleLogin() {
         if (signingIn) return;
         setSigningIn(true);
         setError('');
         try {
-            await signInWithPopup(auth, googleProvider);
-            // Redirection is handled by the useEffect above once AuthProvider syncs
+            const result = await signInWithPopup(auth, googleProvider);
+            const firebaseUser = result.user;
+
+            // Sync with backend to get session cookies
+            const idToken = await firebaseUser.getIdToken();
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ firebaseIdToken: idToken }),
+            });
+
+            if (!res.ok) throw new Error('Login API failed');
+
+            // Success: DO NOT reset signingIn. 
+            // The AuthProvider's observer will trigger, set user, 
+            // and the top-level useEffect will redirect.
         } catch (err: any) {
+            console.error("Login error:", err);
+            if (err.code === 'auth/popup-blocked') {
+                try {
+                    await signInWithRedirect(auth, googleProvider);
+                } catch (reErr) {
+                    setSigningIn(false);
+                }
+                return;
+            }
             if (err.code !== 'auth/popup-closed-by-user') {
                 setError('Sign in failed. Please try again.');
             }
@@ -37,10 +79,10 @@ export default function LoginPage() {
         }
     }
 
-    if (authLoading) {
+    // Show spinner while auth is resolving OR while signing in
+    if (loading || signingIn) {
         return (
-            <div style={{
-                minHeight: '100dvh',
+            <div className="full-height" style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -65,8 +107,7 @@ export default function LoginPage() {
     if (user) return null;
 
     return (
-        <div style={{
-            minHeight: '100dvh',
+        <div className="full-height" style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -84,7 +125,6 @@ export default function LoginPage() {
                 flexDirection: 'column',
                 justifyContent: isMobile ? 'center' : 'block'
             }}>
-
                 <div style={{
                     width: isMobile ? 64 : 48,
                     height: isMobile ? 64 : 48,

@@ -28,7 +28,7 @@ export default function SuperAdminUsersPage() {
 
     if (authLoading || currentUser?.role !== 'superadmin') {
         return (
-            <div style={{ padding: 40, textAlign: 'center', color: 'var(--ink-4)', minHeight: '100dvh' }}>
+            <div className="full-height" style={{ padding: 40, textAlign: 'center', color: 'var(--ink-4)' }}>
                 <div className="spinner"></div>
                 <p style={{ marginTop: 12 }}>Verifying super-admin access...</p>
             </div>
@@ -59,9 +59,10 @@ export default function SuperAdminUsersPage() {
     }
 
     return (
-        <div style={{
-            padding: isMobile ? '24px 16px 100px' : '32px 24px',
-            minHeight: "100dvh"
+        <div className="full-height" style={{
+            padding: isMobile ? '24px 16px 100px' : '40px 24px',
+            maxWidth: 1000,
+            margin: '0 auto',
         }}>
             <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: isMobile ? 26 : 28, fontWeight: 700, marginBottom: 8 }}>Manage Roles</h1>
             <p style={{ color: 'var(--ink-4)', marginBottom: 24, fontSize: 13 }}>

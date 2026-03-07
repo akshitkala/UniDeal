@@ -8,8 +8,8 @@ import { SellProvider } from "@/components/listing/SellProvider";
 
 async function MaintenanceScreen() {
     return (
-        <div style={{
-            height: "100vh", display: "flex", flexDirection: "column",
+        <div className="full-height" style={{
+            display: "flex", flexDirection: "column",
             alignItems: "center", justifyContent: "center", background: "var(--bg)",
             padding: 40, textAlign: "center"
         }}>

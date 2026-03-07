@@ -75,7 +75,7 @@ export default function SuperAdminDashboard() {
     ];
 
     return (
-        <div style={{ padding: isMobile ? '24px 16px 100px' : '32px 24px', minHeight: '100dvh' }}>
+        <div className="full-height" style={{ padding: isMobile ? '24px 16px 100px' : '32px 24px' }}>
             <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: isMobile ? 26 : 28, fontWeight: 700, marginBottom: 24 }}>Platform Overview</h1>
 
             {/* Stats Grid */}

@@ -137,9 +137,10 @@ export default function ModerationPage() {
     };
 
     return (
-        <div style={{
-            padding: isMobile ? "24px 16px 100px" : "40px",
-            minHeight: "100dvh"
+        <div className="full-height" style={{
+            padding: isMobile ? "24px 16px 80px" : "40px 24px",
+            maxWidth: 1200,
+            margin: "0 auto",
         }}>
             <h1 style={{ fontFamily: "var(--font-serif)", fontSize: isMobile ? 28 : 32, marginBottom: 8, fontWeight: 700 }}>Moderation Desk</h1>
             <p style={{ color: "var(--ink-4)", marginBottom: 32, fontSize: 13 }}>Handle community reports and flagged content.</p>

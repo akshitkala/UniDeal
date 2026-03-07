@@ -123,6 +123,7 @@ export default function ListingCard({ listing }: Props) {
                         borderRadius: '50%',
                         background: 'rgba(255,255,255,0.92)',
                         backdropFilter: 'blur(4px)',
+                        WebkitBackdropFilter: 'blur(4px)', // Safari
                         border: 'none',
                         cursor: 'pointer',
                         display: 'grid',

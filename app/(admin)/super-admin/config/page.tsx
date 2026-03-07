@@ -62,10 +62,10 @@ export default function SuperAdminConfigPage() {
     if (loading) return <div style={{ padding: 40, color: "var(--ink-4)" }}>Loading configurations...</div>;
 
     return (
-        <div style={{
-            padding: isMobile ? "24px 16px 80px" : "40px",
+        <div className="full-height" style={{
+            padding: isMobile ? "24px 16px 100px" : "40px 24px",
             maxWidth: 800,
-            minHeight: "100dvh"
+            margin: "0 auto",
         }}>
             <h1 style={{ fontFamily: "var(--font-serif)", fontSize: isMobile ? 28 : 32, fontWeight: 700, marginBottom: 8 }}>System Configuration</h1>
             <p style={{ color: "var(--ink-4)", marginBottom: 32, fontSize: 13 }}>Global controls for UniDeal platform status and behavior.</p>

@@ -28,6 +28,15 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
     const router = useRouter();
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('drawer-open');
+        } else {
+            document.body.classList.remove('drawer-open');
+        }
+        return () => document.body.classList.remove('drawer-open');
+    }, [isOpen]);
+
     const [step, setStep] = useState(isEdit ? 2 : 1);
     const [categories, setCategories] = useState<any[]>([]);
     const [formData, setFormData] = useState({
@@ -153,9 +162,10 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
             display: "flex", alignItems: isMobile ? "flex-end" : "center", justifyContent: "center",
             padding: isMobile ? 0 : 20
         }}>
-            <div style={{
-                width: "100%", maxWidth: isMobile ? "none" : 500,
-                height: isMobile ? "100dvh" : "auto",
+            <div className={`full-height ${isMobile ? '' : 'no-scrollbar'}`} style={{
+                position: "relative",
+                width: isMobile ? "100%" : 460,
+                // height handled by class
                 background: "var(--surface)",
                 borderRadius: isMobile ? 0 : "var(--r-lg)",
                 overflow: "hidden", display: "flex", flexDirection: "column",

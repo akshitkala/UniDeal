@@ -213,7 +213,9 @@ export default function SuperAdminCategories() {
             {isModalOpen && (
                 <div style={{
                     position: 'fixed', inset: 0,
-                    background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)',
+                    background: 'rgba(0,0,0,0.4)',
+                    backdropFilter: 'blur(4px)',
+                    WebkitBackdropFilter: 'blur(4px)', // Safari
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     padding: 20, zIndex: 1000
                 }}>

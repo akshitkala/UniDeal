@@ -36,7 +36,7 @@ export default function MainLayoutClient({ children }: { children: React.ReactNo
 
     return (
         <ListingDrawerProvider>
-            <div style={{ display: "flex", height: "100dvh", overflow: "hidden", flexDirection: "column" }}>
+            <div className="full-height" style={{ display: "flex", overflow: "hidden", flexDirection: "column" }}>
                 <Topbar onOpenMenu={() => setIsMenuOpen(true)} />
 
                 <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>

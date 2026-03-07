@@ -14,7 +14,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
     const isTablet = breakpoint === "tablet";
 
     return (
-        <div style={{ display: "flex", height: "100dvh", overflow: "hidden", flexDirection: "column" }}>
+        <div className="full-height" style={{ display: "flex", overflow: "hidden", flexDirection: "column" }}>
             <Topbar onOpenMenu={() => setIsMenuOpen(true)} />
 
             <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
