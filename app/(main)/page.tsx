@@ -12,6 +12,8 @@ import Link from "next/link";
 
 export const revalidate = 60; // Revalidate every minute
 
+import ListingsInfiniteGrid from "@/components/listing/ListingsInfiniteGrid";
+
 async function ListingsGrid({
     searchParams,
     userUid
@@ -28,8 +30,6 @@ async function ListingsGrid({
             savedIds = user.savedListings.map((id: any) => id.toString());
         }
     }
-
-    const savedSet = new Set(savedIds);
 
     const query: any = { status: "approved", isExpired: false, isDeleted: false };
 
@@ -55,7 +55,7 @@ async function ListingsGrid({
 
     const listings = await Listing.find(query)
         .sort(sortMap[searchParams.sort || "newest"])
-        .limit(50)
+        .limit(12) // Initial load limit
         .populate("category", "name icon slug")
         .populate("seller", "displayName uid");
 
@@ -78,43 +78,18 @@ async function ListingsGrid({
         );
     }
 
-    return (
-        <>
-            <style>{`
-                .listings-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                    gap: 12px;
-                    padding: 0 12px 40px;
-                }
-                @media (min-width: 480px) {
-                    .listings-grid {
-                        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                        gap: 16px;
-                        padding: 0 20px 40px;
-                    }
-                }
-                @media (min-width: 768px) {
-                    .listings-grid {
-                        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                    }
-                }
-            `}</style>
-            <div className="listings-grid">
-                {listings.map(l => {
-                    const listingObj = JSON.parse(JSON.stringify(l));
-                    listingObj.isSaved = savedSet.has(l._id.toString());
-                    return (
-                        <ListingCard
-                            key={l._id}
-                            listing={listingObj}
-                        />
-                    );
-                })}
-            </div>
-        </>
-    );
+    const initialListings = JSON.parse(JSON.stringify(listings)).map((l: any) => ({
+        ...l,
+        isSaved: savedIds.includes(l._id.toString())
+    }));
 
+    return (
+        <ListingsInfiniteGrid
+            initialListings={initialListings}
+            searchParams={searchParams}
+            savedIds={savedIds}
+        />
+    );
 }
 
 import { cookies } from "next/headers";

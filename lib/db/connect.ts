@@ -1,28 +1,33 @@
-import mongoose from "mongoose";
-import '@/lib/db/models';
+import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+const URI = process.env.MONGODB_URI!;
 
-if (!MONGODB_URI) throw new Error("MONGODB_URI not defined");
+if (!URI) {
+  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+}
 
-let cached = (global as any).mongoose || { conn: null, promise: null };
-(global as any).mongoose = cached;
+declare global {
+  var _mongoConn: {
+    conn: typeof mongoose | null;
+    promise: Promise<typeof mongoose> | null;
+  };
+}
 
-const opts = {
-  bufferCommands: false,
-  maxPoolSize: 10,             // limit connections in serverless — prevents Atlas exhaustion
-  serverSelectionTimeoutMS: 5000,
-  socketTimeoutMS: 45000,
-  family: 4,                   // force IPv4 — required on Vercel
-};
+if (!global._mongoConn) {
+  global._mongoConn = { conn: null, promise: null };
+}
 
 export async function connectDB() {
-  if (cached.conn) return cached.conn;
+  if (global._mongoConn.conn) return global._mongoConn.conn;
 
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, opts);
+  if (!global._mongoConn.promise) {
+    global._mongoConn.promise = mongoose.connect(URI, {
+      maxPoolSize: 10,
+      bufferCommands: false,
+      family: 4,
+    });
   }
 
-  cached.conn = await cached.promise;
-  return cached.conn;
+  global._mongoConn.conn = await global._mongoConn.promise;
+  return global._mongoConn.conn;
 }

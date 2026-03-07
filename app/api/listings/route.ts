@@ -37,6 +37,10 @@ export async function GET(request: Request) {
             query.$text = { $search: search };
         }
 
+        const page = parseInt(searchParams.get("page") ?? "1");
+        const limit = parseInt(searchParams.get("limit") ?? "12");
+        const skip = (page - 1) * limit;
+
         const sortMap: any = {
             newest: { createdAt: -1 },
             oldest: { createdAt: 1 },
@@ -44,14 +48,27 @@ export async function GET(request: Request) {
             price_desc: { price: -1 },
         };
 
-        const listings = await Listing.find(query)
-            .sort(search ? { score: { $meta: 'textScore' } } : (sortMap[sort] || sortMap.newest))
-            .limit(50)
-            .populate("category", "name icon slug")
-            .populate("seller", "displayName uid emailVerified")
-            .lean();
+        const [listings, total] = await Promise.all([
+            Listing.find(query)
+                .sort(search ? { score: { $meta: 'textScore' } } : (sortMap[sort] || sortMap.newest))
+                .skip(skip)
+                .limit(limit)
+                .populate("category", "name icon slug")
+                .populate("seller", "displayName uid emailVerified")
+                .lean(),
+            Listing.countDocuments(query),
+        ]);
 
-        return NextResponse.json({ listings });
+        return NextResponse.json({
+            listings,
+            pagination: {
+                page,
+                limit,
+                total,
+                totalPages: Math.ceil(total / limit),
+                hasMore: page * limit < total,
+            },
+        });
     } catch (error) {
         console.error("GET Listings Error:", error);
         return NextResponse.json({ error: "Failed to fetch listings" }, { status: 500 });

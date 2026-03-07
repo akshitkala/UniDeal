@@ -28,6 +28,13 @@ const conditionBgColors: any = {
     damaged: "var(--red-bg)",
 };
 
+import { useListingDrawer } from "./ListingDrawerContext";
+
+function optimizeImage(url: string, width = 400): string {
+    if (!url?.includes('res.cloudinary.com')) return url;
+    return url.replace('/upload/', `/upload/w_${width},q_auto,f_auto,c_fill/`);
+}
+
 export default function ListingCard({ listing }: Props) {
     const { title, price, negotiable, condition, images, location, createdAt, slug } = listing;
     const { user } = useAuth();
@@ -35,6 +42,7 @@ export default function ListingCard({ listing }: Props) {
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
     const [isSaved, setIsSaved] = useState(listing.isSaved ?? false);
+    const { openListing } = useListingDrawer();
 
     async function handleSave(e: React.MouseEvent) {
         e.stopPropagation(); // don't open the listing drawer
@@ -61,10 +69,20 @@ export default function ListingCard({ listing }: Props) {
         }
     }
 
+    const handleClick = (e: React.MouseEvent) => {
+        // Only trigger drawer if it's a normal click (not cmd/ctrl/middle-click)
+        if (e.metaKey || e.ctrlKey || e.button === 1) return;
+
+        e.preventDefault();
+        openListing(slug, listing);
+        // Optionally update URL to match
+        window.history.pushState(null, '', `/listings/${slug}`);
+    };
+
     return (
-        <Link
+        <a
             href={`/listings/${slug}`}
-            scroll={false}
+            onClick={handleClick}
             style={{
                 textDecoration: "none",
                 color: "inherit",
@@ -89,11 +107,11 @@ export default function ListingCard({ listing }: Props) {
         >
             {/* Image Zone */}
             <div style={{ position: "relative", width: "100%", aspectRatio: "4/3", overflow: "hidden" }}>
-                <Image
-                    src={images[0] || "/placeholder-listing.png"}
+                <img
+                    src={optimizeImage(images[0] || "/placeholder-listing.png", 400)}
                     alt={title}
-                    fill
-                    style={{ objectFit: "cover", transition: "transform 0.3s ease" }}
+                    loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: "cover", transition: "transform 0.3s ease" }}
                 />
 
                 <button
@@ -170,6 +188,6 @@ export default function ListingCard({ listing }: Props) {
                     {!isMobile && <span>{formatDistanceToNow(new Date(createdAt))} ago</span>}
                 </div>
             </div>
-        </Link>
+        </a>
     );
 }

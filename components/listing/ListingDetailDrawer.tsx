@@ -11,45 +11,65 @@ import { useAuth } from "@/lib/auth/AuthProvider";
 import SellModal from './SellModal';
 
 interface ListingDetailDrawerProps {
-    listing: any;
+    slug: string | null;
+    initialData?: any;
+    isOpen: boolean;
+    onClose: () => void;
 }
 
-export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProps) {
+function optimizeImage(url: string, width = 400): string {
+    if (!url?.includes('res.cloudinary.com')) return url;
+    return url.replace('/upload/', `/upload/w_${width},q_auto,f_auto,c_fill/`);
+}
+
+export default function ListingDetailDrawer({ slug, initialData, isOpen, onClose }: ListingDetailDrawerProps) {
     const router = useRouter();
-    const [isOpen, setIsOpen] = useState(false);
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
-
-    useEffect(() => {
-        setIsOpen(true);
-        const handleEsc = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') handleClose();
-        };
-        window.addEventListener('keydown', handleEsc);
-        return () => window.removeEventListener('keydown', handleEsc);
-    }, []);
-
     const { user } = useAuth();
-    const [isSaved, setIsSaved] = useState(listing.isSaved || false);
+
+    const [fullListing, setFullListing] = useState<any>(null);
+    const [isSaved, setIsSaved] = useState(initialData?.isSaved || false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-    const isOwner = user?.uid === listing.seller?.uid;
-    const isAdmin = ['admin', 'superadmin'].includes(user?.role || '');
+    // This determines what we show instantly vs what waits for fetch
+    const display = fullListing ?? initialData;
 
-    const handleClose = () => {
-        setIsOpen(false);
-        setTimeout(() => {
-            router.back();
-        }, 320);
-    };
+    useEffect(() => {
+        if (!slug || !isOpen) return;
+
+        setFullListing(null);
+        fetch(`/api/listings/${slug}`, { credentials: 'include' })
+            .then(r => r.json())
+            .then(data => {
+                if (data.listing) {
+                    setFullListing(data.listing);
+                    setIsSaved(data.listing.isSaved);
+                }
+            })
+            .catch(() => { });
+    }, [slug, isOpen]);
+
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') onClose();
+        };
+        if (isOpen) {
+            window.addEventListener('keydown', handleEsc);
+        }
+        return () => window.removeEventListener('keydown', handleEsc);
+    }, [isOpen, onClose]);
+
+    const isOwner = user?.uid === display?.seller?.uid;
+    const isAdmin = ['admin', 'superadmin'].includes(user?.role || '');
 
     const handleDelete = async () => {
         if (!confirm('Are you sure you want to delete this listing?')) return;
         try {
-            const res = await fetch(`/api/listings/${listing.slug}`, { method: 'DELETE' });
+            const res = await fetch(`/api/listings/${display.slug}`, { method: 'DELETE' });
             if (res.ok) {
-                handleClose();
-                window.dispatchEvent(new CustomEvent('listing-deleted', { detail: listing.slug }));
+                onClose();
+                window.dispatchEvent(new CustomEvent('listing-deleted', { detail: display.slug }));
             }
         } catch (err) {
             alert('Failed to delete');
@@ -61,7 +81,7 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
         e.stopPropagation();
 
         if (!user) {
-            router.push(`/login?returnTo=/listings/${listing.slug}`);
+            router.push(`/login?returnTo=/listings/${display.slug}`);
             return;
         }
 
@@ -69,7 +89,7 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
         setIsSaved(!previousState);
 
         try {
-            const res = await fetch(`/api/listings/${listing.slug}/save`, { method: "POST" });
+            const res = await fetch(`/api/listings/${display.slug}/save`, { method: "POST" });
             if (!res.ok) throw new Error();
             const data = await res.json();
             setIsSaved(data.saved);
@@ -78,8 +98,21 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
         }
     };
 
+    if (!slug && !isOpen) return null;
+
     return (
         <>
+            <style>{`
+                @keyframes shimmer {
+                    0% { background-position: -200% 0; }
+                    100% { background-position: 200% 0; }
+                }
+                .shimmer {
+                    animation: shimmer 1.4s infinite linear;
+                    background: linear-gradient(90deg, var(--bg-2) 25%, var(--bg) 50%, var(--bg-2) 75%);
+                    background-size: 200% 100%;
+                }
+            `}</style>
             <div style={{
                 position: "fixed",
                 inset: 0,
@@ -87,10 +120,11 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                 display: "flex",
                 justifyContent: isMobile ? "center" : "flex-end",
                 alignItems: isMobile ? "flex-end" : "stretch",
+                pointerEvents: isOpen ? 'auto' : 'none',
             }}>
                 {/* Backdrop */}
                 <div
-                    onClick={handleClose}
+                    onClick={onClose}
                     style={{
                         position: "absolute",
                         inset: 0,
@@ -138,7 +172,7 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                             justifyContent: 'space-between',
                         }}>
                             <span style={{ fontSize: 13, color: 'var(--ink-4)', fontWeight: 600 }}>
-                                {listing.category?.name ?? 'Listing'}
+                                {display?.category?.name ?? 'Listing'}
                             </span>
                             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                                 <button
@@ -157,7 +191,7 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                                     {!isMobile && (isSaved ? 'Saved' : 'Save')}
                                 </button>
                                 <button
-                                    onClick={handleClose}
+                                    onClick={onClose}
                                     style={{
                                         background: 'none', border: 'none',
                                         cursor: 'pointer', fontSize: 20,
@@ -178,68 +212,96 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                     <div style={{ flex: 1, overflowY: 'auto', padding: 0 }} className="no-scrollbar">
                         {/* Image scrolls with content */}
                         <div style={{ position: 'relative', width: '100%', aspectRatio: isMobile ? '4/3' : '16/9', background: '#f5f5f5' }}>
-                            <Image
-                                src={listing.images?.[0] || '/placeholder-listing.jpg'}
-                                alt={listing.title}
-                                fill
-                                style={{ objectFit: 'cover' }}
-                                priority
-                            />
+                            {display?.images?.[0] ? (
+                                <img
+                                    src={optimizeImage(display.images[0], 800)}
+                                    alt={display.title || ''}
+                                    loading="eager"
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                />
+                            ) : (
+                                <div style={{ width: '100%', height: '100%', background: 'var(--bg-2)' }} className="shimmer" />
+                            )}
                         </div>
 
                         {/* Text content */}
                         <div style={{ padding: isMobile ? '24px 20px' : '32px 40px' }}>
+                            {display?.images?.length > 1 && (
+                                <div style={{ display: 'flex', gap: 8, marginBottom: 24, overflowX: 'auto' }} className="no-scrollbar">
+                                    {display.images.map((img: string, i: number) => (
+                                        <img
+                                            key={i}
+                                            src={optimizeImage(img, 120)}
+                                            alt=""
+                                            style={{ width: 60, height: 60, objectFit: 'cover', borderRadius: 8, border: '1px solid var(--border-2)' }}
+                                        />
+                                    ))}
+                                </div>
+                            )}
+
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
                                 <div style={{
                                     background: 'var(--amber-bg)', color: 'var(--amber)', fontSize: 12,
                                     fontWeight: 700, padding: '4px 8px', borderRadius: 4, textTransform: 'uppercase',
                                     display: 'flex', alignItems: 'center', gap: 6
                                 }}>
-                                    <span>{listing.category?.icon || '📦'}</span>
-                                    <span>{listing.category?.name || 'General'}</span>
+                                    <span>{display?.category?.icon || '📦'}</span>
+                                    <span>{display?.category?.name || 'General'}</span>
                                 </div>
                                 <div style={{ fontSize: 24, fontWeight: 800, color: 'var(--ink)' }}>
-                                    ₹{listing.price.toLocaleString()}
+                                    ₹{display?.price?.toLocaleString()}
                                 </div>
                             </div>
 
                             <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: isMobile ? 26 : 32, fontWeight: 700, marginBottom: 20, lineHeight: 1.2 }}>
-                                {listing.title}
+                                {display?.title}
                             </h1>
 
                             <div style={{ display: 'flex', gap: 12, marginBottom: 28 }}>
                                 <div style={{ padding: '6px 12px', borderRadius: 8, border: '1.5px solid var(--border-2)', fontSize: 13, fontWeight: 600 }}>
-                                    {listing.condition}
+                                    {display?.condition}
                                 </div>
                                 <div style={{ padding: '6px 12px', borderRadius: 8, border: '1.5px solid var(--border-2)', fontSize: 13, fontWeight: 600 }}>
-                                    {listing.location}
+                                    {display?.location}
                                 </div>
                             </div>
 
                             {/* Seller Profile Summary */}
-                            <div style={{
-                                display: 'flex', alignItems: 'center', gap: 12, padding: 16,
-                                background: 'var(--bg-2)', borderRadius: 'var(--r-lg)', marginBottom: 28
-                            }}>
-                                {listing.seller?.photoURL ? (
-                                    <img src={listing.seller.photoURL} alt="" style={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover' }} />
-                                ) : (
-                                    <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--ink)', color: '#fff', display: 'grid', placeItems: 'center', fontWeight: 700 }}>
-                                        {listing.seller?.displayName?.[0] || 'S'}
+                            {fullListing ? (
+                                <div style={{
+                                    display: 'flex', alignItems: 'center', gap: 12, padding: 16,
+                                    background: 'var(--bg-2)', borderRadius: 'var(--r-lg)', marginBottom: 28
+                                }}>
+                                    {fullListing.seller?.photoURL ? (
+                                        <img src={fullListing.seller.photoURL} alt="" style={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover' }} />
+                                    ) : (
+                                        <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--ink)', color: '#fff', display: 'grid', placeItems: 'center', fontWeight: 700 }}>
+                                            {fullListing.seller?.displayName?.[0] || 'S'}
+                                        </div>
+                                    )}
+                                    <div>
+                                        <div style={{ fontSize: 14, fontWeight: 700 }}>{fullListing.seller?.displayName || 'Student'}</div>
+                                        <div style={{ fontSize: 12, color: 'var(--ink-4)' }}>Verified Seller</div>
                                     </div>
-                                )}
-                                <div>
-                                    <div style={{ fontSize: 14, fontWeight: 700 }}>{listing.seller?.displayName || 'Student'}</div>
-                                    <div style={{ fontSize: 12, color: 'var(--ink-4)' }}>Verified Seller</div>
                                 </div>
-                            </div>
+                            ) : (
+                                <div style={{ height: 76, borderRadius: 'var(--r-lg)', marginBottom: 28 }} className="shimmer" />
+                            )}
 
-                            <div style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink-2)', marginBottom: 32, whiteSpace: 'pre-wrap' }}>
-                                {listing.description}
-                            </div>
+                            {fullListing ? (
+                                <div style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink-2)', marginBottom: 32, whiteSpace: 'pre-wrap' }}>
+                                    {fullListing.description}
+                                </div>
+                            ) : (
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 32 }}>
+                                    <div style={{ height: 16, width: '100%', borderRadius: 4 }} className="shimmer" />
+                                    <div style={{ height: 16, width: '90%', borderRadius: 4 }} className="shimmer" />
+                                    <div style={{ height: 16, width: '95%', borderRadius: 4 }} className="shimmer" />
+                                </div>
+                            )}
 
                             <div style={{ borderTop: '1px solid var(--border-2)', paddingTop: 24, fontSize: 12, color: 'var(--ink-4)', display: 'flex', gap: 24, paddingBottom: isMobile ? 80 : 40 }}>
-                                <span>Posted {formatDistanceToNow(new Date(listing.createdAt))} ago</span>
+                                <span>Posted {display?.createdAt ? formatDistanceToNow(new Date(display.createdAt)) : '...'} ago</span>
                             </div>
                         </div>
 
@@ -253,7 +315,11 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                             paddingBottom: isMobile ? "max(16px, env(safe-area-inset-bottom))" : 20,
                             boxShadow: isMobile ? "0 -4px 20px rgba(0,0,0,0.05)" : "none"
                         }}>
-                            <ContactButton listing={listing} />
+                            {fullListing ? (
+                                <ContactButton listing={fullListing} />
+                            ) : (
+                                <div style={{ height: 44, flex: 1, borderRadius: 'var(--r)', background: 'var(--bg-2)' }} className="shimmer" />
+                            )}
 
                             {(isOwner || isAdmin) && (
                                 <div style={{ display: 'flex', gap: 12 }}>
@@ -278,14 +344,15 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                 </div>
             </div>
 
-            {isEditModalOpen && (
+            {isEditModalOpen && display && (
                 <SellModal
                     isOpen={isEditModalOpen}
                     onClose={() => setIsEditModalOpen(false)}
                     mode="edit"
                     initialData={{
-                        ...listing,
-                        category: listing.category?._id || listing.category
+                        ...display,
+                        ...fullListing,
+                        category: display.category?._id || display.category
                     }}
                     onSuccess={(updated) => {
                         window.location.reload();
