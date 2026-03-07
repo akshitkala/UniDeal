@@ -16,10 +16,12 @@ export async function PATCH(
 
         await connectDB();
         const { uid } = await params;
-        const { action } = await req.json();
+        const { action, role } = await req.json();
 
         const target = await User.findOne({ uid });
         if (!target) return NextResponse.json({ error: 'User not found' }, { status: 404 });
+
+        const previousRole = target.role;
 
         if (action === 'ban') {
             target.isActive = false;
@@ -30,8 +32,7 @@ export async function PATCH(
                 actor: actor.uid,
                 actorType: 'user',
                 action: 'USER_BANNED',
-                target: target._id.toString(),
-                targetModel: 'User',
+                metadata: { targetUid: target.uid, targetName: target.displayName },
                 ipAddress: req.headers.get('x-forwarded-for') ?? 'unknown',
             });
         } else if (action === 'unban') {
@@ -43,8 +44,23 @@ export async function PATCH(
                 actor: actor.uid,
                 actorType: 'user',
                 action: 'USER_UNBANNED',
-                target: target._id.toString(),
-                targetModel: 'User',
+                metadata: { targetUid: target.uid, targetName: target.displayName },
+                ipAddress: req.headers.get('x-forwarded-for') ?? 'unknown',
+            });
+        } else if (action === 'role') {
+            if (!role) return NextResponse.json({ error: 'Role is required' }, { status: 400 });
+            target.role = role;
+            await target.save();
+            await logAction({
+                actor: actor.uid,
+                actorType: 'user',
+                action: 'ROLE_CHANGED',
+                metadata: {
+                    targetUid: target.uid,
+                    targetName: target.displayName,
+                    oldRole: previousRole,
+                    newRole: target.role,
+                },
                 ipAddress: req.headers.get('x-forwarded-for') ?? 'unknown',
             });
         } else {

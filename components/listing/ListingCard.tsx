@@ -138,9 +138,16 @@ export default function ListingCard({ listing }: Props) {
             {/* Body */}
             <div style={{ padding: isMobile ? "10px" : "14px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: isMobile ? 4 : 8 }}>
-                    <span style={{ fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: isMobile ? 14 : 16, color: "var(--ink)" }}>
-                        ₹{price.toLocaleString("en-IN")}
-                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: isMobile ? 14 : 16, color: "var(--ink)" }}>
+                            ₹{price.toLocaleString("en-IN")}
+                        </span>
+                        {listing.category?.name && (
+                            <span style={{ fontSize: 10, color: 'var(--ink-4)', marginTop: 2 }}>
+                                {listing.category.name}
+                            </span>
+                        )}
+                    </div>
                     {!isMobile && (
                         <span style={{
                             fontSize: 10, fontWeight: 700, textTransform: "uppercase",

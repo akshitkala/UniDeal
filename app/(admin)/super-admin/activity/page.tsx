@@ -2,16 +2,19 @@
 import { useEffect, useState } from 'react';
 
 const ACTION_META: Record<string, { label: string; color: string; icon: string }> = {
-    CONFIG_UPDATED:         { label: 'Config Updated',     color: '#7c3aed', icon: '⚙' },
-    APPROVAL_MODE_CHANGED:  { label: 'Approval Mode',      color: '#7c3aed', icon: '⚙' },
-    MAINTENANCE_MODE:       { label: 'Maintenance Mode',   color: '#ea580c', icon: '🔧' },
-    LISTING_APPROVED:       { label: 'Listing Approved',   color: '#16a34a', icon: '✓' },
-    LISTING_REJECTED:       { label: 'Listing Rejected',   color: '#dc2626', icon: '✗' },
-    USER_BANNED:            { label: 'User Banned',        color: '#7f1d1d', icon: '🚫' },
-    USER_UNBANNED:          { label: 'User Unbanned',      color: '#16a34a', icon: '✓' },
-    ROLE_CHANGED:           { label: 'Role Changed',       color: '#0891b2', icon: '👤' },
-    REPORT_DISMISSED:       { label: 'Report Dismissed',   color: '#6b7280', icon: '⚑'  },
-    CONTACT_LINK_GENERATED: { label: 'Contact Generated',  color: '#1e40af', icon: '📱' },
+    CONFIG_UPDATED: { label: 'Config Updated', color: '#7c3aed', icon: '⚙' },
+    APPROVAL_MODE_CHANGED: { label: 'Approval Mode', color: '#7c3aed', icon: '⚙' },
+    MAINTENANCE_MODE: { label: 'Maintenance Mode', color: '#ea580c', icon: '🔧' },
+    LISTING_APPROVED: { label: 'Listing Approved', color: '#16a34a', icon: '✓' },
+    LISTING_REJECTED: { label: 'Listing Rejected', color: '#dc2626', icon: '✗' },
+    LISTING_DELETED: { label: 'Listing Deleted', color: '#7f1d1d', icon: '🗑' },
+    LISTING_RESTORED: { label: 'Listing Restored', color: '#0891b2', icon: '↩' },
+    LISTING_RELISTED: { label: 'Listing Relisted', color: '#d97706', icon: '🔄' },
+    USER_BANNED: { label: 'User Banned', color: '#7f1d1d', icon: '🚫' },
+    USER_UNBANNED: { label: 'User Unbanned', color: '#16a34a', icon: '✓' },
+    ROLE_CHANGED: { label: 'Role Changed', color: '#0891b2', icon: '👤' },
+    REPORT_DISMISSED: { label: 'Report Dismissed', color: '#6b7280', icon: '⚑' },
+    CONTACT_LINK_GENERATED: { label: 'Contact Generated', color: '#1e40af', icon: '📱' },
 };
 
 function formatMetadata(action: string, metadata: any): string {
@@ -22,37 +25,46 @@ function formatMetadata(action: string, metadata: any): string {
     if (action === 'CONFIG_UPDATED' || action === 'APPROVAL_MODE_CHANGED') {
         const changes = m.changes ?? m;
         const parts: string[] = [];
-        if (changes.approvalMode !== undefined)     parts.push(`Approval → ${changes.approvalMode}`);
-        if (changes.maintenanceMode !== undefined)  parts.push(`Maintenance → ${changes.maintenanceMode ? 'ON' : 'OFF'}`);
+        if (changes.approvalMode !== undefined) parts.push(`Approval → ${changes.approvalMode}`);
+        if (changes.maintenanceMode !== undefined) parts.push(`Maintenance → ${changes.maintenanceMode ? 'ON' : 'OFF'}`);
         if (changes.allowNewListings !== undefined) parts.push(`New listings → ${changes.allowNewListings ? 'ON' : 'OFF'}`);
         return parts.join(' · ') || JSON.stringify(changes);
     }
-    if (action === 'ROLE_CHANGED')     return `New role: ${m.newRole ?? m.role ?? JSON.stringify(m)}`;
-    if (action === 'LISTING_REJECTED') return `Reason: ${m.reason ?? 'none'}`;
-    if (action === 'USER_BANNED')      return m.reason ? `Reason: ${m.reason}` : '';
+    if (action === 'LISTING_APPROVED' || action === 'LISTING_DELETED' || action === 'LISTING_RESTORED' || action === 'LISTING_RELISTED') {
+        return m.title ? `"${m.title}"` : '';
+    }
+    if (action === 'LISTING_REJECTED') {
+        return `"${m.title}"${m.reason ? ` · Reason: ${m.reason}` : ''}`;
+    }
+    if (action === 'USER_BANNED' || action === 'USER_UNBANNED') {
+        return `${m.targetName ?? m.targetUid ?? ''}`;
+    }
+    if (action === 'ROLE_CHANGED') {
+        return `${m.targetName ?? m.targetUid} · ${m.oldRole} → ${m.newRole}`;
+    }
     const str = JSON.stringify(m);
     return str === '{}' ? '' : str;
 }
 
 function timeAgo(dateStr: string): string {
     if (!dateStr) return '—';
-    const diff  = Date.now() - new Date(dateStr).getTime();
-    const mins  = Math.floor(diff / 60000);
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const mins = Math.floor(diff / 60000);
     const hours = Math.floor(diff / 3600000);
-    const days  = Math.floor(diff / 86400000);
-    if (mins < 1)   return 'just now';
-    if (mins < 60)  return `${mins}m ago`;
+    const days = Math.floor(diff / 86400000);
+    if (mins < 1) return 'just now';
+    if (mins < 60) return `${mins}m ago`;
     if (hours < 24) return `${hours}h ago`;
     return `${days}d ago`;
 }
 
 export default function ActivityPage() {
     const [activities, setActivities] = useState<any[]>([]);
-    const [showIps, setShowIps]       = useState(false);
-    const [page, setPage]             = useState(1);
-    const [total, setTotal]           = useState(0);
-    const [pages, setPages]           = useState(1);
-    const [loading, setLoading]       = useState(true);
+    const [showIps, setShowIps] = useState(false);
+    const [page, setPage] = useState(1);
+    const [total, setTotal] = useState(0);
+    const [pages, setPages] = useState(1);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
@@ -96,10 +108,10 @@ export default function ActivityPage() {
 
             {/* Entries */}
             {!loading && activities.map((a, i) => {
-                const meta   = ACTION_META[a.action] ?? { label: a.action, color: '#6b7280', icon: '•' };
+                const meta = ACTION_META[a.action] ?? { label: a.action, color: '#6b7280', icon: '•' };
                 const detail = formatMetadata(a.action, a.metadata);
-                const date   = a.createdAt ?? a.timestamp;
-                const actor  = a.actorName ?? a.actor?.displayName ?? a.actor?.email ?? 'System';
+                const date = a.createdAt ?? a.timestamp;
+                const actor = a.actorName ?? a.actor?.displayName ?? a.actor?.email ?? 'System';
 
                 return (
                     <div key={i} style={{

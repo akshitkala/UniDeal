@@ -80,24 +80,42 @@ async function ListingsGrid({
     }
 
     return (
-        <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
-            gap: 16,
-            padding: "0 20px 40px"
-        }}>
-            {listings.map(l => {
-                const listingObj = JSON.parse(JSON.stringify(l));
-                listingObj.isSaved = savedSet.has(l._id.toString());
-                return (
-                    <ListingCard
-                        key={l._id}
-                        listing={listingObj}
-                    />
-                );
-            })}
-        </div>
+        <>
+            <style>{`
+                .listings-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                    gap: 12px;
+                    padding: 0 12px 40px;
+                }
+                @media (min-width: 480px) {
+                    .listings-grid {
+                        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                        gap: 16px;
+                        padding: 0 20px 40px;
+                    }
+                }
+                @media (min-width: 768px) {
+                    .listings-grid {
+                        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                    }
+                }
+            `}</style>
+            <div className="listings-grid">
+                {listings.map(l => {
+                    const listingObj = JSON.parse(JSON.stringify(l));
+                    listingObj.isSaved = savedSet.has(l._id.toString());
+                    return (
+                        <ListingCard
+                            key={l._id}
+                            listing={listingObj}
+                        />
+                    );
+                })}
+            </div>
+        </>
     );
+
 }
 
 import { cookies } from "next/headers";

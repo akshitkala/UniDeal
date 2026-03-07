@@ -5,25 +5,39 @@ import PhotoUploadZone from "./PhotoUploadZone";
 import { useRouter } from "next/navigation";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
-interface Props {
+interface SellModalProps {
     isOpen: boolean;
     onClose: () => void;
+    initialData?: {
+        _id: string;
+        slug: string;
+        title: string;
+        description: string;
+        price: number;
+        condition: string;
+        category: string;
+        images: string[];
+        whatsappNumber?: string;
+    };
+    mode?: 'create' | 'edit';
+    onSuccess?: (data: any) => void;
 }
 
-export default function SellModal({ isOpen, onClose }: Props) {
+export default function SellModal({ isOpen, onClose, initialData, mode = 'create', onSuccess }: SellModalProps) {
+    const isEdit = mode === 'edit';
     const router = useRouter();
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(isEdit ? 2 : 1);
     const [categories, setCategories] = useState<any[]>([]);
     const [formData, setFormData] = useState({
-        title: "",
-        description: "",
-        price: "",
+        title: initialData?.title || "",
+        description: initialData?.description || "",
+        price: initialData?.price?.toString() || "",
         negotiable: false,
-        category: "",
-        condition: "good",
-        images: [] as string[],
+        category: initialData?.category || "",
+        condition: initialData?.condition || "good",
+        images: initialData?.images || [] as string[],
         location: "LPU Campus"
     });
     const [submitting, setSubmitting] = useState(false);
@@ -32,27 +46,35 @@ export default function SellModal({ isOpen, onClose }: Props) {
     const [whatsappSaved, setWhatsappSaved] = useState(false);
 
     useEffect(() => {
-        if (isOpen) {
-            fetch("/api/categories")
-                .then((res) => res.json())
-                .then((data) => setCategories(data.categories || []));
-
-            // Fetch profile for WhatsApp number
-            fetch('/api/users/profile')
-                .then(r => r.json())
-                .then(data => {
-                    if (data.whatsappNumber) {
-                        setWhatsapp(data.whatsappNumber.replace('+91', ''));
-                        setWhatsappSaved(true);
-                    }
-                })
-                .catch(() => { });
-        } else {
-            // Reset on close
-            setStep(1);
-            setError(null);
-        }
+        if (!isOpen) return;
+        fetch('/api/categories')
+            .then(r => r.json())
+            .then(data => {
+                const cats = Array.isArray(data) ? data : data.categories ?? [];
+                setCategories(cats);
+            })
+            .catch(() => { });
     }, [isOpen]);
+
+    useEffect(() => {
+        if (isOpen && initialData) {
+            setFormData({
+                title: initialData.title || "",
+                description: initialData.description || "",
+                price: initialData.price?.toString() || "",
+                negotiable: false,
+                category: initialData.category || "",
+                condition: initialData.condition || "good",
+                images: initialData.images || [],
+                location: "LPU Campus"
+            });
+            if (initialData.whatsappNumber) {
+                setWhatsapp(initialData.whatsappNumber.replace('+91', ''));
+                setWhatsappSaved(true);
+            }
+            setStep(2);
+        }
+    }, [isOpen, initialData]);
 
     if (!isOpen) return null;
 
@@ -69,9 +91,12 @@ export default function SellModal({ isOpen, onClose }: Props) {
 
         const fullNumber = `+91${whatsapp.replace(/\D/g, '')}`;
 
+        const method = isEdit ? 'PATCH' : 'POST';
+        const url = isEdit ? `/api/listings/${initialData?.slug}` : '/api/listings';
+
         try {
-            const res = await fetch("/api/listings", {
-                method: "POST",
+            const res = await fetch(url, {
+                method,
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     ...formData,
@@ -90,7 +115,14 @@ export default function SellModal({ isOpen, onClose }: Props) {
             }).catch(() => { }); // silent — never block the listing flow
 
             onClose();
-            router.push(`/listings/${data.slug}`);
+            if (onSuccess) {
+                onSuccess(data.listing || data);
+            } else if (isEdit) {
+                // Fallback if no onSuccess provided for edit
+                router.refresh();
+            } else {
+                router.push(`/listings/${data.slug}`);
+            }
         } catch (err: any) {
             setError(err.message);
         } finally {
@@ -117,7 +149,7 @@ export default function SellModal({ isOpen, onClose }: Props) {
             }}>
                 <div style={{ padding: "20px 24px", borderBottom: "1px solid var(--border-2)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <h2 style={{ fontSize: 18, fontWeight: 700, fontFamily: "var(--font-serif)" }}>
-                        {step === 1 ? "Select Category" : "Item Details"}
+                        {isEdit ? "Edit Listing" : step === 1 ? "Select Category" : "Item Details"}
                     </h2>
                     <button onClick={onClose} style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", color: "var(--ink-4)" }}>×</button>
                 </div>
@@ -289,7 +321,7 @@ export default function SellModal({ isOpen, onClose }: Props) {
                                 color: "white", fontWeight: 600, cursor: (submitting || formData.images.length === 0) ? "not-allowed" : "pointer"
                             }}
                         >
-                            {submitting ? "Posting..." : "Post Now"}
+                            {submitting ? (isEdit ? "Saving..." : "Posting...") : (isEdit ? "Save Changes" : "Post Now")}
                         </button>
                     </div>
                 )}

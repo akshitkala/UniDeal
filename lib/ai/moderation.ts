@@ -1,64 +1,92 @@
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY ?? '');
+
+const BANNED_KEYWORDS = [
+    'weed', 'ganja', 'cocaine', 'heroin', 'pills', 'drugs', 'narcotics',
+    'gun', 'pistol', 'rifle', 'weapon', 'explosive', 'bomb',
+    'stolen', 'fake', 'counterfeit', 'illegal',
+    'porn', 'nude', 'adult', 'escort',
+    'guaranteed profit', 'mlm', 'pyramid', 'investment scheme',
+];
 
 export interface ModerationResult {
     flagged: boolean;
     reason?: string;
-    category?: "scam" | "prohibited" | "spam" | "harassment";
-    shouldAutoApprove: boolean;
+    mismatch?: boolean;
+    shouldAutoApprove?: boolean;
 }
 
-const PROMPT = `You are a content moderator for "UniDeal", a university-only peer-to-peer marketplace. 
-Analyze the following item listing (Title and Description) for prohibited content.
-Prohibited content includes: 
-1. Illegal drugs or substances.
-2. Weapons or dangerous items.
-3. Explicit adult content or services.
-4. Clear scams or phishing attempts.
-5. Harassment or hate speech towards university members.
-6. Non-university-related spam.
+export async function moderateListing({
+    title,
+    description,
+    imageUrl,
+}: {
+    title: string;
+    description?: string;
+    imageUrl?: string;
+}): Promise<ModerationResult> {
 
-Output only a JSON object in this exact format:
-{
-  "flagged": boolean,
-  "reason": "short string explaining why if flagged, else null",
-  "category": "scam" | "prohibited" | "spam" | "harassment" | null,
-  "shouldAutoApprove": boolean (true if safe, false if flagged or suspicious)
-}
-
-Listing to analyze:
-Title: {TITLE}
-Description: {DESCRIPTION}`;
-
-export async function moderateListing(title: string, description: string): Promise<ModerationResult> {
-    if (!process.env.GEMINI_API_KEY) {
-        console.warn("GEMINI_API_KEY missing, skipping AI moderation (auto-approving)");
-        return { flagged: false, shouldAutoApprove: true };
+    // Layer 1 — keyword check first (fast, no API call)
+    const text = `${title} ${description ?? ''}`.toLowerCase();
+    for (const keyword of BANNED_KEYWORDS) {
+        if (text.includes(keyword)) {
+            return { flagged: true, reason: `Contains banned keyword: "${keyword}"`, shouldAutoApprove: false };
+        }
     }
 
+    // Layer 2 — Gemini vision check
     try {
-        const prompt = PROMPT.replace("{TITLE}", title).replace("{DESCRIPTION}", description);
+        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        const parts: any[] = [];
 
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const text = response.text().trim();
+        if (imageUrl) {
+            try {
+                const imgRes = await fetch(imageUrl);
+                const buffer = await imgRes.arrayBuffer();
+                const base64 = Buffer.from(buffer).toString('base64');
+                const mimeType = imgRes.headers.get('content-type') ?? 'image/jpeg';
+                parts.push({ inlineData: { data: base64, mimeType } });
+            } catch {
+                // image fetch failed — proceed without it
+            }
+        }
 
-        // Attempt to extract JSON if Gemini adds markdown wrappers
-        const jsonMatch = text.match(/\{[\s\S]*\}/);
-        const jsonString = jsonMatch ? jsonMatch[0] : text;
+        parts.push({
+            text: `
+You are a content moderator for UniDeal — a university campus marketplace in India where students buy and sell second-hand items.
 
-        const parsed = JSON.parse(jsonString);
+Listing details:
+Title: "${title}"
+Description: "${description ?? 'No description provided'}"
+${imageUrl ? 'An image is provided above.' : 'No image provided.'}
+
+Respond ONLY with this exact JSON format, no other text:
+{
+  "flagged": boolean,
+  "reason": "string or null",
+  "mismatch": boolean
+}
+
+Set flagged to true if: illegal items, drugs, weapons, stolen goods, adult content, scam or spam.
+Set mismatch to true only if an image was provided AND the image clearly does not match the title (e.g. title says "laptop" but image shows food or is an unrelated stock photo).
+Set reason to a short explanation if flagged or mismatched, otherwise null.
+      `.trim(),
+        });
+
+        const result = await model.generateContent(parts);
+        const clean = result.response.text().trim().replace(/```json|```/g, '').trim();
+        const parsed = JSON.parse(clean);
+
         return {
-            flagged: parsed.flagged || false,
-            reason: parsed.reason || undefined,
-            category: parsed.category || undefined,
-            shouldAutoApprove: parsed.shouldAutoApprove ?? true
+            flagged: Boolean(parsed.flagged),
+            reason: parsed.reason ?? undefined,
+            mismatch: Boolean(parsed.mismatch),
+            shouldAutoApprove: !parsed.flagged && !parsed.mismatch,
         };
-    } catch (error) {
-        console.error("AI Moderation Error:", error);
-        // Fail safe: if AI fails, mark as pending (shouldAutoApprove: false) but not flagged
-        return { flagged: false, shouldAutoApprove: false, reason: "Moderation system timeout" };
+
+    } catch (err) {
+        console.error('Gemini moderation failed:', err);
+        return { flagged: false, shouldAutoApprove: true }; // fail open
     }
 }

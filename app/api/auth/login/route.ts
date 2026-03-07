@@ -18,6 +18,7 @@ export async function POST(req: NextRequest) {
         await connectDB();
 
         let user = await User.findOne({ uid: decoded.uid });
+        const isNewUser = !user;
 
         if (!user) {
             user = await User.create({
@@ -32,6 +33,15 @@ export async function POST(req: NextRequest) {
             user.displayName = decoded.name ?? user.displayName;
             user.photoURL = decoded.picture ?? user.photoURL;
             await user.save();
+        }
+
+        if (isNewUser) {
+            import('@/lib/emails/welcome').then(({ sendWelcomeEmail }) => {
+                sendWelcomeEmail({
+                    to: decoded.email!,
+                    name: decoded.name ?? 'Student',
+                }).catch(() => { });
+            }).catch(() => { });
         }
 
         if (!user.isActive) {

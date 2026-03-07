@@ -76,10 +76,21 @@ export default function AdminPage() {
                                 <span style={{ fontWeight: 700, fontSize: 15 }}>{l.title}</span>
                                 {l.aiFlagged && (
                                     <span style={{ background: '#B91C1C', color: '#fff', fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 4 }}>
-                                        AI FLAGGED
+                                        {l.aiFlagReason?.startsWith('Image mismatch') ? '🖼 IMAGE MISMATCH' : '🤖 AI FLAGGED'}
                                     </span>
                                 )}
                             </div>
+                            {l.aiFlagged && l.aiFlagReason && (
+                                <div style={{
+                                    background: '#fee2e2', border: '1px solid #fca5a5',
+                                    borderRadius: 8, padding: '6px 10px',
+                                    fontSize: 12, color: '#b91c1c',
+                                    marginBottom: 8, display: 'flex', gap: 6,
+                                }}>
+                                    <span>{l.aiFlagReason?.startsWith('Image mismatch') ? '🖼 Image Mismatch' : '🤖 AI Flagged'}</span>
+                                    <span>— {l.aiFlagReason}</span>
+                                </div>
+                            )}
                             <div style={{ fontSize: 13, color: 'var(--ink-4)', marginBottom: 8 }}>
                                 ₹{l.price?.toLocaleString('en-IN')} · {l.condition} · {l.category?.name} · by {l.seller?.displayName}
                             </div>

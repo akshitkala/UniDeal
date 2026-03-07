@@ -31,6 +31,10 @@ export async function PATCH(
                 action: 'LISTING_APPROVED',
                 target: listing._id.toString(),
                 targetModel: 'Listing',
+                metadata: {
+                    listingId: listing._id,
+                    title: listing.title,
+                },
                 ipAddress: req.headers.get('x-forwarded-for') ?? 'unknown',
             });
         } else if (action === 'reject') {
@@ -43,23 +47,29 @@ export async function PATCH(
                 action: 'LISTING_REJECTED',
                 target: listing._id.toString(),
                 targetModel: 'Listing',
-                metadata: { reason: rejectionReason },
+                metadata: {
+                    listingId: listing._id,
+                    title: listing.title,
+                    ...(rejectionReason && { reason: rejectionReason }),
+                },
                 ipAddress: req.headers.get('x-forwarded-for') ?? 'unknown',
             });
 
-            // Send rejection email if Resend is configured
-            if (process.env.RESEND_API_KEY) {
+            // Send styled rejection email
+            import('@/lib/emails/rejection').then(async ({ sendRejectionEmail }) => {
                 const seller = await User.findById(listing.seller).select('+email displayName');
                 if (seller?.email) {
-                    const { resend } = await import('@/lib/resend');
-                    resend.emails.send({
-                        from: 'UniDeal <noreply@unideal.in>',
+                    sendRejectionEmail({
                         to: seller.email,
-                        subject: 'Your listing was not approved',
-                        text: `Hi ${seller.displayName},\n\nYour listing "${listing.title}" was not approved.\n\nReason: ${listing.rejectionReason}\n\nYou can edit and resubmit your listing.\n\nTeam UniDeal`,
-                    }).catch(console.error);
+                        sellerName: seller.displayName ?? 'Seller',
+                        listingTitle: listing.title,
+                        listingPrice: listing.price,
+                        listingCondition: listing.condition,
+                        rejectionReason: listing.rejectionReason ?? 'Does not meet community guidelines',
+                        listingSlug: listing.slug,
+                    }).catch(() => { });
                 }
-            }
+            }).catch(() => { });
         } else {
             return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
         }

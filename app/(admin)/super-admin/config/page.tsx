@@ -24,7 +24,11 @@ export default function SuperAdminConfigPage() {
     }, []);
 
     const updateConfig = async (updates: any) => {
-        setSaving(true);
+        const prevConfig = { ...config };
+
+        // Optimistic update
+        setConfig(prev => ({ ...prev, ...updates }));
+
         try {
             const res = await fetch("/api/super-admin/config", {
                 method: "PATCH",
@@ -32,12 +36,15 @@ export default function SuperAdminConfigPage() {
                 body: JSON.stringify(updates)
             });
             const data = await res.json();
-            if (res.ok) setConfig(data.config);
-            else alert(data.error || "Update failed");
+            if (res.ok) {
+                setConfig(data.config);
+            } else {
+                alert(data.error || "Update failed");
+                setConfig(prevConfig); // revert
+            }
         } catch (err) {
             alert("Error updating config");
-        } finally {
-            setSaving(false);
+            setConfig(prevConfig); // revert
         }
     };
 

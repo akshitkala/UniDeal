@@ -1,103 +1,137 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/db/connect";
+import { requireAuth } from "@/middleware/auth";
 import { Listing } from "@/models/Listing";
 import { User } from "@/models/User";
-import '@/models/Listing';
-import '@/models/Category';
-import '@/models/User';
-import { requireAuth, requireOwnership } from "@/middleware/auth";
+import { moderateListing } from "@/lib/ai/moderation";
 import { TokenPayload } from "@/lib/auth/jwt";
+import { logAction } from "@/lib/logAction";
 
-export async function GET(
-    request: Request,
-    { params }: { params: Promise<{ slug: string }> }
-) {
+
+export async function GET(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
     try {
         await connectDB();
         const { slug } = await params;
 
-        // Increment views and fetch
-        const listing = await Listing.findOneAndUpdate(
-            { slug, isDeleted: false },
-            { $inc: { views: 1 } },
-            { new: true }
-        )
-            .populate("category", "name icon slug")
-            .populate("seller", "displayName uid emailVerified");
+        const listing = await Listing.findOne({ slug, isDeleted: false })
+            .populate('seller', 'displayName photoURL emailVerified')
+            .populate('category', 'name slug icon')
+            .lean();
 
         if (!listing) {
-            return NextResponse.json({ error: "Listing not found" }, { status: 404 });
+            return NextResponse.json({ error: 'Listing not found' }, { status: 404 });
         }
 
         return NextResponse.json({ listing });
-    } catch (error) {
+    } catch (error: any) {
         console.error("GET Listing Detail Error:", error);
-        return NextResponse.json({ error: "Failed to fetch listing" }, { status: 500 });
+        return NextResponse.json({ error: "Failed to fetch listing details" }, { status: 500 });
     }
 }
 
-export async function PATCH(
-    request: Request,
-    { params }: { params: Promise<{ slug: string }> }
-) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
     try {
-        const userOrResponse = await requireAuth();
-        if (userOrResponse instanceof NextResponse) return userOrResponse;
-        const userPayload = userOrResponse as TokenPayload;
-
         await connectDB();
+        const authRes = await requireAuth();
+        if (authRes instanceof NextResponse) return authRes;
+        const tokenUser = authRes as TokenPayload;
+
         const { slug } = await params;
         const listing = await Listing.findOne({ slug, isDeleted: false });
+        if (!listing) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-        if (!listing) return NextResponse.json({ error: "Listing not found" }, { status: 404 });
+        const user = await User.findOne({ uid: tokenUser.uid });
+        const isOwner = listing.seller.toString() === user?._id.toString();
 
-        const ownedOrResponse = await requireOwnership(listing.seller.toString());
-        // Note: requireOwnership in middleware/auth.ts takes resourceUserId as string.
-        // However, my previous implementation of requireOwnership takes resourceUserId.
-        // Let's verify and adjust if needed.
-        if (ownedOrResponse instanceof NextResponse) return ownedOrResponse;
+        if (!isOwner) {
+            return NextResponse.json({ error: 'Only the listing owner can edit this listing' }, { status: 403 });
+        }
 
-        const body = await request.json();
-        const allowedFields = ["title", "description", "price", "negotiable", "condition", "images", "location", "status"];
+        const body = await req.json();
+        const allowed = ['title', 'description', 'price', 'condition', 'category', 'images', 'sellerWhatsapp'];
 
-        allowedFields.forEach(field => {
-            if (body[field] !== undefined) {
-                (listing as any)[field] = body[field];
+        allowed.forEach(key => {
+            if (body[key] !== undefined) {
+                (listing as any)[key] = body[key];
             }
         });
 
+        // Specific status update if present (e.g. mark as sold)
+        if (body.status === 'sold') {
+            listing.status = 'sold';
+        }
+
+        // Only reset to pending and re-run moderation on content edit
+        if (body.status !== 'sold') {
+            listing.status = 'pending';
+            listing.rejectionReason = null;
+            listing.aiFlagged = false;
+
+            try {
+                const imageUrl = listing.images?.[0] ?? undefined;
+                const mod = await moderateListing({ title: listing.title, description: listing.description, imageUrl });
+                listing.aiFlagged = mod.flagged || Boolean(mod.mismatch);
+                (listing as any).aiFlagReason = mod.mismatch
+                    ? `Image mismatch: ${mod.reason ?? 'Image does not match listing title'}`
+                    : mod.reason ?? null;
+                listing.aiVerification = {
+                    ...listing.aiVerification,
+                    reason: mod.reason ?? null,
+                    flagged: mod.flagged,
+                    checked: true,
+                    checkedAt: new Date()
+                };
+            } catch (err) {
+                console.error("AI Moderation failed on edit:", err);
+            }
+        }
+
         await listing.save();
-        return NextResponse.json({ success: true, listing });
+        return NextResponse.json({ listing });
     } catch (error: any) {
-        if (error instanceof Response) return error;
         console.error("PATCH Listing Error:", error);
         return NextResponse.json({ error: "Failed to update listing" }, { status: 500 });
     }
 }
 
-export async function DELETE(
-    request: Request,
-    { params }: { params: Promise<{ slug: string }> }
-) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
     try {
-        const userOrResponse = await requireAuth();
-        if (userOrResponse instanceof NextResponse) return userOrResponse;
-
         await connectDB();
+        const authRes = await requireAuth();
+        if (authRes instanceof NextResponse) return authRes;
+        const tokenUser = authRes as TokenPayload;
+
         const { slug } = await params;
         const listing = await Listing.findOne({ slug, isDeleted: false });
+        if (!listing) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-        if (!listing) return NextResponse.json({ error: "Listing not found" }, { status: 404 });
+        const user = await User.findOne({ uid: tokenUser.uid });
+        const isAdmin = ['admin', 'superadmin'].includes(user?.role || '');
+        const isOwner = listing.seller.toString() === user?._id.toString();
 
-        const ownedOrResponse = await requireOwnership(listing.seller.toString());
-        if (ownedOrResponse instanceof NextResponse) return ownedOrResponse;
+        if (!isOwner && !isAdmin) {
+            return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+        }
 
+        // Soft delete
         listing.isDeleted = true;
+        listing.deletedAt = new Date();
         await listing.save();
+
+        await logAction({
+            actor: user._id,
+            actorType: 'user',
+            action: 'LISTING_DELETED',
+            metadata: {
+                listingId: listing._id,
+                title: listing.title,
+                deletedBy: user.role,
+            },
+            ipAddress: req.headers.get('x-forwarded-for') ?? 'unknown',
+        });
 
         return NextResponse.json({ success: true });
     } catch (error: any) {
-        if (error instanceof Response) return error;
         console.error("DELETE Listing Error:", error);
         return NextResponse.json({ error: "Failed to delete listing" }, { status: 500 });
     }

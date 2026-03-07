@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { nanoid } from "nanoid";
+import crypto from 'crypto';
 
 export interface IListing extends Document {
     title: string;
@@ -75,7 +75,7 @@ const listingSchema = new Schema<IListing>(
 
 listingSchema.pre("save", async function (this: any) {
     if (!this.slug) {
-        this.slug = nanoid(8);
+        this.slug = crypto.randomBytes(4).toString('hex');
     }
     if (!this.expiresAt) {
         const expires = new Date();

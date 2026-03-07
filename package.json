@@ -9,7 +9,8 @@
     "lint": "eslint",
     "seed:categories": "tsx seed/categories.ts",
     "seed:config": "tsx seed/systemConfig.ts",
-    "seed:dummy": "tsx seed/dummy.ts"
+    "seed:dummy": "tsx seed/dummy.ts",
+    "test:security": "tsx --tsconfig tsconfig.json --env-file=.env.local scripts/security-test.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

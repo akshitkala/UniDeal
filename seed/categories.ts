@@ -3,13 +3,12 @@ import "dotenv/config";
 import { Category } from "../models/Category";
 
 const categories = [
-    { name: "Electronics", slug: "electronics", icon: "laptop", order: 1 },
-    { name: "Books", slug: "books", icon: "book", order: 2 },
-    { name: "Furniture", slug: "furniture", icon: "chair", order: 3 },
-    { name: "Clothing", slug: "clothing", icon: "shirt", order: 4 },
-    { name: "Sports", slug: "sports", icon: "dumbbell", order: 5 },
-    { name: "Vehicles", slug: "vehicles", icon: "car", order: 6 },
-    { name: "Other", slug: "other", icon: "tag", order: 7 },
+    { name: 'Books', slug: 'books', icon: '📚', order: 1, isActive: true },
+    { name: 'Electronics', slug: 'electronics', icon: '💻', order: 2, isActive: true },
+    { name: 'Furniture', slug: 'furniture', icon: '🪑', order: 3, isActive: true },
+    { name: 'Clothing', slug: 'clothing', icon: '👕', order: 4, isActive: true },
+    { name: 'Sports', slug: 'sports', icon: '⚽', order: 5, isActive: true },
+    { name: 'Other', slug: 'other', icon: '📦', order: 6, isActive: true },
 ];
 
 async function seedCategories() {

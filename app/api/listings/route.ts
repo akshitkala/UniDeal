@@ -48,7 +48,8 @@ export async function GET(request: Request) {
             .sort(sortMap[sort] || sortMap.newest)
             .limit(50)
             .populate("category", "name icon slug")
-            .populate("seller", "displayName uid emailVerified");
+            .populate("seller", "displayName uid emailVerified")
+            .lean();
 
         return NextResponse.json({ listings });
     } catch (error) {
@@ -83,6 +84,8 @@ export async function POST(request: Request) {
         const user = await User.findOne({ uid: userPayload.uid }).select("+email");
         if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
+        const imageUrl = Array.isArray(images) ? images[0] : undefined;
+
         const listing = new Listing({
             title,
             description,
@@ -97,12 +100,16 @@ export async function POST(request: Request) {
             sellerEmail: user.email,
         });
 
-        // AI Moderation if enabled or mode is ai-gated
+        // AI Moderation — always run to catch image mismatches
+        const mod = await moderateListing({ title, description, imageUrl });
+        listing.aiFlagged = mod.flagged || Boolean(mod.mismatch);
+        (listing as any).aiFlagReason = mod.mismatch
+            ? `Image mismatch: ${mod.reason ?? 'Image does not match listing title'}`
+            : mod.reason ?? null;
+
         if (config?.approvalMode === "ai-gated") {
-            const mod = await moderateListing(title, description);
-            if (mod.flagged) {
-                listing.status = "flagged";
-                listing.moderationReason = mod.reason;
+            if (mod.flagged || mod.mismatch) {
+                listing.status = "pending"; // hold for admin review
             } else {
                 listing.status = mod.shouldAutoApprove ? "approved" : "pending";
             }
