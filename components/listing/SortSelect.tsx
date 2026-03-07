@@ -37,7 +37,6 @@ export default function SortSelect() {
             <option value="oldest">Oldest First</option>
             <option value="price_asc">Price: Low to High</option>
             <option value="price_desc">Price: High to Low</option>
-            <option value="most_viewed">Most Viewed</option>
         </select>
     );
 }

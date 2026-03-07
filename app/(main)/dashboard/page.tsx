@@ -9,8 +9,16 @@ import { useRouter } from "next/navigation";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 import SellModal from "@/components/listing/SellModal";
 
-const TABS = ['all', 'active', 'pending', 'rejected', 'sold', 'expired'] as const;
-type Tab = typeof TABS[number];
+const TABS = [
+    { label: 'All', value: 'all' },
+    { label: 'Active', value: 'active' },
+    { label: 'Pending', value: 'pending' },
+    { label: 'Rejected', value: 'rejected' },
+    { label: 'Sold', value: 'sold' },
+    { label: 'Expired', value: 'expired' },
+];
+
+type Tab = string; // TABS[number]['value']
 
 export default function DashboardPage() {
     const [listings, setListings] = useState<any[]>([]);
@@ -138,43 +146,55 @@ export default function DashboardPage() {
                     <h1 style={{ fontFamily: "var(--font-serif)", fontSize: isMobile ? 28 : 32, fontWeight: 700, marginBottom: 4 }}>My Dashboard</h1>
                     <p style={{ color: "var(--ink-4)", fontSize: 13 }}>Manage your campus listings.</p>
                 </div>
-                <div style={{
-                    textAlign: isMobile ? "left" : "right",
-                    background: "var(--surface)",
-                    padding: isMobile ? "12px 16px" : "0",
-                    borderRadius: isMobile ? "var(--r)" : "0",
-                    border: isMobile ? "1px solid var(--border-2)" : "none",
-                    width: isMobile ? "100%" : "auto",
-                    display: "flex",
-                    flexDirection: isMobile ? "row" : "column",
-                    justifyContent: "space-between",
-                    alignItems: isMobile ? "center" : "flex-end"
-                }}>
-                    <div style={{ fontSize: 10, color: "var(--ink-4)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>TOTAL VIEWS</div>
-                    <div style={{ fontSize: isMobile ? 20 : 24, fontWeight: 700 }}>{listings.reduce((acc, curr) => acc + (curr.views || 0), 0)}</div>
-                </div>
             </header>
 
             {/* Status Tabs */}
             <div className="no-scrollbar" style={{
-                display: "flex",
-                gap: 4,
-                marginBottom: 24,
-                borderBottom: "1px solid var(--border-2)",
-                overflowX: "auto",
+                display: 'flex',
+                gap: 0,
+                overflowX: 'auto',
+                scrollbarWidth: 'none',
+                borderBottom: '1px solid var(--border-2)',
+                background: 'var(--surface)',
+                position: 'sticky',
+                top: "calc(var(--topbar-h, 64px))",
+                zIndex: 90,
+                WebkitOverflowScrolling: 'touch',
                 margin: isMobile ? "0 -16px 24px" : "0 0 24px",
                 padding: isMobile ? "0 16px" : "0"
             }}>
                 {TABS.map(t => (
-                    <button key={t} onClick={() => setTab(t)} style={{
-                        padding: "10px 16px", background: "none", border: "none",
-                        borderBottom: tab === t ? "2px solid var(--ink)" : "2px solid transparent",
-                        fontWeight: tab === t ? 700 : 500, fontSize: 13,
-                        color: tab === t ? "var(--ink)" : "var(--ink-4)",
-                        cursor: "pointer", textTransform: "capitalize", whiteSpace: "nowrap",
-                        transition: "all 0.2s ease"
-                    }}>
-                        {t} <span style={{ opacity: 0.6, fontSize: 11, marginLeft: 2 }}>{tabCount(t)}</span>
+                    <button
+                        key={t.value}
+                        onClick={() => setTab(t.value)}
+                        style={{
+                            padding: '12px 20px',
+                            border: 'none',
+                            borderBottom: tab === t.value
+                                ? '2px solid var(--ink)'
+                                : '2px solid transparent',
+                            background: 'none',
+                            fontFamily: 'var(--font-sans)',
+                            fontSize: 14,
+                            fontWeight: tab === t.value ? 700 : 400,
+                            color: tab === t.value ? 'var(--ink)' : 'var(--ink-4)',
+                            cursor: 'pointer',
+                            whiteSpace: 'nowrap',
+                            transition: 'all 150ms',
+                        }}
+                    >
+                        {t.label}
+                        {tabCount(t.value) > 0 && (
+                            <span style={{
+                                marginLeft: 6,
+                                background: tab === t.value ? 'var(--ink)' : 'var(--bg-3)',
+                                color: tab === t.value ? '#fff' : 'var(--ink-4)',
+                                fontSize: 11,
+                                fontWeight: 700,
+                                padding: '1px 6px',
+                                borderRadius: 99,
+                            }}>{tabCount(t.value)}</span>
+                        )}
                     </button>
                 ))}
             </div>
@@ -226,7 +246,6 @@ export default function DashboardPage() {
                                         </div>
                                         <h3 style={{ fontSize: 15, fontWeight: 600, marginBottom: 4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{l.title}</h3>
                                         <div style={{ display: "flex", gap: 12, fontSize: 10, color: "var(--ink-4)", flexWrap: "wrap" }}>
-                                            <span>👁 {l.views} views</span>
                                             {!isMobile && <span>📅 {new Date(l.createdAt).toLocaleDateString()}</span>}
                                             <span style={{
                                                 color: l.isExpired ? "var(--red)" : l.status === "approved" ? "var(--green)" : l.status === "pending" ? "var(--amber)" : "var(--ink-4)",

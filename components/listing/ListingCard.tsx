@@ -29,7 +29,7 @@ const conditionBgColors: any = {
 };
 
 export default function ListingCard({ listing }: Props) {
-    const { title, price, negotiable, condition, images, location, createdAt, views, slug } = listing;
+    const { title, price, negotiable, condition, images, location, createdAt, slug } = listing;
     const { user } = useAuth();
     const router = useRouter();
     const breakpoint = useBreakpoint();
@@ -95,14 +95,6 @@ export default function ListingCard({ listing }: Props) {
                     fill
                     style={{ objectFit: "cover", transition: "transform 0.3s ease" }}
                 />
-
-                <div style={{
-                    position: "absolute", top: 8, left: 8, background: "rgba(0,0,0,0.5)",
-                    backdropFilter: "blur(4px)", color: "white", padding: "2px 8px",
-                    borderRadius: 4, fontSize: 10, fontWeight: 500
-                }}>
-                    👁 {views}
-                </div>
 
                 <button
                     onClick={handleSave}

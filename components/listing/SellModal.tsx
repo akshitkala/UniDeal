@@ -76,6 +76,14 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
         }
     }, [isOpen, initialData]);
 
+    useEffect(() => {
+        function onKey(e: KeyboardEvent) {
+            if (e.key === 'Escape') onClose();
+        }
+        if (isOpen) window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [isOpen, onClose]);
+
     if (!isOpen) return null;
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -130,6 +138,14 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
         }
     };
 
+    const handleBackOrClose = () => {
+        if (step > 1 && !isEdit) {
+            setStep(step - 1);
+        } else {
+            onClose();
+        }
+    };
+
     return (
         <div style={{
             position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
@@ -147,11 +163,54 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                 boxShadow: "var(--shadow-lg)",
                 animation: isMobile ? "slideInUp 0.3s var(--ease)" : "fadeUp 0.3s var(--ease)"
             }}>
-                <div style={{ padding: "20px 24px", borderBottom: "1px solid var(--border-2)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <h2 style={{ fontSize: 18, fontWeight: 700, fontFamily: "var(--font-serif)" }}>
-                        {isEdit ? "Edit Listing" : step === 1 ? "Select Category" : "Item Details"}
-                    </h2>
-                    <button onClick={onClose} style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", color: "var(--ink-4)" }}>×</button>
+                <div style={{
+                    padding: isMobile ? "16px 20px" : "20px 24px",
+                    borderBottom: "1px solid var(--border-2)",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                }}>
+                    {isMobile ? (
+                        <>
+                            <button
+                                onClick={handleBackOrClose}
+                                style={{
+                                    background: 'none', border: 'none', cursor: 'pointer', padding: '4px 8px 4px 0',
+                                    display: 'flex', alignItems: 'center', gap: 6,
+                                    color: 'var(--ink-3)', fontSize: 14, fontFamily: 'var(--font-sans)',
+                                }}
+                            >
+                                ← Back
+                            </button>
+                            <h2 style={{ fontSize: 16, fontWeight: 700, fontFamily: "var(--font-serif)", position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
+                                {isEdit ? "Edit Listing" : step === 1 ? "Select Category" : "Item Details"}
+                            </h2>
+                            <div style={{ width: 60 }} /> {/* spacer */}
+                        </>
+                    ) : (
+                        <>
+                            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                                {step > 1 && !isEdit && (
+                                    <button
+                                        onClick={handleBackOrClose}
+                                        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-4)', fontSize: 14, display: 'flex', alignItems: 'center', gap: 4 }}
+                                    >← Back</button>
+                                )}
+                                <h2 style={{ fontSize: 18, fontWeight: 700, fontFamily: "var(--font-serif)" }}>
+                                    {isEdit ? "Edit Listing" : step === 1 ? "Select Category" : "Item Details"}
+                                </h2>
+                            </div>
+                            <button
+                                onClick={onClose}
+                                style={{
+                                    background: 'none', border: 'none', cursor: 'pointer',
+                                    width: 32, height: 32, borderRadius: '50%',
+                                    display: 'grid', placeItems: 'center',
+                                    color: 'var(--ink-4)', fontSize: 18,
+                                }}
+                            >✕</button>
+                        </>
+                    )}
                 </div>
 
                 <div style={{ flex: 1, overflowY: "auto", padding: 24 }}>

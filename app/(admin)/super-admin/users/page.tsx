@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
 import { useAuth } from '@/lib/auth/AuthProvider';
+import { useRouter } from 'next/navigation';
 
 export default function SuperAdminUsersPage() {
     const [users, setUsers] = useState<any[]>([]);
@@ -9,6 +10,13 @@ export default function SuperAdminUsersPage() {
     const { user: currentUser } = useAuth();
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
+    const router = useRouter();
+
+    useEffect(() => {
+        if (currentUser && currentUser.role !== 'superadmin') {
+            router.replace('/admin');
+        }
+    }, [currentUser, router]);
 
     useEffect(() => {
         fetch('/api/admin/users')

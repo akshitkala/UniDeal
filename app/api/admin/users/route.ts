@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/db/connect';
-import { requireAdmin } from '@/middleware/auth';
+import { requireSuperadmin } from '@/middleware/auth';
 import { User } from '@/models/User';
 
 export async function GET(req: NextRequest) {
     try {
-        const adminOrResponse = await requireAdmin();
+        const adminOrResponse = await requireSuperadmin();
         if (adminOrResponse instanceof NextResponse) return adminOrResponse;
 
         await connectDB();

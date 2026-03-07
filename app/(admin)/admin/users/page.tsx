@@ -1,11 +1,19 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/lib/auth/AuthProvider';
+import { useRouter } from 'next/navigation';
 
 export default function AdminUsersPage() {
     const [users, setUsers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const { user: currentUser } = useAuth();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (currentUser && currentUser.role !== 'superadmin') {
+            router.replace('/admin');
+        }
+    }, [currentUser, router]);
 
     useEffect(() => {
         fetch('/api/admin/users')

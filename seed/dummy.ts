@@ -115,7 +115,6 @@ async function seed() {
                 seller: seller._id,
                 sellerEmail: seller.email,
                 status: "approved",
-                views: Math.floor(Math.random() * 50),
                 createdAt: new Date(Date.now() - Math.random() * 1000 * 60 * 60 * 24 * 7) // Last 7 days
             });
         }

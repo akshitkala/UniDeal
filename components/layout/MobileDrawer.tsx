@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from "react";
 import Sidebar from "./Sidebar";
 import AdminSidebar from "./AdminSidebar";
 import { usePathname } from "next/navigation";
+import Link from 'next/link';
 
 interface Props {
     isOpen: boolean;
@@ -53,10 +54,10 @@ export default function MobileDrawer({ isOpen, onClose, isAdmin = false }: Props
                 }}
             >
                 <div style={{ padding: "20px 16px", borderBottom: "1px solid var(--border-2)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <Link href="/" onClick={onClose} style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: "inherit" }}>
                         <div style={{ width: 32, height: 32, background: "var(--ink)", borderRadius: 8, display: "grid", placeItems: "center", color: "white", fontSize: 16 }}>🏷</div>
                         <span style={{ fontFamily: "var(--font-serif)", fontWeight: 700, fontSize: 18 }}>UniDeal</span>
-                    </div>
+                    </Link>
                     <button onClick={onClose} style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", color: "var(--ink-4)" }}>×</button>
                 </div>
 

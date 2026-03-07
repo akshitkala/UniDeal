@@ -50,8 +50,7 @@ async function ListingsGrid({
         newest: { createdAt: -1 },
         oldest: { createdAt: 1 },
         price_asc: { price: 1 },
-        price_desc: { price: -1 },
-        most_viewed: { views: -1 }
+        price_desc: { price: -1 }
     };
 
     const listings = await Listing.find(query)

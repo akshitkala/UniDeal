@@ -27,7 +27,6 @@ export interface IListing extends Document {
         checkedAt?: Date;
     };
     slug: string;
-    views: number;
     savedBy: mongoose.Types.ObjectId[];
     expiresAt: Date;
     isExpired: boolean;
@@ -65,7 +64,6 @@ const listingSchema = new Schema<IListing>(
             checkedAt: Date,
         },
         slug: { type: String, unique: true },
-        views: { type: Number, default: 0 },
         savedBy: [{ type: Schema.Types.ObjectId, ref: "User" }],
         expiresAt: Date,
         isExpired: { type: Boolean, default: false },

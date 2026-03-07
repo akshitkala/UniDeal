@@ -28,7 +28,6 @@ const listingsData = [
             "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800",
             "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
         ],
-        views: 87,
     },
     {
         title: "Engineering Mathematics Vol 1 & 2 - RD Sharma",
@@ -40,7 +39,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800",
         ],
-        views: 43,
     },
     {
         title: "Foldable Study Chair - Comfortable",
@@ -52,7 +50,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1567538096621-38d2284b23ff?w=800",
         ],
-        views: 29,
     },
     {
         title: "Boat Airdopes 141 - Perfect Working",
@@ -64,7 +61,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=800",
         ],
-        views: 112,
     },
     {
         title: "Physics Wallah Fast-Track Notes - Complete Set",
@@ -76,7 +72,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800",
         ],
-        views: 58,
     },
     {
         title: "Cosco Basketball - Size 7",
@@ -88,7 +83,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800",
         ],
-        views: 34,
     },
     {
         title: "HP 15s Laptop - Core i5 11th Gen",
@@ -101,7 +95,6 @@ const listingsData = [
             "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
             "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800",
         ],
-        views: 203,
     },
     {
         title: "Levi's 511 Slim Jeans - Size 32",
@@ -113,7 +106,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1542272604-787c3835535d?w=800",
         ],
-        views: 45,
     },
     {
         title: "Wooden Bookshelf - 3 Tier",
@@ -125,7 +117,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800",
         ],
-        views: 22,
     },
     {
         title: "JBL Clip 4 Bluetooth Speaker",
@@ -137,7 +128,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800",
         ],
-        views: 91,
     },
     {
         title: "Data Structures & Algorithms - Narasimha Karumanchi",
@@ -149,7 +139,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1585849834908-3781234b2c37?w=800",
         ],
-        views: 76,
     },
     {
         title: "Campus Cycling - Hero Sprint Pro 21-speed",
@@ -161,7 +150,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800",
         ],
-        views: 67,
     },
     {
         title: "Nike Dri-FIT Running T-Shirt (M)",
@@ -173,7 +161,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800",
         ],
-        views: 38,
     },
     {
         title: "Mi 10000mAh Power Bank (2nd Gen)",
@@ -185,7 +172,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800",
         ],
-        views: 55,
     },
     {
         title: "Complete DBMS Handwritten Notes - Anna University Pattern",
@@ -197,7 +183,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=800",
         ],
-        views: 32,
     },
     {
         title: "Resistance Bands Set (5 levels)",
@@ -209,7 +194,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800",
         ],
-        views: 41,
     },
     {
         title: "Philips Table Lamp with USB Port",
@@ -221,7 +205,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800",
         ],
-        views: 19,
     },
     {
         title: "Dell Wireless Mouse + Keyboard Combo",
@@ -233,7 +216,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1527814050087-3793815479db?w=800",
         ],
-        views: 73,
     },
     {
         title: "Yoga Mat - 6mm Thick Premium",
@@ -245,7 +227,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?w=800",
         ],
-        views: 28,
     },
     {
         title: "Instant Pot Duo 3L Mini - Electric Cooker",
@@ -257,7 +238,6 @@ const listingsData = [
         images: [
             "https://images.unsplash.com/photo-1585515320310-259814833e62?w=800",
         ],
-        views: 144,
     },
 ];
 
@@ -355,7 +335,6 @@ async function reseed() {
             seller:      seller._id,
             location:    "LPU Campus, Phagwara",
             status:      "approved",
-            views:       data.views,
             isDeleted:   false,
             isExpired:   false,
             aiFlagged:   false,

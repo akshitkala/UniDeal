@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { ContactButton } from "./ContactButton";
@@ -52,7 +53,7 @@ export default function ListingDetail({ slug, isModal = false }: Props) {
         </div>
     );
 
-    const { title, description, price, negotiable, condition, images, location, createdAt, views, seller, category } = listing;
+    const { title, description, price, negotiable, condition, images, location, createdAt, seller, category } = listing;
 
     return (
         <div style={{
@@ -229,7 +230,6 @@ export default function ListingDetail({ slug, isModal = false }: Props) {
 
                 <footer style={{ display: "flex", justifyContent: "space-between", fontSize: 12, color: "var(--ink-4)" }}>
                     <span>Post Date: {new Date(createdAt).toLocaleDateString()}</span>
-                    <span>Views: {views}</span>
                 </footer>
             </div>
 

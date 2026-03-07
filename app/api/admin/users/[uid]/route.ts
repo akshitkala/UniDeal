@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/db/connect';
-import { requireAdmin } from '@/middleware/auth';
+import { requireSuperadmin } from '@/middleware/auth';
 import { User } from '@/models/User';
 import { logAction } from '@/lib/logAction';
 import { TokenPayload } from '@/lib/auth/jwt';
@@ -10,7 +10,7 @@ export async function PATCH(
     { params }: { params: Promise<{ uid: string }> }
 ) {
     try {
-        const adminOrResponse = await requireAdmin();
+        const adminOrResponse = await requireSuperadmin();
         if (adminOrResponse instanceof NextResponse) return adminOrResponse;
         const actor = adminOrResponse as TokenPayload;
 

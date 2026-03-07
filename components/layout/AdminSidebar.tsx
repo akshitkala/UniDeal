@@ -43,16 +43,33 @@ export default function AdminSidebar({ isMobile }: { isMobile?: boolean }) {
             borderRight: '1px solid var(--border-2)', overflowY: 'auto', paddingTop: 12,
             width: 240, height: '100%',
         }}>
+            <Link
+                href="/"
+                style={{
+                    display: 'flex', alignItems: 'center', gap: 8,
+                    padding: '10px 16px',
+                    fontSize: 13, fontWeight: 600,
+                    color: 'var(--ink-4)',
+                    textDecoration: 'none',
+                    borderBottom: '1px solid var(--border-2)',
+                    marginBottom: 4,
+                    transition: 'color 150ms',
+                }}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--ink)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--ink-4)'}
+            >
+                ← Back to App
+            </Link>
             <SectionLabel label="MODERATION" />
             <NavItem href="/admin" icon="📋" label="Pending Queue" />
             <NavItem href="/admin/listings" icon="📦" label="All Listings" />
             <NavItem href="/admin/reports" icon="⚑" label="Reports" />
-            <NavItem href="/admin/users" icon="👥" label="Users" />
 
             {isSuperadmin && (
                 <>
                     <div style={{ height: 1, background: 'var(--border-2)', margin: '8px 16px' }} />
                     <SectionLabel label="SUPERADMIN" />
+                    <NavItem href="/admin/users" icon="👥" label="Users" />
                     <NavItem href="/super-admin/config" icon="⚙" label="System Config" />
                     <NavItem href="/super-admin/activity" icon="📜" label="Activity Log" />
                     <NavItem href="/super-admin/users" icon="👤" label="Manage Roles" />

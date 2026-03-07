@@ -42,7 +42,6 @@ export async function GET(request: Request) {
             oldest: { createdAt: 1 },
             price_asc: { price: 1 },
             price_desc: { price: -1 },
-            most_viewed: { views: -1 },
         };
 
         const listings = await Listing.find(query)
