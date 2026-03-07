@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import { connectDB } from './lib/db/connect';
-import { User } from './models/User';
-import { Listing } from './models/Listing';
-import { Category } from './models/Category';
+import { connectDB } from '@/lib/db/connect';
+import { User } from '@/models/User';
+import { Category } from '@/models/Category';
+import { Listing } from '@/models/Listing';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env.local' });

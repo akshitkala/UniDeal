@@ -3,8 +3,19 @@
 import { useState, useEffect } from "react";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
+interface SystemConfig {
+    approvalMode: 'manual' | 'automatic' | 'ai-gated';
+    maintenanceMode: boolean;
+    allowNewListings: boolean;
+}
+
 export default function SuperAdminConfigPage() {
-    const [config, setConfig] = useState<any>(null);
+    const [config, setConfig] = useState<SystemConfig>({
+        approvalMode: 'manual',
+        maintenanceMode: false,
+        allowNewListings: true,
+    });
+
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const breakpoint = useBreakpoint();

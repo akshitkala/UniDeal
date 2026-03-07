@@ -22,4 +22,8 @@ const adminActivitySchema = new Schema<IAdminActivity>({
     timestamp: { type: Date, default: Date.now },
 });
 
+// --- Performance Indexes ---
+adminActivitySchema.index({ timestamp: -1 }); // activity log — always sorted by date
+adminActivitySchema.index({ actor: 1 });      // filter by admin
+
 export const AdminActivity = mongoose.models.AdminActivity || mongoose.model<IAdminActivity>("AdminActivity", adminActivitySchema);

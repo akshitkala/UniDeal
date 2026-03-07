@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
             .sort({ deletedAt: -1 })
             .lean();
 
-        return NextResponse.json({ listings: JSON.parse(JSON.stringify(listings)) });
+        return NextResponse.json({ listings });
     } catch (error: any) {
         console.error("GET Deleted Listings Error:", error);
         return NextResponse.json({ error: "Failed to fetch deleted listings" }, { status: 500 });

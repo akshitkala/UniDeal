@@ -3,11 +3,14 @@
 import { createContext, useContext, useState } from "react";
 import SellModal from "@/components/listing/SellModal";
 
-interface SellContextType {
+export interface SellContextType {
     openSellModal: () => void;
+    closeSellModal: () => void;
+    isOpen: boolean;
 }
 
 const SellContext = createContext<SellContextType | undefined>(undefined);
+
 
 export function SellProvider({ children }: { children: React.ReactNode }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,15 +19,16 @@ export function SellProvider({ children }: { children: React.ReactNode }) {
     const closeSellModal = () => setIsOpen(false);
 
     return (
-        <SellContext.Provider value={{ openSellModal }}>
+        <SellContext.Provider value={{ openSellModal, closeSellModal, isOpen }}>
             {children}
             <SellModal isOpen={isOpen} onClose={closeSellModal} />
         </SellContext.Provider>
     );
 }
 
-export function useSell() {
+export function useSell(): SellContextType {
     const context = useContext(SellContext);
-    // Returns undefined if used outside provider — callers must guard
+    if (!context) throw new Error('useSell must be used within SellProvider');
     return context;
 }
+

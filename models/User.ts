@@ -45,4 +45,8 @@ const userSchema = new Schema<IUser>(
     { timestamps: true }
 );
 
+// --- Performance Indexes ---
+userSchema.index({ role: 1 });                     // admin user list
+userSchema.index({ isActive: 1 });                 // banned user check
+
 export const User = mongoose.models.User || mongoose.model<IUser>("User", userSchema);

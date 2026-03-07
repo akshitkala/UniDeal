@@ -33,7 +33,7 @@ function SectionLabel({ label }: { label: string }) {
     );
 }
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ isMobile }: { isMobile?: boolean }) {
     const { user } = useAuth();
     const isSuperadmin = user?.role === 'superadmin';
 

@@ -52,7 +52,9 @@ export default function BrowsePageClient({
                 </div>
 
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <SortSelect />
+                    <Suspense fallback={null}>
+                        <SortSelect />
+                    </Suspense>
                 </div>
             </div>
 

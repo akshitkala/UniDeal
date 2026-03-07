@@ -14,14 +14,15 @@ export async function GET() {
 
         await connectDB();
 
-        const user = await User.findOne({ uid: tokenPayload.uid });
+        const user = await User.findOne({ uid: tokenPayload.uid }).select('_id').lean();
         if (!user) return NextResponse.json({ listings: [] });
 
         const listings = await Listing.find({ seller: user._id, isDeleted: false })
             .populate('category', 'name icon slug')
-            .sort({ createdAt: -1 });
+            .sort({ createdAt: -1 })
+            .lean();
 
-        return NextResponse.json({ listings: JSON.parse(JSON.stringify(listings)) });
+        return NextResponse.json({ listings });
     } catch (error) {
         console.error("GET User Listings Error:", error);
         return NextResponse.json({ error: "Failed to fetch your listings" }, { status: 500 });

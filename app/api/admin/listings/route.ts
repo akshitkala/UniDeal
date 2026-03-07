@@ -15,9 +15,10 @@ export async function GET(req: NextRequest) {
         const listings = await Listing.find({ status: 'pending', isDeleted: false })
             .populate('category', 'name icon slug')
             .populate('seller', 'displayName uid photoURL')
-            .sort({ aiFlagged: -1, createdAt: 1 });
+            .sort({ aiFlagged: -1, createdAt: 1 })
+            .lean();
 
-        return NextResponse.json({ listings: JSON.parse(JSON.stringify(listings)) });
+        return NextResponse.json({ listings });
     } catch (error) {
         console.error('GET Admin Listings Error:', error);
         return NextResponse.json({ error: 'Failed to fetch pending listings' }, { status: 500 });

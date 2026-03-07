@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
             .populate('category', 'name')
             .sort({ createdAt: -1 })
             .lean();
-        return NextResponse.json({ listings: JSON.parse(JSON.stringify(listings)) });
+        return NextResponse.json({ listings });
     } catch (error) {
         console.error('GET All Listings Error:', error);
         return NextResponse.json({ error: 'Failed to fetch listings' }, { status: 500 });

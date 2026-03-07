@@ -98,4 +98,12 @@ listingSchema.pre("findOne", function () {
     }
 });
 
+// --- Performance Indexes ---
+listingSchema.index({ status: 1, isDeleted: 1, createdAt: -1 }); // home page query
+listingSchema.index({ seller: 1, isDeleted: 1, status: 1 });      // dashboard query
+listingSchema.index({ category: 1, status: 1, isDeleted: 1 });    // category filter
+listingSchema.index({ aiFlagged: 1, status: 1 });                  // admin flagged queue
+listingSchema.index({ expiresAt: 1, status: 1, isDeleted: 1 });   // cron expiry query
+listingSchema.index({ title: 'text', description: 'text' });       // full-text search
+
 export const Listing = mongoose.models.Listing || mongoose.model<IListing>("Listing", listingSchema);

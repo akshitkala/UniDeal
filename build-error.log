@@ -1,0 +1,149 @@
+﻿
+> unideal@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 3.3s
+  Running TypeScript ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/36) ...
+  Generating static pages using 15 workers (9/36) 
+  Generating static pages using 15 workers (18/36) 
+  Generating static pages using 15 workers (27/36) 
+node.exe : 
+(node:21328) 
+[MONGOOSE] Warning: 
+mongoose: Duplicate 
+schema index on 
+{"uid":1} for model 
+"User". This is 
+often due to 
+declaring an index 
+using both "index: 
+true" and 
+"schema.index()". 
+Please remove the 
+duplicate index 
+definition.
+At C:\nvm4w\nodejs\np
+m.ps1:29 char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+    + CategoryInfo   
+           : 
+NotSpecified:     
+((node:21328) [M...d 
+   ex 
+definition.:Strin    
+g) [], RemoteExcepti 
+   on
+    + 
+FullyQualifiedErro   
+ rId : 
+NativeCommandE    
+rror
+ 
+(Use `node 
+--trace-warnings 
+...` to show where 
+the warning was 
+created)
+(node:21328) 
+[MONGOOSE] Warning: 
+mongoose: Duplicate 
+schema index on 
+{"slug":1} for model 
+"Listing". This is 
+often due to 
+declaring an index 
+using both "index: 
+true" and 
+"schema.index()". 
+Please remove the 
+duplicate index 
+definition.
+Γ¿» 
+useSearchParams() 
+should be wrapped in 
+a suspense boundary 
+at page "/". Read 
+more: https://nextjs.
+org/docs/messages/mis
+sing-suspense-with-cs
+r-bailout
+    at Q (E:\vs code\
+projects\UniDeal\.nex
+t\server\chunks\ssr\n
+ode_modules_next_920e
+7746._.js:2:2111)
+    at o (E:\vs code\
+projects\UniDeal\.nex
+t\server\chunks\ssr\n
+ode_modules_next_920e
+7746._.js:4:5284)
+    at j (E:\vs code\
+projects\UniDeal\.nex
+t\server\chunks\ssr\_
+f3b6e131._.js:1:16699
+)
+    at an (E:\vs code
+\projects\UniDeal\nod
+e_modules\next\dist\c
+ompiled\next-server\a
+pp-page-turbo.runtime
+.prod.js:2:84360)
+    at ai (E:\vs code
+\projects\UniDeal\nod
+e_modules\next\dist\c
+ompiled\next-server\a
+pp-page-turbo.runtime
+.prod.js:2:86179)
+    at al (E:\vs code
+\projects\UniDeal\nod
+e_modules\next\dist\c
+ompiled\next-server\a
+pp-page-turbo.runtime
+.prod.js:2:107953)
+    at as (E:\vs code
+\projects\UniDeal\nod
+e_modules\next\dist\c
+ompiled\next-server\a
+pp-page-turbo.runtime
+.prod.js:2:105368)
+    at am (E:\vs code
+\projects\UniDeal\nod
+e_modules\next\dist\c
+ompiled\next-server\a
+pp-page-turbo.runtime
+.prod.js:2:112882)
+    at au (E:\vs code
+\projects\UniDeal\nod
+e_modules\next\dist\c
+ompiled\next-server\a
+pp-page-turbo.runtime
+.prod.js:2:109985)
+    at al (E:\vs code
+\projects\UniDeal\nod
+e_modules\next\dist\c
+ompiled\next-server\a
+pp-page-turbo.runtime
+.prod.js:2:108231)
+Error occurred 
+prerendering page 
+"/". Read more: https
+://nextjs.org/docs/me
+ssages/prerender-erro
+r
+Export encountered 
+an error on 
+/(main)/page: /, 
+exiting the build.
+Γ¿» Next.js build 
+worker exited with 
+code: 1 and signal: 
+null

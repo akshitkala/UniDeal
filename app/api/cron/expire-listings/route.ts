@@ -12,32 +12,18 @@ export async function GET(req: NextRequest) {
 
         await connectDB();
 
-        const expired = await Listing.find({
-            expiresAt: { $lt: new Date() },
-            isExpired: false,
-            isDeleted: false,
-        });
+        // Single atomic updateMany — O(1) DB operations regardless of count
+        const result = await Listing.updateMany(
+            {
+                status: { $in: ['pending', 'approved'] },
+                isDeleted: false,
+                expiresAt: { $lt: new Date() },
+            },
+            { $set: { status: 'expired', isExpired: true } }
+        );
 
-        let count = 0;
-        for (const listing of expired) {
-            listing.isExpired = true;
-            await listing.save();
-            count++;
-
-            // Send expiry email if Resend is configured
-            if (process.env.RESEND_API_KEY) {
-                const { resend } = await import('@/lib/resend');
-                const seller = await User.findById(listing.seller).select('+email displayName');
-                if (seller?.email) {
-                    resend.emails.send({
-                        from: 'UniDeal <noreply@unideal.in>',
-                        to: seller.email,
-                        subject: 'Your UniDeal listing has expired',
-                        text: `Hi ${seller.displayName},\n\nYour listing "${listing.title}" has expired after 60 days.\n\nRe-list it to keep selling.\n\nTeam UniDeal`,
-                    }).catch(console.error);
-                }
-            }
-        }
+        const count = result.modifiedCount;
+        console.log(`Expired ${count} listings`);
 
         return NextResponse.json({ expired: count });
     } catch (error) {

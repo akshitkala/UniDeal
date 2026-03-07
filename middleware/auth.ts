@@ -19,7 +19,9 @@ export async function requireAuth(): Promise<TokenPayload | NextResponse> {
         const payload = verifyAccessToken(token);
 
         await connectDB();
-        const user = await User.findOne({ uid: payload.uid }).select("isActive");
+        const user = await User.findOne({ uid: payload.uid })
+            .select('isActive role _id')
+            .lean();
         if (user && !user.isActive) {
             return NextResponse.json({ error: "Account suspended" }, { status: 403 });
         }

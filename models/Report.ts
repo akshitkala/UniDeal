@@ -17,4 +17,8 @@ const ReportSchema: Schema = new Schema({
     status: { type: String, enum: ["pending", "resolved", "dismissed"], default: "pending" },
 }, { timestamps: true });
 
+// --- Performance Indexes ---
+ReportSchema.index({ status: 1, createdAt: -1 }); // open reports queue
+ReportSchema.index({ listing: 1 });               // reports per listing
+
 export const Report = mongoose.models.Report || mongoose.model<IReport>("Report", ReportSchema);

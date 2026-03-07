@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
             .populate('reporter', 'displayName')
             .sort({ createdAt: -1 })
             .lean();
-        return NextResponse.json({ reports: JSON.parse(JSON.stringify(reports)) });
+        return NextResponse.json({ reports });
     } catch (error) {
         console.error('GET Admin Reports Error:', error);
         return NextResponse.json({ error: 'Failed to fetch reports' }, { status: 500 });

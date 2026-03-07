@@ -33,7 +33,8 @@ export async function GET(request: Request) {
         }
 
         if (search) {
-            query.title = { $regex: search, $options: "i" };
+            // Use MongoDB full-text index — much faster than regex scan
+            query.$text = { $search: search };
         }
 
         const sortMap: any = {
@@ -45,7 +46,7 @@ export async function GET(request: Request) {
         };
 
         const listings = await Listing.find(query)
-            .sort(sortMap[sort] || sortMap.newest)
+            .sort(search ? { score: { $meta: 'textScore' } } : (sortMap[sort] || sortMap.newest))
             .limit(50)
             .populate("category", "name icon slug")
             .populate("seller", "displayName uid emailVerified")

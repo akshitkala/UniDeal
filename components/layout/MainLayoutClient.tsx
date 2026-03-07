@@ -6,6 +6,7 @@ import Topbar from "@/components/layout/Topbar";
 import BottomNav from "@/components/layout/BottomNav";
 import MobileDrawer from "@/components/layout/MobileDrawer";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { Suspense } from "react";
 
 export default function MainLayoutClient({ children }: { children: React.ReactNode }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +21,9 @@ export default function MainLayoutClient({ children }: { children: React.ReactNo
             <Topbar onOpenMenu={() => setIsMenuOpen(true)} />
 
             <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
-                {!isMobile && <Sidebar />}
+                <Suspense fallback={null}>
+                    {!isMobile && <Sidebar />}
+                </Suspense>
 
                 <main style={{
                     flex: 1,
