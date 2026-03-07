@@ -74,7 +74,11 @@ export async function POST(request: Request) {
         }
 
         const body = await request.json();
-        const { title, description, price, negotiable, category, condition, images, location } = body;
+        const { title, description, price, negotiable, category, condition, images, location, whatsappNumber } = body;
+
+        if (!whatsappNumber) {
+            return NextResponse.json({ error: "WhatsApp number is required" }, { status: 400 });
+        }
 
         const user = await User.findOne({ uid: userPayload.uid }).select("+email");
         if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
@@ -89,6 +93,7 @@ export async function POST(request: Request) {
             images,
             location,
             seller: user._id,
+            sellerWhatsapp: whatsappNumber,
             sellerEmail: user.email,
         });
 

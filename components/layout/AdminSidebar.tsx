@@ -44,18 +44,18 @@ export default function AdminSidebar() {
             width: 240, height: '100%',
         }}>
             <SectionLabel label="MODERATION" />
-            <NavItem href="/admin"          icon="📋" label="Pending Queue" />
-            <NavItem href="/admin/listings" icon="📦" label="All Listings"  />
-            <NavItem href="/admin/reports"  icon="⚑"  label="Reports"       />
-            <NavItem href="/admin/users"    icon="👥" label="Users"         />
+            <NavItem href="/admin" icon="📋" label="Pending Queue" />
+            <NavItem href="/admin/listings" icon="📦" label="All Listings" />
+            <NavItem href="/admin/reports" icon="⚑" label="Reports" />
+            <NavItem href="/admin/users" icon="👥" label="Users" />
 
             {isSuperadmin && (
                 <>
                     <div style={{ height: 1, background: 'var(--border-2)', margin: '8px 16px' }} />
                     <SectionLabel label="SUPERADMIN" />
-                    <NavItem href="/super-admin/config"   icon="⚙"  label="System Config" />
-                    <NavItem href="/super-admin/activity" icon="📜" label="Activity Log"  />
-                    <NavItem href="/super-admin/users"    icon="👤" label="Manage Roles"  />
+                    <NavItem href="/super-admin/config" icon="⚙" label="System Config" />
+                    <NavItem href="/super-admin/activity" icon="📜" label="Activity Log" />
+                    <NavItem href="/super-admin/users" icon="👤" label="Manage Roles" />
                 </>
             )}
         </aside>

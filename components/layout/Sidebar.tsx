@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useSell } from "@/components/listing/SellProvider";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
@@ -11,11 +11,33 @@ interface NavItemProps {
     icon: string;
     label: string;
     isCollapsed?: boolean;
+    searchParams: URLSearchParams;
 }
 
-function NavItem({ href, icon, label, isCollapsed }: NavItemProps) {
+function NavItem({ href, icon, label, isCollapsed, searchParams }: NavItemProps) {
     const pathname = usePathname();
-    const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
+
+    const category = searchParams.get("category");
+    const hrefUrl = new URL(href, "http://localhost"); // base doesn't matter for path/query comparison
+    const hrefPath = hrefUrl.pathname;
+    const hrefCategory = hrefUrl.searchParams.get("category");
+
+    const isHome = pathname === "/" && hrefPath === "/";
+    const isOtherPage = hrefPath !== "/" && (pathname === hrefPath || pathname.startsWith(hrefPath));
+
+    let isActive = false;
+
+    if (isHome) {
+        // If it's a home page link, check category
+        if (hrefCategory) {
+            isActive = category === hrefCategory;
+        } else {
+            // "All Items" is active if no category is selected
+            isActive = !category;
+        }
+    } else {
+        isActive = isOtherPage;
+    }
     return (
         <Link href={href}
             title={isCollapsed ? label : ""}
@@ -64,6 +86,8 @@ export default function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
 
     const isAdmin = user?.role === "admin" || user?.role === "superadmin";
     const isSuperadmin = user?.role === "superadmin";
+
+    const searchParams = useSearchParams();
 
     return (
         <aside style={{
@@ -123,25 +147,26 @@ export default function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
                         icon={item.icon}
                         label={item.label}
                         isCollapsed={isCollapsed}
+                        searchParams={searchParams}
                     />
                 ))}
             </div>
 
             <SectionLabel isCollapsed={isCollapsed}>MY ACCOUNT</SectionLabel>
             <div style={{ display: "flex", flexDirection: "column", gap: 2, flex: 1 }}>
-                <NavItem href="/dashboard" icon="≡" label="My Listings" isCollapsed={isCollapsed} />
-                <NavItem href="/saved" icon="🔖" label="Saved" isCollapsed={isCollapsed} />
-                <NavItem href="/profile" icon="👤" label="Profile" isCollapsed={isCollapsed} />
+                <NavItem href="/dashboard" icon="≡" label="My Listings" isCollapsed={isCollapsed} searchParams={searchParams} />
+                <NavItem href="/saved" icon="🔖" label="Saved" isCollapsed={isCollapsed} searchParams={searchParams} />
+                <NavItem href="/profile" icon="👤" label="Profile" isCollapsed={isCollapsed} searchParams={searchParams} />
             </div>
 
             {isAdmin && (
                 <>
                     <SectionLabel isCollapsed={isCollapsed}>ADMIN</SectionLabel>
                     <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                        <NavItem href="/admin" icon="📋" label="Pending" isCollapsed={isCollapsed} />
-                        <NavItem href="/admin/listings" icon="📦" label="Listings" isCollapsed={isCollapsed} />
-                        <NavItem href="/admin/reports" icon="⚑" label="Reports" isCollapsed={isCollapsed} />
-                        <NavItem href="/admin/users" icon="👥" label="Users" isCollapsed={isCollapsed} />
+                        <NavItem href="/admin" icon="📋" label="Pending" isCollapsed={isCollapsed} searchParams={searchParams} />
+                        <NavItem href="/admin/listings" icon="📦" label="Listings" isCollapsed={isCollapsed} searchParams={searchParams} />
+                        <NavItem href="/admin/reports" icon="⚑" label="Reports" isCollapsed={isCollapsed} searchParams={searchParams} />
+                        <NavItem href="/admin/users" icon="👥" label="Users" isCollapsed={isCollapsed} searchParams={searchParams} />
                     </div>
                 </>
             )}
@@ -150,9 +175,10 @@ export default function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
                 <>
                     <SectionLabel isCollapsed={isCollapsed}>SUPER</SectionLabel>
                     <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                        <NavItem href="/super-admin/config" icon="⚙" label="System" isCollapsed={isCollapsed} />
-                        <NavItem href="/super-admin/activity" icon="📜" label="Activity" isCollapsed={isCollapsed} />
-                        <NavItem href="/super-admin/users" icon="👤" label="Roles" isCollapsed={isCollapsed} />
+                        <NavItem href="/super-admin" icon="📊" label="Overview" isCollapsed={isCollapsed} searchParams={searchParams} />
+                        <NavItem href="/super-admin/config" icon="⚙" label="System" isCollapsed={isCollapsed} searchParams={searchParams} />
+                        <NavItem href="/super-admin/activity" icon="📜" label="Activity" isCollapsed={isCollapsed} searchParams={searchParams} />
+                        <NavItem href="/super-admin/users" icon="👤" label="Roles" isCollapsed={isCollapsed} searchParams={searchParams} />
                     </div>
                 </>
             )}

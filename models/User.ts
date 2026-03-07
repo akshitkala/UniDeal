@@ -16,6 +16,8 @@ export interface IUser extends Document {
     totalListings: number;
     activeListings: number;
     savedListings: mongoose.Types.ObjectId[];
+    bannedAt: Date | null;
+    bannedBy: string | null;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -37,6 +39,8 @@ const userSchema = new Schema<IUser>(
         totalListings: { type: Number, default: 0 },
         activeListings: { type: Number, default: 0 },
         savedListings: [{ type: Schema.Types.ObjectId, ref: "Listing" }],
+        bannedAt: { type: Date, default: null },
+        bannedBy: { type: String, default: null },
     },
     { timestamps: true }
 );

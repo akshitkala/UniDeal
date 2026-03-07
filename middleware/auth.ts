@@ -4,6 +4,9 @@ import { cookies } from "next/headers";
 
 type AllowedRoles = "user" | "admin" | "superadmin";
 
+import { User } from "@/models/User";
+import { connectDB } from "@/lib/db/connect";
+
 export async function requireAuth(): Promise<TokenPayload | NextResponse> {
     const cookieStore = await cookies();
     const token = cookieStore.get("access_token")?.value;
@@ -14,6 +17,13 @@ export async function requireAuth(): Promise<TokenPayload | NextResponse> {
 
     try {
         const payload = verifyAccessToken(token);
+
+        await connectDB();
+        const user = await User.findOne({ uid: payload.uid }).select("isActive");
+        if (user && !user.isActive) {
+            return NextResponse.json({ error: "Account suspended" }, { status: 403 });
+        }
+
         return payload;
     } catch (error) {
         return NextResponse.json({ error: "Invalid token" }, { status: 401 });

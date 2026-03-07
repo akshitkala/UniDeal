@@ -11,6 +11,7 @@ export interface IListing extends Document {
     images: string[];
     seller: mongoose.Types.ObjectId;
     sellerPhone?: string;
+    sellerWhatsapp?: string;
     sellerEmail?: string;
     location?: string;
     status: "pending" | "approved" | "rejected" | "sold";
@@ -48,6 +49,7 @@ const listingSchema = new Schema<IListing>(
         },
         seller: { type: Schema.Types.ObjectId, ref: "User", required: true },
         sellerPhone: { type: String, select: false },
+        sellerWhatsapp: { type: String, select: false },
         sellerEmail: { type: String, select: false },
         location: String,
         status: { type: String, enum: ["pending", "approved", "rejected", "sold"], default: "pending" },

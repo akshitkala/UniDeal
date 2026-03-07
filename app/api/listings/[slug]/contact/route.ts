@@ -44,7 +44,7 @@ export async function POST(
         }
 
         await connectDB();
-        const listing = await Listing.findOne({ slug, isDeleted: false, isExpired: false });
+        const listing = await Listing.findOne({ slug, isDeleted: false, isExpired: false }).select('+sellerWhatsapp +sellerPhone');
 
         if (!listing) {
             return NextResponse.json({ error: "Listing not found or inactive" }, { status: 404 });
@@ -55,14 +55,16 @@ export async function POST(
             return NextResponse.json({ error: "Seller no longer active" }, { status: 404 });
         }
 
-        const rawPhone = seller.whatsappNumber || seller.phone;
-        if (!rawPhone) {
-            return NextResponse.json({ error: "no_number" }, { status: 400 });
+        const contactNumber = listing.sellerWhatsapp ?? seller.whatsappNumber;
+
+        if (!contactNumber) {
+            return NextResponse.json({ error: 'Seller has not added a WhatsApp number yet' }, { status: 400 });
         }
 
-        const digits = rawPhone.replace(/\D/g, "");
-        const msg = encodeURIComponent(`Hi! I saw your ${listing.title} on UniDeal for ₹${listing.price.toLocaleString("en-IN")}. Is it still available?`);
-        const waLink = `https://wa.me/91${digits}?text=${msg}`;
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://unideal.vercel.app';
+        const message = `Hi! I found your listing on UniDeal 👋\n\n*${listing.title}*\n💰 ₹${listing.price.toLocaleString('en-IN')}\n📦 Condition: ${listing.condition}\n\n🔗 ${siteUrl}/listings/${listing.slug}\n\nIs this still available?`;
+
+        const waLink = `https://wa.me/${contactNumber.replace('+', '')}?text=${encodeURIComponent(message)}`;
 
         return NextResponse.json({ waLink });
     } catch (error) {

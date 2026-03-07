@@ -59,7 +59,9 @@ export default function BottomNav() {
                     );
                 }
 
-                const isActive = item.href === pathname;
+                const isActive = item.href === "/"
+                    ? pathname === "/"
+                    : item.href === pathname;
 
                 return (
                     <Link

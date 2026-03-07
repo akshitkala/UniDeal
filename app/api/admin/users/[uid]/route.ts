@@ -23,6 +23,8 @@ export async function PATCH(
 
         if (action === 'ban') {
             target.isActive = false;
+            target.bannedAt = new Date();
+            target.bannedBy = actor.uid;
             await target.save();
             await logAction({
                 actor: actor.uid,
@@ -34,6 +36,8 @@ export async function PATCH(
             });
         } else if (action === 'unban') {
             target.isActive = true;
+            target.bannedAt = null;
+            target.bannedBy = null;
             await target.save();
             await logAction({
                 actor: actor.uid,

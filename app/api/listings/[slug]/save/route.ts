@@ -1,48 +1,32 @@
-import { NextResponse } from "next/server";
-import { connectDB } from "@/lib/db/connect";
-import { Listing } from "@/models/Listing";
-import { User } from "@/models/User";
-import '@/models/Listing';
-import '@/models/User';
-import { requireAuth } from "@/middleware/auth";
+import { requireAuth } from '@/middleware/auth';
+import { User } from '@/models/User';
+import { Listing } from '@/models/Listing';
+import { connectDB } from '@/lib/db/connect';
+import { NextResponse } from 'next/server';
 
-export async function POST(
-    req: Request,
-    { params }: { params: Promise<{ slug: string }> }
-) {
-    try {
-        const userOrResponse = await requireAuth();
-        if (userOrResponse instanceof NextResponse) return userOrResponse;
-        const userPayload = userOrResponse;
+export async function POST(req: Request, { params }: { params: Promise<{ slug: string }> }) {
+    await connectDB();
+    const authRes = await requireAuth();
+    if (authRes instanceof NextResponse) return authRes;
 
-        await connectDB();
-        const { slug } = await params;
+    const { slug } = await params;
+    const listing = await Listing.findOne({ slug, isDeleted: false });
+    if (!listing) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-        const listing = await Listing.findOne({ slug, isDeleted: false });
-        if (!listing) return NextResponse.json({ error: "Listing not found" }, { status: 404 });
+    const user = await User.findOne({ uid: authRes.uid });
+    if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
-        const user = await User.findOne({ uid: userPayload.uid });
-        if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
+    const alreadySaved = user.savedListings.some((id: any) => id.toString() === listing._id.toString());
 
-        const isSaved = user.savedListings.includes(listing._id);
-
-        if (isSaved) {
-            // Unsave
-            await Promise.all([
-                User.updateOne({ _id: user._id }, { $pull: { savedListings: listing._id } }),
-                Listing.updateOne({ _id: listing._id }, { $pull: { savedBy: user._id } })
-            ]);
-        } else {
-            // Save
-            await Promise.all([
-                User.updateOne({ _id: user._id }, { $addToSet: { savedListings: listing._id } }),
-                Listing.updateOne({ _id: listing._id }, { $addToSet: { savedBy: user._id } })
-            ]);
-        }
-
-        return NextResponse.json({ saved: !isSaved });
-    } catch (error) {
-        console.error("Save Listing Error:", error);
-        return NextResponse.json({ error: "Failed to update save status" }, { status: 500 });
+    if (alreadySaved) {
+        user.savedListings = user.savedListings.filter(
+            (id: any) => id.toString() !== listing._id.toString()
+        );
+    } else {
+        user.savedListings.push(listing._id);
     }
+
+    await user.save();
+
+    return NextResponse.json({ saved: !alreadySaved });
 }

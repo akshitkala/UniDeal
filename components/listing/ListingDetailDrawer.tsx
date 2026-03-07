@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
 import { ContactButton } from './ContactButton';
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { useAuth } from "@/lib/auth/AuthProvider";
 
 interface ListingDetailDrawerProps {
     listing: any;
@@ -26,11 +27,36 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
         return () => window.removeEventListener('keydown', handleEsc);
     }, []);
 
+    const { user } = useAuth();
+    const [isSaved, setIsSaved] = useState(listing.isSaved || false);
+
     const handleClose = () => {
         setIsOpen(false);
         setTimeout(() => {
             router.back();
         }, 320);
+    };
+
+    const handleSave = async (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!user) {
+            router.push("/login");
+            return;
+        }
+
+        const previousState = isSaved;
+        setIsSaved(!previousState);
+
+        try {
+            const res = await fetch(`/api/listings/${listing.slug}/save`, { method: "POST" });
+            if (!res.ok) throw new Error();
+            const data = await res.json();
+            setIsSaved(data.saved);
+        } catch (err) {
+            setIsSaved(previousState);
+        }
     };
 
     return (
@@ -92,6 +118,27 @@ export default function ListingDetailDrawer({ listing }: ListingDetailDrawerProp
                         }}
                     >
                         ✕
+                    </button>
+                    <button
+                        onClick={handleSave}
+                        style={{
+                            position: 'absolute', top: 20, right: 64, width: 36, height: 36,
+                            borderRadius: '50%', background: 'rgba(255,255,255,0.9)', border: 'none',
+                            cursor: 'pointer', display: 'grid', placeItems: 'center',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.1)', zIndex: 10,
+                            transition: 'all 180ms'
+                        }}
+                        aria-label={isSaved ? 'Remove from saved' : 'Save listing'}
+                    >
+                        <span
+                            className="material-symbols-outlined"
+                            style={{
+                                fontSize: 20,
+                                color: isSaved ? '#d97706' : '#6b7280',
+                                fontVariationSettings: isSaved ? "'FILL' 1" : "'FILL' 0",
+                                transition: 'all 180ms'
+                            }}
+                        >bookmark</span>
                     </button>
                     {isMobile && (
                         <div style={{

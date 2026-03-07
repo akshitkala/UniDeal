@@ -29,6 +29,8 @@ async function ListingsGrid({
         }
     }
 
+    const savedSet = new Set(savedIds);
+
     const query: any = { status: "approved", isExpired: false, isDeleted: false };
 
     if (searchParams.category) {
@@ -86,7 +88,7 @@ async function ListingsGrid({
         }}>
             {listings.map(l => {
                 const listingObj = JSON.parse(JSON.stringify(l));
-                listingObj.isSaved = savedIds.includes(l._id.toString());
+                listingObj.isSaved = savedSet.has(l._id.toString());
                 return (
                     <ListingCard
                         key={l._id}

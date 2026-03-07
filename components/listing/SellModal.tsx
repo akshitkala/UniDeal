@@ -28,12 +28,25 @@ export default function SellModal({ isOpen, onClose }: Props) {
     });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [whatsapp, setWhatsapp] = useState('');
+    const [whatsappSaved, setWhatsappSaved] = useState(false);
 
     useEffect(() => {
         if (isOpen) {
             fetch("/api/categories")
                 .then((res) => res.json())
                 .then((data) => setCategories(data.categories || []));
+
+            // Fetch profile for WhatsApp number
+            fetch('/api/users/profile')
+                .then(r => r.json())
+                .then(data => {
+                    if (data.whatsappNumber) {
+                        setWhatsapp(data.whatsappNumber.replace('+91', ''));
+                        setWhatsappSaved(true);
+                    }
+                })
+                .catch(() => { });
         } else {
             // Reset on close
             setStep(1);
@@ -45,18 +58,36 @@ export default function SellModal({ isOpen, onClose }: Props) {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!whatsapp || whatsapp.replace(/\D/g, '').length < 10) {
+            setError('Please enter a valid 10-digit WhatsApp number');
+            return;
+        }
+
         setSubmitting(true);
         setError(null);
+
+        const fullNumber = `+91${whatsapp.replace(/\D/g, '')}`;
 
         try {
             const res = await fetch("/api/listings", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    ...formData,
+                    whatsappNumber: fullNumber
+                }),
             });
 
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || "Failed to post listing");
+
+            // Also save to profile silently
+            fetch('/api/users/profile', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ whatsappNumber: fullNumber }),
+            }).catch(() => { }); // silent — never block the listing flow
 
             onClose();
             router.push(`/listings/${data.slug}`);
@@ -162,6 +193,55 @@ export default function SellModal({ isOpen, onClose }: Props) {
                                         <option value="damaged">Damaged / For Parts</option>
                                     </select>
                                 </div>
+                            </div>
+
+                            <div>
+                                <label style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink-2)', display: 'block', marginBottom: 6 }}>
+                                    WhatsApp Number <span style={{ color: 'var(--red)' }}>*</span>
+                                </label>
+
+                                {whatsappSaved && (
+                                    <div style={{
+                                        fontSize: 12, color: 'var(--green)',
+                                        marginBottom: 6,
+                                        display: 'flex', alignItems: 'center', gap: 4,
+                                    }}>
+                                        ✓ Using your saved number — buyers will contact you here
+                                    </div>
+                                )}
+
+                                <div style={{ position: 'relative' }}>
+                                    <span style={{
+                                        position: 'absolute', left: 12, top: '50%',
+                                        transform: 'translateY(-50%)',
+                                        fontSize: 13, color: 'var(--ink-4)',
+                                        fontWeight: 600,
+                                    }}>+91</span>
+                                    <input
+                                        type="tel"
+                                        value={whatsapp}
+                                        onChange={e => {
+                                            const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+                                            setWhatsapp(digits);
+                                            setWhatsappSaved(false);
+                                        }}
+                                        placeholder="9876543210"
+                                        maxLength={10}
+                                        style={{
+                                            width: '100%',
+                                            padding: '10px 14px 10px 44px',
+                                            border: '1.5px solid var(--border-2)',
+                                            borderRadius: 'var(--r)',
+                                            fontSize: 14,
+                                            fontFamily: 'var(--font-sans)',
+                                            outline: 'none',
+                                        }}
+                                    />
+                                </div>
+
+                                <p style={{ fontSize: 11, color: 'var(--ink-5)', marginTop: 4 }}>
+                                    📱 Buyers will contact you on WhatsApp. Never shown publicly.
+                                </p>
                             </div>
 
                             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>

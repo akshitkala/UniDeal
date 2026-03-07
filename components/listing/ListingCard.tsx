@@ -34,29 +34,32 @@ export default function ListingCard({ listing }: Props) {
     const router = useRouter();
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
-    const [isSaved, setIsSaved] = useState(listing.isSaved || false);
+    const [isSaved, setIsSaved] = useState(listing.isSaved ?? false);
 
-    const handleSave = async (e: React.MouseEvent) => {
+    async function handleSave(e: React.MouseEvent) {
+        e.stopPropagation(); // don't open the listing drawer
         e.preventDefault();
-        e.stopPropagation();
 
         if (!user) {
-            router.push("/login");
+            router.push('/login');
             return;
         }
 
-        const previousState = isSaved;
-        setIsSaved(!previousState);
+        const prev = isSaved;
+        setIsSaved(!prev); // optimistic update
 
         try {
-            const res = await fetch(`/api/listings/${slug}/save`, { method: "POST" });
+            const res = await fetch(`/api/listings/${slug}/save`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+            });
             if (!res.ok) throw new Error();
             const data = await res.json();
             setIsSaved(data.saved);
-        } catch (err) {
-            setIsSaved(previousState);
+        } catch {
+            setIsSaved(prev); // revert on error
         }
-    };
+    }
 
     return (
         <Link
@@ -104,14 +107,31 @@ export default function ListingCard({ listing }: Props) {
                 <button
                     onClick={handleSave}
                     style={{
-                        position: "absolute", bottom: 8, left: 8, background: "white",
-                        width: 28, height: 28, borderRadius: "50%", display: "flex",
-                        alignItems: "center", justifyContent: "center", border: "1px solid var(--border-2)",
-                        boxShadow: "var(--shadow-sm)", cursor: "pointer", fontSize: 14,
-                        color: isSaved ? "var(--amber)" : "var(--ink-4)", zIndex: 10
+                        position: 'absolute',
+                        top: 8, right: 8,
+                        width: 32, height: 32,
+                        borderRadius: '50%',
+                        background: 'rgba(255,255,255,0.92)',
+                        backdropFilter: 'blur(4px)',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'grid',
+                        placeItems: 'center',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
+                        transition: 'all 180ms',
+                        zIndex: 1,
                     }}
+                    aria-label={isSaved ? 'Remove from saved' : 'Save listing'}
                 >
-                    {isSaved ? "🔖" : "♡"}
+                    <span
+                        className="material-symbols-outlined"
+                        style={{
+                            fontSize: 18,
+                            color: isSaved ? '#d97706' : '#6b7280',
+                            fontVariationSettings: isSaved ? "'FILL' 1" : "'FILL' 0",
+                            transition: 'all 180ms',
+                        }}
+                    >bookmark</span>
                 </button>
             </div>
 
