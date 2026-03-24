@@ -272,14 +272,14 @@ export default function DashboardPage() {
                                     </div>
                                     <div style={{ flex: 1, minWidth: 0 }}>
                                         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
-                                            <span style={{ fontSize: 13, fontWeight: 700, color: "var(--amber)" }}>₹{l.price?.toLocaleString("en-IN")}</span>
+                                            <span style={{ fontSize: 13, fontWeight: 700, color: "var(--primary)" }}>₹{l.price?.toLocaleString("en-IN")}</span>
                                             <span style={{ fontSize: 10, color: "var(--ink-4)", textTransform: "uppercase" }}>• {l.category?.name}</span>
                                         </div>
                                         <h3 style={{ fontSize: 15, fontWeight: 600, marginBottom: 4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{l.title}</h3>
                                         <div style={{ display: "flex", gap: 12, fontSize: 10, color: "var(--ink-4)", flexWrap: "wrap" }}>
                                             {!isMobile && <span>📅 {new Date(l.createdAt).toLocaleDateString()}</span>}
                                             <span style={{
-                                                color: l.isExpired ? "var(--red)" : l.status === "approved" ? "var(--green)" : l.status === "pending" ? "var(--amber)" : "var(--ink-4)",
+                                                color: l.isExpired ? "var(--red)" : l.status === "approved" ? "var(--green)" : l.status === "pending" ? "var(--primary)" : "var(--ink-4)",
                                                 fontWeight: 700, textTransform: "uppercase", fontSize: 9
                                             }}>
                                                 {l.isExpired ? "EXPIRED" : l.status}
@@ -331,7 +331,7 @@ export default function DashboardPage() {
                                                 padding: '7px 14px',
                                                 border: 'none',
                                                 borderRadius: 'var(--r)',
-                                                background: 'var(--amber)',
+                                                background: 'var(--primary)',
                                                 color: '#fff',
                                                 fontSize: 13, fontWeight: 700,
                                                 cursor: 'pointer',

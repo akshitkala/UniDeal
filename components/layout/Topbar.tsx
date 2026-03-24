@@ -125,7 +125,7 @@ export default function Topbar({ onOpenMenu }: { onOpenMenu?: () => void }) {
                     <button
                         onClick={handleListItem}
                         style={{
-                            background: "var(--amber)", color: "white", border: "none",
+                            background: "var(--primary)", color: "white", border: "none",
                             fontFamily: "var(--font-sans)", fontWeight: 600, fontSize: 13,
                             borderRadius: "var(--r)", padding: "8px 16px", cursor: "pointer"
                         }}

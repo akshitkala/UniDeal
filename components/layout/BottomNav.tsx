@@ -42,7 +42,7 @@ export default function BottomNav() {
                                 width: 48,
                                 height: 48,
                                 borderRadius: "50%",
-                                background: "var(--amber)",
+                                background: "var(--primary)",
                                 color: "white",
                                 border: "none",
                                 fontSize: 24,

@@ -64,7 +64,7 @@ export default function SuperAdminDashboard() {
     if (loading) return <div style={{ padding: 40, textAlign: 'center', color: 'var(--ink-4)' }}>Loading Dashboard...</div>;
 
     const cards = [
-        { label: 'Pending Listings', value: stats?.listings.pending, icon: '⏳', color: 'var(--amber)' },
+        { label: 'Pending Listings', value: stats?.listings.pending, icon: '⏳', color: 'var(--primary)' },
         { label: 'Active Listings', value: stats?.listings.active, icon: '✅', color: 'var(--green)' },
         { label: 'Rejected', value: stats?.listings.rejected, icon: '❌', color: 'var(--red)' },
         { label: 'Total Listings', value: stats?.listings.total, icon: '📦', color: 'var(--ink)' },
@@ -147,7 +147,7 @@ export default function SuperAdminDashboard() {
                         display: 'block',
                         marginTop: 12,
                         fontSize: 13,
-                        color: 'var(--amber)',
+                        color: 'var(--primary)',
                         textDecoration: 'none',
                         fontWeight: 600
                     }}>View All Activity →</Link>

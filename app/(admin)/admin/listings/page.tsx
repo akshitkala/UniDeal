@@ -4,7 +4,7 @@ import SellModal from '@/components/listing/SellModal';
 
 const STATUS_COLORS: Record<string, string> = {
     approved: 'var(--green)',
-    pending: '#d97706',
+    pending: '#2D9A54',
     rejected: 'var(--red)',
     sold: 'var(--ink-4)',
 };

@@ -15,7 +15,7 @@ interface Props {
 const conditionColors: any = {
     new: "var(--green)",
     "like-new": "var(--blue)",
-    good: "var(--amber)",
+    good: "var(--primary)",
     used: "#6b7280",
     damaged: "var(--red)",
 };
@@ -23,7 +23,7 @@ const conditionColors: any = {
 const conditionBgColors: any = {
     new: "var(--green-bg)",
     "like-new": "var(--blue-bg)",
-    good: "var(--amber-bg)",
+    good: "var(--primary-bg)",
     used: "#f3f4f6",
     damaged: "var(--red-bg)",
 };
@@ -137,7 +137,7 @@ export default function ListingCard({ listing }: Props) {
                         className="material-symbols-outlined"
                         style={{
                             fontSize: 18,
-                            color: isSaved ? '#d97706' : '#6b7280',
+                            color: isSaved ? 'var(--primary)' : '#6b7280',
                             fontVariationSettings: isSaved ? "'FILL' 1" : "'FILL' 0",
                             transition: 'all 180ms',
                         }}

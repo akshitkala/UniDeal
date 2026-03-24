@@ -180,7 +180,7 @@ export default function PhotoUploadZone({ onUpload, maxFiles = 6, existingUrls =
             {uploading && (
                 <div style={{ height: 4, background: "var(--bg-2)", borderRadius: 2, overflow: "hidden" }}>
                     <div style={{
-                        height: "100%", background: "var(--amber)",
+                        height: "100%", background: "var(--primary)",
                         width: `${progress}%`, transition: "width 0.3s ease",
                         borderRadius: 2,
                     }} />

@@ -185,7 +185,7 @@ export default function ListingDetailDrawer({ slug, initialData, isOpen, onClose
                                     style={{
                                         background: 'none', border: 'none',
                                         cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6,
-                                        color: isSaved ? 'var(--amber)' : 'var(--ink-4)',
+                                        color: isSaved ? 'var(--primary)' : 'var(--ink-4)',
                                         fontSize: 14, fontWeight: 600, padding: '4px 8px', borderRadius: 'var(--r)',
                                         transition: 'background 150ms'
                                     }}
@@ -246,7 +246,7 @@ export default function ListingDetailDrawer({ slug, initialData, isOpen, onClose
 
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
                                 <div style={{
-                                    background: 'var(--amber-bg)', color: 'var(--amber)', fontSize: 12,
+                                    background: 'var(--primary-bg)', color: 'var(--primary)', fontSize: 12,
                                     fontWeight: 700, padding: '4px 8px', borderRadius: 4, textTransform: 'uppercase',
                                     display: 'flex', alignItems: 'center', gap: 6
                                 }}>

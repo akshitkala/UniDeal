@@ -11,7 +11,7 @@ function ModerationCard({ r, onAction }: { r: any; onAction: any }) {
     const isAiFlagged = r.listing?.aiFlagged;
     const confidence = r.listing?.aiConfidence || 0;
 
-    const barColor = confidence > 66 ? "#dc2626" : confidence > 33 ? "#d97706" : "#16a34a";
+    const barColor = confidence > 66 ? "#dc2626" : confidence > 33 ? "#2D9A54" : "#16a34a";
 
     return (
         <div key={r._id} style={{

@@ -105,7 +105,7 @@ export default function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
                 <button
                     onClick={handleListItem}
                     style={{
-                        width: "100%", background: "var(--amber)", color: "white",
+                        width: "100%", background: "var(--primary)", color: "white",
                         border: "none", padding: "12px", borderRadius: "var(--r)",
                         fontWeight: 600, fontSize: 14, marginBottom: 20, cursor: "pointer",
                         fontFamily: "var(--font-sans)",
@@ -120,7 +120,7 @@ export default function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
                     onClick={handleListItem}
                     title="List Item"
                     style={{
-                        width: 44, height: 44, background: "var(--amber)", color: "white",
+                        width: 44, height: 44, background: "var(--primary)", color: "white",
                         border: "none", borderRadius: "var(--r)",
                         fontSize: 20, marginBottom: 20, cursor: "pointer",
                         display: "grid", placeItems: "center"

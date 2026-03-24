@@ -9,7 +9,7 @@ const ACTION_META: Record<string, { label: string; color: string; icon: string }
     LISTING_REJECTED: { label: 'Listing Rejected', color: '#dc2626', icon: '✗' },
     LISTING_DELETED: { label: 'Listing Deleted', color: '#7f1d1d', icon: '🗑' },
     LISTING_RESTORED: { label: 'Listing Restored', color: '#0891b2', icon: '↩' },
-    LISTING_RELISTED: { label: 'Listing Relisted', color: '#d97706', icon: '🔄' },
+    LISTING_RELISTED: { label: 'Listing Relisted', color: '#2D9A54', icon: '🔄' },
     USER_BANNED: { label: 'User Banned', color: '#7f1d1d', icon: '🚫' },
     USER_UNBANNED: { label: 'User Unbanned', color: '#16a34a', icon: '✓' },
     ROLE_CHANGED: { label: 'Role Changed', color: '#0891b2', icon: '👤' },

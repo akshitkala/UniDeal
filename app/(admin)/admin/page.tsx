@@ -137,7 +137,7 @@ export default function AdminPage() {
                                         <div style={{
                                             width: `${(l.aiVerification.confidence ?? 0) * 100}%`, height: '100%', borderRadius: 3,
                                             background: (l.aiVerification.confidence ?? 0) > 0.66 ? '#dc2626'
-                                                : (l.aiVerification.confidence ?? 0) > 0.33 ? '#d97706' : '#16a34a',
+                                                : (l.aiVerification.confidence ?? 0) > 0.33 ? '#2D9A54' : '#16a34a',
                                         }} />
                                     </div>
                                 </div>

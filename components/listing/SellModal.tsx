@@ -376,7 +376,7 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                             disabled={submitting || formData.images.length === 0}
                             style={{
                                 flex: 2, padding: "12px", borderRadius: "var(--r)", border: "none",
-                                background: (submitting || formData.images.length === 0) ? "var(--ink-5)" : "var(--amber)",
+                                background: (submitting || formData.images.length === 0) ? "var(--ink-5)" : "var(--primary)",
                                 color: "white", fontWeight: 600, cursor: (submitting || formData.images.length === 0) ? "not-allowed" : "pointer"
                             }}
                         >

@@ -119,7 +119,7 @@ export default function ListingDetail({ slug, isModal = false }: Props) {
                     <div style={{ fontSize: 32, fontWeight: 700, fontFamily: "var(--font-mono)", color: "var(--ink)" }}>
                         ₹{price.toLocaleString("en-IN")}
                         {negotiable && (
-                            <span style={{ fontSize: 13, fontWeight: 600, color: "var(--amber)", marginLeft: 12, verticalAlign: "middle" }}>
+                            <span style={{ fontSize: 13, fontWeight: 600, color: "var(--primary)", marginLeft: 12, verticalAlign: "middle" }}>
                                 Negotiable
                             </span>
                         )}

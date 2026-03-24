@@ -50,7 +50,7 @@ export function baseTemplate(content: string): string {
 }
 
 export function button(text: string, href: string): string {
-    return `<a href="${href}" style="display:inline-block;padding:12px 24px;background:#d97706;color:#ffffff;text-decoration:none;border-radius:10px;font-weight:700;font-size:14px;margin-top:8px;">${text}</a>`;
+    return `<a href="${href}" style="display:inline-block;padding:12px 24px;background:#2D9A54;color:#ffffff;text-decoration:none;border-radius:10px;font-weight:700;font-size:14px;margin-top:8px;">${text}</a>`;
 }
 
 export function heading(text: string): string {
