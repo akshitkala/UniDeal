@@ -23,6 +23,8 @@ export default function AdminSidebar({ isMobile = false }: { isMobile?: boolean 
   const pathname = usePathname();
   const { user } = useAuth();
   const isSuperAdmin = user?.role === 'superadmin';
+  const isSuperadminPath = pathname.startsWith('/superadmin');
+  const isAdminPath = pathname.startsWith('/admin');
 
   const isActive = (href: string) =>
     href === '/admin' || href === '/superadmin'
@@ -62,42 +64,44 @@ export default function AdminSidebar({ isMobile = false }: { isMobile?: boolean 
         </Link>
       </div>
 
-      {/* MODERATION section */}
-      <div style={{ padding: '0 12px', marginBottom: 24 }}>
-        <p style={{
-          fontSize: 11, fontWeight: 700, color: '#9ca3af',
-          letterSpacing: '0.08em', textTransform: 'uppercase',
-          margin: '0 0 8px 4px',
-        }}>
-          Moderation
-        </p>
-        {MODERATION_NAV.map(item => (
-          <Link
-            key={item.href}
-            href={item.href}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 10,
-              padding: '9px 12px',
-              borderRadius: 8,
-              fontSize: 14,
-              fontWeight: isActive(item.href) ? 600 : 400,
-              color: isActive(item.href) ? '#111827' : '#374151',
-              background: isActive(item.href) ? '#f3f4f6' : 'transparent',
-              textDecoration: 'none',
-              marginBottom: 2,
-            }}
-          >
-            <span style={{ fontSize: 16 }}>{item.icon}</span>
-            {item.label}
-          </Link>
-        ))}
-      </div>
+      {/* MODERATION section — show if on admin path OR (superadmin NOT on superadmin path) */}
+      {(isAdminPath || (isSuperAdmin && !isSuperadminPath)) && (
+        <div style={{ padding: '0 12px', marginBottom: 24 }}>
+          <p style={{
+            fontSize: 11, fontWeight: 700, color: '#9ca3af',
+            letterSpacing: '0.08em', textTransform: 'uppercase',
+            margin: '0 0 8px 4px',
+          }}>
+            Moderation
+          </p>
+          {MODERATION_NAV.map(item => (
+            <Link
+              key={item.href}
+              href={item.href}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                padding: '9px 12px',
+                borderRadius: 8,
+                fontSize: 14,
+                fontWeight: isActive(item.href) ? 600 : 400,
+                color: isActive(item.href) ? '#111827' : '#374151',
+                background: isActive(item.href) ? '#f3f4f6' : 'transparent',
+                textDecoration: 'none',
+                marginBottom: 2,
+              }}
+            >
+              <span style={{ fontSize: 16 }}>{item.icon}</span>
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
 
-      {/* SUPERADMIN section — only for superadmin role */}
-      {isSuperAdmin && (
-        <div style={{ padding: '0 12px' }}>
+      {/* SUPERADMIN section — show if superadmin AND (on superadmin path OR NOT on admin path) */}
+      {isSuperAdmin && (isSuperadminPath || !isAdminPath) && (
+        <div style={{ padding: '0 12px', marginBottom: 24 }}>
           <p style={{
             fontSize: 11, fontWeight: 700, color: '#9ca3af',
             letterSpacing: '0.08em', textTransform: 'uppercase',
@@ -127,6 +131,31 @@ export default function AdminSidebar({ isMobile = false }: { isMobile?: boolean 
               {item.label}
             </Link>
           ))}
+        </div>
+      )}
+
+      {/* Switch Dashboard Link for Superadmins */}
+      {isSuperAdmin && (
+        <div style={{ marginTop: 'auto', padding: '0 12px' }}>
+          <Link
+            href={isSuperadminPath ? '/admin' : '/superadmin'}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8,
+              padding: '12px',
+              borderRadius: 10,
+              fontSize: 13,
+              fontWeight: 700,
+              color: '#16a34a',
+              background: '#f0fdf4',
+              textDecoration: 'none',
+              border: '1px solid #dcfce7',
+            }}
+          >
+            {isSuperadminPath ? '⚡ Switch to Moderation' : '👑 Switch to Superadmin'}
+          </Link>
         </div>
       )}
     </aside>

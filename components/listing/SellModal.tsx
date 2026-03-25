@@ -20,7 +20,7 @@ interface SellModalProps {
         condition: string;
         category: string;
         images: string[];
-        whatsappNumber?: string;
+        whatsapp?: string;
     };
     mode?: 'create' | 'edit';
     onSuccess?: (data: any) => void;
@@ -50,6 +50,8 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
 
     useEffect(() => {
         if (!isOpen) return;
+
+        // Fetch categories
         fetch('/api/categories')
             .then(r => r.json())
             .then(data => {
@@ -57,22 +59,40 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                 setCategories(cats);
             })
             .catch(() => { });
-    }, [isOpen]);
+
+        // Fetch profile for whatsapp pre-fill (only on create mode)
+        if (!isEdit) {
+            fetch('/api/users/profile')
+                .then(r => r.json())
+                .then(data => {
+                    const prof = data.user || data;
+                    if (prof?.whatsapp) {
+                        const digits = prof.whatsapp.replace('+91', '').replace(/\D/g, '');
+                        if (digits.length === 10) {
+                            setWhatsapp(digits);
+                            setWhatsappSaved(true);
+                        }
+                    }
+                })
+                .catch(() => { });
+        }
+    }, [isOpen, isEdit]);
 
     useEffect(() => {
         if (isOpen && initialData) {
+            const data = initialData as any;
             setFormData({
-                title: initialData.title || "",
-                description: initialData.description || "",
-                price: initialData.price?.toString() || "",
-                negotiable: false,
-                category: initialData.category || "",
-                condition: initialData.condition || "good",
-                images: initialData.images || [],
-                location: "LPU Campus"
+                title: data.title || "",
+                description: data.description || "",
+                price: data.price?.toString() || "",
+                category: data.category?._id || data.category || "",
+                condition: data.condition || "",
+                location: data.location || "",
+                images: data.images || [],
             });
-            if (initialData.whatsappNumber) {
-                setWhatsapp(initialData.whatsappNumber.replace('+91', ''));
+            const phoneVal = data.sellerWhatsapp || data.whatsapp;
+            if (phoneVal) {
+                setWhatsapp(phoneVal.replace('+91', ''));
                 setWhatsappSaved(true);
             }
             setStep(2);
@@ -118,7 +138,7 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     ...formData,
-                    whatsappNumber: fullNumber
+                    whatsapp: fullNumber
                 }),
             });
 
@@ -129,7 +149,7 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
             fetch('/api/users/profile', {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ whatsappNumber: fullNumber }),
+                body: JSON.stringify({ whatsapp: fullNumber }),
             }).catch(() => { }); // silent — never block the listing flow
 
             onClose();

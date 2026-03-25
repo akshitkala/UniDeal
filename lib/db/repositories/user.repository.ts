@@ -20,7 +20,7 @@ export const UserRepository = {
             .lean();
     },
 
-    async updateProfile(id: string, data: { displayName?: string; phone?: string; photoURL?: string }) {
+    async updateProfile(id: string, data: { displayName?: string; phone?: string; whatsapp?: string; photoUrl?: string }) {
         return User.findByIdAndUpdate(
             id,
             { $set: data },

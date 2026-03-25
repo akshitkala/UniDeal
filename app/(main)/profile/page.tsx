@@ -8,6 +8,10 @@ export default function ProfilePage() {
   const { user, loading } = useAuth();
   const router = useRouter();
   const [profile, setProfile] = useState<any>(null);
+  const [whatsapp, setWhatsapp] = useState('');
+  const [savingWhatsapp, setSavingWhatsapp] = useState(false);
+  const [whatsappSaved, setWhatsappSaved] = useState(false);
+  const [whatsappError, setWhatsappError] = useState('');
   const [showConfirm, setShowConfirm] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState('');
@@ -20,9 +24,54 @@ export default function ProfilePage() {
     if (user) {
         fetch('/api/users/profile', { credentials: 'include' })
           .then(r => r.json())
-          .then(d => setProfile(d.user || d));
+          .then(d => {
+            const userData = d.user || d;
+            setProfile(userData);
+            // Strip +91 for the input field
+            const clean = (userData.whatsapp ?? '').replace('+91', '').replace(/\D/g, '');
+            setWhatsapp(clean);
+          });
     }
   }, [user]);
+
+  async function saveWhatsapp() {
+    const digits = whatsapp.replace(/\D/g, '');
+    
+    // Validation
+    if (digits && digits.length !== 10) {
+      setWhatsappError('WhatsApp must be exactly 10 digits');
+      return;
+    }
+
+    const hasListings = profile.listings?.length > 0;
+    if (!digits && hasListings) {
+      setWhatsappError('Cannot remove WhatsApp while you have active listings');
+      return;
+    }
+
+    setWhatsappError('');
+    setSavingWhatsapp(true);
+
+    const fullNumber = digits ? `+91${digits}` : '';
+
+    const res = await fetch('/api/users/profile', {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ whatsapp: fullNumber }),
+    });
+
+    if (res.ok) {
+        setWhatsappSaved(true);
+        // Update local profile state
+        setProfile((prev: any) => ({ ...prev, whatsapp: fullNumber }));
+        setTimeout(() => setWhatsappSaved(false), 3000);
+    } else {
+        const data = await res.json();
+        setWhatsappError(data.error || 'Failed to save. Try again.');
+    }
+    setSavingWhatsapp(false);
+  }
 
   async function handleDeleteAccount() {
     setDeleting(true);
@@ -109,6 +158,53 @@ export default function ProfilePage() {
             </span>
           </div>
         </div>
+      </div>
+
+      {/* WhatsApp Section */}
+      <div style={{
+        background: 'white', border: '1.5px solid #e5e7eb',
+        borderRadius: 20, padding: 28, marginBottom: 24,
+      }}>
+        <h3 style={{ margin: '0 0 6px', fontSize: 15, fontWeight: 700, color: '#111827' }}>
+          Contact Info
+        </h3>
+        <p style={{ margin: '0 0 16px', fontSize: 13, color: '#6b7280' }}>
+          Your WhatsApp number is shown to buyers on your listings. Include country code (e.g. 919876543210).
+        </p>
+
+        <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+          WhatsApp Number
+        </label>
+        <div style={{ display: 'flex', gap: 10 }}>
+          <input
+            value={whatsapp}
+            onChange={e => setWhatsapp(e.target.value.replace(/\D/g, ''))}
+            placeholder="919876543210"
+            maxLength={15}
+            style={{
+              flex: 1, padding: '10px 14px', borderRadius: 10,
+              border: '1.5px solid #e5e7eb', fontSize: 14,
+            }}
+          />
+          <button
+            onClick={saveWhatsapp}
+            disabled={savingWhatsapp}
+            style={{
+              padding: '10px 20px', borderRadius: 10,
+              background: '#16a34a', color: 'white',
+              border: 'none', fontWeight: 700,
+              fontSize: 14, cursor: 'pointer', flexShrink: 0,
+            }}
+          >
+            {savingWhatsapp ? 'Saving...' : 'Save'}
+          </button>
+        </div>
+        {whatsappError && (
+          <p style={{ margin: '6px 0 0', fontSize: 12, color: '#dc2626' }}>{whatsappError}</p>
+        )}
+        {whatsappSaved && (
+          <p style={{ margin: '6px 0 0', fontSize: 12, color: '#16a34a' }}>✓ Saved</p>
+        )}
       </div>
 
       {/* Danger zone */}

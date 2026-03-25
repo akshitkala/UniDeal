@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import AdminSidebar from "@/components/admin/AdminSidebar";
-import Topbar from "@/components/layout/Topbar";
+import AdminTopbar from "@/components/admin/AdminTopbar";
 import BottomNav from "@/components/layout/BottomNav";
 import MobileDrawer from "@/components/layout/MobileDrawer";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
@@ -11,11 +11,10 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
-    const isTablet = breakpoint === "tablet";
 
     return (
         <div style={{ display: "flex", height: "100dvh", overflow: "hidden", flexDirection: "column" }}>
-            <Topbar onOpenMenu={() => setIsMenuOpen(true)} />
+            <AdminTopbar onOpenMenu={() => setIsMenuOpen(true)} />
 
             <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
                 {!isMobile && <AdminSidebar />}

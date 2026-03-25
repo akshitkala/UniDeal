@@ -26,12 +26,12 @@ export async function POST(req: NextRequest) {
                 email: decoded.email!,
                 emailVerified: true,
                 displayName: decoded.name ?? '',
-                photoURL: decoded.picture ?? '',
+                photoUrl: decoded.picture ?? '',
             });
         } else {
             user.emailVerified = true;
             user.displayName = decoded.name ?? user.displayName;
-            user.photoURL = decoded.picture ?? user.photoURL;
+            user.photoUrl = decoded.picture ?? user.photoUrl;
             await user.save();
         }
 

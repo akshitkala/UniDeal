@@ -70,9 +70,9 @@ export async function POST(request: Request) {
         }
 
         const body = await request.json();
-        const { title, description, price, negotiable, category, condition, images, location, whatsappNumber } = body;
+        const { title, description, price, negotiable, category, condition, images, location, whatsapp } = body;
 
-        if (!whatsappNumber) {
+        if (!whatsapp) {
             return NextResponse.json({ error: "WhatsApp number is required" }, { status: 400 });
         }
 
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
             images,
             location,
             seller: user._id,
-            sellerWhatsapp: whatsappNumber,
+            sellerWhatsapp: whatsapp,
             sellerEmail: user.email,
         });
 

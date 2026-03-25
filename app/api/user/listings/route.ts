@@ -18,7 +18,7 @@ export async function GET() {
         if (!user) return NextResponse.json({ listings: [] });
 
         const listings = await Listing.find({ seller: user._id, isDeleted: false })
-            .select('title price images condition slug category status createdAt')
+            .select('title price images condition slug category status createdAt sellerWhatsapp')
             .populate('category', 'name icon slug')
             .sort({ createdAt: -1 })
             .lean();

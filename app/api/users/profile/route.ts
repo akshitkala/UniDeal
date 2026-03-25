@@ -41,14 +41,31 @@ export async function PATCH(req: NextRequest) {
             req.json(),
             User.findOne({ uid: tokenUser.uid })
         ]);
-        const { displayName, bio, location, phone, whatsappNumber } = body;
+        const { displayName, bio, location, phone, whatsapp, photoUrl } = body;
         if (!user) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
         if (displayName !== undefined)    user.displayName    = displayName;
         if (bio !== undefined)            user.bio            = bio;
         if (location !== undefined)       user.location       = location;
         if (phone !== undefined)          user.phone          = phone;
-        if (whatsappNumber !== undefined) user.whatsappNumber = whatsappNumber;
+        if (photoUrl !== undefined)       user.photoUrl       = photoUrl;
+
+        if (whatsapp !== undefined) {
+            // Constraint: Cannot clear whatsapp if user has any listings
+            if (!whatsapp || whatsapp.trim() === '') {
+                const { Listing } = await import('@/models/Listing');
+                const hasListings = await Listing.exists({ 
+                    seller: user._id, 
+                    isDeleted: false 
+                });
+                if (hasListings) {
+                    return NextResponse.json({ 
+                        error: 'Cannot remove WhatsApp number while you have active listings. Please delete your listings first.' 
+                    }, { status: 400 });
+                }
+            }
+            user.whatsapp = whatsapp;
+        }
 
         await user.save();
         return NextResponse.json({ success: true });

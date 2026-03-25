@@ -85,8 +85,12 @@ export default function ListingPage() {
     user.uid === listing.seller?.firebaseUid
   );
 
-  const whatsappNumber = (listing.seller?.whatsapp ?? listing.seller?.phone ?? '').replace(/\D/g, '');
-  const whatsappUrl = whatsappNumber
+  // Get whatsapp number — try listing.sellerWhatsapp first (most direct), then seller profile fields
+  const rawNumber = listing.sellerWhatsapp || listing.seller?.whatsapp || listing.seller?.phone || '';
+  const whatsappNumber = rawNumber.replace(/\D/g, ''); // strip non-digits
+
+  // Build URL only if we have a valid number
+  const whatsappUrl = whatsappNumber.length >= 10
     ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi, I'm interested in your listing "${listing.title}" on UniDeal.`)}`
     : null;
 
@@ -271,22 +275,32 @@ export default function ListingPage() {
                 {user ? (
                   whatsappUrl ? (
                     <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" style={btnStyle('#16a34a')}>
-                      <MessageIcon /> WhatsApp
+                      💬 Contact on WhatsApp
                     </a>
                   ) : (
-                    <button disabled style={{ ...btnStyle('#94a3b8'), cursor: 'not-allowed' }}>
-                      <MessageIcon /> N/A
-                    </button>
+                    <div style={{
+                      padding: '14px 16px', borderRadius: 12,
+                      background: '#fef9c3', border: '1.5px solid #fef08a',
+                      fontSize: 13, color: '#854d0e', textAlign: 'center', lineHeight: 1.5,
+                      gridColumn: '1 / -1',
+                    }}>
+                      📞 Seller hasn't added a contact number yet.<br />
+                      <span style={{ fontSize: 12, color: '#a16207' }}>
+                        Ask them to update their profile.
+                      </span>
+                    </div>
                   )
                 ) : (
                   <a href="/login" style={btnStyle('#16a34a')}>
-                    Sign in to Contact
+                    Sign in to Contact Seller
                   </a>
                 )}
 
-                <button onClick={toggleSave} disabled={saving} style={btnStyle('white', '#16a34a')}>
-                  <HeartIcon filled={saved} /> {saved ? 'Saved' : 'Save'}
-                </button>
+                {user && !isOwner && !whatsappUrl ? null : (
+                  <button onClick={toggleSave} disabled={saving} style={btnStyle('white', '#16a34a')}>
+                    <HeartIcon filled={saved} /> {saved ? 'Saved' : 'Save'}
+                  </button>
+                )}
               </>
             )}
           </div>

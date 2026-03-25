@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useSell } from "@/components/listing/SellProvider";
 import { useAuth } from "@/lib/auth/AuthProvider";
@@ -89,6 +90,23 @@ export default function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
 
     const searchParams = useSearchParams();
 
+    const [categories, setCategories] = useState<any[]>([]);
+    const [loadingCats, setLoadingCats] = useState(true);
+
+    useEffect(() => {
+        fetch("/api/categories")
+            .then(r => r.json())
+            .then(data => {
+                const cats = Array.isArray(data) ? data : (data.categories || []);
+                setCategories(cats);
+                setLoadingCats(false);
+            })
+            .catch(err => {
+                console.error("Failed to fetch categories:", err);
+                setLoadingCats(false);
+            });
+    }, []);
+
     return (
         <aside style={{
             width: isCollapsed ? 64 : (isMobile ? "100%" : 240),
@@ -132,20 +150,19 @@ export default function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
 
             <SectionLabel isCollapsed={isCollapsed}>BROWSE</SectionLabel>
             <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 24 }}>
-                {[
-                    { href: "/", icon: "🏠", label: "All Items" },
-                    { href: "/?category=books-notes", icon: "📚", label: "Books" },
-                    { href: "/?category=electronics", icon: "💻", label: "Electronics" },
-                    { href: "/?category=furniture", icon: "🪑", label: "Furniture" },
-                    { href: "/?category=clothing", icon: "👕", label: "Clothing" },
-                    { href: "/?category=sports-fitness", icon: "⚽", label: "Sports" },
-                    { href: "/?category=miscellaneous", icon: "📦", label: "Other" },
-                ].map(item => (
+                <NavItem
+                    href="/"
+                    icon="🏠"
+                    label="All Items"
+                    isCollapsed={isCollapsed}
+                    searchParams={searchParams}
+                />
+                {!loadingCats && categories.map(cat => (
                     <NavItem
-                        key={item.href}
-                        href={item.href}
-                        icon={item.icon}
-                        label={item.label}
+                        key={cat.slug}
+                        href={`/?category=${cat.slug}`}
+                        icon={cat.icon || "📦"}
+                        label={cat.name}
                         isCollapsed={isCollapsed}
                         searchParams={searchParams}
                     />

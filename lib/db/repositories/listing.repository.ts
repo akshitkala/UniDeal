@@ -7,7 +7,7 @@ export const ListingRepository = {
         const [listings, total] = await Promise.all([
             Listing.find(filters)
                 .select('title price images condition slug category createdAt campus seller status')
-                .populate('seller', 'displayName photoURL uid')
+                .populate('seller', 'displayName photoUrl uid')
                 .populate('category', 'name slug icon')
                 .sort({ createdAt: -1 })
                 .skip(skip)
@@ -31,7 +31,7 @@ export const ListingRepository = {
         const [listing, user] = await Promise.all([
             Listing.findOne({ slug })
                 .select('-__v')
-                .populate('seller', 'displayName photoURL uid phone whatsappNumber emailVerified role')
+                .populate('seller', 'displayName photoUrl uid phone whatsapp emailVerified role')
                 .populate('category', 'name slug icon')
                 .lean(),
             userId

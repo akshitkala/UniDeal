@@ -15,7 +15,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
 
         const listing = await Listing.findOne({ slug, isDeleted: false })
             .select('-__v')
-            .populate('seller', 'name whatsapp phone isVerified registrationNumber')
+            .populate('seller', 'displayName email whatsapp phone isVerified registrationNumber photoUrl firebaseUid')
             .populate('category', 'name slug icon')
             .lean();
 

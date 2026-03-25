@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, Suspense } from "react";
 import Sidebar from "./Sidebar";
+import AdminSidebar from "../admin/AdminSidebar";
 import { usePathname } from "next/navigation";
 import Link from 'next/link';
 
@@ -11,6 +12,7 @@ interface Props {
 
 export default function MobileDrawer({ isOpen, onClose }: Props) {
     const pathname = usePathname();
+    const isAdminRoute = pathname.startsWith('/admin') || pathname.startsWith('/superadmin');
 
     useEffect(() => {
         if (isOpen) {
@@ -60,7 +62,7 @@ export default function MobileDrawer({ isOpen, onClose }: Props) {
 
                 <div style={{ flex: 1, overflowY: "auto", paddingBottom: "env(safe-area-inset-bottom)" }}>
                     <Suspense fallback={null}>
-                        <Sidebar isMobile />
+                        {isAdminRoute ? <AdminSidebar isMobile /> : <Sidebar isMobile />}
                     </Suspense>
                 </div>
             </div>

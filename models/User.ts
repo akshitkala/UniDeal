@@ -5,12 +5,12 @@ export interface IUser extends Document {
     email: string;
     emailVerified: boolean;
     displayName?: string;
-    photoURL?: string;
+    photoUrl: string;
     role: "user" | "admin" | "superadmin";
     isActive: boolean;
     trustLevel: "new" | "trusted" | "flagged";
-    phone?: string;
-    whatsappNumber?: string;
+    phone: string;
+    whatsapp: string;
     bio?: string;
     location?: string;
     totalListings: number;
@@ -28,12 +28,12 @@ const userSchema = new Schema<IUser>(
         email: { type: String, required: true },
         emailVerified: { type: Boolean, default: false },
         displayName: String,
-        photoURL: String,
+        photoUrl: { type: String, default: '' },
         role: { type: String, enum: ["user", "admin", "superadmin"], default: "user" },
         isActive: { type: Boolean, default: true },
         trustLevel: { type: String, enum: ["new", "trusted", "flagged"], default: "new" },
-        phone: String,
-        whatsappNumber: String,
+        phone: { type: String, default: '' },
+        whatsapp: { type: String, default: '' },
         bio: String,
         location: String,
         totalListings: { type: Number, default: 0 },

@@ -106,8 +106,8 @@ export const FIELD_RULES = {
   price: { required: true, min: 0, max: 1000000 },
   name: { required: true, minLength: 2, maxLength: 100, noInjection: true },
   whatsapp: {
-    pattern: /^\d{10,15}$/,
-    patternMessage: 'WhatsApp must be 10–15 digits, no spaces or symbols',
+    pattern: /^\d{10}$/,
+    patternMessage: 'WhatsApp must be a 10-digit number',
   },
   search: { maxLength: 100, noInjection: true },
   categoryName: { required: true, minLength: 2, maxLength: 50, noInjection: true },
