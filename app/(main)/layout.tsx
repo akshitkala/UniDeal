@@ -39,20 +39,7 @@ export default async function MainLayout({
     const config = await SystemConfig.findOne({ _id: "global" });
 
     if (config?.maintenanceMode) {
-        const cookieStore = await cookies();
-        const token = cookieStore.get("access_token")?.value;
-        let isAdmin = false;
-
-        if (token) {
-            try {
-                const payload = verifyAccessToken(token);
-                isAdmin = payload.role === "admin" || payload.role === "superadmin";
-            } catch (e) { }
-        }
-
-        if (!isAdmin) {
-            return <MaintenanceScreen />;
-        }
+        return <MaintenanceScreen />;
     }
 
     return (

@@ -26,7 +26,7 @@ async function ListingsGrid({
 
     let savedIds: string[] = [];
     if (userUid) {
-        const user = await User.findOne({ uid: userUid }).select("savedListings");
+        const user = await User.findOne({ uid: userUid }).select("savedListings").lean();
         if (user) {
             savedIds = user.savedListings.map((id: any) => id.toString());
         }
@@ -35,7 +35,7 @@ async function ListingsGrid({
     const query: any = { status: "approved", isExpired: false, isDeleted: false };
 
     if (searchParams.category) {
-        const cat = await Category.findOne({ slug: searchParams.category });
+        const cat = await Category.findOne({ slug: searchParams.category }).select('_id').lean();
         if (cat) query.category = cat._id;
     }
 
@@ -55,10 +55,12 @@ async function ListingsGrid({
     };
 
     const listings = await Listing.find(query)
+        .select('title price images condition slug category seller createdAt campus')
         .sort(sortMap[searchParams.sort || "newest"])
         .limit(12) // Initial load limit
         .populate("category", "name icon slug")
-        .populate("seller", "displayName uid");
+        .populate("seller", "displayName uid")
+        .lean();
 
     if (listings.length === 0) {
         const isFilterActive = !!(searchParams.category || searchParams.condition || searchParams.search);

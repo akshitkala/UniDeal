@@ -120,3 +120,12 @@ body {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 768px) {
+  .listing-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .listing-sidebar {
+    position: static !important;
+  }
+}

@@ -12,10 +12,12 @@ export async function PATCH(req: Request) {
         const payload = payloadOrResponse;
 
         await connectDB();
-        const user = await User.findOne({ uid: payload.uid });
+        const [user, body] = await Promise.all([
+            User.findOne({ uid: payload.uid }).lean(),
+            req.json()
+        ]);
         if (!user) return NextResponse.json({ error: "Admin user not found" }, { status: 404 });
 
-        const body = await req.json();
         const { approvalMode, maintenanceMode, allowNewListings } = body;
 
         const update: any = {};
@@ -53,7 +55,7 @@ export async function GET() {
         if (userOrResponse instanceof NextResponse) return userOrResponse;
 
         await connectDB();
-        const config = await SystemConfig.findOne({ _id: "global" });
+        const config = await SystemConfig.findOne({ _id: "global" }).lean();
         return NextResponse.json({ config });
     } catch (error) {
         return NextResponse.json({ error: "Failed to fetch config" }, { status: 500 });

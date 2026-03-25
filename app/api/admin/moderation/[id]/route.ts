@@ -11,8 +11,12 @@ export async function PATCH(
         const adminOrResponse = await requireAdmin();
         if (adminOrResponse instanceof NextResponse) return adminOrResponse;
 
-        const { id } = await params;
-        const { status } = await request.json();
+        const [paramsData, body] = await Promise.all([
+            params,
+            request.json()
+        ]);
+        const { id } = paramsData;
+        const { status } = body;
 
         if (!["pending", "resolved", "dismissed"].includes(status)) {
             return NextResponse.json({ error: "Invalid status" }, { status: 400 });

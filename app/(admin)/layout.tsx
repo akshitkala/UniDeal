@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { verifyAccessToken } from '@/lib/auth/jwt';
 import Topbar from '@/components/layout/Topbar';
-import AdminSidebar from '@/components/layout/AdminSidebar';
+import AdminSidebar from '@/components/admin/AdminSidebar';
 import { SellProvider } from '@/components/listing/SellProvider';
 import AdminLayoutClient from '@/components/layout/AdminLayoutClient';
 

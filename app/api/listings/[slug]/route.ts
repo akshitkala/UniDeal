@@ -14,15 +14,19 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
         const { slug } = await params;
 
         const listing = await Listing.findOne({ slug, isDeleted: false })
-            .populate('seller', 'displayName photoURL emailVerified')
+            .select('-__v')
+            .populate('seller', 'name whatsapp phone isVerified registrationNumber')
             .populate('category', 'name slug icon')
             .lean();
 
-        if (!listing) {
-            return NextResponse.json({ error: 'Listing not found' }, { status: 404 });
-        }
-
-        return NextResponse.json({ listing });
+        return NextResponse.json(
+            { listing },
+            {
+                headers: {
+                    'Cache-Control': 's-maxage=60, stale-while-revalidate=120',
+                },
+            }
+        );
     } catch (error: any) {
         console.error("GET Listing Detail Error:", error);
         return NextResponse.json({ error: "Failed to fetch listing details" }, { status: 500 });
@@ -36,11 +40,15 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ sl
         if (authRes instanceof NextResponse) return authRes;
         const tokenUser = authRes as TokenPayload;
 
-        const { slug } = await params;
+        const [paramsData, user] = await Promise.all([
+            params,
+            User.findOne({ uid: tokenUser.uid }).lean()
+        ]);
+        const { slug } = paramsData;
+
         const listing = await Listing.findOne({ slug, isDeleted: false });
         if (!listing) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-        const user = await User.findOne({ uid: tokenUser.uid });
         const isOwner = listing.seller.toString() === user?._id.toString();
 
         if (!isOwner) {
@@ -101,11 +109,15 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ s
         if (authRes instanceof NextResponse) return authRes;
         const tokenUser = authRes as TokenPayload;
 
-        const { slug } = await params;
+        const [paramsData, user] = await Promise.all([
+            params,
+            User.findOne({ uid: tokenUser.uid }).lean()
+        ]);
+        const { slug } = paramsData;
+
         const listing = await Listing.findOne({ slug, isDeleted: false });
         if (!listing) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-        const user = await User.findOne({ uid: tokenUser.uid });
         const isAdmin = ['admin', 'superadmin'].includes(user?.role || '');
         const isOwner = listing.seller.toString() === user?._id.toString();
 

@@ -9,11 +9,15 @@ export async function POST(req: Request, { params }: { params: Promise<{ slug: s
     const authRes = await requireAuth();
     if (authRes instanceof NextResponse) return authRes;
 
-    const { slug } = await params;
+    const [paramsData, user] = await Promise.all([
+        params,
+        User.findOne({ uid: authRes.uid })
+    ]);
+    const { slug } = paramsData;
+
     const listing = await Listing.findOne({ slug, isDeleted: false });
     if (!listing) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-    const user = await User.findOne({ uid: authRes.uid });
     if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
     const alreadySaved = user.savedListings.some((id: any) => id.toString() === listing._id.toString());

@@ -25,10 +25,14 @@ async function SavedListings() {
     }
 
     await connectDB();
-    const user = await User.findOne({ uid: userUid }).populate({
-        path: "savedListings",
-        populate: { path: "category", select: "name icon slug" }
-    });
+    const user = await User.findOne({ uid: userUid })
+        .select('savedListings')
+        .populate({
+            path: "savedListings",
+            select: "title price images condition slug category seller status createdAt",
+            populate: { path: "category", select: "name icon slug" }
+        })
+        .lean();
 
     if (!user || user.savedListings.length === 0) {
         return (

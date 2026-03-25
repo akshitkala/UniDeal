@@ -13,11 +13,15 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ slu
         if (authRes instanceof NextResponse) return authRes;
         const tokenUser = authRes as TokenPayload;
 
-        const { slug } = await params;
+        const [paramsData, user] = await Promise.all([
+            params,
+            User.findOne({ uid: tokenUser.uid })
+        ]);
+        const { slug } = paramsData;
+
         const listing = await Listing.findOne({ slug, isDeleted: false });
         if (!listing) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-        const user = await User.findOne({ uid: tokenUser.uid });
         if (!user || listing.seller.toString() !== user._id.toString()) {
             return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }

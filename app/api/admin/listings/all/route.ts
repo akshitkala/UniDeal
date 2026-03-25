@@ -12,8 +12,9 @@ export async function GET(req: NextRequest) {
 
         await connectDB();
         const listings = await Listing.find({ isDeleted: false })
-            .populate('seller', 'displayName')
-            .populate('category', 'name')
+            .select('title price images condition slug category createdAt seller status')
+            .populate('seller', 'name email registrationNumber')
+            .populate('category', 'name slug')
             .sort({ createdAt: -1 })
             .lean();
         return NextResponse.json({ listings });

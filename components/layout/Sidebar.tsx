@@ -159,28 +159,19 @@ export default function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
                 <NavItem href="/profile" icon="👤" label="Profile" isCollapsed={isCollapsed} searchParams={searchParams} />
             </div>
 
+            {/* Admin Panel button stays at the bottom */}
             {isAdmin && (
-                <>
-                    <SectionLabel isCollapsed={isCollapsed}>ADMIN</SectionLabel>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                        <NavItem href="/admin" icon="📋" label="Pending" isCollapsed={isCollapsed} searchParams={searchParams} />
-                        <NavItem href="/admin/listings" icon="📦" label="Listings" isCollapsed={isCollapsed} searchParams={searchParams} />
-                        <NavItem href="/admin/reports" icon="⚑" label="Reports" isCollapsed={isCollapsed} searchParams={searchParams} />
-                        <NavItem href="/admin/users" icon="👥" label="Users" isCollapsed={isCollapsed} searchParams={searchParams} />
-                    </div>
-                </>
-            )}
-
-            {isSuperadmin && (
-                <>
-                    <SectionLabel isCollapsed={isCollapsed}>SUPER</SectionLabel>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                        <NavItem href="/super-admin" icon="📊" label="Overview" isCollapsed={isCollapsed} searchParams={searchParams} />
-                        <NavItem href="/super-admin/config" icon="⚙" label="System" isCollapsed={isCollapsed} searchParams={searchParams} />
-                        <NavItem href="/super-admin/activity" icon="📜" label="Activity" isCollapsed={isCollapsed} searchParams={searchParams} />
-                        <NavItem href="/super-admin/users" icon="👤" label="Roles" isCollapsed={isCollapsed} searchParams={searchParams} />
-                    </div>
-                </>
+                <Link href="/admin"
+                    style={{
+                        display: 'flex', alignItems: 'center', gap: 12, padding: "12px",
+                        background: 'var(--bg-2)', borderRadius: 'var(--r)',
+                        color: 'var(--ink)', textDecoration: 'none', marginTop: 'auto',
+                        fontWeight: 600, fontSize: 13
+                    }}
+                >
+                    <span style={{ fontSize: 18 }}>🛡️</span>
+                    {!isCollapsed && (isSuperadmin ? "Super Admin Panel →" : "Admin Panel →")}
+                </Link>
             )}
         </aside>
     );

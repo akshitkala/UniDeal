@@ -16,8 +16,12 @@ export async function PATCH(
         const admin = adminOrResponse as TokenPayload;
 
         await connectDB();
-        const { id } = await params;
-        const { action, rejectionReason } = await req.json();
+        const [paramsData, body] = await Promise.all([
+            params,
+            req.json()
+        ]);
+        const { id } = paramsData;
+        const { action, rejectionReason } = body;
 
         const listing = await Listing.findById(id);
         if (!listing) return NextResponse.json({ error: 'Not found' }, { status: 404 });

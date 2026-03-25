@@ -15,8 +15,12 @@ export async function PATCH(
         const actor = adminOrResponse as TokenPayload;
 
         await connectDB();
-        const { uid } = await params;
-        const { action, role } = await req.json();
+        const [paramsData, body] = await Promise.all([
+            params,
+            req.json()
+        ]);
+        const { uid } = paramsData;
+        const { action, role } = body;
 
         const target = await User.findOne({ uid });
         if (!target) return NextResponse.json({ error: 'User not found' }, { status: 404 });

@@ -1,26 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '@/lib/db/connect';
-import { requireAuth } from '@/middleware/auth';
-import { User } from '@/models/User';
-import { TokenPayload } from '@/lib/auth/jwt';
+import { NextRequest, NextResponse } from "next/server";
+import { connectDB } from "@/lib/db/connect";
+import { TokenPayload } from "@/lib/auth/jwt";
+import { User } from "@/models/User";
+import { requireAuth } from "@/middleware/auth";
+import { UserRepository } from '@/lib/db/repositories/user.repository';
+import { ListingRepository } from '@/lib/db/repositories/listing.repository';
 
 export async function GET(req: NextRequest) {
     try {
-        const userOrResponse = await requireAuth();
-        if (userOrResponse instanceof NextResponse) return userOrResponse;
-        const tokenUser = userOrResponse as TokenPayload;
+        const user = await requireAuth();
+        if (user instanceof NextResponse) return user;
 
         await connectDB();
-        const user = await User.findOne({ uid: tokenUser.uid });
-        if (!user) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+        
+        const [profile, listings] = await Promise.all([
+            UserRepository.findByUid(user.uid),
+            ListingRepository.findByUser(user._id.toString())
+        ]);
+
+        if (!profile) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
         return NextResponse.json({
-            displayName:    user.displayName,
-            bio:            user.bio,
-            location:       user.location,
-            phone:          user.phone,
-            whatsappNumber: user.whatsappNumber,
-            photoURL:       user.photoURL,
+            user: profile,
+            listings
         });
     } catch (error) {
         console.error('GET Profile Error:', error);
@@ -35,9 +37,11 @@ export async function PATCH(req: NextRequest) {
         const tokenUser = userOrResponse as TokenPayload;
 
         await connectDB();
-        const { displayName, bio, location, phone, whatsappNumber } = await req.json();
-
-        const user = await User.findOne({ uid: tokenUser.uid });
+        const [body, user] = await Promise.all([
+            req.json(),
+            User.findOne({ uid: tokenUser.uid })
+        ]);
+        const { displayName, bio, location, phone, whatsappNumber } = body;
         if (!user) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
         if (displayName !== undefined)    user.displayName    = displayName;

@@ -1,12 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/db/connect";
 import { Listing } from "@/models/Listing";
 import { Category } from "@/models/Category";
 import { User } from "@/models/User";
-import '@/models/Listing';
-import '@/models/Category';
-import '@/models/User';
 import { SystemConfig } from "@/models/SystemConfig";
+import { ListingRepository } from '@/lib/db/repositories/listing.repository';
 import { requireAuth, requireVerified } from "@/middleware/auth";
 import { TokenPayload } from "@/lib/auth/jwt";
 import { moderateListing } from "@/lib/ai/moderation";
@@ -24,7 +22,7 @@ export async function GET(request: Request) {
         const query: any = { status: "approved", isExpired: false, isDeleted: false };
 
         if (categorySlug) {
-            const category = await Category.findOne({ slug: categorySlug });
+            const category = await Category.findOne({ slug: categorySlug }).select('_id').lean();
             if (category) query.category = category._id;
         }
 
@@ -33,41 +31,17 @@ export async function GET(request: Request) {
         }
 
         if (search) {
-            // Use MongoDB full-text index — much faster than regex scan
             query.$text = { $search: search };
+            query.score = { $meta: 'textScore' };
         }
 
         const page = parseInt(searchParams.get("page") ?? "1");
         const limit = parseInt(searchParams.get("limit") ?? "12");
-        const skip = (page - 1) * limit;
 
-        const sortMap: any = {
-            newest: { createdAt: -1 },
-            oldest: { createdAt: 1 },
-            price_asc: { price: 1 },
-            price_desc: { price: -1 },
-        };
+        const result = await ListingRepository.findPaginated(query, page, limit);
 
-        const [listings, total] = await Promise.all([
-            Listing.find(query)
-                .sort(search ? { score: { $meta: 'textScore' } } : (sortMap[sort] || sortMap.newest))
-                .skip(skip)
-                .limit(limit)
-                .populate("category", "name icon slug")
-                .populate("seller", "displayName uid emailVerified")
-                .lean(),
-            Listing.countDocuments(query),
-        ]);
-
-        return NextResponse.json({
-            listings,
-            pagination: {
-                page,
-                limit,
-                total,
-                totalPages: Math.ceil(total / limit),
-                hasMore: page * limit < total,
-            },
+        return NextResponse.json(result, {
+            headers: { 'Cache-Control': 's-maxage=30, stale-while-revalidate=60' },
         });
     } catch (error) {
         console.error("GET Listings Error:", error);
@@ -86,7 +60,11 @@ export async function POST(request: Request) {
         const verifiedPayload = verifiedOrResponse;
 
         await connectDB();
-        const config = await SystemConfig.findById("global");
+        const [config, user] = await Promise.all([
+            SystemConfig.findById("global").lean(),
+            User.findOne({ uid: userPayload.uid }).select("+email").lean()
+        ]);
+
         if (config && !config.allowNewListings) {
             return NextResponse.json({ error: "New listings are paused" }, { status: 503 });
         }
@@ -98,7 +76,6 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "WhatsApp number is required" }, { status: 400 });
         }
 
-        const user = await User.findOne({ uid: userPayload.uid }).select("+email");
         if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
         const imageUrl = Array.isArray(images) ? images[0] : undefined;

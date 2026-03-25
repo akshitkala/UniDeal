@@ -1,0 +1,76 @@
+
+╔══════════════════════════════════════════════════════════╗
+║         UNIDEAL DUPLICATION AUDIT REPORT                 ║
+╚══════════════════════════════════════════════════════════╝
+
+Generated: 26/3/2026, 1:36:11 am
+Issues:    0 high / 10 medium / 5 low
+
+──────────────────────────────────────────────────────────
+🔴 HIGH PRIORITY (fix these)
+──────────────────────────────────────────────────────────
+  None
+
+──────────────────────────────────────────────────────────
+🟡 MEDIUM PRIORITY (refactor when possible)
+──────────────────────────────────────────────────────────
+  [Functions] Repeated: handleDelete()
+  → Function "handleDelete" appears in 3 files
+  Files: /app/(admin)/admin/listings/page.tsx, /app/(admin)/super-admin/categories/page.tsx, /app/(main)/dashboard/page.tsx
+
+  [Styles] hardcoded fontWeight
+  → Font weights hardcoded everywhere — appears 72 times across 13 files
+  Files: /app/(admin)/admin/page.tsx (×4), /app/(admin)/admin/users/page.tsx (×3), /app/(admin)/moderation/page.tsx (×3)
+
+  [API Fetches] Duplicate fetch: GET /api/categories
+  → Categories fetched in multiple components — should use a shared hook or context
+  Files: /app/(admin)/super-admin/categories/page.tsx, /components/listing/SellModal.tsx
+
+  [API Fetches] Duplicate fetch: GET /api/users/profile
+  → Profile fetched in multiple components — should be in AuthContext
+  Files: /app/(main)/profile/page.tsx, /components/listing/SellModal.tsx
+
+  [Similar Files] 62% similar
+  → These files share significant code and may be candidates for merging or extracting shared logic
+  Files: /components/layout/AdminLayoutClient.tsx, /components/layout/MainLayoutClient.tsx
+
+  [UI Duplication] Time Ago formatter
+  → timeAgo function likely defined in multiple files — extract to lib/utils/time.ts
+  Files: /app/(admin)/moderation/page.tsx, /app/(admin)/super-admin/activity/page.tsx, /app/(main)/dashboard/page.tsx
+
+  [UI Duplication] Listing Card
+  → Listing card markup potentially duplicated
+  Files: /app/(main)/listings/[slug]/page.tsx, /app/api/admin/listings/[id]/route.ts, /app/api/listings/[slug]/contact/route.ts
+
+  [UI Duplication] Loading spinner
+  → Loading states may be inconsistent across pages
+  Files: /app/(admin)/admin/listings/page.tsx, /app/(admin)/admin/page.tsx, /app/(admin)/admin/reports/page.tsx
+
+  [UI Duplication] Empty state
+  → Empty state UI duplicated across pages
+  Files: /app/(admin)/admin/listings/page.tsx, /app/(admin)/admin/page.tsx, /app/(admin)/super-admin/activity/page.tsx
+
+  [UI Duplication] Toast notification
+  → Toast notification styled inline in multiple pages — should be a single <Toast /> component
+  Files: /app/(admin)/super-admin/activity/page.tsx, /app/(admin)/super-admin/categories/page.tsx, /components/listing/ContactOverlay.tsx
+
+──────────────────────────────────────────────────────────
+🟢 LOW PRIORITY (nice to have)
+──────────────────────────────────────────────────────────
+  [Components] No duplicate component names
+  → All component names are unique across files
+
+  [Imports] Potentially unused imports
+  → cookies, verifyAccessToken — verify and remove if unused
+
+  [Imports] Potentially unused imports
+  → Suspense — verify and remove if unused
+
+  [Imports] Potentially unused imports
+  → NextRequest — verify and remove if unused
+
+  [Imports] Potentially unused imports
+  → useRouter — verify and remove if unused
+
+──────────────────────────────────────────────────────────
+Full JSON report: duplication-report.json

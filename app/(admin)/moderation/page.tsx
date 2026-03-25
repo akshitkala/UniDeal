@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { formatDate } from "@/lib/utils/time";
 import Image from "next/image";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
@@ -63,9 +64,7 @@ function ModerationCard({ r, onAction }: { r: any; onAction: any }) {
                     </div>
                 )}
 
-                <div style={{ fontSize: 11, color: "var(--ink-4)" }}>
-                    By: {r.reporter?.displayName || "System AI"} • On: {new Date(r.createdAt).toLocaleDateString()}
-                </div>
+                    By: {r.reporter?.displayName || "System AI"} • On: {formatDate(r.createdAt)}
             </div>
 
             <div style={{

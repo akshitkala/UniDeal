@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useBreakpoint } from '@/hooks/useBreakpoint';
+import { validateForm, FIELD_RULES } from "@/lib/validation/client-validate";
+import FieldError from "@/components/ui/FieldError";
 
 interface Category {
     _id: string;
@@ -17,6 +19,7 @@ export default function SuperAdminCategories() {
     const [editingCategory, setEditingCategory] = useState<Category | null>(null);
     const [form, setForm] = useState({ name: '', slug: '', icon: '', order: 0 });
     const [saving, setSaving] = useState(false);
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
     const breakpoint = useBreakpoint();
     const isMobile = breakpoint === "mobile";
@@ -70,7 +73,20 @@ export default function SuperAdminCategories() {
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
+
+        const errors = validateForm({
+            name: { value: form.name, rules: FIELD_RULES.categoryName },
+            slug: { value: form.slug, rules: FIELD_RULES.categoryName }, // Category name rules apply to slug too
+            icon: { value: form.icon, rules: { required: true } },
+        });
+
+        if (Object.keys(errors).length > 0) {
+            setFieldErrors(errors);
+            return;
+        }
+
         setSaving(true);
+        setFieldErrors({});
 
         try {
             const url = editingCategory
@@ -92,7 +108,7 @@ export default function SuperAdminCategories() {
             setIsModalOpen(false);
             await load();
         } catch (err: any) {
-            alert(err.message);
+            setFieldErrors({ general: err.message });
         } finally {
             setSaving(false);
         }
@@ -231,7 +247,10 @@ export default function SuperAdminCategories() {
                                 <input
                                     type="text" required
                                     value={form.name}
-                                    onChange={e => handleNameChange(e.target.value)}
+                                    onChange={e => {
+                                        handleNameChange(e.target.value);
+                                        if (fieldErrors.name) setFieldErrors(f => ({ ...f, name: '' }));
+                                    }}
                                     placeholder="e.g. Electronics"
                                     style={{
                                         width: '100%', padding: '12px 14px',
@@ -239,6 +258,7 @@ export default function SuperAdminCategories() {
                                         fontSize: 14, outline: 'none'
                                     }}
                                 />
+                                <FieldError error={fieldErrors.name} />
                             </div>
 
                             <div>
@@ -246,7 +266,10 @@ export default function SuperAdminCategories() {
                                 <input
                                     type="text" required
                                     value={form.slug}
-                                    onChange={e => setForm(f => ({ ...f, slug: e.target.value }))}
+                                    onChange={e => {
+                                        setForm(f => ({ ...f, slug: e.target.value }));
+                                        if (fieldErrors.slug) setFieldErrors(f => ({ ...f, slug: '' }));
+                                    }}
                                     disabled={editingCategory?.slug === 'other'}
                                     style={{
                                         width: '100%', padding: '12px 14px',
@@ -255,6 +278,7 @@ export default function SuperAdminCategories() {
                                         background: editingCategory?.slug === 'other' ? 'var(--bg-2)' : 'transparent'
                                     }}
                                 />
+                                <FieldError error={fieldErrors.slug} />
                                 {editingCategory?.slug === 'other' && (
                                     <p style={{ fontSize: 11, color: 'var(--ink-4)', marginTop: 4 }}>The "other" slug is reserved.</p>
                                 )}
@@ -266,7 +290,10 @@ export default function SuperAdminCategories() {
                                     <input
                                         type="text" required
                                         value={form.icon}
-                                        onChange={e => setForm(f => ({ ...f, icon: e.target.value }))}
+                                        onChange={e => {
+                                            setForm(f => ({ ...f, icon: e.target.value }));
+                                            if (fieldErrors.icon) setFieldErrors(f => ({ ...f, icon: '' }));
+                                        }}
                                         placeholder="e.g. 💻"
                                         style={{
                                             width: '100%', padding: '12px 14px',
@@ -274,6 +301,7 @@ export default function SuperAdminCategories() {
                                             fontSize: 14, outline: 'none'
                                         }}
                                     />
+                                    <FieldError error={fieldErrors.icon} />
                                 </div>
                                 <div>
                                     <label style={{ fontSize: 12, fontWeight: 700, color: 'var(--ink-4)', display: 'block', marginBottom: 6 }}>ORDER</label>
@@ -315,6 +343,7 @@ export default function SuperAdminCategories() {
                                     {saving ? 'Saving...' : 'Save Category'}
                                 </button>
                             </div>
+                            <FieldError error={fieldErrors.general} />
                         </form>
                     </div>
                 </div>

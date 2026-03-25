@@ -1,0 +1,212 @@
+{
+  "generatedAt": "2026-03-25T20:06:11.052Z",
+  "summary": {
+    "total": 15,
+    "high": 0,
+    "medium": 10,
+    "low": 5
+  },
+  "issues": [
+    {
+      "category": "Components",
+      "issue": "No duplicate component names",
+      "severity": "LOW",
+      "detail": "All component names are unique across files"
+    },
+    {
+      "category": "Functions",
+      "issue": "Repeated: handleDelete()",
+      "severity": "MEDIUM",
+      "detail": "Function \"handleDelete\" appears in 3 files",
+      "files": [
+        "/app/(admin)/admin/listings/page.tsx",
+        "/app/(admin)/super-admin/categories/page.tsx",
+        "/app/(main)/dashboard/page.tsx"
+      ]
+    },
+    {
+      "category": "Styles",
+      "issue": "hardcoded fontWeight",
+      "severity": "MEDIUM",
+      "detail": "Font weights hardcoded everywhere — appears 72 times across 13 files",
+      "files": [
+        "/app/(admin)/admin/page.tsx (×4)",
+        "/app/(admin)/admin/users/page.tsx (×3)",
+        "/app/(admin)/moderation/page.tsx (×3)",
+        "/app/(admin)/super-admin/categories/page.tsx (×9)",
+        "/app/(admin)/super-admin/config/page.tsx (×7)",
+        "/app/(admin)/super-admin/page.tsx (×4)",
+        "/app/(admin)/super-admin/users/page.tsx (×4)",
+        "/app/(main)/dashboard/page.tsx (×8)",
+        "/app/(main)/listings/[slug]/page.tsx (×13)",
+        "/app/(main)/profile/page.tsx (×8)",
+        "/app/(main)/saved/page.tsx (×3)",
+        "/components/layout/Topbar.tsx (×3)",
+        "/components/listing/EmptyStateHome.tsx (×3)"
+      ]
+    },
+    {
+      "category": "API Fetches",
+      "issue": "Duplicate fetch: GET /api/categories",
+      "severity": "MEDIUM",
+      "detail": "Categories fetched in multiple components — should use a shared hook or context",
+      "files": [
+        "/app/(admin)/super-admin/categories/page.tsx",
+        "/components/listing/SellModal.tsx"
+      ]
+    },
+    {
+      "category": "API Fetches",
+      "issue": "Duplicate fetch: GET /api/users/profile",
+      "severity": "MEDIUM",
+      "detail": "Profile fetched in multiple components — should be in AuthContext",
+      "files": [
+        "/app/(main)/profile/page.tsx",
+        "/components/listing/SellModal.tsx"
+      ]
+    },
+    {
+      "category": "Similar Files",
+      "issue": "62% similar",
+      "severity": "MEDIUM",
+      "detail": "These files share significant code and may be candidates for merging or extracting shared logic",
+      "files": [
+        "/components/layout/AdminLayoutClient.tsx",
+        "/components/layout/MainLayoutClient.tsx"
+      ]
+    },
+    {
+      "category": "Imports",
+      "issue": "Potentially unused imports",
+      "severity": "LOW",
+      "detail": "cookies, verifyAccessToken — verify and remove if unused",
+      "files": [
+        "/app/(main)/layout.tsx"
+      ]
+    },
+    {
+      "category": "Imports",
+      "issue": "Potentially unused imports",
+      "severity": "LOW",
+      "detail": "Suspense — verify and remove if unused",
+      "files": [
+        "/app/(main)/page.tsx"
+      ]
+    },
+    {
+      "category": "Imports",
+      "issue": "Potentially unused imports",
+      "severity": "LOW",
+      "detail": "NextRequest — verify and remove if unused",
+      "files": [
+        "/app/api/listings/route.ts"
+      ]
+    },
+    {
+      "category": "Imports",
+      "issue": "Potentially unused imports",
+      "severity": "LOW",
+      "detail": "useRouter — verify and remove if unused",
+      "files": [
+        "/lib/auth/AuthProvider.tsx"
+      ]
+    },
+    {
+      "category": "UI Duplication",
+      "issue": "Time Ago formatter",
+      "severity": "MEDIUM",
+      "detail": "timeAgo function likely defined in multiple files — extract to lib/utils/time.ts",
+      "files": [
+        "/app/(admin)/moderation/page.tsx",
+        "/app/(admin)/super-admin/activity/page.tsx",
+        "/app/(main)/dashboard/page.tsx",
+        "/app/(main)/listings/[slug]/page.tsx",
+        "/app/(main)/page.tsx",
+        "/app/(main)/saved/page.tsx",
+        "/app/api/admin/listings/all/route.ts",
+        "/app/api/admin/listings/route.ts",
+        "/app/api/admin/moderation/route.ts",
+        "/app/api/admin/reports/route.ts",
+        "/app/api/admin/users/route.ts",
+        "/app/api/super-admin/activity/route.ts",
+        "/app/api/user/listings/route.ts",
+        "/components/listing/ListingCard.tsx",
+        "/lib/db/repositories/listing.repository.ts",
+        "/lib/db/repositories/stats.repository.ts",
+        "/lib/db/repositories/user.repository.ts",
+        "/lib/utils/time.ts"
+      ]
+    },
+    {
+      "category": "UI Duplication",
+      "issue": "Listing Card",
+      "severity": "MEDIUM",
+      "detail": "Listing card markup potentially duplicated",
+      "files": [
+        "/app/(main)/listings/[slug]/page.tsx",
+        "/app/api/admin/listings/[id]/route.ts",
+        "/app/api/listings/[slug]/contact/route.ts",
+        "/app/api/listings/[slug]/relist/route.ts",
+        "/app/api/listings/[slug]/route.ts",
+        "/app/api/super-admin/listings/[id]/restore/route.ts"
+      ]
+    },
+    {
+      "category": "UI Duplication",
+      "issue": "Loading spinner",
+      "severity": "MEDIUM",
+      "detail": "Loading states may be inconsistent across pages",
+      "files": [
+        "/app/(admin)/admin/listings/page.tsx",
+        "/app/(admin)/admin/page.tsx",
+        "/app/(admin)/admin/reports/page.tsx",
+        "/app/(admin)/admin/users/page.tsx",
+        "/app/(admin)/moderation/page.tsx",
+        "/app/(admin)/super-admin/activity/page.tsx",
+        "/app/(admin)/super-admin/categories/page.tsx",
+        "/app/(admin)/super-admin/config/page.tsx",
+        "/app/(admin)/super-admin/listings/page.tsx",
+        "/app/(admin)/super-admin/page.tsx",
+        "/app/(admin)/super-admin/users/page.tsx",
+        "/app/(auth)/login/page.tsx",
+        "/app/(main)/dashboard/page.tsx",
+        "/app/(main)/listings/[slug]/page.tsx",
+        "/app/(main)/profile/page.tsx",
+        "/app/(main)/saved/page.tsx",
+        "/components/listing/ContactButton.tsx",
+        "/components/listing/ContactOverlay.tsx",
+        "/components/listing/ListingCard.tsx",
+        "/components/listing/ListingsInfiniteGrid.tsx",
+        "/components/listing/PhotoUploadZone.tsx",
+        "/lib/auth/AuthProvider.tsx"
+      ]
+    },
+    {
+      "category": "UI Duplication",
+      "issue": "Empty state",
+      "severity": "MEDIUM",
+      "detail": "Empty state UI duplicated across pages",
+      "files": [
+        "/app/(admin)/admin/listings/page.tsx",
+        "/app/(admin)/admin/page.tsx",
+        "/app/(admin)/super-admin/activity/page.tsx",
+        "/app/(admin)/super-admin/listings/page.tsx",
+        "/app/(main)/dashboard/page.tsx",
+        "/app/api/super-admin/categories/[id]/route.ts",
+        "/components/listing/EmptyStateHome.tsx"
+      ]
+    },
+    {
+      "category": "UI Duplication",
+      "issue": "Toast notification",
+      "severity": "MEDIUM",
+      "detail": "Toast notification styled inline in multiple pages — should be a single <Toast /> component",
+      "files": [
+        "/app/(admin)/super-admin/activity/page.tsx",
+        "/app/(admin)/super-admin/categories/page.tsx",
+        "/components/listing/ContactOverlay.tsx"
+      ]
+    }
+  ],
+  "topPriority": []
+}

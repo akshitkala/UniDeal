@@ -7,6 +7,8 @@ import { useSell } from "@/components/listing/SellProvider";
 import { useAuth } from "@/lib/auth/AuthProvider";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
+import { containsInjection, FIELD_RULES } from "@/lib/validation/client-validate";
+
 export default function Topbar({ onOpenMenu }: { onOpenMenu?: () => void }) {
     const router = useRouter();
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -28,8 +30,16 @@ export default function Topbar({ onOpenMenu }: { onOpenMenu?: () => void }) {
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const search = formData.get("search") as string;
+        const search = (formData.get("search") as string || "").trim();
+        
         if (search) {
+            // Block injection patterns
+            if (containsInjection(search)) {
+                return; // Silently ignore or show feedback. Here we just don't navigate.
+            }
+            if (search.length > FIELD_RULES.search.maxLength) {
+                return;
+            }
             router.push(`/?search=${encodeURIComponent(search)}`);
         } else {
             router.push("/");

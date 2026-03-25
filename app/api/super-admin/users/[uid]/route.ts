@@ -15,10 +15,15 @@ export async function PATCH(
         const actor = superOrResponse as TokenPayload;
 
         await connectDB();
-        const { uid } = await params;
-        const { role, action } = await req.json();
-
+        const [paramsData, body] = await Promise.all([
+            params,
+            req.json()
+        ]);
+        const { uid } = paramsData;
         const target = await User.findOne({ uid });
+        const { uid: targetUid } = paramsData;
+        const { role, action } = body;
+
         if (!target) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
         if (action === 'ban') {

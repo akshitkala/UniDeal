@@ -6,25 +6,9 @@ import Topbar from "@/components/layout/Topbar";
 import BottomNav from "@/components/layout/BottomNav";
 import MobileDrawer from "@/components/layout/MobileDrawer";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
-import { ListingDrawerProvider, useListingDrawer } from "@/components/listing/ListingDrawerContext";
-import dynamic from 'next/dynamic';
 
-const ListingDetailDrawer = dynamic(
-    () => import("@/components/listing/ListingDetailDrawer"),
-    { ssr: false }
-);
 
-function DrawerContainer() {
-    const { isOpen, slug, initialData, closeListing } = useListingDrawer();
-    return (
-        <ListingDetailDrawer
-            isOpen={isOpen}
-            slug={slug}
-            initialData={initialData}
-            onClose={closeListing}
-        />
-    );
-}
+
 
 export default function MainLayoutClient({ children }: { children: React.ReactNode }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,8 +19,7 @@ export default function MainLayoutClient({ children }: { children: React.ReactNo
     const sidebarWidth = isTablet ? 64 : 240;
 
     return (
-        <ListingDrawerProvider>
-            <div style={{ display: "flex", height: "100dvh", overflow: "hidden", flexDirection: "column" }}>
+        <div style={{ display: "flex", height: "100dvh", overflow: "hidden", flexDirection: "column" }}>
                 <Topbar onOpenMenu={() => setIsMenuOpen(true)} />
 
                 <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
@@ -61,8 +44,6 @@ export default function MainLayoutClient({ children }: { children: React.ReactNo
 
                 {isMobile && <BottomNav />}
                 <MobileDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-                <DrawerContainer />
             </div>
-        </ListingDrawerProvider>
     );
 }

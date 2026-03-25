@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
-const URI = process.env.MONGODB_URI!;
+const MONGODB_URI = process.env.MONGODB_URI!;
 
-if (!URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+if (!MONGODB_URI) {
+  throw new Error('MONGODB_URI environment variable is not defined');
 }
 
 declare global {
@@ -21,10 +21,13 @@ export async function connectDB() {
   if (global._mongoConn.conn) return global._mongoConn.conn;
 
   if (!global._mongoConn.promise) {
-    global._mongoConn.promise = mongoose.connect(URI, {
-      maxPoolSize: 10,
+    global._mongoConn.promise = mongoose.connect(MONGODB_URI, {
       bufferCommands: false,
-      family: 4,
+      maxPoolSize: 10,
+      minPoolSize: 2,
+      maxIdleTimeMS: 30000,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
     });
   }
 

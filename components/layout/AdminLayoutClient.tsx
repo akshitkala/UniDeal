@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import AdminSidebar from "@/components/layout/AdminSidebar";
+import AdminSidebar from "@/components/admin/AdminSidebar";
 import Topbar from "@/components/layout/Topbar";
 import BottomNav from "@/components/layout/BottomNav";
 import MobileDrawer from "@/components/layout/MobileDrawer";
@@ -36,7 +36,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
             </div>
 
             {isMobile && <BottomNav />}
-            <MobileDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} isAdmin />
+            <MobileDrawer isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         </div>
     );
 }

@@ -17,7 +17,8 @@ export async function GET(req: NextRequest) {
 
         const [activities, total] = await Promise.all([
             AdminActivity.find()
-                .populate('actor', 'displayName email uid')
+                .select('action actor target metadata timestamp')
+                .populate('actor', 'name email')
                 .sort({ timestamp: -1, createdAt: -1 })
                 .skip((page - 1) * limit)
                 .limit(limit)
@@ -28,7 +29,7 @@ export async function GET(req: NextRequest) {
         const result = (activities as any[]).map((a) => ({
             ...a,
             // Resolve actor to a readable name
-            actorName: a.actor?.displayName ?? a.actor?.email ?? a.actor?.uid ?? 'System',
+            actorName: a.actor?.name ?? a.actor?.email ?? 'System',
             // Mask IP unless caller requested full IPs
             ipAddress: showIps
                 ? a.ipAddress

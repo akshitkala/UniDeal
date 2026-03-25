@@ -8,11 +8,14 @@ import { TokenPayload } from "@/lib/auth/jwt";
 export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
         await connectDB();
-        const authRes = await requireSuperadmin();
+        const [authRes, paramsData] = await Promise.all([
+            requireSuperadmin(),
+            params
+        ]);
         if (authRes instanceof NextResponse) return authRes;
         const user = authRes as TokenPayload;
 
-        const { id } = await params;
+        const { id } = paramsData;
         const listing = await Listing.findById(id);
 
         if (!listing) {

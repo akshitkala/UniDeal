@@ -1,15 +1,20 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db/connect";
 import { Category } from "@/models/Category";
+import { Listing } from "@/models/Listing";
 import { requireSuperadmin } from "@/middleware/auth";
+import { invalidateCache } from '@/lib/db/cache/memory-cache';
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
     await connectDB();
     const auth = await requireSuperadmin();
     if (auth instanceof NextResponse) return auth;
 
-    const { id } = await params;
-    const body = await req.json();
+    const [paramsData, body] = await Promise.all([
+        params,
+        req.json()
+    ]);
+    const { id } = paramsData;
     const { name, slug, icon, order, isActive } = body;
 
     const category = await Category.findById(id);
@@ -38,6 +43,9 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
         { new: true }
     );
 
+    // After successful update:
+    invalidateCache('categories:all');
+
     return NextResponse.json({ success: true, category: updated });
 }
 
@@ -46,10 +54,12 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
     const auth = await requireSuperadmin();
     if (auth instanceof NextResponse) return auth;
 
-    const { id } = await params;
-
-    // Make sure the category exists
-    const category = await Category.findById(id);
+    const paramsData = await params;
+    const { id } = paramsData;
+    const [category, fallback] = await Promise.all([
+        Category.findById(id),
+        Category.findOne({ slug: 'other' })
+    ]);
     if (!category) {
         return NextResponse.json({ error: 'Category not found' }, { status: 404 });
     }
@@ -62,10 +72,9 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
         );
     }
 
-    // Find the "Other" fallback — create it if somehow missing
-    let fallback = await Category.findOne({ slug: 'other' });
-    if (!fallback) {
-        fallback = await Category.create({
+    let actualFallback = fallback;
+    if (!actualFallback) {
+        actualFallback = await Category.create({
             name: 'Other',
             icon: '📦',
             slug: 'other',
@@ -75,14 +84,16 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
 
     // Move ALL listings in this category to "Other"
     // This covers every status: active, pending, rejected, sold, expired, soft-deleted
-    const { Listing } = await import('@/models/Listing');
     const { modifiedCount } = await Listing.updateMany(
         { category: id },
-        { $set: { category: fallback._id } }
+        { $set: { category: actualFallback._id } }
     );
 
     // Delete the category
     await Category.findByIdAndDelete(id);
+
+    // After successful delete:
+    invalidateCache('categories:all');
 
     return NextResponse.json({
         success: true,

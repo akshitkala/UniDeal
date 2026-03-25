@@ -12,8 +12,9 @@ export async function GET(req: NextRequest) {
 
         await connectDB();
         const listings = await Listing.find({ isDeleted: true })
-            .populate("seller", "displayName")
-            .populate("category", "name")
+            .select('title price images condition slug category seller status deletedAt')
+            .populate("seller", "name")
+            .populate("category", "name slug")
             .sort({ deletedAt: -1 })
             .lean();
 

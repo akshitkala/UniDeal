@@ -10,7 +10,10 @@
     "seed:categories": "tsx seed/categories.ts",
     "seed:config": "tsx seed/systemConfig.ts",
     "seed:dummy": "tsx seed/dummy.ts",
-    "test:security": "tsx --tsconfig tsconfig.json --env-file=.env.local scripts/security-test.ts"
+    "test:security": "tsx --tsconfig tsconfig.json --env-file=.env.local scripts/security-test.ts",
+    "create-indexes": "tsx scripts/create-indexes.ts",
+    "audit": "tsx scripts/audit-backend.ts",
+    "audit:duplication": "tsx scripts/audit-duplication.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

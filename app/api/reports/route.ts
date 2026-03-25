@@ -7,17 +7,19 @@ import { TokenPayload } from "@/lib/auth/jwt";
 
 export async function POST(request: Request) {
     try {
-        const userOrResponse = await requireAuth();
-        if (userOrResponse instanceof NextResponse) return userOrResponse;
+        const [auth, verified] = await Promise.all([
+            requireAuth(),
+            requireVerified()
+        ]);
+        if (auth instanceof NextResponse) return auth;
+        if (verified instanceof NextResponse) return verified;
 
-        const verifiedOrResponse = await requireVerified();
-        if (verifiedOrResponse instanceof NextResponse) return verifiedOrResponse;
-
-        const userPayload = userOrResponse as TokenPayload;
+        const userPayload = auth as TokenPayload;
 
         // Rate limit: 10 reports per 24 hours per user (only if Upstash is configured)
         if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
             const { rateLimit } = await import('@/lib/rateLimit');
+            
             const { allowed } = await rateLimit(`report:${userPayload.uid}`, 10, 86400);
             if (!allowed) {
                 return NextResponse.json(
@@ -27,14 +29,15 @@ export async function POST(request: Request) {
             }
         }
 
-        const body = await request.json();
+        const [body, _] = await Promise.all([
+            request.json(),
+            connectDB()
+        ]);
         const { listingId, reason, description } = body;
 
         if (!listingId || !reason) {
             return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
         }
-
-        await connectDB();
 
         const user = await User.findOne({ uid: userPayload.uid });
         if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });

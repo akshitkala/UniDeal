@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { timeAgo, formatDate } from '@/lib/utils/time';
 
 const ACTION_META: Record<string, { label: string; color: string; icon: string }> = {
     CONFIG_UPDATED: { label: 'Config Updated', color: '#7c3aed', icon: '⚙' },
@@ -46,17 +47,7 @@ function formatMetadata(action: string, metadata: any): string {
     return str === '{}' ? '' : str;
 }
 
-function timeAgo(dateStr: string): string {
-    if (!dateStr) return '—';
-    const diff = Date.now() - new Date(dateStr).getTime();
-    const mins = Math.floor(diff / 60000);
-    const hours = Math.floor(diff / 3600000);
-    const days = Math.floor(diff / 86400000);
-    if (mins < 1) return 'just now';
-    if (mins < 60) return `${mins}m ago`;
-    if (hours < 24) return `${hours}h ago`;
-    return `${days}d ago`;
-}
+
 
 export default function ActivityPage() {
     const [activities, setActivities] = useState<any[]>([]);
@@ -165,10 +156,7 @@ export default function ActivityPage() {
                                 {timeAgo(date)}
                             </div>
                             <div style={{ fontSize: 11, color: 'var(--ink-5)', marginTop: 2, whiteSpace: 'nowrap' }}>
-                                {date ? new Date(date).toLocaleDateString('en-IN', {
-                                    day: 'numeric', month: 'short',
-                                    hour: '2-digit', minute: '2-digit',
-                                }) : ''}
+                                {date ? formatDate(date) : ''}
                             </div>
                         </div>
                     </div>

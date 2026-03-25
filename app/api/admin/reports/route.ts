@@ -12,8 +12,9 @@ export async function GET(req: NextRequest) {
 
         await connectDB();
         const reports = await Report.find({ status: 'pending' })
-            .populate('listing', 'title slug images')
-            .populate('reporter', 'displayName')
+            .select('reason description status createdAt listing reporter')
+            .populate('listing', 'title slug images status')
+            .populate('reporter', 'name email')
             .sort({ createdAt: -1 })
             .lean();
         return NextResponse.json({ reports });

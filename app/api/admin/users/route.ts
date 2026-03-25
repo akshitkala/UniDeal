@@ -9,8 +9,11 @@ export async function GET(req: NextRequest) {
         if (adminOrResponse instanceof NextResponse) return adminOrResponse;
 
         await connectDB();
-        const users = await User.find().sort({ createdAt: -1 }).lean();
-        return NextResponse.json({ users: JSON.parse(JSON.stringify(users)) });
+        const users = await User.find()
+            .select('name email role registrationNumber isVerified isBanned createdAt firebaseUid')
+            .sort({ createdAt: -1 })
+            .lean();
+        return NextResponse.json({ users });
     } catch (error) {
         console.error('GET Admin Users Error:', error);
         return NextResponse.json({ error: 'Failed to fetch users' }, { status: 500 });

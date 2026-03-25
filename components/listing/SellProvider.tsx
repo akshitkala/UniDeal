@@ -1,12 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
-import dynamic from 'next/dynamic';
-
-const SellModal = dynamic(
-    () => import("@/components/listing/SellModal"),
-    { ssr: false }
-);
+import SellModal from '@/components/listing/SellModal';
 
 export interface SellContextType {
     openSellModal: () => void;

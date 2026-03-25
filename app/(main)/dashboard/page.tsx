@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { formatDate } from "@/lib/utils/time";
 import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "@/lib/auth/AuthProvider";
@@ -277,7 +278,7 @@ export default function DashboardPage() {
                                         </div>
                                         <h3 style={{ fontSize: 15, fontWeight: 600, marginBottom: 4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{l.title}</h3>
                                         <div style={{ display: "flex", gap: 12, fontSize: 10, color: "var(--ink-4)", flexWrap: "wrap" }}>
-                                            {!isMobile && <span>📅 {new Date(l.createdAt).toLocaleDateString()}</span>}
+                                            {!isMobile && <span>📅 {formatDate(l.createdAt)}</span>}
                                             <span style={{
                                                 color: l.isExpired ? "var(--red)" : l.status === "approved" ? "var(--green)" : l.status === "pending" ? "var(--primary)" : "var(--ink-4)",
                                                 fontWeight: 700, textTransform: "uppercase", fontSize: 9

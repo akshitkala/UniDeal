@@ -11,12 +11,15 @@ export async function GET() {
         await connectDB();
 
         const reports = await Report.find({ status: "pending" })
+            .select('reason description status createdAt listing reporter')
             .sort({ createdAt: -1 })
             .populate({
                 path: "listing",
-                populate: { path: "category", select: "name icon" }
+                select: 'title slug images status',
+                populate: { path: "category", select: "name icon slug" }
             })
-            .populate("reporter", "displayName uid");
+            .populate("reporter", "name email")
+            .lean();
 
         return NextResponse.json({ reports });
     } catch (error) {

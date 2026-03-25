@@ -1,0 +1,322 @@
+{
+  "generatedAt": "2026-03-25T14:51:21.599Z",
+  "score": "93/100",
+  "summary": {
+    "total": 42,
+    "pass": 39,
+    "fail": 0,
+    "warn": 3
+  },
+  "grade": "A",
+  "checks": [
+    {
+      "category": "Connection",
+      "check": "Global cache pattern",
+      "status": "PASS",
+      "detail": "global._mongoConn cache found"
+    },
+    {
+      "category": "Connection",
+      "check": "Connection pool maxPoolSize",
+      "status": "PASS",
+      "detail": "maxPoolSize configured"
+    },
+    {
+      "category": "Connection",
+      "check": "Connection pool minPoolSize",
+      "status": "PASS",
+      "detail": "minPoolSize configured"
+    },
+    {
+      "category": "Connection",
+      "check": "bufferCommands disabled",
+      "status": "PASS",
+      "detail": "bufferCommands: false set"
+    },
+    {
+      "category": "Connection",
+      "check": "Cold connection time",
+      "status": "PASS",
+      "detail": "647ms to establish connection",
+      "measured": {
+        "before": 647.3026,
+        "after": 647.3026,
+        "unit": "ms"
+      }
+    },
+    {
+      "category": "Connection",
+      "check": "Warm connection time",
+      "status": "PASS",
+      "detail": "0.05ms reuse time",
+      "measured": {
+        "before": 647.3026,
+        "after": 0.0535,
+        "unit": "ms"
+      }
+    },
+    {
+      "category": "Indexes",
+      "check": "listings.{status,createdAt}",
+      "status": "PASS",
+      "detail": "Index exists on listings"
+    },
+    {
+      "category": "Indexes",
+      "check": "listings.{slug}",
+      "status": "PASS",
+      "detail": "Index exists on listings"
+    },
+    {
+      "category": "Indexes",
+      "check": "listings.{seller,status}",
+      "status": "PASS",
+      "detail": "Index exists on listings"
+    },
+    {
+      "category": "Indexes",
+      "check": "listings.{category,status}",
+      "status": "PASS",
+      "detail": "Index exists on listings"
+    },
+    {
+      "category": "Indexes",
+      "check": "listings.{status,category,createdAt}",
+      "status": "PASS",
+      "detail": "Index exists on listings"
+    },
+    {
+      "category": "Indexes",
+      "check": "users.{firebaseUid}",
+      "status": "PASS",
+      "detail": "Index exists on users"
+    },
+    {
+      "category": "Indexes",
+      "check": "users.{email}",
+      "status": "PASS",
+      "detail": "Index exists on users"
+    },
+    {
+      "category": "Indexes",
+      "check": "users.{role}",
+      "status": "PASS",
+      "detail": "Index exists on users"
+    },
+    {
+      "category": "Indexes",
+      "check": "logs.{createdAt}",
+      "status": "PASS",
+      "detail": "Index exists on logs"
+    },
+    {
+      "category": "Indexes",
+      "check": "logs.{action,createdAt}",
+      "status": "PASS",
+      "detail": "Index exists on logs"
+    },
+    {
+      "category": "Indexes",
+      "check": "reports.{status,createdAt}",
+      "status": "PASS",
+      "detail": "Index exists on reports"
+    },
+    {
+      "category": "Indexes",
+      "check": "reports.{listing}",
+      "status": "PASS",
+      "detail": "Index exists on reports"
+    },
+    {
+      "category": "Indexes",
+      "check": "categories.{slug}",
+      "status": "PASS",
+      "detail": "Index exists on categories"
+    },
+    {
+      "category": "Indexes",
+      "check": "categories.{order}",
+      "status": "PASS",
+      "detail": "Index exists on categories"
+    },
+    {
+      "category": "Query Performance",
+      "check": "Listing list query",
+      "status": "WARN",
+      "detail": "Query time: 59.59ms",
+      "measured": {
+        "before": 60.0864,
+        "after": 59.5857,
+        "unit": "ms"
+      }
+    },
+    {
+      "category": "Query Performance",
+      "check": "User firebaseUid lookup",
+      "status": "WARN",
+      "detail": "No users with firebaseUid found — skipped"
+    },
+    {
+      "category": "Query Performance",
+      "check": "Serial vs Parallel queries",
+      "status": "WARN",
+      "detail": "Serial: 250.46ms → Parallel: 342.28ms (-37% faster)",
+      "measured": {
+        "before": 250.4625,
+        "after": 342.2793,
+        "unit": "ms"
+      }
+    },
+    {
+      "category": "Query Performance",
+      "check": "Full doc vs projected query",
+      "status": "PASS",
+      "detail": "Full: 57.14ms → Projected: 44.72ms",
+      "measured": {
+        "before": 57.1366,
+        "after": 44.7214,
+        "unit": "ms"
+      }
+    },
+    {
+      "category": "Code Patterns",
+      "check": ".lean() on find queries",
+      "status": "PASS",
+      "detail": "All find queries use .lean()"
+    },
+    {
+      "category": "Code Patterns",
+      "check": ".select() field projection",
+      "status": "PASS",
+      "detail": "All find queries use .select()"
+    },
+    {
+      "category": "Code Patterns",
+      "check": "Serial await chains",
+      "status": "PASS",
+      "detail": "No serial await chains found"
+    },
+    {
+      "category": "Code Patterns",
+      "check": ".populate() field selection",
+      "status": "PASS",
+      "detail": "All populate calls specify fields"
+    },
+    {
+      "category": "Code Patterns",
+      "check": "Total API route files scanned",
+      "status": "PASS",
+      "detail": "31 route files checked"
+    },
+    {
+      "category": "Cache Headers",
+      "check": "app/api/listings/route.ts",
+      "status": "PASS",
+      "detail": "Cache-Control header with s-maxage found"
+    },
+    {
+      "category": "Cache Headers",
+      "check": "app/api/categories/route.ts",
+      "status": "PASS",
+      "detail": "Cache-Control header with s-maxage=300 found"
+    },
+    {
+      "category": "Cache Headers",
+      "check": "app/api/listings/[slug]/route.ts",
+      "status": "PASS",
+      "detail": "Cache-Control header with s-maxage found"
+    },
+    {
+      "category": "Cache Headers",
+      "check": "app/api/users/profile/route.ts (should NOT cache)",
+      "status": "PASS",
+      "detail": "Correctly no cache on auth route"
+    },
+    {
+      "category": "Cache Headers",
+      "check": "app/api/auth/login/route.ts (should NOT cache)",
+      "status": "PASS",
+      "detail": "Correctly no cache on auth route"
+    },
+    {
+      "category": "Repository",
+      "check": "lib/db/repositories/listing.repository.ts",
+      "status": "PASS",
+      "detail": "Repository file exists"
+    },
+    {
+      "category": "Repository",
+      "check": "lib/db/repositories/user.repository.ts",
+      "status": "PASS",
+      "detail": "Repository file exists"
+    },
+    {
+      "category": "Repository",
+      "check": "lib/db/repositories/stats.repository.ts",
+      "status": "PASS",
+      "detail": "Repository file exists"
+    },
+    {
+      "category": "Repository",
+      "check": "listings route uses ListingRepository",
+      "status": "PASS",
+      "detail": "Route correctly uses repository"
+    },
+    {
+      "category": "Repository",
+      "check": "stats route uses aggregation",
+      "status": "PASS",
+      "detail": "Uses StatsRepository with aggregation pipeline"
+    },
+    {
+      "category": "Memory Cache",
+      "check": "memory-cache.ts exists",
+      "status": "PASS",
+      "detail": "Cache utility found"
+    },
+    {
+      "category": "Memory Cache",
+      "check": "global._memCache pattern",
+      "status": "PASS",
+      "detail": "Global cache map found"
+    },
+    {
+      "category": "Memory Cache",
+      "check": "Categories route uses cache",
+      "status": "PASS",
+      "detail": "Categories are cached in memory"
+    }
+  ],
+  "failedChecks": [],
+  "warnings": [
+    {
+      "category": "Query Performance",
+      "check": "Listing list query",
+      "status": "WARN",
+      "detail": "Query time: 59.59ms",
+      "measured": {
+        "before": 60.0864,
+        "after": 59.5857,
+        "unit": "ms"
+      }
+    },
+    {
+      "category": "Query Performance",
+      "check": "User firebaseUid lookup",
+      "status": "WARN",
+      "detail": "No users with firebaseUid found — skipped"
+    },
+    {
+      "category": "Query Performance",
+      "check": "Serial vs Parallel queries",
+      "status": "WARN",
+      "detail": "Serial: 250.46ms → Parallel: 342.28ms (-37% faster)",
+      "measured": {
+        "before": 250.4625,
+        "after": 342.2793,
+        "unit": "ms"
+      }
+    }
+  ],
+  "recommendations": []
+}

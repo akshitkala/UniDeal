@@ -5,6 +5,9 @@ import PhotoUploadZone from "./PhotoUploadZone";
 import { useRouter } from "next/navigation";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
+import { validateForm, FIELD_RULES } from "@/lib/validation/client-validate";
+import FieldError from "@/components/ui/FieldError";
+
 interface SellModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -41,7 +44,7 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
         location: "LPU Campus"
     });
     const [submitting, setSubmitting] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
     const [whatsapp, setWhatsapp] = useState('');
     const [whatsappSaved, setWhatsappSaved] = useState(false);
 
@@ -89,13 +92,20 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!whatsapp || whatsapp.replace(/\D/g, '').length < 10) {
-            setError('Please enter a valid 10-digit WhatsApp number');
+        const errors = validateForm({
+            title: { value: formData.title, rules: FIELD_RULES.title },
+            description: { value: formData.description, rules: FIELD_RULES.description },
+            price: { value: formData.price, rules: FIELD_RULES.price },
+            whatsapp: { value: whatsapp, rules: FIELD_RULES.whatsapp },
+        });
+
+        if (Object.keys(errors).length > 0) {
+            setFieldErrors(errors);
             return;
         }
 
         setSubmitting(true);
-        setError(null);
+        setFieldErrors({});
 
         const fullNumber = `+91${whatsapp.replace(/\D/g, '')}`;
 
@@ -132,7 +142,7 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                 router.push(`/listings/${data.slug}`);
             }
         } catch (err: any) {
-            setError(err.message);
+            setFieldErrors({ general: err.message });
         } finally {
             setSubmitting(false);
         }
@@ -253,9 +263,13 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                                     type="text"
                                     placeholder="e.g. Engineering Mathematics Book Vol 1"
                                     value={formData.title}
-                                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                                    onChange={(e) => {
+                                        setFormData({ ...formData, title: e.target.value });
+                                        if (fieldErrors.title) setFieldErrors(f => ({ ...f, title: '' }));
+                                    }}
                                     style={{ width: "100%", padding: "12px", borderRadius: "var(--r)", border: "1.5px solid var(--border-2)", outline: "none", fontSize: 14 }}
                                 />
+                                <FieldError error={fieldErrors.title} />
                             </div>
 
                             <div style={{ display: "flex", gap: 16 }}>
@@ -266,9 +280,13 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                                         type="number"
                                         placeholder="500"
                                         value={formData.price}
-                                        onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                                        onChange={(e) => {
+                                            setFormData({ ...formData, price: e.target.value });
+                                            if (fieldErrors.price) setFieldErrors(f => ({ ...f, price: '' }));
+                                        }}
                                         style={{ width: "100%", padding: "12px", borderRadius: "var(--r)", border: "1.5px solid var(--border-2)", outline: "none", fontSize: 14 }}
                                     />
+                                    <FieldError error={fieldErrors.price} />
                                 </div>
                                 <div style={{ flex: 1 }}>
                                     <label style={{ display: "block", fontSize: 12, fontWeight: 600, marginBottom: 8, color: "var(--ink-3)" }}>CONDITION</label>
@@ -315,6 +333,7 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                                             const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
                                             setWhatsapp(digits);
                                             setWhatsappSaved(false);
+                                            if (fieldErrors.whatsapp) setFieldErrors(f => ({ ...f, whatsapp: '' }));
                                         }}
                                         placeholder="9876543210"
                                         maxLength={10}
@@ -329,6 +348,7 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                                         }}
                                     />
                                 </div>
+                                <FieldError error={fieldErrors.whatsapp} />
 
                                 <p style={{ fontSize: 11, color: 'var(--ink-5)', marginTop: 4 }}>
                                     📱 Buyers will contact you on WhatsApp. Never shown publicly.
@@ -352,12 +372,16 @@ export default function SellModal({ isOpen, onClose, initialData, mode = 'create
                                     rows={4}
                                     placeholder="Tell us more about the item..."
                                     value={formData.description}
-                                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                                    onChange={(e) => {
+                                        setFormData({ ...formData, description: e.target.value });
+                                        if (fieldErrors.description) setFieldErrors(f => ({ ...f, description: '' }));
+                                    }}
                                     style={{ width: "100%", padding: "12px", borderRadius: "var(--r)", border: "1.5px solid var(--border-2)", outline: "none", fontSize: 14, resize: "none" }}
                                 />
+                                <FieldError error={fieldErrors.description} />
                             </div>
 
-                            {error && <div style={{ color: "var(--red)", fontSize: 12 }}>⚠️ {error}</div>}
+                            {fieldErrors.general && <div style={{ color: "var(--red)", fontSize: 12 }}>⚠️ {fieldErrors.general}</div>}
                         </form>
                     )}
                 </div>

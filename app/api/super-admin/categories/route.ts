@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db/connect";
 import { Category } from "@/models/Category";
 import { requireSuperadmin } from "@/middleware/auth";
+import { invalidateCache } from '@/lib/db/cache/memory-cache';
 
 export async function POST(req: Request) {
     try {
@@ -17,7 +18,7 @@ export async function POST(req: Request) {
         }
 
         // Check if slug already exists
-        const existing = await Category.findOne({ slug });
+        const existing = await Category.findOne({ slug }).lean();
         if (existing) {
             return NextResponse.json({ error: "Category slug already exists" }, { status: 400 });
         }
@@ -29,6 +30,9 @@ export async function POST(req: Request) {
             order: order || 0,
             isActive: true
         });
+
+        // After successful create:
+        invalidateCache('categories:all');
 
         return NextResponse.json({ success: true, category });
     } catch (error) {
