@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Sora";
+  --font-body: "Inter";
+}
+
+@layer base {
+  html {
+    @apply h-full bg-background text-text;
+  }
+
+  body {
+    @apply min-h-full bg-background text-body text-text font-body;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
