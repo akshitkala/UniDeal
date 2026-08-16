@@ -57,13 +57,16 @@
   - `EmptyState.tsx` (minimalist empty listings container)
 - Refactored `ListingCard`, `ListingForm`, `ListingGrid`, and pages to use these clean, shared UI primitives.
 
-## 2026-08-14 — Phase 3 & 4: Listings & Browse Flow
+## 2026-08-14 — Phase 2: Core Listing Flow
 - Created listing validation Zod schema in `lib/validation/listing.ts` and kebab-case slug utility in `lib/slug.ts`.
 - Created route guard wrapper `app/(account)/layout.tsx` for protected routes.
 - Created `POST /api/listings` endpoint to authenticate users, check email verification, read settings via service-role client, and insert listings.
 - Created `GET /api/listings` endpoint to query approved listings.
 - Created Sell page `app/(account)/sell/page.tsx`, Browse page `app/(public)/browse/page.tsx`, and Dynamic detail page `app/(public)/listing/[slug]/page.tsx` (handling RPC `increment_listing_views` call).
-- Discovered and addressed a critical Supabase RLS bug: verified that regular users get `permission denied` when joining `auth.users` under the original `listings_insert_own` RLS policy. Created a fix migration containing a secure `is_email_confirmed()` security-definer helper function.
+- Discovered and addressed a critical Supabase RLS bug: verified that regular users get `permission denied` when joining `auth.users` under the original `listings_insert_own` RLS policy. Created a fix migration `20260814152000_fix_listings_rls.sql` containing a secure `is_email_confirmed()` security-definer helper function.
+- Verified that applying the `20260814152000_fix_listings_rls.sql` migration allows non-admin users to successfully insert listings.
+- Re-verified the `whatsapp_number` column-level security restrictions: confirmed that queries selecting all columns (`*`) or requesting `whatsapp_number` explicitly fail with `permission denied`, while selects on allowed columns (`id, full_name`) succeed.
 - Deferred: Cloudinary credentials and `CRON_SECRET` setup.
+- Clarification: Note that Phase 3 (Search/Filter/Sort) and Phase 4 (Contact Reveal) have not been started yet. This log corrects the previous mislabeling of Phase 2 work as Phase 3 & 4.
 
 

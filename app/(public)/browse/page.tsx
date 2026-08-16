@@ -1,17 +1,34 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { ListingGrid } from "@/components/listing/ListingGrid";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { BrowseFilters } from "@/components/filters/BrowseFilters";
 
 export const metadata = {
   title: "Browse Listings | UniDeal",
   description: "Find items listed by students on your campus.",
 };
 
-export default async function BrowsePage() {
+type BrowsePageProps = {
+  searchParams: Promise<{
+    search?: string;
+    category?: string;
+    condition?: string;
+    sort?: string;
+  }>;
+};
+
+export default async function BrowsePage({ searchParams }: BrowsePageProps) {
+  const { search, category, condition, sort } = await searchParams;
   const supabase = await createSupabaseServerClient();
 
-  // Fetch approved listings from non-banned sellers
-  const { data: listings, error } = await supabase
+  // 1. Fetch categories for the filter component dropdown
+  const { data: categories } = await supabase
+    .from("categories")
+    .select("id, name")
+    .order("id", { ascending: true });
+
+  // 2. Build the listing search query
+  let query = supabase
     .from("listings")
     .select(`
       *,
@@ -22,8 +39,30 @@ export default async function BrowsePage() {
         year
       )
     `)
-    .eq("status", "approved")
-    .order("created_at", { ascending: false });
+    .eq("status", "approved");
+
+  // Apply filters if present
+  if (category) {
+    query = query.eq("category_id", Number(category));
+  }
+  if (condition) {
+    query = query.eq("condition", condition);
+  }
+  if (search) {
+    query = query.or(`title.ilike.%${search}%,description.ilike.%${search}%`);
+  }
+
+  // Apply sorting options
+  if (sort === "price_asc") {
+    query = query.order("price", { ascending: true });
+  } else if (sort === "price_desc") {
+    query = query.order("price", { ascending: false });
+  } else {
+    // Default to Newest
+    query = query.order("created_at", { ascending: false });
+  }
+
+  const { data: listings, error } = await query;
 
   if (error) {
     console.error("Error loading listings in BrowsePage:", error);
@@ -32,7 +71,7 @@ export default async function BrowsePage() {
   const emptyState = (
     <EmptyState
       title="No listings yet"
-      description="Be the first to list something for sale on campus!"
+      description="No items match your criteria. Try adjusting your search keywords or filters!"
       className="mt-8"
     />
   );
@@ -48,8 +87,12 @@ export default async function BrowsePage() {
         </p>
       </div>
 
-      <div className="pt-4">
-        <ListingGrid listings={listings || []} emptyState={emptyState} />
+      <div className="space-y-6">
+        <BrowseFilters categories={categories || []} />
+        
+        <div className="pt-2">
+          <ListingGrid listings={listings || []} emptyState={emptyState} />
+        </div>
       </div>
     </main>
   );
