@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { ContactSellerButton } from "@/components/listing/ContactSellerButton";
 
 type ListingPageProps = {
   params: Promise<{
@@ -61,6 +62,55 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
         console.error("Failed to increment views:", rpcError);
       }
     });
+
+  // 3. Determine initial state for ContactSellerButton
+  let initialState: "guest" | "unverified" | "ready" | "rate-limited" | "no-contact-available" = "guest";
+  
+  const { data: { user } } = await supabase.auth.getUser();
+  
+  if (user) {
+    if (!user.email_confirmed_at) {
+      initialState = "unverified";
+    } else {
+      // Check if user is banned
+      const { data: userProfile } = await supabase
+        .from("profiles")
+        .select("is_banned")
+        .eq("id", user.id)
+        .single();
+        
+      if (userProfile?.is_banned) {
+        initialState = "guest"; // Banned users cannot contact sellers, fallback safely
+      } else {
+        // Check rate limit: count contact_reveals in last 24h
+        // eslint-disable-next-line react-hooks/purity
+        const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+        const { count } = await supabase
+          .from("contact_reveals")
+          .select("*", { count: "exact", head: true })
+          .eq("user_id", user.id)
+          .gt("created_at", oneDayAgo);
+          
+        if (count !== null && count >= 50) {
+          initialState = "rate-limited";
+        } else {
+          // Check if seller has a WhatsApp number (uses admin client server-side to bypass column privileges)
+          const adminSupabase = createSupabaseAdminClient();
+          const { data: sellerProfile } = await adminSupabase
+            .from("profiles")
+            .select("whatsapp_number")
+            .eq("id", listing.seller_id)
+            .single();
+            
+          if (!sellerProfile?.whatsapp_number) {
+            initialState = "no-contact-available";
+          } else {
+            initialState = "ready";
+          }
+        }
+      }
+    }
+  }
 
   const formattedPrice = new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -163,18 +213,12 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
 
             <hr className="border-border" />
 
-            {/* Contact CTA Block (Placeholder for Phase 4) */}
-            <div className="space-y-2">
-              <Button
-                type="button"
-                className="w-full font-semibold"
-              >
-                Contact Seller (WhatsApp)
-              </Button>
-              <p className="font-body text-caption text-text-muted text-center">
-                Contact flow is secured. Sign in to reveal and contact the seller.
-              </p>
-            </div>
+            {/* Contact CTA Block */}
+            <ContactSellerButton
+              listingId={listing.id}
+              initialState={initialState}
+              listingSlug={listing.slug}
+            />
           </div>
 
           {/* Description */}
