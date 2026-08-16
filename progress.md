@@ -69,4 +69,13 @@
 - Deferred: Cloudinary credentials and `CRON_SECRET` setup.
 - Clarification: Note that Phase 3 (Search/Filter/Sort) and Phase 4 (Contact Reveal) have not been started yet. This log corrects the previous mislabeling of Phase 2 work as Phase 3 & 4.
 
+## 2026-08-16 — Phase 3: Search, Filter, Sort
+- Implemented frontend marketplace filters in `components/filters/BrowseFilters.tsx` supporting title/description search, category slug selection, and condition filtering.
+- Simplified sorting options to the exact 3-option scope: Newest, Price ↑ (ascending), and Price ↓ (descending).
+- Integrated search params with the router to support full URL state synchronization (`?category=&condition=&sort=&search=`), allowing shareable and bookmarkable searches.
+- Updated `app/(public)/browse/page.tsx` database query to parse the URL search parameters and dynamically filter/sort listings accordingly.
+- Updated `GET /api/listings` endpoint in `app/api/listings/route.ts` to support identical parameter parsing, filtering, and sorting to align with TRD specifications.
+- Verified all three filter dimensions and three sort options work together successfully using an automated endpoint integration test.
+- Created SQL migration to fix RLS select policy `listings_select_public` using the `public_profiles` view instead of the base `profiles` table to enable guest browsing.
+
 

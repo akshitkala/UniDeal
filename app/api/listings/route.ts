@@ -105,12 +105,18 @@ export async function POST(request: Request) {
 }
 
 // GET /api/listings - Retrieve listings list
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const category = searchParams.get("category");
+    const condition = searchParams.get("condition");
+    const search = searchParams.get("search");
+    const sort = searchParams.get("sort");
+
     const supabase = await createSupabaseServerClient();
 
-    // Query listings from non-banned sellers with approved status
-    const { data: listings, error } = await supabase
+    // Build the query
+    let query = supabase
       .from("listings")
       .select(`
         *,
@@ -121,8 +127,43 @@ export async function GET() {
           year
         )
       `)
-      .eq("status", "approved")
-      .order("created_at", { ascending: false });
+      .eq("status", "approved");
+
+    // Apply category filter by slug
+    if (category) {
+      const { data: catData } = await supabase
+        .from("categories")
+        .select("id")
+        .eq("slug", category)
+        .single();
+      
+      if (catData) {
+        query = query.eq("category_id", catData.id);
+      } else {
+        query = query.eq("category_id", -1);
+      }
+    }
+
+    // Apply condition filter
+    if (condition) {
+      query = query.eq("condition", condition);
+    }
+
+    // Apply search filter (ilike title and description)
+    if (search) {
+      query = query.or(`title.ilike.%${search}%,description.ilike.%${search}%`);
+    }
+
+    // Apply sorting
+    if (sort === "price_asc") {
+      query = query.order("price", { ascending: true });
+    } else if (sort === "price_desc") {
+      query = query.order("price", { ascending: false });
+    } else {
+      query = query.order("created_at", { ascending: false });
+    }
+
+    const { data: listings, error } = await query;
 
     if (error) {
       return NextResponse.json(

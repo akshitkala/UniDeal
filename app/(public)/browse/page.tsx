@@ -24,7 +24,7 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
   // 1. Fetch categories for the filter component dropdown
   const { data: categories } = await supabase
     .from("categories")
-    .select("id, name")
+    .select("id, name, slug")
     .order("id", { ascending: true });
 
   // 2. Build the listing search query
@@ -43,7 +43,13 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
 
   // Apply filters if present
   if (category) {
-    query = query.eq("category_id", Number(category));
+    const matchedCategory = categories?.find((c) => c.slug === category);
+    if (matchedCategory) {
+      query = query.eq("category_id", matchedCategory.id);
+    } else {
+      // Query a non-existent ID so it returns an empty grid for invalid slugs
+      query = query.eq("category_id", -1);
+    }
   }
   if (condition) {
     query = query.eq("condition", condition);

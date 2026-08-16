@@ -10,6 +10,7 @@ import { Select } from "@/components/ui/Select";
 type CategoryOption = {
   id: number;
   name: string;
+  slug: string;
 };
 
 type BrowseFiltersProps = {
@@ -88,7 +89,7 @@ export function BrowseFilters({ categories }: BrowseFiltersProps) {
         >
           <option value="">All Categories</option>
           {categories.map((cat) => (
-            <option key={cat.id} value={cat.id}>
+            <option key={cat.id} value={cat.slug}>
               {cat.name}
             </option>
           ))}
@@ -111,8 +112,8 @@ export function BrowseFilters({ categories }: BrowseFiltersProps) {
           onChange={(e) => updateParams({ sort: e.target.value })}
         >
           <option value="newest">Sort by: Newest</option>
-          <option value="price_asc">Sort by: Price Low to High</option>
-          <option value="price_desc">Sort by: Price High to Low</option>
+          <option value="price_asc">Sort by: Price ↑</option>
+          <option value="price_desc">Sort by: Price ↓</option>
         </Select>
       </div>
     </div>
