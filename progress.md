@@ -77,5 +77,6 @@
 - Updated `GET /api/listings` endpoint in `app/api/listings/route.ts` to support identical parameter parsing, filtering, and sorting to align with TRD specifications.
 - Verified all three filter dimensions and three sort options work together successfully using an automated endpoint integration test.
 - Created SQL migration to fix RLS select policy `listings_select_public` using the `public_profiles` view instead of the base `profiles` table to enable guest browsing.
+- Follow-up: Perform a real browser click-through E2E test for URL parameter sync (apply filter, confirm URL updates, refresh, confirm state survives) before Phase 7's mobile pass.
 
 
