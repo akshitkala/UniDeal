@@ -34,27 +34,43 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
   const { slug } = await params;
   const supabase = await createSupabaseServerClient();
 
-  // 1. Fetch listing details
-  const { data: listing, error } = await supabase
-    .from("listings")
+  // 1. Fetch listing details from the public_listings view.
+  // This view pre-joins with public_profiles (never the base profiles table),
+  // keeping anon's access on the base profiles table at genuinely zero.
+  // Category name is fetched separately to avoid needing another FK join.
+  const { data: rawListing, error } = await supabase
+    .from("public_listings")
     .select(`
-      *,
-      seller:public_profiles!listings_seller_id_fkey (
-        id,
-        full_name,
-        branch,
-        year
-      ),
-      category:categories!listings_category_id_fkey (
-        name
-      )
+      id, slug, seller_id, title, description, price, negotiable,
+      category_id, condition, images, status, rejection_reason, views,
+      created_at, updated_at, sold_at,
+      seller_full_name, seller_branch, seller_year
     `)
     .eq("slug", slug)
     .single();
 
-  if (error || !listing) {
+  if (error || !rawListing) {
     notFound();
   }
+
+  // Fetch category name separately (categories table is already anon-readable)
+  const { data: categoryRow } = await supabase
+    .from("categories")
+    .select("name")
+    .eq("id", rawListing.category_id)
+    .single();
+
+  // Reshape to the shape the rest of the component expects
+  const listing = {
+    ...rawListing,
+    seller: {
+      id: rawListing.seller_id,
+      full_name: rawListing.seller_full_name,
+      branch: rawListing.seller_branch,
+      year: rawListing.seller_year,
+    },
+    category: categoryRow ? { name: categoryRow.name } : null,
+  };
 
   // 2. Increment views (fail-open background task)
   supabase.rpc("increment_listing_views", { listing_id: listing.id })

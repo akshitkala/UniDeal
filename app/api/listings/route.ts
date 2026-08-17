@@ -115,19 +115,17 @@ export async function GET(request: Request) {
 
     const supabase = await createSupabaseServerClient();
 
-    // Build the query
+    // Build the query against the public_listings view.
+    // This view pre-joins with public_profiles (never the base profiles table),
+    // keeping anon's direct access on profiles at genuinely zero.
+    // The view already enforces status='approved' AND seller is not banned.
     let query = supabase
-      .from("listings")
+      .from("public_listings")
       .select(`
-        *,
-        seller:public_profiles!listings_seller_id_fkey (
-          id,
-          full_name,
-          branch,
-          year
-        )
-      `)
-      .eq("status", "approved");
+        id, slug, seller_id, title, description, price, negotiable,
+        category_id, condition, images, status, views, created_at, updated_at,
+        seller_full_name, seller_branch, seller_year
+      `);
 
     // Apply category filter by slug
     if (category) {
@@ -163,7 +161,7 @@ export async function GET(request: Request) {
       query = query.order("created_at", { ascending: false });
     }
 
-    const { data: listings, error } = await query;
+    const { data: rawListings, error } = await query;
 
     if (error) {
       console.error("GET /api/listings query error:", error);
@@ -172,6 +170,17 @@ export async function GET(request: Request) {
         { status: 500 }
       );
     }
+
+    // Reshape flat view columns into the seller object consumers expect
+    const listings = rawListings?.map((l) => ({
+      ...l,
+      seller: {
+        id: l.seller_id,
+        full_name: l.seller_full_name,
+        branch: l.seller_branch,
+        year: l.seller_year,
+      },
+    })) ?? [];
 
     return NextResponse.json({ data: listings }, { status: 200 });
   } catch (error) {

@@ -27,19 +27,17 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
     .select("id, name, slug")
     .order("id", { ascending: true });
 
-  // 2. Build the listing search query
+  // 2. Build the listing search query.
+  // Uses the public_listings view which pre-joins with public_profiles (not the
+  // base profiles table), so anon never needs direct SELECT on profiles.
+  // The view already filters to status='approved' AND seller is not banned.
   let query = supabase
-    .from("listings")
+    .from("public_listings")
     .select(`
-      *,
-      seller:public_profiles!listings_seller_id_fkey (
-        id,
-        full_name,
-        branch,
-        year
-      )
-    `)
-    .eq("status", "approved");
+      id, slug, seller_id, title, description, price, negotiable,
+      category_id, condition, images, status, views, created_at, updated_at,
+      seller_full_name, seller_branch, seller_year
+    `);
 
   // Apply filters if present
   if (category) {
@@ -68,11 +66,22 @@ export default async function BrowsePage({ searchParams }: BrowsePageProps) {
     query = query.order("created_at", { ascending: false });
   }
 
-  const { data: listings, error } = await query;
+  const { data: rawListings, error } = await query;
 
   if (error) {
     console.error("Error loading listings in BrowsePage:", error);
   }
+
+  // Reshape flat view columns into the seller object ListingGrid expects
+  const listings = rawListings?.map((l) => ({
+    ...l,
+    seller: {
+      id: l.seller_id,
+      full_name: l.seller_full_name,
+      branch: l.seller_branch,
+      year: l.seller_year,
+    },
+  })) ?? null;
 
   const emptyState = (
     <EmptyState
