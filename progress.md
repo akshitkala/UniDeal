@@ -79,4 +79,8 @@
 - Created SQL migration to fix RLS select policy `listings_select_public` using the `public_profiles` view instead of the base `profiles` table to enable guest browsing.
 - Follow-up: Perform a real browser click-through E2E test for URL parameter sync (apply filter, confirm URL updates, refresh, confirm state survives) before Phase 7's mobile pass.
 
-
+## 2026-08-17 — Phase 4: Contact Reveal (Trust Mechanic)
+- Implemented and verified the `POST /api/listings/[id]/contact` endpoint with a strict session-check sequence (Session -> Banned -> Verified -> Rate Limit -> Phone-Exists).
+- Built the `ContactSellerButton` component dynamically supporting all 5 visual states (`guest`, `unverified`, `rate-limited`, `no-contact-available`, and `ready`).
+- Confirmed that the seller's raw phone number is never exposed in any network payloads, only the generated WhatsApp link (`waLink`).
+- Note: Guest browsing was broken due to an RLS policy referencing the base `profiles` table instead of `public_profiles`; caught during Phase 4's manual E2E pass, not by code inspection. Fixed via `20260816220000_fix_listings_select_rls.sql`.
