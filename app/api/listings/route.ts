@@ -166,6 +166,7 @@ export async function GET(request: Request) {
     const { data: listings, error } = await query;
 
     if (error) {
+      console.error("GET /api/listings query error:", error);
       return NextResponse.json(
         { error: { message: error.message } },
         { status: 500 }
