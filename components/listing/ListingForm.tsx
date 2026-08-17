@@ -15,24 +15,36 @@ type CategoryOption = {
   slug: string;
 };
 
-type ListingFormProps = {
-  categories: CategoryOption[];
+type ListingData = {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  negotiable: boolean;
+  category_id: number;
+  condition: string;
+  images: string[];
 };
 
-export function ListingForm({ categories }: ListingFormProps) {
+type ListingFormProps = {
+  categories: CategoryOption[];
+  initialData?: ListingData;
+};
+
+export function ListingForm({ categories, initialData }: ListingFormProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
   // Form states
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [negotiable, setNegotiable] = useState(false);
-  const [categoryId, setCategoryId] = useState("");
-  const [condition, setCondition] = useState("");
+  const [title, setTitle] = useState(initialData?.title || "");
+  const [description, setDescription] = useState(initialData?.description || "");
+  const [price, setPrice] = useState(initialData?.price !== undefined ? String(initialData.price) : "");
+  const [negotiable, setNegotiable] = useState(initialData?.negotiable || false);
+  const [categoryId, setCategoryId] = useState(initialData?.category_id !== undefined ? String(initialData.category_id) : "");
+  const [condition, setCondition] = useState(initialData?.condition || "");
   
   // Image upload states
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<string[]>(initialData?.images || []);
   const [uploading, setUploading] = useState(false);
   const [imageError, setImageError] = useState<string | null>(null);
 
@@ -136,8 +148,11 @@ export function ListingForm({ categories }: ListingFormProps) {
 
     startTransition(async () => {
       try {
-        const response = await fetch("/api/listings", {
-          method: "POST",
+        const url = initialData ? `/api/listings/${initialData.id}` : "/api/listings";
+        const method = initialData ? "PATCH" : "POST";
+
+        const response = await fetch(url, {
+          method: method,
           headers: {
             "Content-Type": "application/json",
           },
@@ -151,17 +166,22 @@ export function ListingForm({ categories }: ListingFormProps) {
           return;
         }
 
-        const createdListing = json.data;
+        const listingResult = json.data;
 
-        // Redirect based on listing status
-        if (createdListing.status === "approved") {
-          router.push(`/listing/${createdListing.slug}`);
+        if (initialData) {
+          // Redirect to the listing detail page on update
+          router.push(`/listing/${listingResult.slug}`);
         } else {
-          router.push("/dashboard");
+          // Redirect based on listing status on create
+          if (listingResult.status === "approved") {
+            router.push(`/listing/${listingResult.slug}`);
+          } else {
+            router.push("/dashboard");
+          }
         }
         router.refresh();
       } catch (error) {
-        console.error("Post listing submit error:", error);
+        console.error("Listing form submit error:", error);
         setFormError("Connection error. Could not reach server, please try again.");
       }
     });
@@ -339,7 +359,7 @@ export function ListingForm({ categories }: ListingFormProps) {
           disabled={uploading}
           className="w-full font-semibold"
         >
-          Post listing
+          {initialData ? "Save changes" : "Post listing"}
         </Button>
       </div>
     </form>

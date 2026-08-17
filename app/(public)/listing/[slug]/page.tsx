@@ -5,6 +5,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/Badge";
 import { ContactSellerButton } from "@/components/listing/ContactSellerButton";
+import { ReportDialog } from "@/components/listing/ReportDialog";
 
 type ListingPageProps = {
   params: Promise<{
@@ -231,17 +232,22 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
             </p>
           </div>
 
-          {/* Metadata: Views & Date */}
-          <div className="flex items-center gap-4 text-caption font-body text-text-muted pt-4 border-t">
-            <span>Views: {listing.views}</span>
-            <span>•</span>
-            <span>
-              Posted: {new Date(listing.created_at).toLocaleDateString("en-IN", {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              })}
-            </span>
+          {/* Metadata: Views & Date & Report */}
+          <div className="flex items-center justify-between pt-4 border-t">
+            <div className="flex items-center gap-4 text-caption font-body text-text-muted">
+              <span>Views: {listing.views}</span>
+              <span>•</span>
+              <span>
+                Posted: {new Date(listing.created_at).toLocaleDateString("en-IN", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </span>
+            </div>
+            {user && user.id !== listing.seller_id ? (
+              <ReportDialog listingId={listing.id} />
+            ) : null}
           </div>
         </section>
       </div>
