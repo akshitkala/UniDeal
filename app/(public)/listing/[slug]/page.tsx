@@ -43,7 +43,7 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
       id, slug, seller_id, title, description, price, negotiable,
       category_id, condition, images, status, rejection_reason, views,
       created_at, updated_at, sold_at,
-      seller_full_name, seller_branch, seller_year, seller_has_whatsapp_number
+      seller_full_name, seller_branch, seller_year
     `)
     .eq("slug", slug)
     .single();
@@ -51,6 +51,15 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
   if (error || !rawListing) {
     notFound();
   }
+
+  // Check if seller has a WhatsApp number (uses public_profiles view via standard server client)
+  const { data: sellerProfile } = await supabase
+    .from("public_profiles")
+    .select("has_whatsapp_number")
+    .eq("id", rawListing.seller_id)
+    .single();
+
+  const sellerHasWhatsapp = sellerProfile?.has_whatsapp_number ?? false;
 
   // Fetch category name separately (categories table is already anon-readable)
   const { data: categoryRow } = await supabase
@@ -109,7 +118,7 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
           
         if (count !== null && count >= 50) {
           initialState = "rate-limited";
-        } else if (!rawListing.seller_has_whatsapp_number) {
+        } else if (!sellerHasWhatsapp) {
           initialState = "no-contact-available";
         } else {
           initialState = "ready";
