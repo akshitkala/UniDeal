@@ -147,7 +147,7 @@ export function ContactSellerButton({
             <p className="font-body text-caption text-danger text-center">{errorMsg}</p>
           ) : (
             <p className="font-body text-caption text-text-muted text-center">
-              Opens WhatsApp directly. Your contact reveal count will increase.
+              Contact revealed only to verified students
             </p>
           )}
         </div>

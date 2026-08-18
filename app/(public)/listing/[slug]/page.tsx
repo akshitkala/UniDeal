@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { Badge } from "@/components/ui/Badge";
 import { ContactSellerButton } from "@/components/listing/ContactSellerButton";
@@ -44,7 +43,7 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
       id, slug, seller_id, title, description, price, negotiable,
       category_id, condition, images, status, rejection_reason, views,
       created_at, updated_at, sold_at,
-      seller_full_name, seller_branch, seller_year
+      seller_full_name, seller_branch, seller_year, seller_has_whatsapp_number
     `)
     .eq("slug", slug)
     .single();
@@ -110,20 +109,10 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
           
         if (count !== null && count >= 50) {
           initialState = "rate-limited";
+        } else if (!rawListing.seller_has_whatsapp_number) {
+          initialState = "no-contact-available";
         } else {
-          // Check if seller has a WhatsApp number (uses admin client server-side to bypass column privileges)
-          const adminSupabase = createSupabaseAdminClient();
-          const { data: sellerProfile } = await adminSupabase
-            .from("profiles")
-            .select("whatsapp_number")
-            .eq("id", listing.seller_id)
-            .single();
-            
-          if (!sellerProfile?.whatsapp_number) {
-            initialState = "no-contact-available";
-          } else {
-            initialState = "ready";
-          }
+          initialState = "ready";
         }
       }
     }

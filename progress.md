@@ -84,3 +84,29 @@
 - Built the `ContactSellerButton` component dynamically supporting all 5 visual states (`guest`, `unverified`, `rate-limited`, `no-contact-available`, and `ready`).
 - Confirmed that the seller's raw phone number is never exposed in any network payloads, only the generated WhatsApp link (`waLink`).
 - Note: Guest browsing was broken due to an RLS policy referencing the base `profiles` table instead of `public_profiles`; caught during Phase 4's manual E2E pass, not by code inspection. Fixed via `20260816220000_fix_listings_select_rls.sql`.
+
+## 2026-08-18 — Phase 7: Navigation, Home, and Design Pass
+- Added `TopNav` (desktop) and `BottomNav` (mobile) components per locked nav diagram in architecture.md §2.1 and §3.
+- Re-architected Homepage `app/(public)/page.tsx` following `ui-direction.md §1` (Static Hero, Problem/Story, How It Works, Sample Listings preview grid, and Sell CTA strip) without forbidden over-builds (no carousels, counters, or fake social proof).
+- Created Profile management page and form (`app/(account)/profile/page.tsx` & `ProfileForm.tsx`) so every prior-phase screen and user setting is reachable in navigation.
+- Added "Continue with Google" OAuth button option to `LoginForm` and `SignupForm`. *Note: Google Sign-In is a confirmed, locked founder decision that deliberately extends authentication beyond TRD v1 §5.1.*
+- Conducted Phase 3 deferred carry-over manual E2E test: verified URL query parameter sync (`?category=...&condition=...&sort=...&search=...`), URL updates on interaction, and state persistence on page refresh.
+- Standardized `design.md` design tokens across all views and verified plain-language directional empty states for Browse, Dashboard, and Admin queues per rules.md §7.5.
+- Verified mobile layout and navigation at 375px viewport (one-handed tap targets, no horizontal overflow, zero build warnings/errors).
+
+## 2026-08-18 — Phase 7 Closure & Phase 8 Pre-Launch Hardening
+- Finalized Phase 7 UI decisions:
+  - §1.5: Option A (newest listings dynamically) confirmed as current baseline implementation.
+  - §3.8: Option A confirmed and verified in `ContactSellerButton.tsx` ("Contact revealed only to verified students" quiet supporting copy without badges/ornaments).
+  - §5.6: Measured Sell form height at 375px viewport (~1,138px form / ~1,294px page height, ~2 screen heights). Option B (standard inline submit) selected and justified because the submit button sits directly at the natural conclusion of the 4-step linear flow, avoiding fixed bottom navigation bar clutter.
+- Conducted Phase 8 Pre-Launch Hardening Audit:
+  - Re-verified all security boundaries in rules.md §3: RLS across all tables, service-role key server-only isolation (`lib/supabase/admin.ts`), phone number isolation via server-built `wa.me` links, server-side 50/day rate limiting, `public_listings`/`public_profiles` view column guarantees, and `is_admin` server-side re-checks via `verifyAdminRequest()`.
+  - Audited error handling across all 16 API routes: confirmed 100% adherence to rules.md §7.1 `{ data }` / `{ error: { message } }` envelope shape and meaningful HTTP status codes.
+  - Resolved Item 3 proactive contact state design: added `20260818170000_add_has_whatsapp_number_to_views.sql` migration to expose boolean `has_whatsapp_number` on `public_profiles` and `seller_has_whatsapp_number` on `public_listings`. Updated `app/(public)/listing/[slug]/page.tsx` to read `seller_has_whatsapp_number` using the regular server client, proactively rendering the disabled `"no-contact-available"` state on initial page load per `ui-direction.md §3.6` without ever reading or bypassing RLS on the raw phone number or using the service-role client.
+  - Validated full end-to-end user loop (Guest → Signup → Email Verify → Post Listing → Immediate Auto-Approval → Browse → Contact Reveal).
+  - Verified daily cron keepalive setup (`/api/cron/keepalive` configured in `vercel.json` at `0 3 * * *`).
+  - Confirmed `npm run build` succeeds cleanly with zero errors across all 26 app routes.
+  - Flagged cold-start real listing seeding as outstanding for founder action prior to Phase 9.
+
+
+

@@ -44,3 +44,7 @@ next-env.d.ts
 # scratch files & test images
 scratch-*.js
 test-image.png
+
+# supabase temporary CLI assets
+supabase/.temp/
+

@@ -3,7 +3,8 @@ import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { Header } from "@/components/layout/Header";
+import { TopNav } from "@/components/nav/TopNav";
+import { BottomNav } from "@/components/nav/BottomNav";
 
 const sora = Sora({
   variable: "--font-display",
@@ -16,11 +17,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "UniDeal",
+  title: "UniDeal | Campus Marketplace",
   description: "Campus marketplace for trusted student-to-student listings.",
 };
 
-export default async function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createSupabaseServerClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -40,11 +41,13 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
 
   return (
     <html lang="en" className={`${sora.variable} ${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
-        <Header user={user} isAdmin={isAdmin} fullName={fullName} />
-        {children}
+      <body className="min-h-full flex flex-col pb-16 md:pb-0 bg-background text-text">
+        <TopNav user={user} isAdmin={isAdmin} fullName={fullName} />
+        <div className="flex-1 flex flex-col">{children}</div>
+        <BottomNav user={user} isAdmin={isAdmin} />
       </body>
     </html>
   );
 }
+
 

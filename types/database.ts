@@ -1,4 +1,4 @@
-﻿export type Json =
+export type Json =
   | string
   | number
   | boolean
@@ -297,11 +297,84 @@ export type Database = {
       }
     }
     Views: {
+      public_listings: {
+        Row: {
+          category_id: number | null
+          condition: Database["public"]["Enums"]["listing_condition"] | null
+          created_at: string | null
+          description: string | null
+          id: string | null
+          images: string[] | null
+          negotiable: boolean | null
+          price: number | null
+          rejection_reason: string | null
+          seller_branch: string | null
+          seller_full_name: string | null
+          seller_has_whatsapp_number: boolean | null
+          seller_id: string | null
+          seller_is_banned: boolean | null
+          seller_year: string | null
+          slug: string | null
+          sold_at: string | null
+          status: Database["public"]["Enums"]["listing_status"] | null
+          title: string | null
+          updated_at: string | null
+          views: number | null
+        }
+        Insert: {
+          category_id?: number | null
+          condition?: Database["public"]["Enums"]["listing_condition"] | null
+          created_at?: string | null
+          description?: string | null
+          id?: string | null
+          images?: string[] | null
+          negotiable?: boolean | null
+          price?: number | null
+          rejection_reason?: string | null
+          seller_branch?: string | null
+          seller_full_name?: string | null
+          seller_has_whatsapp_number?: boolean | null
+          seller_id?: string | null
+          seller_is_banned?: boolean | null
+          seller_year?: string | null
+          slug?: string | null
+          sold_at?: string | null
+          status?: Database["public"]["Enums"]["listing_status"] | null
+          title?: string | null
+          updated_at?: string | null
+          views?: number | null
+        }
+        Update: {
+          category_id?: number | null
+          condition?: Database["public"]["Enums"]["listing_condition"] | null
+          created_at?: string | null
+          description?: string | null
+          id?: string | null
+          images?: string[] | null
+          negotiable?: boolean | null
+          price?: number | null
+          rejection_reason?: string | null
+          seller_branch?: string | null
+          seller_full_name?: string | null
+          seller_has_whatsapp_number?: boolean | null
+          seller_id?: string | null
+          seller_is_banned?: boolean | null
+          seller_year?: string | null
+          slug?: string | null
+          sold_at?: string | null
+          status?: Database["public"]["Enums"]["listing_status"] | null
+          title?: string | null
+          updated_at?: string | null
+          views?: number | null
+        }
+        Relationships: []
+      }
       public_profiles: {
         Row: {
           branch: string | null
           created_at: string | null
           full_name: string | null
+          has_whatsapp_number: boolean | null
           id: string | null
           is_admin: boolean | null
           is_banned: boolean | null
@@ -314,6 +387,7 @@ export type Database = {
           branch?: string | null
           created_at?: string | null
           full_name?: string | null
+          has_whatsapp_number?: boolean | null
           id?: string | null
           is_admin?: boolean | null
           is_banned?: boolean | null
@@ -326,6 +400,7 @@ export type Database = {
           branch?: string | null
           created_at?: string | null
           full_name?: string | null
+          has_whatsapp_number?: boolean | null
           id?: string | null
           is_admin?: boolean | null
           is_banned?: boolean | null
