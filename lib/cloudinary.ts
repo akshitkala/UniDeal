@@ -10,6 +10,9 @@ function getRequiredPublicEnv(value: string | undefined, name: string): string {
 }
 
 export function getCloudinaryUploadConfig() {
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
+
   return {
     cloudName: getRequiredPublicEnv(
       cloudName,
@@ -19,6 +22,7 @@ export function getCloudinaryUploadConfig() {
       uploadPreset,
       "NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET",
     ),
+    folder: "unideal/listings",
   };
 }
 

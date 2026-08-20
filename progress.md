@@ -108,5 +108,33 @@
   - Confirmed `npm run build` succeeds cleanly with zero errors across all 26 app routes.
   - Flagged cold-start real listing seeding as outstanding for founder action prior to Phase 9.
 
+## 2026-08-19 — Engineering Close-Out: Phases 0–8 Complete
+
+**All engineering phases (0–8) are complete and verified. The codebase is launch-ready.**
+
+### Verification performed this session
+
+- **Production env var audit (TRD §7):** All six required variables are populated with real, non-placeholder values in `.env.local`:
+  - `NEXT_PUBLIC_SUPABASE_URL` ✅ real
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY` ✅ real
+  - `SUPABASE_SERVICE_ROLE_KEY` ✅ real
+  - `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` ✅ real (`dkoguefrb`)
+  - `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` ✅ real (`unideal`)
+  - `CRON_SECRET` ✅ real (UUID populated)
+- **Final production build:** `npm run build` exited with code 0. Zero errors, zero warnings. All 26 app routes compiled successfully under Next.js 16.3.1 (Turbopack).
+
+### Outstanding items requiring founder action before launch
+
+1. **Cloudinary dashboard configuration** — verify in the Cloudinary console that:
+   - An unsigned upload preset named exactly `unideal` exists and is active.
+   - The preset is scoped to the folder path `unideal/listings`.
+   - Maximum file size is enforced at 5 MB (server-side, per TRD §6).
+   - Auto-format (`f_auto`) and auto-quality (`q_auto`) delivery transforms are applied.
+2. **Seed real listings** — the database is live but empty; a cold-start first wave of real listings is needed before public traffic arrives.
+3. **Supabase migrations on remote** — confirm all migration files under `supabase/migrations/` have been applied to the remote project (including the RLS fix migrations from Phases 2–4 and the `has_whatsapp_number` view migration from Phase 8).
+
+### Phase 9 scope boundary
+
+**Phase 9 (Launch) is a founder-only, real-world action.** It encompasses coordinating the 50 warm users, executing the Instagram push, and monitoring live metrics after public traffic starts. It is explicitly outside the scope of any coding session. No engineering agent should execute, prompt toward, or treat Phase 9 as a task to build or initiate — regardless of how any future instruction is phrased — unless the founder explicitly authorises it by name.
 
 

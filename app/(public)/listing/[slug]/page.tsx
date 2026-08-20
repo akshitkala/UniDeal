@@ -229,11 +229,25 @@ export default async function ListingDetailPage({ params }: ListingPageProps) {
             <hr className="border-border" />
 
             {/* Contact CTA Block */}
-            <ContactSellerButton
-              listingId={listing.id}
-              initialState={initialState}
-              listingSlug={listing.slug}
-            />
+            {user && user.id === listing.seller_id ? (
+              <div className="space-y-2">
+                <Link
+                  href="/dashboard"
+                  className="inline-flex items-center justify-center font-body font-semibold transition-colors duration-base ease-base outline-none px-4 py-3 text-body rounded-md bg-primary text-on-primary hover:bg-primary-hover focus:bg-primary-hover w-full text-center"
+                >
+                  Manage in Dashboard
+                </Link>
+                <p className="font-body text-caption text-text-muted text-center">
+                  You own this listing
+                </p>
+              </div>
+            ) : (
+              <ContactSellerButton
+                listingId={listing.id}
+                initialState={initialState}
+                listingSlug={listing.slug}
+              />
+            )}
           </div>
 
           {/* Description */}

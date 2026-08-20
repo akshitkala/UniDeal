@@ -87,6 +87,9 @@ export function ListingForm({ categories, initialData }: ListingFormProps) {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("upload_preset", config.uploadPreset);
+        if (config.folder) {
+          formData.append("folder", config.folder);
+        }
 
         const response = await fetch(uploadUrl, {
           method: "POST",

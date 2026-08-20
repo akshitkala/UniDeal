@@ -48,3 +48,6 @@ test-image.png
 # supabase temporary CLI assets
 supabase/.temp/
 
+# E2E screenshots
+audit/
+
