@@ -50,7 +50,7 @@ export function SignupForm({ returnTo }: SignupFormProps) {
 
     startTransition(async () => {
       const supabase = createSupabaseBrowserClient();
-      const redirectTo = `${window.location.origin}${returnTo}`;
+      const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(returnTo)}`;
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
