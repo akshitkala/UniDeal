@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #1C8A56;
+  --color-primary-hover: #15683F;
+  --color-accent: #C97A2B;
+  --color-accent-contact: #15803D;
+  --color-surface: #F7F6F3;
+  --color-border: #E5E3DD;
+  --color-text: #1A1A1A;
+  --color-text-muted: #6B6B6B;
+  --color-danger: #C0392B;
+}
+
+body {
+  color: #1A1A1A;
+  background-color: #FFFFFF;
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sora), sans-serif;
+}
