@@ -1,5 +1,33 @@
 # UniDeal — Project Progress Log
 
+## 2026-09-12 — Phase 1 Exit Gate: Auth Modal, Email Verification, & RLS Verification Complete
+- Built `components/auth/AuthModal.tsx`:
+  - Tabbed Sign In / Create Account modal overlay matching `design (2).md` §7.4 and TRD §5.1a.
+  - Implemented focus trap cycling Tab/Shift+Tab strictly inside the modal.
+  - Escape key and backdrop click close modal.
+  - Integrated `history.pushState` on modal open with `popstate` listener so browser/device back gesture closes the modal without navigating away from the underlying page.
+  - Contextual `returnTo` and `onSuccess` action resumption.
+  - Full name collected on signup, passed via `options.data.full_name` to populate `profiles.full_name` via DB trigger.
+  - Inline field validation errors and pending email verification notification state.
+- Implemented `contexts/AuthContext.tsx`:
+  - Global auth provider exposing user session, verification status, and `openAuthModal` / `closeAuthModal` handlers.
+- Implemented `middleware.ts`:
+  - Supabase session token refresh on incoming requests across App Router.
+- Implemented `components/nav/TopNav.tsx`:
+  - Responsive header integrating `AuthModal` trigger for unauthenticated users, Sell CTA, first-name display via `firstName()`, and verified badge / navigation dropdown.
+- Implemented `app/(auth)/verify-email/page.tsx`:
+  - Real verification page exchanging `token_hash` / `code` OTP tokens.
+  - Verified state confirmation with navigation to Browse / Sell.
+  - Resend verification email action with 60-second cooldown timer.
+- Live Exit-Gate Verification Suite (`scripts/test_phase1_exit_gate.js`):
+  - ✅ Signup via Supabase Auth SDK creates user.
+  - ✅ Postgres trigger `handle_new_user` auto-creates `public.profiles` row with full_name.
+  - ✅ Email confirmation sets `email_confirmed_at` properly.
+  - ✅ Login with confirmed credentials succeeds.
+  - ✅ Column-level lockdown verified: authenticated client attempting `select('whatsapp_number')` on `profiles` is blocked with `permission denied for table profiles`.
+  - ✅ Public view verified: guest/authenticated queries against `public_profiles` return public identity fields with `whatsapp_number` strictly absent.
+- Production build (`npm run build`) passed with zero errors across all 16 routes.
+
 ## 2026-09-12 — Repository history reset
 - Preserved the local document relocation and project tooling in commit `adaba06ca55e31490bbc2804e622bd69f254ad0e`.
 - Replaced the abandoned, unrelated `origin/main` history with local `main` using `git push --force-with-lease origin main`.
