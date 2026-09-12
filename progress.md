@@ -1,5 +1,11 @@
 # UniDeal — Project Progress Log
 
+## 2026-09-12 — Repository history reset
+- Preserved the local document relocation and project tooling in commit `adaba06ca55e31490bbc2804e622bd69f254ad0e`.
+- Replaced the abandoned, unrelated `origin/main` history with local `main` using `git push --force-with-lease origin main`.
+- Confirmed `origin/main` now points to `adaba06ca55e31490bbc2804e622bd69f254ad0e`.
+- The prior remote contained an incompatible OAuth-based implementation and is intentionally not part of this project history.
+
 ## 2026-09-11 — Phase 1: Project Scaffold + Supabase Schema
 - Initialized Next.js 14+ App Router project structure matching TRD §4 / architecture.md §3:
   - Route groups: `(public)`, `(auth)`, `(account)`, and top-level `admin/`.
