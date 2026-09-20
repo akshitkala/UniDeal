@@ -149,7 +149,7 @@ grant select on public.public_profiles to anon, authenticated;
 -- Only the service-role client (server-side in contact reveal route) can access it.
 revoke select on public.profiles from anon, authenticated;
 grant select (id, full_name, branch, year, is_admin, is_banned, promoted_by, promoted_at, created_at, updated_at)
-  on public.profiles to authenticated;
+  on public.profiles to authenticated, anon;
 
 -- 5. ROW LEVEL SECURITY (RLS) POLICIES
 -- ------------------------------------------------------------------------------

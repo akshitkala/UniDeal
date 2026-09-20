@@ -1,0 +1,477 @@
+{
+  "communities": {
+    "0": [
+      "lib_resend",
+      "lib_resend_getresendclient",
+      "package",
+      "package_name",
+      "package_private",
+      "package_version",
+      "ref_autoprefixer",
+      "ref_eslint",
+      "ref_eslint_config_next",
+      "ref_lucide_react",
+      "ref_postcss",
+      "ref_react",
+      "ref_react_dom",
+      "ref_resend",
+      "ref_tailwindcss",
+      "ref_types_node",
+      "ref_types_react",
+      "ref_types_react_dom",
+      "ref_typescript",
+      "tailwind_config",
+      "tailwind_config_config"
+    ],
+    "1": [
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_incremental",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_plugins",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_exclude",
+      "tsconfig_include"
+    ],
+    "2": [
+      "lib_rate_limit",
+      "lib_rate_limit_checkcontactrevealratelimit",
+      "lib_rate_limit_max_contact_reveals_per_day",
+      "lib_supabase_admin",
+      "lib_supabase_admin_createadminclient",
+      "lib_supabase_client",
+      "lib_supabase_client_createclient",
+      "lib_supabase_server",
+      "lib_supabase_server_createclient",
+      "ref_supabase_ssr",
+      "ref_supabase_supabase_js",
+      "types_database",
+      "types_database_approvalmode",
+      "types_database_database",
+      "types_database_json",
+      "types_database_listingcondition",
+      "types_database_listingstatus",
+      "types_database_reportstatus"
+    ],
+    "3": [
+      "lib_validation_contact",
+      "lib_validation_contact_contactinput",
+      "lib_validation_contact_contactschema",
+      "lib_validation_listing",
+      "lib_validation_listing_createlistinginput",
+      "lib_validation_listing_createlistingschema",
+      "lib_validation_listing_listingconditions",
+      "lib_validation_listing_updatelistinginput",
+      "lib_validation_listing_updatelistingschema",
+      "ref_zod"
+    ],
+    "4": [
+      "package_dependencies",
+      "package_dependencies_lucide_react",
+      "package_dependencies_nanoid",
+      "package_dependencies_next",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_resend",
+      "package_dependencies_supabase_ssr",
+      "package_dependencies_supabase_supabase_js",
+      "package_dependencies_zod"
+    ],
+    "5": [
+      "package_devdependencies",
+      "package_devdependencies_autoprefixer",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_next",
+      "package_devdependencies_postcss",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript"
+    ],
+    "6": [
+      "app_layout",
+      "app_layout_inter",
+      "app_layout_metadata",
+      "app_layout_rootlayout",
+      "app_layout_sora",
+      "ref_next"
+    ],
+    "7": [
+      "lib_cloudinary",
+      "lib_cloudinary_cloudinary_max_file_size_bytes",
+      "lib_cloudinary_cloudinary_max_images",
+      "lib_cloudinary_cloudinaryuploadresponse",
+      "lib_cloudinary_getcloudinaryuploadpreset",
+      "lib_cloudinary_getcloudinaryuploadurl"
+    ],
+    "8": [
+      "documents_appflow_browse_contact_flow",
+      "documents_roadmap_3_phase_3_contact_flow",
+      "documents_unideal_prd_v2_1_contact_reveal",
+      "documents_unideal_prd_v2_1_marketplace_bridge",
+      "documents_unideal_trd_v1_1_contact_api"
+    ],
+    "9": [
+      "documents_architecture_v1_1_folder_blueprint",
+      "documents_architecture_v1_1_system_architecture",
+      "documents_rules_v1_1_scope_boundaries",
+      "documents_unideal_prd_v2_1_product_requirements",
+      "documents_unideal_trd_v1_1_technical_requirements"
+    ],
+    "10": [
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_lint",
+      "package_scripts_start"
+    ],
+    "11": [
+      "documents_architecture_v1_1_system_topology",
+      "documents_rules_v1_1_security_boundaries",
+      "documents_unideal_trd_v1_1_row_level_security",
+      "documents_unideal_trd_v1_1_supabase_architecture"
+    ],
+    "12": [
+      "lib_slug",
+      "lib_slug_generatenanoid",
+      "lib_slug_generateslug",
+      "ref_nanoid"
+    ],
+    "13": [
+      "app_account_listing_slug_edit_page",
+      "app_account_listing_slug_edit_page_editlistingpage",
+      "app_account_listing_slug_edit_page_editlistingpageprops"
+    ],
+    "14": [
+      "app_public_listing_slug_page",
+      "app_public_listing_slug_page_listingdetailpage",
+      "app_public_listing_slug_page_listingdetailpageprops"
+    ],
+    "15": [
+      "documents_appflow_moderation_flow",
+      "documents_roadmap_3_phase_4_moderation",
+      "documents_unideal_prd_v2_1_approval_modes"
+    ],
+    "16": [
+      "documents_unideal_prd_v2_1_first_name_identity",
+      "documents_unideal_trd_v1_1_listings",
+      "documents_unideal_trd_v1_1_profiles"
+    ],
+    "17": [
+      "app_account_dashboard_page",
+      "app_account_dashboard_page_dashboardpage"
+    ],
+    "18": [
+      "app_account_layout",
+      "app_account_layout_accountlayout"
+    ],
+    "19": [
+      "app_account_profile_page",
+      "app_account_profile_page_profilepage"
+    ],
+    "20": [
+      "app_account_sell_page",
+      "app_account_sell_page_sellpage"
+    ],
+    "21": [
+      "app_admin_layout",
+      "app_admin_layout_adminlayout"
+    ],
+    "22": [
+      "app_admin_listings_pending_page",
+      "app_admin_listings_pending_page_adminpendinglistingspage"
+    ],
+    "23": [
+      "app_admin_page",
+      "app_admin_page_adminoverviewpage"
+    ],
+    "24": [
+      "app_admin_reports_page",
+      "app_admin_reports_page_adminreportspage"
+    ],
+    "25": [
+      "app_admin_users_page",
+      "app_admin_users_page_adminuserspage"
+    ],
+    "26": [
+      "app_auth_verify_email_page",
+      "app_auth_verify_email_page_verifyemailpage"
+    ],
+    "27": [
+      "app_public_browse_page",
+      "app_public_browse_page_browsepage"
+    ],
+    "28": [
+      "app_public_contact_page",
+      "app_public_contact_page_contactuspage"
+    ],
+    "29": [
+      "app_public_how_it_works_page",
+      "app_public_how_it_works_page_howitworkspage"
+    ],
+    "30": [
+      "app_public_our_story_page",
+      "app_public_our_story_page_ourstorypage"
+    ],
+    "31": [
+      "app_public_page",
+      "app_public_page_homepage"
+    ],
+    "32": [
+      "documents_appflow_listing_lifecycle",
+      "documents_unideal_trd_v1_1_listing_api"
+    ],
+    "33": [
+      "documents_design_2_auth_modal_design",
+      "documents_unideal_trd_v1_1_auth_modal"
+    ],
+    "34": [
+      "documents_design_2_design_tokens",
+      "documents_rules_v1_1_design_rules"
+    ],
+    "35": [
+      "documents_roadmap_3_development_roadmap",
+      "progress_project_progress"
+    ],
+    "36": [
+      "documents_roadmap_3_phase_1_foundation",
+      "progress_phase_1_scaffold_schema"
+    ],
+    "37": [
+      "documents_unideal_prd_v2_1_public_support_pages",
+      "documents_unideal_trd_v1_1_support_contact_api"
+    ],
+    "38": [
+      "lib_display_name",
+      "lib_display_name_firstname"
+    ],
+    "39": [
+      "lib_whatsapp",
+      "lib_whatsapp_buildwhatsapplink"
+    ],
+    "40": [
+      "vercel",
+      "vercel_crons"
+    ],
+    "41": [
+      "agents_graphify"
+    ],
+    "42": [
+      "documents_appflow_application_flow"
+    ],
+    "43": [
+      "documents_design_2_design_system"
+    ],
+    "44": [
+      "documents_design_2_screen_designs"
+    ],
+    "45": [
+      "documents_rules_v1_1_development_rules"
+    ],
+    "46": [
+      "postcss_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.09523809523809523,
+    "1": 0.10526315789473684,
+    "2": 0.1503267973856209,
+    "3": 0.2,
+    "4": 0.2,
+    "5": 0.2,
+    "6": 0.3333333333333333,
+    "7": 0.3333333333333333,
+    "8": 0.4,
+    "9": 0.5,
+    "10": 0.4,
+    "11": 0.5,
+    "12": 0.6666666666666666,
+    "13": 0.6666666666666666,
+    "14": 0.6666666666666666,
+    "15": 0.6666666666666666,
+    "16": 0.6666666666666666,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 5
+    },
+    {
+      "id": "types_database_database",
+      "label": "Database",
+      "degree": 5
+    },
+    {
+      "id": "ref_supabase_ssr",
+      "label": "@supabase/ssr",
+      "degree": 3
+    },
+    {
+      "id": "ref_supabase_supabase_js",
+      "label": "@supabase/supabase-js",
+      "degree": 3
+    },
+    {
+      "id": "ref_zod",
+      "label": "zod",
+      "degree": 3
+    },
+    {
+      "id": "documents_unideal_prd_v2_1_product_requirements",
+      "label": "UniDeal Product Requirements",
+      "degree": 3
+    },
+    {
+      "id": "documents_unideal_trd_v1_1_technical_requirements",
+      "label": "UniDeal Technical Requirements",
+      "degree": 3
+    },
+    {
+      "id": "documents_unideal_trd_v1_1_contact_api",
+      "label": "Contact Reveal API",
+      "degree": 3
+    },
+    {
+      "id": "lib_slug_generatenanoid",
+      "label": "generateNanoId",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Phase 1 Foundation",
+      "target": "Phase 1 Scaffold and Schema Progress",
+      "source_files": [
+        "documents/roadmap (3).md",
+        "progress.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "implements",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories"
+    },
+    {
+      "source": "System Topology",
+      "target": "Supabase Architecture",
+      "source_files": [
+        "documents/architecture_v1.1.md",
+        "documents/UniDeal_TRD_v1.1.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Auth Modal",
+      "target": "Auth Modal Design",
+      "source_files": [
+        "documents/UniDeal_TRD_v1.1.md",
+        "documents/design (2).md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Phase 4 Moderation",
+      "target": "Moderation Flow",
+      "source_files": [
+        "documents/roadmap (3).md",
+        "documents/appflow.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Project Progress Log",
+      "target": "UniDeal Development Roadmap",
+      "source_files": [
+        "progress.md",
+        "documents/roadmap (3).md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `Community 4` to `Community 0`?",
+      "why": "High betweenness centrality (0.040) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `Community 5` to `Community 0`?",
+      "why": "High betweenness centrality (0.040) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `zod` connect `Community 3` to `Community 0`?",
+      "why": "High betweenness centrality (0.039) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `EditListingPageProps`, `ListingDetailPageProps`, `inter` to the rest of the system?",
+      "why": "99 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

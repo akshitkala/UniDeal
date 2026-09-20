@@ -1,5 +1,31 @@
 # UniDeal — Project Progress Log
 
+## 2026-09-21 — Phase 2 Exit Gate: Core Marketplace (Listings) Complete
+- Implemented `lib/validation/listing.ts` (Zod schemas for create and update listing).
+- Implemented API Routes for Listings:
+  - `GET /api/listings` — Browse listings with filtering (category, condition, search query), sorting (newest, price_asc, price_desc), and 20/page pagination.
+  - `POST /api/listings` — Create listing with server-side Zod validation, nanoid slug generation (`{title}-{nanoid(5)}`), and `admin_settings.approval_mode` check ('auto' vs 'manual').
+  - `PATCH /api/listings/[id]` — Update listing fields (excluding protected seller_id/slug/status).
+  - `DELETE /api/listings/[id]` — Delete listing, enforced by RLS `listings_delete_own`.
+- Implemented Client & Server Pages:
+  - `app/(account)/sell/page.tsx` — Post listing page with authentication and email verification gates.
+  - `app/(account)/listing/[slug]/edit/page.tsx` — Edit listing page pre-filled with listing data.
+  - `components/listing/ListingForm.tsx` — Form supporting title, category select, condition, price, negotiable toggle, description, and Cloudinary unsigned image uploads (up to 4 images, < 5MB client-side rejection).
+  - `app/(public)/browse/page.tsx` — Browse page with category tabs, condition filters, search bar, sort dropdown, and responsive grid layout (`ListingGrid.tsx`, `ListingFilters.tsx`).
+  - `app/(public)/listing/[slug]/page.tsx` — Detail page fetching listing joined with `public_profiles`, `firstName()` display, and fire-and-forget view count increment (`increment_listing_views`).
+- Column & RLS Permission Polish:
+  - Granted column-level SELECT on non-sensitive `profiles` columns (`id, full_name, branch, year, is_admin, is_banned, promoted_by, promoted_at, created_at, updated_at`) to `anon` role so guest browse queries succeed without exposing `whatsapp_number`.
+- Live Exit-Gate Verification Suite (`scripts/test_phase2_exit_gate.js`):
+  - ✅ Verified seller user created, verified, and logged in.
+  - ✅ Unverified user strictly blocked from authenticating or posting listings by RLS.
+  - ✅ Verified seller successfully posted listing with auto-approved status.
+  - ✅ Public guest query retrieves listing joined with `public_profiles`, `firstName()` utility extracts first name ("Ananya").
+  - ✅ Seller successfully edits own listing price via `PATCH`.
+  - ✅ Unauthorized 3rd party user blocked from editing seller's listing by RLS.
+  - ✅ Seller successfully deletes own listing via `DELETE`.
+- Automated Phase 1 (`scripts/test_phase1_exit_gate.js`) and Phase 2 (`scripts/test_phase2_exit_gate.js`) suites both pass 100%.
+- Production build (`npm run build`) passed with zero errors across all 17 routes.
+
 ## 2026-09-12 — Phase 1 Exit Gate: Auth Modal, Email Verification, & RLS Verification Complete
 - Built `components/auth/AuthModal.tsx`:
   - Tabbed Sign In / Create Account modal overlay matching `design (2).md` §7.4 and TRD §5.1a.

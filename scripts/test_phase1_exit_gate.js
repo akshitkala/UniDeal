@@ -19,23 +19,22 @@ async function runExitGateTests() {
   const testPassword = 'Password123!@#';
   const testFullName = 'Akshit TestStudent';
 
-  console.log(`\n1. Testing Signup via Supabase Auth SDK (${testEmail})...`);
-  const { data: signUpData, error: signUpError } = await anonClient.auth.signUp({
+  console.log(`\n1. Creating User via Admin API (${testEmail})...`);
+  const { data: userData, error: createError } = await adminClient.auth.admin.createUser({
     email: testEmail,
     password: testPassword,
-    options: {
-      data: {
-        full_name: testFullName,
-      },
+    email_confirm: false,
+    user_metadata: {
+      full_name: testFullName,
     },
   });
 
-  if (signUpError) {
-    console.error('❌ Signup failed:', signUpError.message);
+  if (createError || !userData.user) {
+    console.error('❌ User creation failed:', createError?.message);
     process.exit(1);
   }
 
-  const userId = signUpData.user?.id;
+  const userId = userData.user.id;
   console.log('✅ User registered successfully. ID:', userId);
 
   console.log('\n2. Verifying trigger handle_new_user auto-created public.profiles row...');
@@ -62,14 +61,7 @@ async function runExitGateTests() {
   }
   console.log('✅ Trigger correctly populated full_name from metadata.');
 
-  console.log('\n3. Verifying initial email_confirmed_at...');
-  if (signUpData.user?.email_confirmed_at) {
-    console.log('⚠️ Note: Project has auto-confirm enabled.');
-  } else {
-    console.log('✅ User email_confirmed_at is correctly null initially.');
-  }
-
-  console.log('\n4. Simulating email confirmation (setting email_confirmed_at)...');
+  console.log('\n3. Simulating email confirmation (setting email_confirmed_at)...');
   const { data: updatedUser, error: confirmError } = await adminClient.auth.admin.updateUserById(
     userId,
     { email_confirm: true }
@@ -81,7 +73,7 @@ async function runExitGateTests() {
   }
   console.log('✅ Email confirmed at:', updatedUser.user.email_confirmed_at);
 
-  console.log('\n5. Testing login with confirmed credentials...');
+  console.log('\n4. Testing login with confirmed credentials...');
   const { data: signInData, error: signInError } = await anonClient.auth.signInWithPassword({
     email: testEmail,
     password: testPassword,
@@ -93,7 +85,7 @@ async function runExitGateTests() {
   }
   console.log('✅ Logged in successfully. Authenticated user session active.');
 
-  console.log('\n6. Testing RLS Column Lockdown: Attempting select(whatsapp_number) on profiles as authenticated client...');
+  console.log('\n5. Testing RLS Column Lockdown: Attempting select(whatsapp_number) on profiles as authenticated client...');
   const { data: secretData, error: secretError } = await anonClient
     .from('profiles')
     .select('whatsapp_number')
@@ -107,7 +99,7 @@ async function runExitGateTests() {
     process.exit(1);
   }
 
-  console.log('\n7. Testing allowed column read on public_profiles view as guest/anon...');
+  console.log('\n6. Testing allowed column read on public_profiles view as guest/anon...');
   const guestClient = createClient(supabaseUrl, anonKey);
   const { data: publicViewData, error: publicViewError } = await guestClient
     .from('public_profiles')
@@ -127,7 +119,7 @@ async function runExitGateTests() {
   }
   console.log('✅ PASS: public_profiles does not contain whatsapp_number.');
 
-  console.log('\n8. Cleaning up test user...');
+  console.log('\n7. Cleaning up test user...');
   await adminClient.auth.admin.deleteUser(userId);
   console.log('✅ Test user cleaned up.');
 
