@@ -222,9 +222,9 @@
     "semantic_hash": "aeb8e4b83c22b201b5166b0e7f74acca"
   },
   "AGENTS.md": {
-    "mtime": 1789223084.4186964,
-    "seen": 1789925752.7136137,
-    "ast_hash": "e658fe883a9d67bdea6af33138339760",
+    "mtime": 1789932934.308752,
+    "seen": 1789933023.4279184,
+    "ast_hash": "6f8a1e2bf9455ec3852286e0d23e9eba",
     "semantic_hash": ""
   },
   "documents/UniDeal_PRD_v2.1.md": {
@@ -264,15 +264,15 @@
     "semantic_hash": "7ad94444f3b6813bdf6602f6b7c90b49"
   },
   "documents/rules_v1.1.md": {
-    "mtime": 1789112045.2393792,
-    "seen": 1789119473.222166,
-    "ast_hash": "1b4de8f65996cb2f03645b94d95600dc",
-    "semantic_hash": "1b4de8f65996cb2f03645b94d95600dc"
+    "mtime": 1789932927.4686203,
+    "seen": 1789933023.4288676,
+    "ast_hash": "e6c55228314b1f81eb892aca78796785",
+    "semantic_hash": ""
   },
   "progress.md": {
-    "mtime": 1789932613.930144,
-    "seen": 1789932628.1732812,
-    "ast_hash": "d50323e60407dcdb15ea781333a190c0",
+    "mtime": 1789933006.2867973,
+    "seen": 1789933023.4294477,
+    "ast_hash": "2cf2d915b8f4827c3a0c568414f7857c",
     "semantic_hash": ""
   },
   ".agents/skills/brand/scripts/extract-colors.cjs": {
@@ -1809,6 +1809,12 @@
     "mtime": 1789926643.2139096,
     "seen": 1789932628.1629112,
     "ast_hash": "de9cec0972b69b5b791a49fee51c44ee",
+    "semantic_hash": ""
+  },
+  "scripts/test_phase3_exit_gate.js": {
+    "mtime": 1789932952.1031258,
+    "seen": 1789933023.406183,
+    "ast_hash": "ee58113313e9e4f43b1fb511f3207d2f",
     "semantic_hash": ""
   }
 }

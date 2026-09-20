@@ -1,5 +1,34 @@
 # UniDeal — Project Progress Log
 
+## 2026-09-21 — Phase 4 Exit Gate: Moderation & Admin Complete
+- Implemented Admin Server Guard (`lib/auth-admin.ts`):
+  - Server-side admin verification (`requireAdminSession()`) checking `profiles.is_admin` and `is_banned` status using service-role client.
+- Implemented API Routes for Moderation & Admin (TRD §5.6 - §5.10):
+  - `POST /api/listings/[id]/sold` — Seller-only endpoint marking listing as sold (`status = 'sold'`, `sold_at = now()`).
+  - `POST /api/listings/[id]/report` — File listing report with Zod validation and duplicate constraint handling (`unique(listing_id, reporter_id)` returns 409).
+  - `GET & PATCH /api/admin/settings` — Admin-only endpoint fetching & updating moderation `approval_mode` ('auto' vs 'manual').
+  - `GET /api/admin/listings/pending` — Manual-mode pending queue.
+  - `PATCH /api/admin/listings/[id]/approve` — Admin endpoint approving pending listing.
+  - `PATCH /api/admin/listings/[id]/reject` — Admin endpoint rejecting listing with persisted `rejection_reason`.
+  - `GET & PATCH /api/admin/reports` & `/resolve` — Admin endpoint resolving report with 'remove' (rejects listing + sets `resolved_removed`) or 'dismiss' (sets `resolved_dismissed`).
+  - `POST /api/admin/users/[id]/ban`, `/unban`, `/promote` — Admin user management endpoints.
+- Implemented Admin & Seller UI Pages:
+  - `app/(account)/dashboard/page.tsx` — Seller dashboard with 4 tabs (Active, Under Review, Sold, Rejected), Mark Sold button, Edit/Delete actions, and rejection reason display.
+  - `app/admin/layout.tsx` — Responsive admin header and sub-nav tabs (Settings, Pending Queue, Reports, Users).
+  - `app/admin/page.tsx` — Moderation mode selector (Auto-Approve vs Manual Review Queue).
+  - `app/admin/listings/pending/page.tsx` — Pending listings queue with inline Approve & Reject modal.
+  - `app/admin/reports/page.tsx` — Reported listings queue with Remove & Dismiss actions.
+  - `app/admin/users/page.tsx` — User management directory with Search, Ban/Unban toggle, and Promote to Admin button.
+- Live Exit-Gate Verification Suite (`scripts/test_phase4_exit_gate.js`):
+  - ✅ Admin user created & authenticated.
+  - ✅ Non-admin student blocked server-side from modifying `admin_settings`.
+  - ✅ Approval mode set to 'manual' creates new listing with `status = 'pending'`, automatically excluded from public Browse by RLS.
+  - ✅ Admin approval updates listing status to 'approved'.
+  - ✅ Admin bans user -> user's listings immediately disappear from public Browse via RLS, while remaining visible on user's own dashboard.
+  - ✅ Duplicate report from same user on same listing blocked by DB unique constraint (returns 409).
+- Automated Phase 1, Phase 2, Phase 3, and Phase 4 exit-gate suites all pass 100%.
+- Production build (`npm run build`) passed with zero errors across all 20 routes.
+
 ## 2026-09-21 — Phase 3 Exit Gate: Trust Mechanic (Contact Flow) Complete
 - Implemented `POST /api/listings/[id]/contact` (TRD §5.5 & rules.md §3):
   - Service-role client (`lib/supabase/admin.ts`) reads `whatsapp_number` securely server-side.
