@@ -1,5 +1,23 @@
 # UniDeal — Project Progress Log
 
+## 2026-09-21 — Phase 3 Exit Gate: Trust Mechanic (Contact Flow) Complete
+- Implemented `POST /api/listings/[id]/contact` (TRD §5.5 & rules.md §3):
+  - Service-role client (`lib/supabase/admin.ts`) reads `whatsapp_number` securely server-side.
+  - Strict check order enforced: 401 unauthenticated check -> 403 banned check -> 403 unverified check ("Verify your email to contact sellers") -> 429 rolling 24h rate-limit check (50 reveals max; "Daily limit reached. Try again tomorrow.") -> 404 seller number check ("Seller contact not available").
+  - Inserts `contact_reveals` audit row `(user_id, listing_id)`.
+  - Builds `waLink` using `buildWhatsAppLink(number, title)` from `lib/whatsapp.ts`.
+  - Returns `{ data: { waLink } }` — raw phone number is never exposed in response body.
+- Implemented `components/listing/ContactSellerButton.tsx` (appflow.md §4):
+  - Handles all UI states: logged-out (triggers `AuthModal`), unverified (prompts email verification page link), rate-limited / no contact / generic error states, loading spinner, and success state (`window.open(waLink, '_blank')`).
+- Live Exit-Gate Verification Suite (`scripts/test_phase3_exit_gate.js`):
+  - ✅ Verified seller created with WhatsApp number and listing posted.
+  - ✅ Verified buyer logged in & contacts seller -> receives `waLink`, row inserted into `contact_reveals`.
+  - ✅ Raw phone number confirmed strictly absent from API response body payload.
+  - ✅ Listing with no `whatsapp_number` returns 404 ("Seller contact not available").
+  - ✅ 51st reveal in rolling 24h window returns 429 RATE_LIMITED ("Daily limit reached. Try again tomorrow.").
+- Automated Phase 1, Phase 2, and Phase 3 verification suites all pass 100%.
+- Production build (`npm run build`) passed with zero errors across all 17 routes.
+
 ## 2026-09-21 — Phase 2 Exit Gate: Core Marketplace (Listings) Complete
 - Implemented `lib/validation/listing.ts` (Zod schemas for create and update listing).
 - Implemented API Routes for Listings:

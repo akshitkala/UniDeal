@@ -1,11 +1,11 @@
-# Graph Report - Unideal  (2026-09-20)
+# Graph Report - Unideal  (2026-09-21)
 
 ## Corpus Check
-- 293 files · ~449,834 words
+- 296 files · ~451,587 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 4739 nodes · 6033 edges · 356 communities (271 shown, 72 thin omitted)
+- 4748 nodes · 6045 edges · 352 communities (267 shown, 72 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 67 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
@@ -64,11 +64,11 @@
 - Prerequisites
 - Form & Input Components
 - Tailwind CSS Responsive Design
-- read_rows
+- DesignSystemGenerator
 - Form & Input Components
 - Tailwind CSS Responsive Design
 - read_rows
-- DesignSystemGenerator
+- _palette_is_dark
 - Typography Specifications
 - Typography Specifications
 - Logo Usage Rules
@@ -111,9 +111,9 @@
 - TailwindConfigGenerator
 - spacing
 - spacing
-- .trae/skills/ui-ux-pro-max/scripts/tests/test_core.py
+- generate_design_system
 - .agents/skills/design-system/scripts/generate-slide.py
-- DesignSystemGenerator
+- @supabase/supabase-js
 - .trae/skills/design-system/scripts/generate-slide.py
 - Routing by Task Type
 - shadcn/ui Theming & Customization
@@ -155,7 +155,6 @@
 - Copywriting Formulas
 - Copywriting Formulas
 - detect_domain
-- parse_decision_rules
 - .generate
 - CIP Design Reference
 - Icon Design Reference
@@ -163,7 +162,7 @@
 - Copywriting Formulas
 - detect_domain
 - parse_decision_rules
-- .generate
+- DesignSystemGenerator
 - Banner Design - Multi-Format Creative Banner System
 - Messaging Framework
 - Brand Voice Framework
@@ -197,14 +196,13 @@
 - card
 - .check_shadcn_config
 - .generate_config_string
-- _style_is_dark_primary
 - Primitive Tokens
 - .trae/skills/design-system/scripts/validate-tokens.cjs
 - card
 - .check_shadcn_config
 - .generate_config_string
 - _select_palette_for_mode
-- _style_is_dark_primary
+- .trae/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py
 - Core Visual Elements
 - .agents/skills/brand/scripts/inject-brand-context.cjs
 - CIP Design Style Guide
@@ -230,7 +228,6 @@
 - duration
 - Slide Strategies
 - ._base_config
-- generate_design_system
 - Brand
 - Slide Strategies
 - Component Tokens
@@ -244,7 +241,6 @@
 - .trae/skills/brand/scripts/sync-brand-to-tokens.cjs
 - _run
 - input
-- _row_identities
 - ui-ux-pro-max
 - input
 - _row_identities
@@ -390,23 +386,23 @@
 - **Phase 1 Foundation Delivery** — documents_roadmap_3_phase_1_foundation, documents_unideal_trd_v1_1_supabase_architecture, documents_unideal_trd_v1_1_row_level_security, progress_phase_1_scaffold_schema [INFERRED 0.95]
 - **Verified WhatsApp Contact Trust Flow** — documents_unideal_prd_v2_1_contact_reveal, documents_unideal_trd_v1_1_contact_api, documents_appflow_browse_contact_flow, documents_rules_v1_1_security_boundaries [INFERRED 0.95]
 
-## Communities (356 total, 72 thin omitted)
+## Communities (352 total, 72 thin omitted)
 
 ### Community 0 - "package.json"
-Cohesion: 0.07
-Nodes (23): ContactInput, contactSchema, name, private, scripts, build, dev, lint (+15 more)
+Cohesion: 0.08
+Nodes (20): name, private, scripts, build, dev, lint, start, version (+12 more)
 
 ### Community 1 - "compilerOptions"
 Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
 ### Community 2 - "database.ts"
-Cohesion: 0.09
-Nodes (21): POST(), RouteContext, RouteContext, AdminSettingsRow, POST(), MAX_CONTACT_REVEALS_PER_DAY, generateNanoId, generateSlug() (+13 more)
+Cohesion: 0.08
+Nodes (24): POST(), RouteContext, RouteContext, POST(), MAX_CONTACT_REVEALS_PER_DAY, generateNanoId, generateSlug(), createAdminClient() (+16 more)
 
 ### Community 3 - "ListingForm.tsx"
-Cohesion: 0.15
-Nodes (14): RouteContext, CategoryOption, ListingForm(), ListingFormProps, CLOUDINARY_MAX_FILE_SIZE_BYTES, CLOUDINARY_MAX_IMAGES, CloudinaryUploadResponse, getCloudinaryUploadPreset() (+6 more)
+Cohesion: 0.12
+Nodes (17): RouteContext, CategoryOption, ListingForm(), ListingFormProps, CLOUDINARY_MAX_FILE_SIZE_BYTES, CLOUDINARY_MAX_IMAGES, CloudinaryUploadResponse, getCloudinaryUploadPreset() (+9 more)
 
 ### Community 4 - "dependencies"
 Cohesion: 0.20
@@ -441,8 +437,8 @@ Cohesion: 0.50
 Nodes (4): System Topology, Security Boundaries, Row Level Security Policies, Supabase Architecture
 
 ### Community 12 - ".agents/skills/design/scripts/cip/core.py"
-Cohesion: 0.06
-Nodes (46): BM25, detect_domain(), get_cip_brief(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection (+38 more)
+Cohesion: 0.05
+Nodes (47): BM25, detect_domain(), get_cip_brief(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection (+39 more)
 
 ### Community 13 - "AuthContext.tsx"
 Cohesion: 0.14
@@ -513,12 +509,12 @@ Cohesion: 0.06
 Nodes (35): 1. Visual Communication First, 2. Minimal Text Integration, 3. Expert Craftsmanship, 4. Systematic Patterns, Analog Meditation, Approach, Canvas Boundaries, Canvas Design System (+27 more)
 
 ### Community 55 - ".agents/skills/ui-ux-pro-max/scripts/core.py"
-Cohesion: 0.10
-Nodes (33): _contains_phrase(), _domain_keywords(), _exact_match_diagnostic(), _file_signature(), _get_bm25(), _legacy_successor_guidance(), _load_csv(), _load_csv_snapshot() (+25 more)
+Cohesion: 0.07
+Nodes (45): _contains_phrase(), _domain_keywords(), _exact_match_diagnostic(), _exact_row_identity(), _exact_stack_identifier(), _file_signature(), _get_bm25(), _legacy_successor_guidance() (+37 more)
 
 ### Community 56 - "search_stack"
-Cohesion: 0.09
-Nodes (11): _exact_stack_identifier(), Resolve a standalone API identifier even when its BM25 IDF is low., Search stack-specific guidelines, search_stack(), _valid_max_results(), Freshness and migration contracts for native, desktop, and 3D stacks., _rows(), TestNativeDesktopStackFreshness (+3 more)
+Cohesion: 0.10
+Nodes (8): Search stack-specific guidelines, search_stack(), Freshness and migration contracts for native, desktop, and 3D stacks., _rows(), TestNativeDesktopStackFreshness, Freshness and generation-isolation contracts for web stack guidance., _rows(), TestWebStackFreshness
 
 ### Community 57 - ".trae/skills/ui-ux-pro-max/scripts/core.py"
 Cohesion: 0.10
@@ -526,7 +522,7 @@ Nodes (33): _contains_phrase(), _domain_keywords(), _exact_match_diagnostic(), _
 
 ### Community 58 - "search_stack"
 Cohesion: 0.09
-Nodes (11): _exact_stack_identifier(), _project_row(), Resolve a standalone API identifier even when its BM25 IDF is low., Search stack-specific guidelines, search_stack(), Freshness and migration contracts for native, desktop, and 3D stacks., _rows(), TestNativeDesktopStackFreshness (+3 more)
+Nodes (11): _exact_stack_identifier(), Resolve a standalone API identifier even when its BM25 IDF is low., Search stack-specific guidelines, search_stack(), _valid_max_results(), Freshness and migration contracts for native, desktop, and 3D stacks., _rows(), TestNativeDesktopStackFreshness (+3 more)
 
 ### Community 59 - "Prerequisites"
 Cohesion: 0.06
@@ -540,9 +536,9 @@ Nodes (32): Accordion, Alert, Alert Dialog, Avatar, Badge, Button, Card, Checkbo
 Cohesion: 0.06
 Nodes (32): 1. Mobile-First Design, 2. Consistent Breakpoint Usage, 3. Test at Breakpoint Boundaries, 4. Use Container for Content Width, 5. Progressive Enhancement, 6. Avoid Too Many Breakpoints, Best Practices, Breakpoint System (+24 more)
 
-### Community 62 - "read_rows"
-Cohesion: 0.10
-Nodes (8): Cross-file semantic contracts for curated design data., read_rows(), split_values(), style_identities(), TestGeneratedCatalogContract, TestLandingAndStackContract, TestReasoningContract, TestStyleIdentityContract
+### Community 62 - "DesignSystemGenerator"
+Cohesion: 0.06
+Nodes (22): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., apply_decision_rules(), _object_without_duplicates() (+14 more)
 
 ### Community 63 - "Form & Input Components"
 Cohesion: 0.06
@@ -553,12 +549,12 @@ Cohesion: 0.06
 Nodes (32): 1. Mobile-First Design, 2. Consistent Breakpoint Usage, 3. Test at Breakpoint Boundaries, 4. Use Container for Content Width, 5. Progressive Enhancement, 6. Avoid Too Many Breakpoints, Best Practices, Breakpoint System (+24 more)
 
 ### Community 65 - "read_rows"
-Cohesion: 0.10
+Cohesion: 0.11
 Nodes (8): Cross-file semantic contracts for curated design data., read_rows(), split_values(), style_identities(), TestGeneratedCatalogContract, TestLandingAndStackContract, TestReasoningContract, TestStyleIdentityContract
 
-### Community 66 - "DesignSystemGenerator"
-Cohesion: 0.10
-Nodes (13): DesignSystemGenerator, _palette_is_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Select best matching result based on priority keywords., _relative_luminance() (+5 more)
+### Community 66 - "_palette_is_dark"
+Cohesion: 0.18
+Nodes (7): _palette_is_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., _relative_luminance(), The exact reproduction from issue #428., TestEndToEndCoherence, TestLuminance
 
 ### Community 67 - "Typography Specifications"
 Cohesion: 0.06
@@ -590,7 +586,7 @@ Nodes (15): Test adding colors multiple times., Test adding custom fonts., Test 
 
 ### Community 74 - "search"
 Cohesion: 0.11
-Nodes (9): _project_row(), Resolve a deprecated in-domain alias, or expose a cross-domain redirect., Main search function with auto-domain detection, search(), _style_search_destination(), TestSearchDomains, Regression tests for the public style taxonomy and search contract., read_rows() (+1 more)
+Nodes (8): Resolve a deprecated in-domain alias, or expose a cross-domain redirect., Main search function with auto-domain detection, search(), _style_search_destination(), TestSearchDomains, Regression tests for the public style taxonomy and search contract., read_rows(), TestStyleTaxonomy
 
 ### Community 75 - "Logo Usage Rules"
 Cohesion: 0.07
@@ -614,19 +610,19 @@ Nodes (15): Test adding colors multiple times., Test adding custom fonts., Test 
 
 ### Community 80 - "search"
 Cohesion: 0.11
-Nodes (9): Resolve a deprecated in-domain alias, or expose a cross-domain redirect., Main search function with auto-domain detection, search(), _style_search_destination(), _valid_max_results(), TestSearchDomains, Regression tests for the public style taxonomy and search contract., read_rows() (+1 more)
+Nodes (9): _project_row(), Resolve a deprecated in-domain alias, or expose a cross-domain redirect., Main search function with auto-domain detection, search(), _style_search_destination(), TestSearchDomains, Regression tests for the public style taxonomy and search contract., read_rows() (+1 more)
 
 ### Community 81 - ".agents/skills/ui-ux-pro-max/scripts/design_system.py"
-Cohesion: 0.10
-Nodes (26): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_markdown(), format_master_md(), format_page_override_md(), _generate_intelligent_overrides(), hex_to_ansi() (+18 more)
+Cohesion: 0.06
+Nodes (34): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_markdown(), format_master_md(), format_page_override_md(), generate_design_system(), _generate_intelligent_overrides() (+26 more)
 
 ### Community 82 - ".agents/skills/design/scripts/logo/core.py"
 Cohesion: 0.10
 Nodes (21): BM25, detect_domain(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection, Search across all domains and combine results (+13 more)
 
 ### Community 83 - "BM25"
-Cohesion: 0.10
-Nodes (10): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., Stdlib-only regression tests for core.py / design_system.py (unittest, not…, TestBm25CoreBehavior (+2 more)
+Cohesion: 0.16
+Nodes (7): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., TestTokenizer
 
 ### Community 84 - ".trae/skills/design/scripts/logo/core.py"
 Cohesion: 0.10
@@ -649,8 +645,8 @@ Cohesion: 0.08
 Nodes (25): Common Pitfalls, Core Prompt Structure, Detailed Brief, Eco/Sustainable, Effective Keywords by Style, Fashion Brand, Healthcare, Industry-Specific Prompts (+17 more)
 
 ### Community 89 - ".trae/skills/ui-ux-pro-max/scripts/design_system.py"
-Cohesion: 0.11
-Nodes (24): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_master_md(), format_page_override_md(), _generate_intelligent_overrides(), hex_to_ansi(), persist_design_system() (+16 more)
+Cohesion: 0.10
+Nodes (26): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_markdown(), format_master_md(), format_page_override_md(), _generate_intelligent_overrides(), hex_to_ansi() (+18 more)
 
 ### Community 90 - "Color Palette Management"
 Cohesion: 0.08
@@ -705,8 +701,8 @@ Cohesion: 0.09
 Nodes (13): main(), Add custom font families. Args: fonts: Dict of font_type: [font_names] e.g.,…, Add custom spacing values. Args: spacing: Dict of name: value e.g., {'18':…, Add custom breakpoints. Args: breakpoints: Dict of name: width e.g., {'3xl':…, Add plugin requirements. Args: plugins: List of plugin names e.g.,…, Get plugin recommendations based on configuration. Returns: List of recommended…, Tailwind CSS Configuration Generator Generate tailwind.config.js/ts with custom…, Generate Tailwind CSS configuration files. (+5 more)
 
 ### Community 103 - ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py"
-Cohesion: 0.15
-Nodes (13): _contrast_ratio(), _derive_dark_palette(), _palette_is_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., WCAG contrast ratio for two hex colors, or None if either is invalid., Keep product brand tokens while deriving accessible dark surfaces., Pick the highest-ranked palette matching the resolved mode. Only the dark case… (+5 more)
+Cohesion: 0.07
+Nodes (25): _contrast_ratio(), _derive_dark_palette(), _filter_anti_patterns_for_mode(), _palette_is_dark(), _query_wants_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., WCAG contrast ratio for two hex colors, or None if either is invalid. (+17 more)
 
 ### Community 104 - "Design System"
 Cohesion: 0.09
@@ -728,17 +724,17 @@ Nodes (22): $type, $value, $type, $value, $type, $value, $type, $value (+14 more
 Cohesion: 0.09
 Nodes (22): $type, $value, $type, $value, $type, $value, $type, $value (+14 more)
 
-### Community 109 - ".trae/skills/ui-ux-pro-max/scripts/tests/test_core.py"
-Cohesion: 0.10
-Nodes (11): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation. Args: query: Search query (e.g.,…, format_output(), UI/UX Pro Max Search - BM25 search engine for UI/UX style guides Usage: python…, Format results for Claude consumption (token-optimized), Stdlib-only regression tests for core.py / design_system.py (unittest, not… (+3 more)
+### Community 109 - "generate_design_system"
+Cohesion: 0.22
+Nodes (6): generate_design_system(), Main entry point for design system generation. Args: query: Search query (e.g.,…, format_output(), UI/UX Pro Max Search - BM25 search engine for UI/UX style guides Usage: python…, Format results for Claude consumption (token-optimized), TestPersistence
 
 ### Community 110 - ".agents/skills/design-system/scripts/generate-slide.py"
 Cohesion: 0.14
 Nodes (20): _e(), generate_chart_slide(), generate_cta_slide(), generate_deck(), generate_metrics_slide(), generate_problem_slide(), generate_solution_slide(), generate_testimonial_slide() (+12 more)
 
-### Community 111 - "DesignSystemGenerator"
-Cohesion: 0.15
-Nodes (7): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Select best matching result based on priority keywords., TestReasoningMatch, The exact reproduction from issue #428., TestEndToEndCoherence
+### Community 111 - "@supabase/supabase-js"
+Cohesion: 0.29
+Nodes (3): @supabase/supabase-js, { createClient }, { createClient }
 
 ### Community 112 - ".trae/skills/design-system/scripts/generate-slide.py"
 Cohesion: 0.14
@@ -841,8 +837,8 @@ Cohesion: 0.18
 Nodes (16): apply_color(), apply_viewbox_size(), extract_svgs(), generate_batch(), generate_icon(), generate_sizes(), load_env(), main() (+8 more)
 
 ### Community 138 - "BM25"
-Cohesion: 0.16
-Nodes (7): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., TestTokenizer
+Cohesion: 0.10
+Nodes (10): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., Stdlib-only regression tests for core.py / design_system.py (unittest, not…, TestBm25CoreBehavior (+2 more)
 
 ### Community 140 - "Design Principles"
 Cohesion: 0.12
@@ -896,13 +892,9 @@ Nodes (14): AIDA (Attention-Interest-Desire-Action), Before-After-Bridge, Contra
 Cohesion: 0.23
 Nodes (3): detect_domain(), Auto-detect the most relevant domain from query. Matches are weighted by…, TestDomainDetection
 
-### Community 153 - "parse_decision_rules"
-Cohesion: 0.17
-Nodes (9): Find matching reasoning rule for a category., Apply reasoning rules to search results., apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Closed, non-executable grammar for design-system decision rules., Parse the canonical condition -> action-array representation. (+1 more)
-
 ### Community 154 - ".generate"
-Cohesion: 0.16
-Nodes (8): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., Execute searches across multiple domains., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are…, Bucket a 1-10 dial value into its tier config. Returns None if value is None., _resolve_dial(), TestAntiPatternGating
+Cohesion: 0.25
+Nodes (5): Execute searches across multiple domains., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are…, Bucket a 1-10 dial value into its tier config. Returns None if value is None., _resolve_dial()
 
 ### Community 155 - "CIP Design Reference"
 Cohesion: 0.13
@@ -928,9 +920,9 @@ Nodes (3): detect_domain(), Auto-detect the most relevant domain from query. Mat
 Cohesion: 0.17
 Nodes (9): Find matching reasoning rule for a category., Apply reasoning rules to search results., apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Closed, non-executable grammar for design-system decision rules., Parse the canonical condition -> action-array representation. (+1 more)
 
-### Community 161 - ".generate"
-Cohesion: 0.16
-Nodes (8): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., Execute searches across multiple domains., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are…, Bucket a 1-10 dial value into its tier config. Returns None if value is None., _resolve_dial(), TestAntiPatternGating
+### Community 161 - "DesignSystemGenerator"
+Cohesion: 0.12
+Nodes (10): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Execute searches across multiple domains., Select best matching result based on priority keywords., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are…, Bucket a 1-10 dial value into its tier config. Returns None if value is None. (+2 more)
 
 ### Community 162 - "Banner Design - Multi-Format Creative Banner System"
 Cohesion: 0.14
@@ -1064,10 +1056,6 @@ Nodes (6): Add all available shadcn/ui components. Args: overwrite: If True, ove
 Cohesion: 0.20
 Nodes (6): Generate configuration file content. Returns: Configuration file as string, Generate TypeScript configuration., Generate JavaScript configuration., Format plugins array for config. Validates each plugin name against a strict…, Add indentation to JSON string., Write configuration to file. Returns: Tuple of (success, message)
 
-### Community 195 - "_style_is_dark_primary"
-Cohesion: 0.21
-Nodes (7): _query_wants_dark(), True when a styles.csv row describes itself as dark-first., True when the query explicitly asks for a dark theme., Resolve the mode the rest of the output has to agree with., _resolve_color_mode(), _style_is_dark_primary(), TestModeResolution
-
 ### Community 196 - "Primitive Tokens"
 Cohesion: 0.17
 Nodes (11): Border Radius, Color Scales, Gray Scale, Motion / Duration, Primary Colors (Blue), Primitive Tokens, Shadows, Spacing Scale (+3 more)
@@ -1089,12 +1077,12 @@ Cohesion: 0.20
 Nodes (6): Generate configuration file content. Returns: Configuration file as string, Generate TypeScript configuration., Generate JavaScript configuration., Format plugins array for config. Validates each plugin name against a strict…, Add indentation to JSON string., Write configuration to file. Returns: Tuple of (success, message)
 
 ### Community 201 - "_select_palette_for_mode"
-Cohesion: 0.24
+Cohesion: 0.22
 Nodes (7): _contrast_ratio(), _derive_dark_palette(), WCAG contrast ratio for two hex colors, or None if either is invalid., Keep product brand tokens while deriving accessible dark surfaces., Pick the highest-ranked palette matching the resolved mode. Only the dark case…, _select_palette_for_mode(), TestPaletteSelection
 
-### Community 202 - "_style_is_dark_primary"
-Cohesion: 0.21
-Nodes (7): _query_wants_dark(), True when a styles.csv row describes itself as dark-first., True when the query explicitly asks for a dark theme., Resolve the mode the rest of the output has to agree with., _resolve_color_mode(), _style_is_dark_primary(), TestModeResolution
+### Community 202 - ".trae/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py"
+Cohesion: 0.14
+Nodes (11): _filter_anti_patterns_for_mode(), _query_wants_dark(), True when a styles.csv row describes itself as dark-first., True when the query explicitly asks for a dark theme., Resolve the mode the rest of the output has to agree with., Drop "avoid dark mode" advice once dark mode is the resolved answer., _resolve_color_mode(), _style_is_dark_primary() (+3 more)
 
 ### Community 203 - "Core Visual Elements"
 Cohesion: 0.18
@@ -1196,10 +1184,6 @@ Nodes (9): Common Structures, Duarte Sparkline Pattern, Matching Strategy to Con
 Cohesion: 0.22
 Nodes (6): Any, Path, Initialize generator. Args: typescript: If True, generate .ts config, else .js…, Determine default output path., Create base configuration structure., Get default content paths for framework.
 
-### Community 228 - "generate_design_system"
-Cohesion: 0.22
-Nodes (6): generate_design_system(), Main entry point for design system generation. Args: query: Search query (e.g.,…, format_output(), UI/UX Pro Max Search - BM25 search engine for UI/UX style guides Usage: python…, Format results for Claude consumption (token-optimized), TestPersistence
-
 ### Community 229 - "Brand"
 Cohesion: 0.20
 Nodes (9): Brand, Brand Sync Workflow, Quick Start, References, Routing, Scripts, Subcommands, Templates (+1 more)
@@ -1251,10 +1235,6 @@ Nodes (8): CompletedProcess, Path, Regression tests for validate-tokens.cjs. The
 ### Community 241 - "input"
 Cohesion: 0.29
 Nodes (8): padding-x, input, $type, $value, focus-ring, padding-x, $type, $value
-
-### Community 242 - "_row_identities"
-Cohesion: 0.25
-Nodes (8): _exact_row_identity(), Suggest complete public identities so a retry can bypass score thresholds., Return non-empty public identities from ordinary and alias fields., Resolve an explicit style identity without opening generic variant ranking., Return one row whose stable public identity exactly matches the query., _row_identities(), _style_identity(), _suggest_identities()
 
 ### Community 243 - "ui-ux-pro-max"
 Cohesion: 0.25
@@ -1477,24 +1457,24 @@ Cohesion: 0.67
 Nodes (3): secondary-foreground, $type, $value
 
 ## Knowledge Gaps
-- **1950 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+1945 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 2751 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **1956 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+1951 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 2758 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **72 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `DesignSystemGenerator` connect `DesignSystemGenerator` to `read_rows`, `DesignSystemGenerator`, `generate_design_system`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py`, `.agents/skills/ui-ux-pro-max/scripts/design_system.py`, `BM25`, `parse_decision_rules`, `.generate`, `read_rows`?**
+- **Why does `DesignSystemGenerator` connect `DesignSystemGenerator` to `read_rows`, `DesignSystemGenerator`, `_palette_is_dark`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py`, `.agents/skills/ui-ux-pro-max/scripts/design_system.py`, `.generate`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Why does `search_stack()` connect `search_stack` to `search`, `.trae/skills/ui-ux-pro-max/scripts/core.py`, `.trae/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py`, `.trae/skills/ui-ux-pro-max/scripts/tests/test_core.py`?**
+- **Why does `search_stack()` connect `search_stack` to `BM25`, `generate_design_system`, `search`, `.trae/skills/ui-ux-pro-max/scripts/core.py`, `.trae/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `TestReasoningMatch` connect `DesignSystemGenerator` to `.trae/skills/ui-ux-pro-max/scripts/tests/test_core.py`, `DesignSystemGenerator`?**
+- **Why does `TestReasoningMatch` connect `DesignSystemGenerator` to `BM25`, `DesignSystemGenerator`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **Are the 4 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `TestTailwindConfigGenerator`) actually correct?**
   _`TailwindConfigGenerator` has 4 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 6 inferred relationships involving `DesignSystemGenerator` (e.g. with `TestReasoningMatch` and `TestReasoningContract`) actually correct?**
   _`DesignSystemGenerator` has 6 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `fs`, `path`, `fs` to the rest of the system?**
-  _1950 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1956 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._

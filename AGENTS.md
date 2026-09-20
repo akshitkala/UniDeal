@@ -37,3 +37,9 @@ Not lazy about: understanding the problem (read it fully and trace the real flow
 
 ### ponytail + UniDeal security override
 Per roadmap.md §Cross-phase reminders: if ponytail suggests simplifying anything inside Phase 1 (schema/RLS/auth), Phase 3 (contact-reveal logic/rate-limit checks), or Phase 4 (admin actions, ban/promote/approve/reject/resolve logic), surface the suggestion to the user rather than applying it — even if it means a shorter diff. Security and scope boundaries (rules.md §3 and §4) take priority over the lazy ladder for those sections.
+
+## Git Commit & Push & Workflow Rule
+- **Push with every commit**: Immediately run `git push origin main` after creating any git commit.
+- **Progress & Memory**: Always update `progress.md` and run `graphify update .` after code modifications.
+- **Autonomous Progress**: Proceed through roadmap phases continuously, pausing only when crucial user input or explicit decision approval is required.
+

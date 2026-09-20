@@ -155,11 +155,12 @@ Per the "direction, not mood" principle: an empty Browse grid, an empty Dashboar
 
 ---
 
-## 9. Version Control
+## 9. Version Control & Automated Sync
 
-- **Push to GitHub before making any key change** — a key change means anything touching auth, RLS policies, the contact-reveal route, admin logic, the database schema, the approval-mode toggle, or the new `/api/contact` Resend integration.
-- Routine UI tweaks, copy changes, or styling adjustments don't need this ceremony.
-- Commit messages should say what changed and why in plain language, not generic messages like `"update"` or `"fix"`.
+- **Push to GitHub with EVERY commit** — immediately execute `git push origin main` after creating a commit. Never leave commits local-only.
+- **Commit before key changes** — a key change means anything touching auth, RLS policies, the contact-reveal route, admin logic, the database schema, the approval-mode toggle, or `/api/contact` Resend integration.
+- **Commit messages** — must say what changed and why in plain language, following standard conventional commits (e.g. `feat(contact): ...`, `fix(auth): ...`).
+- **Memory & Documentation Sync** — keep `progress.md` updated with phase entries and run `graphify update .` after code modifications.
 
 ## 10. Progress Log — `progress.md`
 
