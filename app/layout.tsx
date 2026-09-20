@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
-import { Inter, Sora } from 'next/font/google';
+import { Outfit, Work_Sans } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
 import AuthModal from '@/components/auth/AuthModal';
 import TopNav from '@/components/nav/TopNav';
 
-const inter = Inter({
+const workSans = Work_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-work-sans',
   display: 'swap',
 });
 
-const sora = Sora({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-sora',
+  variable: '--font-outfit',
   display: 'swap',
 });
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="en" className={`${workSans.variable} ${outfit.variable}`}>
       <body className="min-h-screen bg-white text-neutral-text font-body antialiased flex flex-col">
         <AuthProvider>
           <TopNav />

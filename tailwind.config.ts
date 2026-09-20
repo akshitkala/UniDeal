@@ -11,33 +11,33 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#1C8A56',
-          hover: '#15683F',
+          DEFAULT: '#16A34A',
+          hover: '#15803D',
         },
         contact: {
           DEFAULT: '#15803D',
           hover: '#166534',
         },
         accent: {
-          DEFAULT: '#C97A2B',
-          hover: '#B46B23',
+          DEFAULT: '#16A34A',
+          hover: '#15803D',
         },
-        surface: '#F7F6F3',
-        border: '#E5E3DD',
+        surface: '#FFFFFF',
+        border: '#E2E8F0',
         danger: {
-          DEFAULT: '#C0392B',
-          hover: '#A93226',
+          DEFAULT: '#DC2626',
+          hover: '#B91C1C',
         },
-        success: '#1C8A56',
+        success: '#16A34A',
         neutral: {
-          text: '#1A1A1A',
-          muted: '#6B6B6B',
+          text: '#0F172A',
+          muted: '#64748B',
         },
       },
       fontFamily: {
-        display: ['var(--font-sora)', 'Sora', 'sans-serif'],
-        heading: ['var(--font-sora)', 'Sora', 'sans-serif'],
-        body: ['var(--font-inter)', 'Inter', 'sans-serif'],
+        display: ['var(--font-outfit)', 'Outfit', 'sans-serif'],
+        heading: ['var(--font-outfit)', 'Outfit', 'sans-serif'],
+        body: ['var(--font-work-sans)', 'Work Sans', 'sans-serif'],
       },
       borderRadius: {
         sm: '6px',

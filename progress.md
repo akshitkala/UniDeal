@@ -28,6 +28,10 @@
   - ✅ Public view verified: guest/authenticated queries against `public_profiles` return public identity fields with `whatsapp_number` strictly absent.
 - Production build (`npm run build`) passed with zero errors across all 16 routes.
 
+## 2026-09-20 — Design token correction
+- Corrected the stale Phase 1 token record and implementation to the authoritative `design (2).md`: accent `#16A34A`, Contact Seller `#15803D`, destructive `#DC2626`, white surface, `#E2E8F0` border, `#0F172A` foreground, `#64748B` muted text, Outfit headings, and Work Sans body text.
+- Existing AuthModal, TopNav, and verify-email components consume semantic Tailwind classes, so updating their shared token definitions restyles them consistently without component-specific color overrides.
+
 ## 2026-09-12 — Repository history reset
 - Preserved the local document relocation and project tooling in commit `adaba06ca55e31490bbc2804e622bd69f254ad0e`.
 - Replaced the abandoned, unrelated `origin/main` history with local `main` using `git push --force-with-lease origin main`.
@@ -37,7 +41,7 @@
 ## 2026-09-11 — Phase 1: Project Scaffold + Supabase Schema
 - Initialized Next.js 14+ App Router project structure matching TRD §4 / architecture.md §3:
   - Route groups: `(public)`, `(auth)`, `(account)`, and top-level `admin/`.
-  - Configured locked design tokens from `design.md` in `tailwind.config.ts` (primary `#1C8A56`, contact `#15803D`, accent `#C97A2B`, surface `#F7F6F3`, border `#E5E3DD`, danger `#C0392B`, Sora headings, Inter body).
+  - Configured locked design tokens from `design.md` in `tailwind.config.ts`; corrected to the authoritative design values on 2026-09-20.
   - TypeScript strict mode enabled globally with path aliases (`@/*`).
 - Created complete SQL schema migration `supabase/migrations/001_initial_schema.sql`:
   - 3 enums: `listing_condition`, `listing_status`, `report_status`.
