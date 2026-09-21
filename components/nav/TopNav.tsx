@@ -163,15 +163,35 @@ export default function TopNav() {
           )}
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-neutral-text hover:bg-surface rounded-md focus:outline-none focus:ring-2 focus:ring-primary min-w-[44px] min-h-[44px] flex items-center justify-center"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile right side — Sign In shortcut (logged-out) or Sell Item (logged-in) + hamburger */}
+        <div className="md:hidden flex items-center gap-2">
+          {user ? (
+            <Link
+              href="/sell"
+              onClick={handleSellClick}
+              className="py-1.5 px-3 bg-primary text-white rounded-md font-medium text-sm hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary min-h-[40px] flex items-center gap-1.5"
+            >
+              <PlusCircle className="w-4 h-4" />
+              <span>Sell</span>
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={() => openAuthModal({ tab: 'login' })}
+              className="py-1.5 px-3 bg-white text-neutral-text border border-border rounded-md font-medium text-sm hover:bg-surface focus:outline-none focus:ring-2 focus:ring-primary min-h-[40px]"
+            >
+              Sign In
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="p-2 text-neutral-text hover:bg-surface rounded-md focus:outline-none focus:ring-2 focus:ring-primary min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation Drawer */}
