@@ -1,5 +1,37 @@
 # UniDeal — Project Progress Log
 
+## 2026-09-21 — Phase 6 Prep: Hardening pass + Phase 5 completion
+
+### Phase 5 completed (commit be790f6, pushed)
+- Implemented `components/contact/ContactForm.tsx` — client form posting to `/api/contact` (Resend), all states covered (submitting, sent, error), inline validation, `role="alert"` on errors, 44×44px touch target on submit button.
+- Wired `app/(public)/contact/page.tsx` with `ContactForm` — placeholder removed.
+- Expanded `app/(public)/our-story/page.tsx` — founder narrative, campus origin, credibility copy per design.md §7.9.
+- Expanded `app/(public)/how-it-works/page.tsx` — 4-step visual walkthrough with Lucide icons, `<ol>` accessible markup, CTA strip per design.md §7.10.
+- Built real Home page (`app/(public)/page.tsx`) — hero, problem/solution section, 3-step how-it-works summary, CTA footer strip; kept static (no live fetch to sidestep the live-listings architecture decision noted in roadmap §Phase 5 watch note).
+- Implemented `app/(account)/profile/page.tsx` — full form: full name (required), branch, year (select), WhatsApp number (E.164 validation, format hint, explicit privacy note). Explicit Save action, no silent auto-save. Shows save confirmation state.
+- Previously untracked `app/api/contact/route.ts` was committed in this batch.
+- `.kiro/` steering and skills committed (graphify.md, ponytail.md, graphify SKILL.md).
+
+### Phase 6 hardening (commit 23d65f4, pushed)
+- Implemented `app/api/cron/keepalive/route.ts` — daily Supabase ping protected by `CRON_SECRET` header (TRD §5.11); fail-open per rules.md §7.4.
+- Full acceptance-criteria pass (PRD §7 × TRD §8):
+  - ✅ All 32 routes build with zero errors.
+  - ✅ Service-role key (`lib/supabase/admin.ts`) exclusively in `app/api/**` routes and `lib/auth-admin.ts` — zero Client Component imports confirmed via grep.
+  - ✅ `RESEND_API_KEY` not `NEXT_PUBLIC_`-prefixed anywhere.
+  - ✅ `lib/supabase/admin.ts` has `typeof window !== 'undefined'` client-import guard.
+  - ✅ Nav labels: "Our Story", "How It Works", "Contact Us" — no bare "Contact" in nav.
+  - ✅ No gradients / glassmorphism / fabricated testimonials / auth routes / most-viewed sort / branch-year on listing surfaces.
+  - ✅ `vercel.json` cron config correct (0 3 * * *).
+
+### ⛔ Full stop — awaiting before Phase 6 production deploy
+Per roadmap §Phase 6: production launch requires explicit user confirmation. Remaining production steps:
+- Set environment variables on Vercel (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET, CRON_SECRET, RESEND_API_KEY) — these cannot be fabricated.
+- Deploy to Vercel (`vercel --prod` or GitHub auto-deploy).
+- Verify cron job is live and pinging on schedule post-deploy.
+- Full smoke test on deployed URL: signup → verify → post listing → browse → contact seller → WhatsApp opens, end to end, on desktop and real mobile device.
+- Confirm `unideal-lemon.vercel.app` (or live domain) is up.
+
+
 ## 2026-09-21 — Phase 4 Exit Gate: Moderation & Admin Complete
 - Implemented Admin Server Guard (`lib/auth-admin.ts`):
   - Server-side admin verification (`requireAdminSession()`) checking `profiles.is_admin` and `is_banned` status using service-role client.
