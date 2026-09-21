@@ -1,14 +1,21 @@
+import ContactForm from '@/components/contact/ContactForm';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us — UniDeal',
+  description: 'Have feedback or questions? Reach out to the UniDeal team.',
+};
+
 export default function ContactUsPage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-xl">
-      <h1 className="text-3xl font-bold text-neutral-text font-heading mb-4">Contact Us</h1>
-      <p className="text-neutral-muted mb-8">
-        Have feedback, questions, or issues? Reach out to the UniDeal team directly.
-      </p>
-      {/* ContactForm will be rendered here in Phase 6 */}
-      <div className="p-6 rounded-md bg-surface border border-border text-center text-neutral-muted">
-        Contact form will be wired to Resend here.
+    <main className="flex-1">
+      <div className="container mx-auto px-4 py-12 max-w-xl">
+        <h1 className="text-3xl font-bold text-neutral-text font-heading mb-2">Contact Us</h1>
+        <p className="text-neutral-muted mb-8">
+          Have feedback, questions, or issues? Reach out and we&rsquo;ll get back to you soon.
+        </p>
+        <ContactForm />
       </div>
-    </div>
+    </main>
   );
 }
