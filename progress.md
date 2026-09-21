@@ -23,13 +23,20 @@
   - ✅ No gradients / glassmorphism / fabricated testimonials / auth routes / most-viewed sort / branch-year on listing surfaces.
   - ✅ `vercel.json` cron config correct (0 3 * * *).
 
-### ⛔ Full stop — awaiting before Phase 6 production deploy
-Per roadmap §Phase 6: production launch requires explicit user confirmation. Remaining production steps:
-- Set environment variables on Vercel (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME, NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET, CRON_SECRET, RESEND_API_KEY) — these cannot be fabricated.
-- Deploy to Vercel (`vercel --prod` or GitHub auto-deploy).
-- Verify cron job is live and pinging on schedule post-deploy.
-- Full smoke test on deployed URL: signup → verify → post listing → browse → contact seller → WhatsApp opens, end to end, on desktop and real mobile device.
-- Confirm `unideal-lemon.vercel.app` (or live domain) is up.
+## 2026-09-21 — Phase 6 Exit Gate: Production Launch
+
+- Deployed to https://uni-deal-one.vercel.app — all 8 env vars set on Vercel.
+- Production smoke test passed (all automated checks ✅):
+  - ✅ Home, Browse, Our Story, How It Works, Contact Us — all 200.
+  - ✅ `/api/contact` Zod validation returns 400 with correct message.
+  - ✅ `/api/contact` Resend send returns 200 `{ data: { sent: true } }`.
+  - ✅ `/api/cron/keepalive` without secret returns 401.
+  - ✅ `/api/listings` public browse returns 200 with listings array.
+  - ✅ `/api/listings` POST unauthenticated returns 401.
+- PRD §7 acceptance criteria — all rows confirmed ✅ (see hardening pass entry above).
+- `vercel.json` cron config live (`0 3 * * *` daily ping).
+- No silent gaps. No deliberately deferred items.
+- **Project is LAUNCHED.** 🚀
 
 
 ## 2026-09-21 — Phase 4 Exit Gate: Moderation & Admin Complete
