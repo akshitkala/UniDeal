@@ -345,7 +345,9 @@ export default function DashboardPage() {
                   </button>
                 )}
 
-                {item.status !== 'sold' && (
+                {/* QA-07: rejected listings are not editable — editing never resets status, so the action
+                    could not change the rejection; recovery path is delete-and-repost (see TRD §5.7). */}
+                {item.status !== 'sold' && item.status !== 'rejected' && (
                   <Link
                     href={`/listing/${item.slug}/edit`}
                     className="px-3 py-1.5 bg-surface hover:bg-border text-neutral-text border border-border text-xs font-medium rounded transition-colors min-h-[36px] flex items-center gap-1.5"

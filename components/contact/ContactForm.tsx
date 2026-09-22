@@ -55,10 +55,9 @@ export default function ContactForm() {
     return (
       <div
         role="alert"
-        className="rounded-md bg-primary/5 border border-primary/20 p-6 text-center space-y-1"
+        className="rounded-md bg-primary/5 border border-primary/20 p-6 text-center"
       >
-        <p className="font-semibold text-neutral-text">Message sent.</p>
-        <p className="text-sm text-neutral-muted">We&rsquo;ll get back to you soon.</p>
+        <p className="font-semibold text-neutral-text">Message sent — we&rsquo;ll get back to you soon.</p>
       </div>
     );
   }

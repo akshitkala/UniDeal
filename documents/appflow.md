@@ -49,7 +49,7 @@ Guests can browse, view listing details, and read all three support/credibility 
 Supabase Auth creates user → trigger creates `profiles` row
         │
         ▼
-Verification email sent → modal closes → user resumes browsing
+Verification email sent → modal shows "Check your inbox" panel (stays open until user closes it — QA-05 decision: intentional, see note) → user resumes browsing
         │
         ├── tries to Sell or Contact Seller while unverified
         │         │
@@ -60,10 +60,14 @@ Verification email sent → modal closes → user resumes browsing
         │   Clicks email link → lands on [ Verify Email ] route → email_confirmed_at set
         │         │
         │         ▼
-        │   Action now succeeds, resumes automatically
+        │   Action now succeeds when retried (no auto-resume — QA-06, see note)
         │
         └── verifies proactively via banner/reminder → same unlock
 ```
+
+> **QA-05 decision (2026-09-22):** the modal intentionally stays open on the "Check your inbox" panel after signup. The panel carries the essential next step (which address was used, click the link); auto-closing after a delay risks hiding that instruction before it is read, and an unverified user has no actionable flow to resume (Sell / Contact Seller are blocked until verification anyway).
+>
+> **QA-06 — known limitation (v1):** automatic resumption of the interrupted action after email-link verification is **not** supported. The triggering action's context (`returnTo` / `onSuccess`) lives in client state on the originating page and cannot survive the email-client round-trip; carrying it would require server-side session state or URL hand-off through the email link — disproportionate for v1. The Verify Email page therefore shows manual navigation links (Browse / Sell) instead of auto-resuming. Accepted constraint, not an unmet spec item.
 
 ---
 

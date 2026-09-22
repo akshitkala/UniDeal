@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Settings, ShieldCheck, CheckCircle2, Clock, AlertCircle, Loader2 } from 'lucide-react';
+import { Settings, ShieldCheck, CheckCircle2, Clock, AlertCircle, AlertTriangle, Users, Loader2 } from 'lucide-react';
 
 export default function AdminOverviewPage() {
   const [approvalMode, setApprovalMode] = useState<'auto' | 'manual'>('auto');
+  const [stats, setStats] = useState<{ pending_listings: number; open_reports: number; total_users: number } | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -13,12 +14,19 @@ export default function AdminOverviewPage() {
   useEffect(() => {
     async function loadSettings() {
       try {
-        const res = await fetch('/api/admin/settings');
-        const json = await res.json();
-        if (res.ok && json.data?.approval_mode) {
-          setApprovalMode(json.data.approval_mode);
+        const [settingsRes, overviewRes] = await Promise.all([
+          fetch('/api/admin/settings'),
+          fetch('/api/admin/overview'),
+        ]);
+        const settingsJson = await settingsRes.json();
+        if (settingsRes.ok && settingsJson.data?.approval_mode) {
+          setApprovalMode(settingsJson.data.approval_mode);
         } else {
-          setError(json.error?.message || 'Failed to load settings.');
+          setError(settingsJson.error?.message || 'Failed to load settings.');
+        }
+        if (overviewRes.ok) {
+          const overviewJson = await overviewRes.json();
+          setStats(overviewJson.data ?? null);
         }
       } catch {
         setError('Network error while loading settings.');
@@ -86,6 +94,43 @@ export default function AdminOverviewPage() {
           <span>{successMessage}</span>
         </div>
       )}
+
+      {/* Snapshot cards — design (2).md §7.12 (QA-03) */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="bg-white p-5 rounded-lg border border-border flex items-center gap-4">
+          <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <Clock className="w-5 h-5" />
+          </div>
+          <div>
+            <p className="text-2xl font-bold text-neutral-text font-heading leading-tight">
+              {stats ? stats.pending_listings : '—'}
+            </p>
+            <p className="text-xs text-neutral-muted">Pending Listings</p>
+          </div>
+        </div>
+        <div className="bg-white p-5 rounded-lg border border-border flex items-center gap-4">
+          <div className="w-10 h-10 rounded-full bg-danger/10 text-danger flex items-center justify-center shrink-0">
+            <AlertTriangle className="w-5 h-5" />
+          </div>
+          <div>
+            <p className="text-2xl font-bold text-neutral-text font-heading leading-tight">
+              {stats ? stats.open_reports : '—'}
+            </p>
+            <p className="text-xs text-neutral-muted">Open Reports</p>
+          </div>
+        </div>
+        <div className="bg-white p-5 rounded-lg border border-border flex items-center gap-4">
+          <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <Users className="w-5 h-5" />
+          </div>
+          <div>
+            <p className="text-2xl font-bold text-neutral-text font-heading leading-tight">
+              {stats ? stats.total_users : '—'}
+            </p>
+            <p className="text-xs text-neutral-muted">Total Users</p>
+          </div>
+        </div>
+      </div>
 
       {/* Moderation Approval Mode Selector */}
       <div className="bg-white p-6 rounded-lg border border-border space-y-6">

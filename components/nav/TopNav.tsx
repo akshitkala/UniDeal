@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { firstName } from '@/lib/display-name';
+import { createClient } from '@/lib/supabase/client';
 import { PlusCircle, User, LogOut, LayoutDashboard, Shield, Menu, X } from 'lucide-react';
 
 export default function TopNav() {
@@ -12,6 +13,29 @@ export default function TopNav() {
   const { user, isVerified, openAuthModal, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = React.useState(false);
+  const [isAdmin, setIsAdmin] = React.useState(false);
+  const supabase = createClient();
+
+  // QA-04: gate the Admin link on is_admin from public_profiles
+  React.useEffect(() => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      const { data } = await supabase
+        .from('public_profiles')
+        .select('is_admin')
+        .eq('id', user.id)
+        .maybeSingle();
+      if (!cancelled) setIsAdmin(!!data?.is_admin);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.id]);
 
   const displayName = user?.user_metadata?.full_name
     ? firstName(user.user_metadata.full_name)
@@ -128,14 +152,16 @@ export default function TopNav() {
                       <User className="w-4 h-4 text-neutral-muted" />
                       <span>Profile</span>
                     </Link>
-                    <Link
-                      href="/admin"
-                      onClick={() => setProfileDropdownOpen(false)}
-                      className="flex items-center gap-2 px-4 py-2 text-sm text-neutral-text hover:bg-surface"
-                    >
-                      <Shield className="w-4 h-4 text-neutral-muted" />
-                      <span>Admin</span>
-                    </Link>
+                    {isAdmin && (
+                      <Link
+                        href="/admin"
+                        onClick={() => setProfileDropdownOpen(false)}
+                        className="flex items-center gap-2 px-4 py-2 text-sm text-neutral-text hover:bg-surface"
+                      >
+                        <Shield className="w-4 h-4 text-neutral-muted" />
+                        <span>Admin</span>
+                      </Link>
+                    )}
                     <div className="border-t border-border my-1" />
                     <button
                       type="button"

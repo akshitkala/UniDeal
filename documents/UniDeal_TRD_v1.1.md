@@ -494,6 +494,8 @@ Seller-only (checked via RLS `listings_update_own`). Sets `status = 'sold'`, `so
 ### 5.7 `PATCH` / `DELETE /api/listings/[id]` — Edit / delete
 Standard, RLS-enforced. Editing does not reset `status` back to pending even in manual mode (avoid re-review friction for minor edits like price drops) — this is a deliberate v1 simplification.
 
+**QA-07 decision (2026-09-22):** rejected listings are **not editable** from the dashboard — since editing never resets status, the Edit action could not change the rejection, so the button is hidden for rejected listings. The v1 recovery path is delete-and-repost, which creates a fresh listing that re-enters the moderation queue under the current `approval_mode`. A `rejected → pending` resubmit flow is deliberately out of scope: under auto-approve mode it would republish admin-rejected listings without review (moderation-integrity hole).
+
 ### 5.8 `POST /api/listings/[id]/report` — Report a listing
 Body: `{ "reason": "one of: Fake listing | Prohibited item | Misleading price | Spam | Other" }`
 Inserts into `reports` with `status = 'pending'`. The `unique(listing_id, reporter_id)` constraint prevents duplicate reports from the same user — handle the resulting DB error gracefully as `"You've already reported this listing"`.

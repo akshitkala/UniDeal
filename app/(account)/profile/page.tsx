@@ -32,18 +32,21 @@ export default function ProfilePage() {
   useEffect(() => {
     if (!user) return;
     async function load() {
-      const { data } = await supabase
-        .from('profiles')
-        .select('full_name, branch, year, whatsapp_number')
-        .eq('id', user!.id)
-        .single();
-      if (data) {
-        setForm({
-          full_name: data.full_name ?? '',
-          branch: data.branch ?? '',
-          year: data.year ?? '',
-          whatsapp_number: data.whatsapp_number ?? '',
-        });
+      // QA-02: whatsapp_number is REVOKE'd from client roles — load the whole
+      // profile via the owner-only server route instead of a direct query.
+      try {
+        const res = await fetch('/api/profile');
+        const json = await res.json();
+        if (res.ok && json.data) {
+          setForm({
+            full_name: json.data.full_name ?? '',
+            branch: json.data.branch ?? '',
+            year: json.data.year ?? '',
+            whatsapp_number: json.data.whatsapp_number ?? '',
+          });
+        }
+      } catch {
+        // keep defaults; save still works independently
       }
       setLoading(false);
     }

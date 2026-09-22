@@ -1,5 +1,21 @@
 # UniDeal — Project Progress Log
 
+## 2026-09-22 — QA Fix Pass: report.md tickets QA-01 … QA-09
+
+Context: report.md (QA audit, 49 criteria) scoped 9 tickets. As of today no QA entries existed in this log and **all 9 tickets were untouched in code** — nothing was previously claimed-done-but-missing, so no prior entries needed correction.
+
+- **QA-01 [HIGH]** — Server-side `is_admin` guard on all `/admin` routes. `app/admin/layout.tsx` is now an async server component calling the shared `requireAdminSession()` (service-role re-check of `profiles.is_admin`, rules.md §3.6) and `redirect('/')`s non-admins and signed-out users **before any admin UI renders**. Client nav/UI moved unchanged to `components/admin/AdminShell.tsx`. Verified unauthenticated `GET /admin` → 307 to `/`.
+- **QA-02 [HIGH]** — Owner-only WhatsApp number read. New `GET /api/profile` (server route: session check → service-role lookup scoped `.eq('id', user.id)`, i.e. `auth.uid() === profile id`) returns `full_name, branch, year, whatsapp_number`. Profile page now loads via this route instead of a direct client query (which the column REVOKE made silently return null). Save path unchanged — UPDATE on `whatsapp_number` was never revoked, only SELECT. Phone number still never crosses to the browser for anyone but the owner (rules.md §3.3).
+- **QA-03 [MEDIUM]** — Admin Overview snapshot cards per design (2).md §7.12. New `GET /api/admin/overview` (admin-guarded, head-count queries) returning pending listings / open reports (`status='pending'`) / total users; `app/admin/page.tsx` renders the three cards above the approval-mode toggle. Degrades to "—" if counts fail to load.
+- **QA-04 [MEDIUM]** — TopNav Admin link gated: profile dropdown fetches `is_admin` from `public_profiles` for the current user and renders the Admin link only when true. Non-admins no longer see the link (server guard from QA-01 remains the real boundary).
+- **QA-05 [LOW] — Decision: current behavior is intentional; spec updated, no code change.** The modal stays open on the "Check your inbox" panel after signup because the panel carries the essential next step (which address, click the link); auto-closing after N seconds risks hiding that instruction before it's read, and an unverified user has no actionable flow to resume (Sell / Contact Seller are blocked until verification). appflow.md §2 updated to match (QA-05 decision note added).
+- **QA-06 [LOW] — Decision: accepted v1 constraint; documented, no code change.** Automatic action resumption after email-link verification is architecturally impractical: the triggering action's context (`returnTo`/`onSuccess`) lives in client state on the originating page and cannot survive the email round-trip; persisting it would need server-side session state or URL hand-off through the email link — disproportionate for v1. appflow.md §2 now documents it as a known limitation (manual navigation links on the Verify Email page are the intended UX), so it no longer reads as an unmet spec item.
+- **QA-07 [LOW] — Decision: sellers may NOT edit rejected listings; button hidden + documented.** Editing never resets status (TRD §5.7), so Edit on a rejected listing was a no-op for the seller's actual goal — misleading UI. Recovery path is delete-and-repost, which re-enters the moderation queue under the current `approval_mode`. A `rejected → pending` resubmit flow is deliberately out of scope: under auto-approve it would republish admin-rejected listings without review (moderation-integrity hole, Phase 4 boundary). Decision recorded in TRD §5.7.
+- **QA-08 [LOW]** — Contact form success message is now the single line "Message sent — we'll get back to you soon." per appflow.md §12 (was two paragraphs).
+- **QA-09 [LOW]** — Auth Modal focus-trap `useEffect` dependency array now includes `generalError`, so the trap re-queries focusable elements when the error banner renders.
+- Verification: `tsc --noEmit` clean; dev server boots; `/admin` 307 (guest), `/api/profile` 401 (guest), `/api/admin/overview` 401 (guest); Part 2 (Auth Modal) and Part 3 (Contact Seller) flows re-verified end-to-end post-change (see verification notes below).
+- Deferred: none — all 9 tickets closed.
+
 ## 2026-09-21 — Phase 6 Prep: Hardening pass + Phase 5 completion
 
 ### Phase 5 completed (commit be790f6, pushed)

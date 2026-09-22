@@ -127,7 +127,7 @@ export default function AuthModal() {
 
     window.addEventListener('keydown', handleTabKey);
     return () => window.removeEventListener('keydown', handleTabKey);
-  }, [isAuthModalOpen, tab, signupSuccessEmail]);
+  }, [isAuthModalOpen, tab, signupSuccessEmail, generalError]); // QA-09: generalError renders interactive content changes
 
   // Validate fields client-side before sending to Supabase
   const validateForm = () => {
