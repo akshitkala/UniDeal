@@ -1,12 +1,12 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useMotion, MOTION as M } from '@/lib/motion-variants';
 
 const features = [
   {
     label: 'Structured feed',
     sublabel: 'Search & filter',
-    // Magnifying glass over a list
     icon: (
       <g>
         <rect x="8" y="14" width="32" height="4" rx="2" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
@@ -20,7 +20,6 @@ const features = [
   {
     label: 'Protected contact',
     sublabel: 'WhatsApp via server',
-    // Shield with link icon inside
     icon: (
       <g>
         <path d="M24 6 L38 11 L38 24 C38 32 24 38 24 38 C24 38 10 32 10 24 L10 11 Z"
@@ -33,7 +32,6 @@ const features = [
   {
     label: 'Free to use',
     sublabel: 'Always, no ads',
-    // Tag / price with zero
     icon: (
       <g>
         <path d="M10 10 L28 10 L38 20 L28 30 L10 30 Z"
@@ -47,23 +45,31 @@ const features = [
 ];
 
 export default function IlluBuilt({ inView }: { inView: boolean }) {
-  const reduced = useReducedMotion();
+  const { staggerContainer, fadeUp, scaleIn, MOTION: MV } = useMotion();
 
   return (
-    <div className="w-full max-w-[360px] mx-auto grid grid-cols-3 gap-3" aria-hidden="true">
+    <motion.div
+      variants={staggerContainer(MV.stagger.loose)}
+      initial="hidden"
+      animate={inView ? 'show' : 'hidden'}
+      className="w-full max-w-[360px] mx-auto grid grid-cols-3 gap-3"
+      aria-hidden="true"
+    >
       {features.map(({ label, sublabel, icon }, i) => (
         <motion.div
           key={label}
-          initial={{ opacity: 0, y: reduced ? 0 : 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: reduced ? 0 : 16 }}
-          transition={{ duration: 0.4, delay: reduced ? 0 : i * 0.14, ease: 'easeOut' }}
+          variants={fadeUp(MV.offset.md, MV.duration.entrance, i * MV.stagger.veryLoose)}
           className="flex flex-col items-center gap-2 p-3 rounded-lg border border-border bg-white"
         >
-          <svg viewBox="0 0 48 48" className="w-12 h-12">{icon}</svg>
+          <motion.div
+            variants={scaleIn(0.8, 1, MV.duration.entranceFast, 0.12 + i * MV.stagger.normal)}
+          >
+            <svg viewBox="0 0 48 48" className="w-12 h-12">{icon}</svg>
+          </motion.div>
           <span className="text-[11px] font-semibold text-neutral-text text-center leading-tight">{label}</span>
           <span className="text-[10px] text-neutral-muted text-center leading-tight">{sublabel}</span>
         </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

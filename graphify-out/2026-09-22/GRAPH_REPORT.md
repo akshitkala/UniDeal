@@ -1,11 +1,11 @@
 # Graph Report - Unideal  (2026-09-22)
 
 ## Corpus Check
-- 342 files · ~483,553 words
+- 343 files · ~484,785 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 4949 nodes · 6398 edges · 370 communities (289 shown, 78 thin omitted)
+- 4959 nodes · 6408 edges · 370 communities (290 shown, 77 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 67 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
@@ -27,7 +27,7 @@
 - Tailwind CSS Utility Reference
 - .trae/skills/ui-ux-pro-max/scripts/design_system.py
 - .trae/skills/design/scripts/icon/generate.py
-- DesignSystemGenerator
+- .trae/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py
 - Brand Guidelines v1.0
 - Brand Guidelines v1.0
 - .agents/skills/ui-ux-pro-max/scripts/core.py
@@ -162,7 +162,7 @@
 - Logo Design Reference
 - Token Architecture
 - .agents/skills/design-system/templates/design-tokens-starter.json
-- .generate
+- DesignSystemGenerator
 - @supabase/supabase-js
 - .trae/skills/brand/references/update.md
 - Logo Design Reference
@@ -237,7 +237,7 @@
 - devDependencies
 - .generate
 - padding-y
-- .trae/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py
+- read_rows
 - Row Level Security Policies
 - padding-y
 - _select_palette_for_mode
@@ -311,7 +311,7 @@
 - UniDeal Design System
 - Per-Screen Designs
 - UniDeal Development Rules
-- TestGeneratedCatalogContract
+- generate_design_system
 - ui-ux-pro-max
 - _row_identities
 - Query Contract
@@ -414,15 +414,15 @@
 - **Phase 1 Foundation Delivery** — documents_roadmap_3_phase_1_foundation, documents_unideal_trd_v1_1_supabase_architecture, documents_unideal_trd_v1_1_row_level_security, progress_phase_1_scaffold_schema [INFERRED 0.95]
 - **Verified WhatsApp Contact Trust Flow** — documents_unideal_prd_v2_1_contact_reveal, documents_unideal_trd_v1_1_contact_api, documents_appflow_browse_contact_flow, documents_rules_v1_1_security_boundaries [INFERRED 0.95]
 
-## Communities (370 total, 78 thin omitted)
+## Communities (370 total, 77 thin omitted)
 
 ### Community 0 - ".agents/skills/ui-ux-pro-max/scripts/validate_data.py"
 Cohesion: 0.07
 Nodes (48): Semantic quality contracts for the core UI/UX datasets., read_rows(), TestAccessibilityGuidance, TestChartsTypographyAndIcons, TestCurrentReactGuidance, TestSemanticColors, _catalog_date(), _check_app_interface_contract() (+40 more)
 
 ### Community 1 - ".trae/skills/ui-ux-pro-max/scripts/validate_data.py"
-Cohesion: 0.07
-Nodes (48): Semantic quality contracts for the core UI/UX datasets., read_rows(), TestAccessibilityGuidance, TestChartsTypographyAndIcons, TestCurrentReactGuidance, TestSemanticColors, _catalog_date(), _check_app_interface_contract() (+40 more)
+Cohesion: 0.12
+Nodes (36): _catalog_date(), _check_app_interface_contract(), _check_catalog_contract(), _check_catalog_summary(), _check_chart_contract(), _check_color_contract(), _check_core_data_contract(), _check_file() (+28 more)
 
 ### Community 2 - "gray"
 Cohesion: 0.05
@@ -453,16 +453,16 @@ Cohesion: 0.05
 Nodes (43): Arbitrary Values, Aspect Ratio, Background Colors, Border Color, Border Radius, Border Style, Border Width, Borders (+35 more)
 
 ### Community 10 - ".trae/skills/ui-ux-pro-max/scripts/design_system.py"
-Cohesion: 0.07
-Nodes (32): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_markdown(), format_master_md(), format_page_override_md(), generate_design_system(), _generate_intelligent_overrides() (+24 more)
+Cohesion: 0.11
+Nodes (24): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_master_md(), format_page_override_md(), _generate_intelligent_overrides(), hex_to_ansi(), persist_design_system() (+16 more)
 
 ### Community 11 - ".trae/skills/design/scripts/icon/generate.py"
 Cohesion: 0.18
 Nodes (16): apply_color(), apply_viewbox_size(), extract_svgs(), generate_batch(), generate_icon(), generate_sizes(), load_env(), main() (+8 more)
 
-### Community 12 - "DesignSystemGenerator"
+### Community 12 - ".trae/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py"
 Cohesion: 0.14
-Nodes (6): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., TestReasoningMatch, read_rows(), TestReasoningContract
+Nodes (11): Semantic quality contracts for the core UI/UX datasets., read_rows(), TestAccessibilityGuidance, TestChartsTypographyAndIcons, TestCurrentReactGuidance, TestSemanticColors, _configured_font_names(), contrast_ratio() (+3 more)
 
 ### Community 13 - "Brand Guidelines v1.0"
 Cohesion: 0.05
@@ -529,8 +529,8 @@ Cohesion: 0.10
 Nodes (8): Search stack-specific guidelines, search_stack(), Freshness and migration contracts for native, desktop, and 3D stacks., _rows(), TestNativeDesktopStackFreshness, Freshness and generation-isolation contracts for web stack guidance., _rows(), TestWebStackFreshness
 
 ### Community 30 - "createAdminClient"
-Cohesion: 0.14
-Nodes (24): PATCH(), RouteContext, PATCH(), rejectSchema, RouteContext, GET(), GET(), PATCH() (+16 more)
+Cohesion: 0.13
+Nodes (25): PATCH(), RouteContext, PATCH(), rejectSchema, RouteContext, GET(), GET(), PATCH() (+17 more)
 
 ### Community 31 - "Form & Input Components"
 Cohesion: 0.06
@@ -741,8 +741,8 @@ Cohesion: 0.10
 Nodes (19): Base Color Presets, Best Practices, Color Customization, Color Format, Component Customization, CSS Variable System, Customize Styles, Customize Variants (+11 more)
 
 ### Community 83 - "(public)/page.tsx"
-Cohesion: 0.08
-Nodes (18): POST(), RouteContext, reportSchema, RouteContext, validReportReasons, RouteContext, GET(), GET() (+10 more)
+Cohesion: 0.09
+Nodes (17): POST(), RouteContext, reportSchema, RouteContext, validReportReasons, RouteContext, GET(), HomePage() (+9 more)
 
 ### Community 84 - "Routing by Task Type"
 Cohesion: 0.10
@@ -996,13 +996,13 @@ Nodes (12): Categories, Dark Mode, File Organization, Layer 1: Primitive Tokens,
 Cohesion: 0.15
 Nodes (12): component, $type, $value, dark, semantic, $schema, $type, $value (+4 more)
 
-### Community 147 - ".generate"
-Cohesion: 0.14
-Nodes (8): Execute searches across multiple domains., Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are…, Bucket a 1-10 dial value into its tier config. Returns None if value is None., _resolve_dial()
+### Community 147 - "DesignSystemGenerator"
+Cohesion: 0.10
+Nodes (12): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Execute searches across multiple domains., Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., Extract results list from search result dict. (+4 more)
 
 ### Community 148 - "@supabase/supabase-js"
-Cohesion: 0.15
-Nodes (5): @supabase/supabase-js, { createClient }, { createClient }, { createClient }, { createClient }
+Cohesion: 0.09
+Nodes (9): @supabase/supabase-js, { createClient }, { createClient }, { createClient }, { createClient }, { createChunks }, { createClient }, results (+1 more)
 
 ### Community 149 - ".trae/skills/brand/references/update.md"
 Cohesion: 0.15
@@ -1280,9 +1280,9 @@ Nodes (8): Execute searches across multiple domains., Find matching reasoning ru
 Cohesion: 0.67
 Nodes (4): padding-y, padding-y, $type, $value
 
-### Community 222 - ".trae/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py"
-Cohesion: 0.19
-Nodes (5): Cross-file semantic contracts for curated design data., split_values(), style_identities(), TestLandingAndStackContract, TestStyleIdentityContract
+### Community 222 - "read_rows"
+Cohesion: 0.10
+Nodes (9): Cross-file semantic contracts for curated design data., read_rows(), split_values(), style_identities(), TestGeneratedCatalogContract, TestLandingAndStackContract, TestReasoningContract, TestStyleIdentityContract (+1 more)
 
 ### Community 223 - "Row Level Security Policies"
 Cohesion: 0.50
@@ -1329,7 +1329,7 @@ Cohesion: 0.12
 Nodes (9): Tests for shadcn_add.py, Test ShadcnInstaller class., Test adding all components without config., Test listing installed components without config., Test listing installed components when they exist., Test initialization with default project root., Test initialization with dry run mode., Test getting installed components when files exist. (+1 more)
 
 ### Community 234 - "parse_decision_rules"
-Cohesion: 0.27
+Cohesion: 0.24
 Nodes (7): apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Closed, non-executable grammar for design-system decision rules., Parse the canonical condition -> action-array representation., _validate_action()
 
 ### Community 239 - "ShadcnInstaller"
@@ -1447,6 +1447,10 @@ Nodes (8): CompletedProcess, Path, Regression tests for validate-tokens.cjs. The
 ### Community 282 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
 Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
+
+### Community 298 - "generate_design_system"
+Cohesion: 0.18
+Nodes (8): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation. Args: query: Search query (e.g.,…, format_output(), UI/UX Pro Max Search - BM25 search engine for UI/UX style guides Usage: python…, Format results for Claude consumption (token-optimized), TestPersistence
 
 ### Community 299 - "ui-ux-pro-max"
 Cohesion: 0.25
@@ -1573,24 +1577,24 @@ Cohesion: 0.67
 Nodes (3): $type, $value, 8
 
 ## Knowledge Gaps
-- **2045 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+2040 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 2856 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **78 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2049 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+2044 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 2865 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **77 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `DesignSystemGenerator` connect `DesignSystemGenerator` to `_palette_is_dark`, `.agents/skills/ui-ux-pro-max/scripts/design_system.py`, `DesignSystemGenerator`, `_select_palette_for_mode`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py`, `_palette_is_dark`, `.generate`, `BM25`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py`?**
+- **Why does `DesignSystemGenerator` connect `DesignSystemGenerator` to `_palette_is_dark`, `.agents/skills/ui-ux-pro-max/scripts/design_system.py`, `_select_palette_for_mode`, `read_rows`, `DesignSystemGenerator`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py`, `_palette_is_dark`, `.generate`, `BM25`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **Why does `TestReasoningMatch` connect `DesignSystemGenerator` to `BM25`, `DesignSystemGenerator`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `search_stack()` connect `search_stack` to `.trae/skills/ui-ux-pro-max/scripts/core.py`, `BM25`, `.trae/skills/ui-ux-pro-max/scripts/design_system.py`, `.trae/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py`, `search`, `_normalize`?**
+- **Why does `search_stack()` connect `search_stack` to `.trae/skills/ui-ux-pro-max/scripts/core.py`, `BM25`, `generate_design_system`, `.trae/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py`, `search`, `_normalize`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **Are the 4 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `TestTailwindConfigGenerator`) actually correct?**
   _`TailwindConfigGenerator` has 4 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 6 inferred relationships involving `DesignSystemGenerator` (e.g. with `TestReasoningMatch` and `TestReasoningContract`) actually correct?**
   _`DesignSystemGenerator` has 6 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `fs`, `path`, `fs` to the rest of the system?**
-  _2045 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _2049 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `.agents/skills/ui-ux-pro-max/scripts/validate_data.py` be split into smaller, more focused modules?**
   _Cohesion score 0.07213114754098361 - nodes in this community are weakly interconnected._

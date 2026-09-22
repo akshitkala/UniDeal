@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { firstName } from '@/lib/display-name';
+import { useMotion, MOTION as M } from '@/lib/motion-variants';
 import type { ListingCardData } from '@/components/listing/ListingCard';
 
 interface Props {
@@ -18,22 +19,19 @@ const conditionColors: Record<string, string> = {
 };
 
 function AnimatedCard({ listing, index }: { listing: ListingCardData; index: number }) {
-  const reduced = useReducedMotion();
+  const { fadeUp, cardHover, reduced } = useMotion();
   const sellerName = listing.public_profiles?.full_name
     ? firstName(listing.public_profiles.full_name)
     : 'Student';
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: reduced ? 0 : 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.45, delay: reduced ? 0 : index * 0.08, ease: 'easeOut' }}
-      whileHover={reduced ? {} : { y: -2 }}
+      variants={fadeUp(M.offset.md, M.duration.entrance, index * M.stagger.normal)}
+      {...cardHover}
     >
       <Link
         href={`/listing/${listing.slug}`}
-        className="group flex flex-col bg-white rounded-lg border border-border overflow-hidden hover:border-primary/30 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary"
+        className="group flex flex-col bg-white rounded-lg border border-border overflow-hidden hover:border-primary/40 hover:bg-primary/[0.015] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       >
         {/* Image */}
         <div className="relative aspect-square w-full bg-surface overflow-hidden">
@@ -41,7 +39,7 @@ function AnimatedCard({ listing, index }: { listing: ListingCardData; index: num
             <img
               src={listing.images[0]}
               alt={listing.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
               loading="lazy"
             />
           ) : (
@@ -86,7 +84,7 @@ function AnimatedCard({ listing, index }: { listing: ListingCardData; index: num
 }
 
 export default function RecentListingsSection({ listings }: Props) {
-  const reduced = useReducedMotion();
+  const { staggerContainer, fadeUp } = useMotion();
 
   if (!listings.length) return null;
 
@@ -94,10 +92,10 @@ export default function RecentListingsSection({ listings }: Props) {
     <section className="bg-surface border-b border-border">
       <div className="container mx-auto px-4 py-16 max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: reduced ? 0 : 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
+          variants={fadeUp(M.offset.md, M.duration.entrance)}
+          initial="hidden"
+          whileInView="show"
+          viewport={M.viewport}
           className="flex items-end justify-between mb-8"
         >
           <div>
@@ -114,11 +112,17 @@ export default function RecentListingsSection({ listings }: Props) {
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <motion.div
+          variants={staggerContainer(M.stagger.normal)}
+          initial="hidden"
+          whileInView="show"
+          viewport={M.viewportEarly}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+        >
           {listings.map((listing, i) => (
             <AnimatedCard key={listing.id} listing={listing} index={i} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

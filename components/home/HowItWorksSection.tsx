@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { PackagePlus, Search, MessageCircle } from 'lucide-react';
+import { useMotion, MOTION as M } from '@/lib/motion-variants';
 
 const steps = [
   {
@@ -26,26 +27,16 @@ const steps = [
 ];
 
 export default function HowItWorksSection() {
-  const reduced = useReducedMotion();
-
-  const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: reduced ? 0 : 0.14 } },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: reduced ? 0 : 24 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-  };
+  const { staggerContainer, fadeUp, scaleIn, fadeIn, svgDraw, cardHover, reduced } = useMotion();
 
   return (
     <section className="bg-white border-b border-border">
       <div className="container mx-auto px-4 py-16 max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: reduced ? 0 : 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
+          variants={fadeUp(M.offset.md, M.duration.entrance)}
+          initial="hidden"
+          whileInView="show"
+          viewport={M.viewport}
           className="mb-10"
         >
           <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">How it works</p>
@@ -54,51 +45,76 @@ export default function HowItWorksSection() {
           </h2>
         </motion.div>
 
-        <motion.ol
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
-          className="grid sm:grid-cols-3 gap-6"
-          aria-label="How UniDeal works"
-        >
-          {steps.map(({ icon: Icon, label, body, step }) => (
-            <motion.li
-              key={label}
-              variants={item}
-              className="group relative flex flex-col gap-4 p-6 rounded-lg border border-border bg-white hover:border-primary/30 transition-colors duration-200"
-            >
-              {/* Step number — decorative */}
-              <span
-                className="absolute top-4 right-4 text-3xl font-extrabold text-neutral-text/5 font-display select-none"
-                aria-hidden="true"
-              >
-                {step}
-              </span>
+        <div className="relative">
+          {/* Connecting path — desktop only, draws between step icons */}
+          <svg
+            aria-hidden="true"
+            className="hidden sm:block absolute top-14 left-[16.6%] right-[16.6%] w-[66.8%] h-0.5 pointer-events-none"
+            viewBox="0 0 100 2"
+            preserveAspectRatio="none"
+          >
+            <motion.line
+              x1="0" y1="1" x2="100" y2="1"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeDasharray="4 4"
+              className="text-border"
+              variants={svgDraw(M.duration.draw, 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={M.viewportEarly}
+            />
+          </svg>
 
-              <div
-                className="w-10 h-10 rounded-md bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors duration-200"
-                aria-hidden="true"
+          <motion.ol
+            variants={staggerContainer(M.stagger.loose)}
+            initial="hidden"
+            whileInView="show"
+            viewport={M.viewportEarly}
+            className="grid sm:grid-cols-3 gap-6 relative z-10"
+            aria-label="How UniDeal works"
+          >
+            {steps.map(({ icon: Icon, label, body, step }) => (
+              <motion.li
+                key={label}
+                variants={fadeUp(M.offset.md, M.duration.entrance)}
+                {...cardHover}
+                className="group relative flex flex-col gap-4 p-6 rounded-lg border border-border bg-white hover:border-primary/40 hover:bg-primary/[0.02] transition-colors duration-200 focus-within:ring-2 focus-within:ring-primary"
               >
-                <Icon className="w-5 h-5" />
-              </div>
+                <span
+                  className="absolute top-4 right-4 text-3xl font-extrabold text-neutral-text/5 font-display select-none"
+                  aria-hidden="true"
+                >
+                  {step}
+                </span>
 
-              <div>
-                <p className="text-[11px] font-semibold text-neutral-muted uppercase tracking-wide mb-1">
-                  Step {step}
-                </p>
-                <h3 className="text-base font-semibold text-neutral-text mb-1.5">{label}</h3>
-                <p className="text-sm text-neutral-muted leading-relaxed">{body}</p>
-              </div>
-            </motion.li>
-          ))}
-        </motion.ol>
+                <motion.div
+                  variants={scaleIn(0.8, 1, M.duration.entranceFast, 0.1)}
+                  whileHover={reduced ? {} : { scale: 1.06 }}
+                  transition={{ duration: M.duration.hover, ease: M.ease.out }}
+                  className="w-10 h-10 rounded-md bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors duration-200"
+                  aria-hidden="true"
+                >
+                  <Icon className="w-5 h-5" />
+                </motion.div>
+
+                <div>
+                  <p className="text-[11px] font-semibold text-neutral-muted uppercase tracking-wide mb-1">
+                    Step {step}
+                  </p>
+                  <h3 className="text-base font-semibold text-neutral-text mb-1.5">{label}</h3>
+                  <p className="text-sm text-neutral-muted leading-relaxed">{body}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ol>
+        </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          variants={fadeIn(M.duration.entrance, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={M.viewport}
           className="mt-8"
         >
           <Link

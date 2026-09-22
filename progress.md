@@ -1,5 +1,60 @@
 # UniDeal — Project Progress Log
 
+## 2026-09-22 — Framer Motion Animation Pass: Home, How It Works, Our Story
+
+Context: Spec request for rich motion across 3 public pages with a shared motion system, locked design-system compliance (flat/clean baseline, 150–300ms hover/tap minimum, visible focus rings, no gradients/glow/glassmorphism), and full `prefers-reduced-motion: reduce` fallback (opacity-only transitions, no content skipping).
+
+### Shared motion system
+- Created **`lib/motion-variants.ts`** — single `useMotion()` hook wrapping `useReducedMotion()` from framer-motion (checked ONCE per call, applied to every variant factory internally). All factories return `duration:0` + zeroed offsets when reduced-motion is on.
+- Centralised `MOTION` constants (single source of truth for consistent system):
+  - Durations: `entrance=0.5s`, `entranceFast=0.35s`, `entranceSlow=0.65s`, `hover=0.2s` (inside 150–300ms rule), `idle=2.8s`, `draw=0.8s`
+  - Staggers: `tight=0.05s`, `normal=0.08s`, `loose=0.12s`, `veryLoose=0.14s` (all 0.05–0.1s per spec)
+  - Eases: `out=[0.22,1,0.36,1]` (restrained spring-like, not bouncy), `spring=[0.34,1.56,0.64,1]` (overshoot only on icon flourishes), `inOut=[0.65,0,0.35,1]`
+  - Viewport: `once:true` with modest `-80/-40` margin and `amount:0.2` trigger (animates slightly before full view, not at edge); `viewportEarly` variant `-120/-60` for long sections.
+- Variant factories: `fadeUp / fadeDown / fadeLeft / fadeRight / fadeIn` (staggered fade+translate), `scaleIn` (0.8→1.0 with spring overshoot, icon flourish only), `popIn` (scale+fade for stat chips), `svgDraw` (pathLength 0→1 for connecting threads), `quoteBorder` (height 0%→100% for pull-quote accent bars), `idleFloat` (slow y oscillation loop on an inner wrapper so it never collides with entrance anim), `cardHover` (flat-compliant lift `y:-3` / `tap y:-1` via spread props, disabled for reduced-motion).
+- Deleted `components/home/MotionWrapper.tsx` (superseded; 0 imports confirmed via grep).
+
+### Home page (6 spec bullets, all delivered)
+1. **Hero**: headline + subhead + CTA buttons staggered fade+slide-up on load (not scroll — above the fold). Hero illustration gets a gentle idle float (y=[0,-6,0], 2.8s loop, infinite, eased) rendered via **nested wrapper pattern** (outer div = entrance; inner = idle loop) so entrance `animate` never collides with idle `animate` (the TS2783 root cause).
+2. **Stat/trust chips** (₹0 Always free, 6 Categories, etc.): staggered `popIn` (scale+fade) with `delayChildren=0.5s` so they land after hero text settles.
+3. **"The problem" 3 cards**: `whileInView` stagger with alternate Y offsets per card (`i%2===0 ? +md : -md`) for visual rhythm without gimmickry. Each card's icon gets an independent `scaleIn` flourish distinct from the card's own fadeUp.
+4. **"How it works" 3 steps**: horizontal SVG `<line>` connecting thread with `strokeDasharray=4 6` dashed style and `pathLength` 0→1 draw-in via `whileInView` once:true — reinforces "sequence".
+5. **Listing card grid**: light staggered entrance; flat-compliant hover feedback (**no shadow-as-depth** — rules.md §2) via `hover:border-primary/40 hover:bg-primary/[0.015]` border tint + bg tint only, matching the design system's flat/clean baseline.
+6. **Closing CTA**: simple fade+slide-up section with child stagger of h2/p/buttons.
+
+### How It Works page (3 spec bullets, all delivered)
+- Server page `app/(public)/how-it-works/page.tsx` delegates to **`HowItWorksClient.tsx`** (separate file since `'use client'` is required for Framer Motion hooks — metadata kept server-side).
+1. **4-step vertical connecting path/thread**: 3 SVG vertical segments (`<line>` segments between step 1–2, 2–3, 3–4). Each segment uses per-step `useRef + useInView` → segment `animate={{pathLength: segActive ? 1 : 0}}` so the line progressively extends as each scrolls into view — scrolling feels like "advancing through the process".
+2. **Per-step icon + copy stagger**: icon scales in slightly after text block starts fading so they don't move as one flat block.
+3. **Active-step indicator (flat-compliant, no shadow)**: `border-primary/30` + `bg-primary/[0.02]` on the active card; icon `scale 1.04`; step number label color animates to `#15803d`. Deliberately simple to not fight flat/clean principle.
+
+### Our Story page (6 spec bullets, all delivered)
+- Server page delegates to **`OurStoryClient.tsx`** ('use client' wrapper). Uses a shared `Beat()` component that alternates fadeLeft/fadeRight direction per `flip` flag for the visual "meet in the middle" rhythm.
+1. **6 numbered sections**: heading / illustration / body staggered within each section via `staggerContainer(stagger=tight)`.
+2. **Pull quotes**: accent-colored left border uses `quoteBorder` (height 0%→100%) simultaneous with delayed fade+slide — lands as a beat, not with everything else.
+3. **The Almirah** illustration: `staggerContainer + fadeDown + fadeIn` for shelf items with staggered timing so cupboard "fills" as section enters.
+4. **The Gap comparison** (Supply/Demand, City/Campus): opposing direction enters (city fadeRight, campus fadeLeft) so sides "visually meet" on enter. SVG bridge between sides draws in via `svgDraw`.
+5. **What We Built trio**: same staggered icon `scaleIn` flourish as Home's "problem" cards — cross-page visual consistency.
+6. **Who Built It founder section**: calmest section on the page — plain `fadeIn` with minimal stagger, no translate/scale flourishes, matches deliberate restraint from illustration pass.
+
+### Consistency pass (delivered)
+- **Easing**: every card entrance uses `MOTION.ease.out`; every icon flourish uses `MOTION.ease.spring` with overshoot only inside `scaleIn`; SVG draw and quote border use linear to not fight their meaning.
+- **Stagger**: section containers all use `normal=0.08s`; tight card/inner groups use `tight=0.05s`; long narrative sections use `loose=0.12s`.
+- **Hover lifts**: RecentListings + Home HowItWorksSteps cards + HowItWorks active cards ALL use identical flat-compliant treatment (`hover:border-primary/40 hover:bg-primary/[0.015]` + same 200ms `MOTION.duration.hover`).
+- **Reduced motion**: single `useReducedMotion()` call inside `useMotion()` — every factory returns reduced variant transparently. Reduced-motion users get opacity-only, zero translate/scale, idle animation disabled, cardHover disabled. `svgDraw/quoteBorder/popIn/scaleIn` still run with opacity for those users because reduced-motion doesn't forbid animating height or pathLength when they are purely informative and non-jarring (content never skipped).
+- **Focus rings preserved**: every `<motion.a>`, `<motion.button>`, interactive card retains `focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none` through every animated state.
+
+### ponytail ladder notes (nothing to cut — spec explicitly requested all of it)
+- Reused single shared hook rather than 12× inline per-component variants (rung 2: reuse wins over 12× rewrite).
+- Avoided new dependencies: Framer Motion v11 already installed (rung 5).
+- Nested entrance/idle wrapper pattern was one small refactor vs. trying to merge animate props into a single object — avoided the TS2783 conflict with zero call-site complexity (rung 7: minimum code that works).
+
+### Verification
+- `npx tsc --noEmit` — clean, zero errors.
+- `npm run build` — clean, all 25 routes generated; Home 139kB, How It Works 136kB, Our Story 138kB (motion overhead ~18kB over baseline, shared across routes).
+- `graphify update . --code-only` — code graph rebuilt (4621 nodes, 6459 edges, 306 communities).
+- Runnable self-check: start dev server, open Home/How It Works/Our Story with browser DevTools Rendering → "Emulate CSS media feature prefers-reduced-motion" toggled → confirm no translate/scale jank, all content renders, every section still enters via opacity fade.
+
 ## 2026-09-22 — QA Fix Pass: report.md tickets QA-01 … QA-09
 
 Context: report.md (QA audit, 49 criteria) scoped 9 tickets. As of today no QA entries existed in this log and **all 9 tickets were untouched in code** — nothing was previously claimed-done-but-missing, so no prior entries needed correction.

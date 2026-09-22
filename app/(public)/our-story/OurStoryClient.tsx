@@ -2,42 +2,18 @@
 
 import Link from 'next/link';
 import { useRef } from 'react';
-import { motion, useReducedMotion, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import IlluAlmirah from '@/components/about/IlluAlmirah';
 import IlluWall from '@/components/about/IlluWall';
 import IlluGap from '@/components/about/IlluGap';
 import IlluPositioning from '@/components/about/IlluPositioning';
 import IlluBuilt from '@/components/about/IlluBuilt';
-
-// ─── Shared animation helpers ────────────────────────────────────────────────
+import { useMotion, MOTION as M } from '@/lib/motion-variants';
 
 function useSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.25 });
   return { ref, inView };
-}
-
-function FadeUp({
-  children,
-  delay = 0,
-  className = '',
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const reduced = useReducedMotion();
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: reduced ? 0 : 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: reduced ? 0 : delay, ease: 'easeOut' }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
 }
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -49,18 +25,29 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function PullQuote({ children }: { children: React.ReactNode }) {
+  const { quoteBorder, fadeUp } = useMotion();
+
   return (
-    <FadeUp delay={0.15}>
-      <blockquote className="border-l-4 border-primary pl-4 py-1 my-4">
+    <motion.div
+      variants={fadeUp(8, M.duration.entrance, 0.08)}
+      className="relative my-4 pl-4 py-1"
+    >
+      <motion.span
+        aria-hidden="true"
+        variants={quoteBorder(M.duration.entranceSlow, 0.02)}
+        initial="hidden"
+        whileInView="show"
+        viewport={M.viewport}
+        className="absolute left-0 top-0 w-1 rounded-sm bg-primary"
+      />
+      <blockquote>
         <p className="text-lg sm:text-xl font-semibold text-neutral-text font-heading leading-snug">
           {children}
         </p>
       </blockquote>
-    </FadeUp>
+    </motion.div>
   );
 }
-
-// ─── Beat layout: alternates illustration left/right on desktop ──────────────
 
 function Beat({
   label,
@@ -70,6 +57,7 @@ function Beat({
   illustration,
   flip = false,
   children,
+  inView,
 }: {
   label: string;
   heading: string;
@@ -78,41 +66,58 @@ function Beat({
   illustration: React.ReactNode;
   flip?: boolean;
   children?: React.ReactNode;
+  inView: boolean;
 }) {
+  const { staggerContainer, fadeUp, fadeLeft, fadeRight, MOTION: MV } = useMotion();
+  const IlluAnim = flip ? fadeLeft : fadeRight;
+  const TextAnim = flip ? fadeRight : fadeLeft;
+
   return (
     <section className="border-b border-border last:border-0">
       <div className="container mx-auto px-4 py-16 max-w-5xl">
-        <div
-          className={`flex flex-col ${flip ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 lg:gap-16 items-center`}
+      <motion.div
+        variants={staggerContainer(MV.stagger.normal)}
+        initial="hidden"
+        animate={inView ? 'show' : 'hidden'}
+        className={`flex flex-col ${flip ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 lg:gap-16 items-center`}
+      >
+        {/* Illustration side */}
+        <motion.div
+          variants={IlluAnim(MV.offset.lg, MV.duration.entrance, 0.04)}
+          className="w-full lg:w-2/5 flex-shrink-0"
         >
-          {/* Illustration side */}
-          <FadeUp delay={0.05} className="w-full lg:w-2/5 flex-shrink-0">
-            {illustration}
-          </FadeUp>
+          {illustration}
+        </motion.div>
 
-          {/* Text side */}
-          <div className="flex-1 space-y-4">
-            <FadeUp delay={0}>
-              <SectionLabel>{label}</SectionLabel>
-              <h2 className="text-2xl sm:text-3xl font-bold text-neutral-text font-heading leading-tight">
-                {heading}
-              </h2>
-            </FadeUp>
-            {pullQuote && <PullQuote>{pullQuote}</PullQuote>}
-            <FadeUp delay={0.2}>
+        {/* Text side */}
+        <motion.div
+          variants={staggerContainer(MV.stagger.tight)}
+          initial="hidden"
+          animate={inView ? 'show' : 'hidden'}
+          className="flex-1 space-y-4"
+        >
+          <motion.div variants={fadeUp(MV.offset.md, MV.duration.entrance)}>
+            <SectionLabel>{label}</SectionLabel>
+            <h2 className="text-2xl sm:text-3xl font-bold text-neutral-text font-heading leading-tight">
+              {heading}
+            </h2>
+          </motion.div>
+          {pullQuote && <PullQuote>{pullQuote}</PullQuote>}
+          <motion.div
+            variants={fadeUp(MV.offset.sm, MV.duration.entrance, 0.12)}
+            >
               <p className="text-neutral-muted leading-relaxed">{body}</p>
-            </FadeUp>
-            {children}
-          </div>
-        </div>
+            </motion.div>
+          {children}
+        </motion.div>
+      </motion.div>
       </div>
     </section>
   );
 }
 
-// ─── Page ────────────────────────────────────────────────────────────────────
-
 export default function OurStoryClient() {
+  const { fadeUp, fadeLeft, fadeRight, fadeIn, staggerContainer, MOTION: MV } = useMotion();
   const almirahSection = useSection();
   const wallSection    = useSection();
   const gapSection     = useSection();
@@ -125,16 +130,25 @@ export default function OurStoryClient() {
       {/* ── Hero header ───────────────────────────────────────── */}
       <section className="border-b border-border bg-white">
         <div className="container mx-auto px-4 py-14 max-w-5xl">
-          <FadeUp>
-            <SectionLabel>Our Story</SectionLabel>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-neutral-text font-display leading-tight max-w-2xl">
-              Built out of frustration.{' '}
-              <span className="text-primary">Launched with conviction.</span>
-            </h1>
-            <p className="text-neutral-muted text-sm mt-4">
+          <motion.div
+            variants={staggerContainer(MV.stagger.loose)}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.div variants={fadeUp(MV.offset.lg, MV.duration.entranceSlow)}>
+              <SectionLabel>Our Story</SectionLabel>
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-neutral-text font-display leading-tight max-w-2xl">
+                Built out of frustration.{' '}
+                <span className="text-primary">Launched with conviction.</span>
+              </h1>
+            </motion.div>
+            <motion.p
+              variants={fadeUp(MV.offset.md, MV.duration.entrance, 0.12)}
+              className="text-neutral-muted text-sm mt-4"
+            >
               Founded September 2026 · One campus · Zero budget · Built by a student
-            </p>
-          </FadeUp>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
@@ -146,6 +160,7 @@ export default function OurStoryClient() {
           pullQuote="Textbooks from last semester. An iron. A guitar gathering dust."
           body="After exams, hostel rooms fill up with things that served their purpose and now just sit there — too good to throw away, too inconvenient to sell. The next batch of students is about to need exactly these things. They just can't find each other."
           illustration={<IlluAlmirah inView={almirahSection.inView} />}
+          inView={almirahSection.inView}
         />
       </div>
 
@@ -158,6 +173,7 @@ export default function OurStoryClient() {
           body="No search. No filter. No way to know if an item was still available. A listing posted in the morning disappeared under 40 messages before a single interested buyer could respond. The group became noise — and sellers gave up posting."
           illustration={<IlluWall inView={wallSection.inView} />}
           flip
+          inView={wallSection.inView}
         />
       </div>
 
@@ -169,6 +185,7 @@ export default function OurStoryClient() {
           pullQuote="The right two people were both on campus — they just couldn't find each other."
           body="This wasn't a niche problem. Every semester, across every hostel block: sellers with good stuff, buyers who needed exactly that stuff, and no reliable way to bridge them. The gap wasn't a lack of items — it was a lack of infrastructure."
           illustration={<IlluGap inView={gapSection.inView} />}
+          inView={gapSection.inView}
         />
       </div>
 
@@ -180,12 +197,16 @@ export default function OurStoryClient() {
           body="OLX and similar platforms work at city scale — where you meet strangers. Campus is different. Proximity and shared context are the trust signal. A verified student two blocks away is a fundamentally different seller than an anonymous city listing. No existing platform understood that distinction."
           illustration={<IlluPositioning inView={posSection.inView} />}
           flip
+          inView={posSection.inView}
         >
-          <FadeUp delay={0.25}>
-            <div className="mt-2 p-4 rounded-lg border border-border bg-surface text-sm text-neutral-muted leading-relaxed">
+          <motion.div
+            variants={fadeUp(MV.offset.sm, MV.duration.entrance, 0.18)}
+            className="mt-2"
+          >
+            <div className="p-4 rounded-lg border border-border bg-surface text-sm text-neutral-muted leading-relaxed">
               UniDeal isn&rsquo;t competing with OLX. It&rsquo;s solving a problem OLX doesn&rsquo;t have — intra-campus trust at walking distance.
             </div>
-          </FadeUp>
+          </motion.div>
         </Beat>
       </div>
 
@@ -196,18 +217,29 @@ export default function OurStoryClient() {
           heading="Three things. Nothing more."
           body="A structured, searchable feed where listings don't disappear. A protected contact reveal — your phone number never shown, only a WhatsApp link built server-side. And it's free, always. No promoted listings, no ads, no premium tier."
           illustration={<IlluBuilt inView={builtSection.inView} />}
+          inView={builtSection.inView}
         />
       </div>
 
       {/* ── Beat 6: Who Built It — modest, deliberately plain ─── */}
       <section className="bg-white border-b border-border">
         <div className="container mx-auto px-4 py-16 max-w-5xl">
-          <FadeUp>
-            <SectionLabel>06 — Who Built It</SectionLabel>
-          </FadeUp>
-          <div className="mt-6 max-w-xl">
-            <FadeUp delay={0.1}>
-              {/* Intentionally minimal founder card */}
+          <motion.div
+          variants={fadeUp(8, MV.duration.entrance)}
+          initial="hidden"
+          whileInView="show"
+          viewport={MV.viewport}
+        >
+          <SectionLabel>06 — Who Built It</SectionLabel>
+        </motion.div>
+          <motion.div
+            variants={staggerContainer(MV.stagger.normal)}
+            initial="hidden"
+            whileInView="show"
+            viewport={MV.viewport}
+            className="mt-6 max-w-xl"
+          >
+            <motion.div variants={fadeIn(MV.duration.entrance, 0.05)}>
               <div className="flex items-start gap-4 p-5 rounded-lg border border-border bg-surface">
                 <div className="w-10 h-10 rounded-full border-2 border-border bg-white flex items-center justify-center flex-shrink-0 text-sm font-bold text-neutral-text font-heading">
                   A
@@ -222,14 +254,20 @@ export default function OurStoryClient() {
                   </p>
                 </div>
               </div>
-            </FadeUp>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Footer — low CTA emphasis per design.md §7.9 ─────── */}
       <section className="bg-white">
-        <FadeUp className="container mx-auto px-4 py-10 max-w-5xl">
+        <motion.div
+          variants={fadeUp(6, MV.duration.entrance)}
+          initial="hidden"
+          whileInView="show"
+          viewport={MV.viewport}
+          className="container mx-auto px-4 py-10 max-w-5xl"
+        >
           <p className="text-sm text-neutral-muted">
             Questions or ideas?{' '}
             <Link
@@ -240,7 +278,7 @@ export default function OurStoryClient() {
             </Link>
             . We read everything.
           </p>
-        </FadeUp>
+        </motion.div>
       </section>
 
     </main>
