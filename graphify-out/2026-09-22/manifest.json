@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "progress.md": {
-    "mtime": 1790085932.9690623,
-    "seen": 1790085950.1703799,
-    "ast_hash": "671ceb104575a97b4bf0ba1c86f4c17c",
+    "mtime": 1790085554.532743,
+    "seen": 1790085630.227153,
+    "ast_hash": "5d99e1c7794952fdb62c5862e9f8dff1",
     "semantic_hash": ""
   },
   ".agents/skills/brand/scripts/extract-colors.cjs": {
@@ -2085,12 +2085,6 @@
     "mtime": 1790072565.4034827,
     "seen": 1790085630.227153,
     "ast_hash": "ba8dc30a1dd0127d8e98724589b30b94",
-    "semantic_hash": ""
-  },
-  "scripts/test_qa_fix_pass.js": {
-    "mtime": 1790085824.8590605,
-    "seen": 1790085950.14642,
-    "ast_hash": "601a8c788ed16c6a08ef64fc93ce192e",
     "semantic_hash": ""
   }
 }
