@@ -276,6 +276,22 @@ export default function TopNav() {
                 >
                   Dashboard ({displayName})
                 </Link>
+                <Link
+                  href="/profile"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full py-2 px-4 bg-surface text-neutral-text rounded-md font-medium text-sm text-center min-h-[44px] flex items-center justify-center"
+                >
+                  Profile
+                </Link>
+                {isAdmin && (
+                  <Link
+                    href="/admin"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full py-2 px-4 bg-surface text-neutral-text rounded-md font-medium text-sm text-center min-h-[44px] flex items-center justify-center"
+                  >
+                    Admin
+                  </Link>
+                )}
                 <button
                   type="button"
                   onClick={() => {

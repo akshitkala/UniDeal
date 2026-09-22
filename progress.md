@@ -1,5 +1,16 @@
 # UniDeal — Project Progress Log
 
+## 2026-09-23 — Visual-verification follow-up: mobile drawer Profile/Admin links + nav doc correction
+
+Context: follow-up to the desktop + 375px visual verification pass over the QA-01/04/05/08 fixes (flag-first report; two flags accepted for fixing). Post-launch QA (Phase 6 follow-up).
+
+- **`components/nav/TopNav.tsx` (mobile drawer only)** — logged-in drawer previously showed just Dashboard + Sign Out, so admins on <768px had **no in-app path to /admin** (the gated Admin link existed only in the desktop dropdown) and **Profile** was missing entirely (inconsistency independent of admin gating). Added a `Profile` link for every logged-in user and an `Admin` link reusing the **same `isAdmin` state** that already gates the desktop dropdown (~line 155) — no second check invented. Order now mirrors desktop: Dashboard → Profile → Admin → Sign Out. No other TopNav lines touched; server-side `requireAdminSession()` (rules.md §3) remains the real boundary — this is a UI/nav change, not a security-boundary change.
+- **`documents/architecture_v1.1.md`** — folder tree listed a phantom `components/nav/BottomNav.tsx` (never existed). Replaced with the real pattern: single responsive `TopNav.tsx` serving both breakpoints (desktop header + <768px hamburger drawer). **`documents/UniDeal_TRD_v1.1.md` checked — no BottomNav/nav-folder reference, nothing to change.** No component was created (deliberate: the single-component pattern is correct; docs follow code).
+- **Verified at 375px with real sessions (same iframe harness as the pass)** — non-admin (`QA Verify Student`): drawer = Dashboard (QA) → Profile → Sign Out, `adminHrefInDom=0` / `adminTextCount=0` (true DOM absence, QA-04-style check), no horizontal scroll. Admin (`QA Admin Student`): drawer = Dashboard (QA) → Profile → Admin → Sign Out, `adminHrefInDom=1`, and tapping Admin lands on `/admin` ("UniDeal Admin Console"). Screenshots captured for both drawers.
+- Environment: confirmed a **single dev server** on :3000 before testing (last session's duplicate-server `.next` corruption not repeated — stopped dev before `next build`, restarted after).
+- Verification: `tsc --noEmit` clean; `npm run build` clean.
+- Deferred: none.
+
 ## 2026-09-22 — Framer Motion Animation Pass: Home, How It Works, Our Story
 
 Context: Spec request for rich motion across 3 public pages with a shared motion system, locked design-system compliance (flat/clean baseline, 150–300ms hover/tap minimum, visible focus rings, no gradients/glow/glassmorphism), and full `prefers-reduced-motion: reduce` fallback (opacity-only transitions, no content skipping).

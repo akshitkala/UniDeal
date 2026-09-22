@@ -245,8 +245,10 @@ unideal/
 │   │   └── AuthModal.tsx                → Login/Signup tabbed overlay; focus-trapped, Escape closes,
 │   │                                       pushes history state, resumes returnTo action on success
 │   ├── nav/
-│   │   ├── TopNav.tsx                   → desktop nav (logo, Browse, Sell CTA, Sign In → opens AuthModal)
-│   │   └── BottomNav.tsx                → mobile nav (Home, Browse, Sell, Dashboard, Profile)
+│   │   └── TopNav.tsx                   → single responsive nav for both breakpoints: desktop (logo, Browse,
+│   │                                       Sell CTA, Sign In → AuthModal, profile dropdown with Dashboard /
+│   │                                       Profile / Admin) and <768px (hamburger → inline mobile drawer);
+│   │                                       no separate BottomNav component
 │   ├── listing/
 │   │   ├── ListingCard.tsx              → grid card used in Browse + Dashboard, first-name-only
 │   │   ├── ListingForm.tsx              → shared by Sell + Edit
