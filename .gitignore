@@ -27,3 +27,11 @@
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Test output & IDE artifacts
+/playwright-report
+/test-results
+/.playwright-mcp
+/.trae
+/scratch
+

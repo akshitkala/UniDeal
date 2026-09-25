@@ -273,3 +273,33 @@ Context: report.md (QA audit, 49 criteria) scoped 9 tickets. As of today no QA e
 - Added comprehensive 24-point test suite in `scripts/test_whatsapp_and_delete_account.js` covering all 5 rules end-to-end against live local server. All 24 checks passed cleanly.
 - `npx tsc --noEmit` and `npm run build` passed with zero errors.
 
+## 2026-09-26 — End-to-End Feature & Workflow Test Pass (Playwright MCP)
+- Completed interactive E2E testing of all 14 user flows against local dev server (`http://localhost:3000`) using Playwright MCP tools:
+  - Flow 1 (Guest / Public Browsing): Passed — hero, Browse grid, filters, sorting, static pages, empty state.
+  - Flow 2 & 3 (Auth Modal Signup & Email Verification Gate): Passed — overlay modal, focus trap, Escape/backdrop close, verification gate blocking Sell/Contact.
+  - Flow 4 (Auth Modal Login & Error Handling): Passed — wrong password inline error, valid login header update.
+  - Flow 5 (Sell Flow, Validation & >5MB Rejection): Passed — inline validation, >5MB image client rejection, WhatsApp number inline request on first listing only.
+  - Flow 6 (Contact Seller WhatsApp Link & Phone Secrecy): Passed — `/api/listings/[id]/contact` returns server-built `wa.me` link; raw phone number never in response or DOM; handles 404 cleanly.
+  - Flow 7 & 8 (Edit / Delete / Mark Sold & Dashboard Buckets): Passed — Dashboard 4 tabs (Active, Under Review, Sold, Rejected), status preservation on edit, Sold badge, delete removing item.
+  - Flow 9 (Report Listing & 409 Duplicate Check): Passed — 201 on first report, 409 on duplicate report from same user.
+  - Flow 10 (Profile Updates & Secrecy Copy): Passed — full name, branch, year, WhatsApp number editable with explicit Save button and privacy notice.
+  - Flow 11 (Account Deletion): Passed — two-step inline confirmation, deletes user and cascades removal of listings from Browse.
+  - Flow 12 (Contact Us Support Form): Passed — guest submission without auth prompt, email validation.
+  - Flow 13 (Admin Governance): Passed — moderation mode toggle ('auto' vs 'manual'), pending queue review/reject, reports resolution ('remove' vs 'dismiss'), user ban/unban, promotion to admin.
+  - Flow 14 (Mobile Viewport 375px): Passed — no horizontal overflow on Browse, Listing Detail, and Sell pages.
+- Created automated Playwright test suite in `tests/*.spec.ts` (10 test files, 22 test scenarios):
+  - `tests/01_guest_browsing.spec.ts`
+  - `tests/02_auth_modal_signup.spec.ts`
+  - `tests/03_auth_modal_login.spec.ts`
+  - `tests/04_sell_flow.spec.ts`
+  - `tests/05_contact_seller.spec.ts`
+  - `tests/06_dashboard_actions.spec.ts`
+  - `tests/07_report_listing.spec.ts`
+  - `tests/08_profile_and_contact_us.spec.ts`
+  - `tests/09_admin_flows.spec.ts`
+  - `tests/10_mobile_viewport.spec.ts`
+- Verified full test suite execution: **22/22 passed cleanly** (`npx playwright test`).
+- Generated HTML test report at `playwright-report/index.html`.
+- Verification gates: `npx tsc --noEmit` clean; `npm run build` clean.
+
+
