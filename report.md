@@ -125,16 +125,30 @@
 
 ---
 
+## Part 10 — v1.2 Additions & Governance Pass (2026-09-26)
+
+| # | Result | Check | Notes |
+|---|---|---|---|
+| 50 | PASS | 50/day Contact Reveal Rate-Limit Verification | 51st reveal attempt in 24h window returns `429 RATE_LIMITED` ("Daily limit reached. Try again tomorrow.") and UI renders warning banner |
+| 51 | PASS | Auth Modal Signup Verification Guidance | Verification notification panel displays clear heading ("Check your inbox"), recipient email, and focus-trapped navigation buttons |
+| 52 | PASS | Admin Single Reject on any listing | `PATCH /api/admin/listings/[id]/reject` updates `status = 'rejected'` and persists `rejection_reason` from `/admin/listings` view |
+| 53 | PASS | Admin Bulk Reject (`PATCH /api/admin/listings/bulk-reject`) | Accepts `{ listing_ids, reason }`, inline confirmation ("Reject N listings?"), handles partial failure (skipping sold/rejected items) without erroring batch |
+| 54 | PASS | Open reports left untouched on bulk reject | Deliberate governance decision: bulk rejection leaves open pending reports in the report queue for separate human review |
+
+---
+
 ## Tickets Summary
 
 | Ticket | Severity | Route | Issue |
 |---|---|---|---|
-| **QA-01** | 🔴 HIGH | `/admin`, `/admin/*` | No server-side page guard on admin routes — non-admins can view the admin UI (API is protected, but page is not) |
-| **QA-02** | 🔴 HIGH | `/profile` | Profile page queries `whatsapp_number` client-side — column REVOKE makes it always load empty; user cannot see their own stored number |
-| **QA-03** | 🟡 MEDIUM | `/admin` | Admin Overview missing snapshot cards: pending listings count, open reports count, total users count |
-| **QA-04** | 🟡 MEDIUM | TopNav (all pages) | Admin link in profile dropdown visible to all logged-in users, not just admins |
-| **QA-05** | 🟢 LOW | Auth Modal | After signup, modal doesn't auto-close — shows inbox-check panel inside modal instead. appflow.md §2 says "modal closes" |
-| **QA-06** | 🟢 LOW | `/verify-email` | No automatic action resumption after verification — user must navigate manually. Confirm this is an accepted constraint |
-| **QA-07** | 🟢 LOW | `/dashboard` | Edit button shown for rejected listings — confirm whether this is intentional |
-| **QA-08** | 🟢 LOW | `/contact` | Success message is "Message sent." / "We'll get back to you soon." instead of "Message sent — we'll get back to you soon." |
-| **QA-09** | 🟢 LOW | Auth Modal | Focus trap `useEffect` excludes `generalError` from deps — benign now, brittle if error state becomes interactive |
+| **QA-01** | 🔴 HIGH | `/admin`, `/admin/*` | Fixed (layout server guard `requireAdminSession()` redirects non-admins) |
+| **QA-02** | 🔴 HIGH | `/profile` | Fixed (`GET /api/profile` server endpoint loads owner-only WhatsApp number) |
+| **QA-03** | 🟡 MEDIUM | `/admin` | Fixed (`GET /api/admin/overview` renders snapshot cards) |
+| **QA-04** | 🟡 MEDIUM | TopNav (all pages) | Fixed (gated on `is_admin` state) |
+| **QA-05** | 🟢 LOW | Auth Modal | Accepted decision (stays open on inbox-check panel) |
+| **QA-06** | 🟢 LOW | `/verify-email` | Accepted constraint (manual navigation links) |
+| **QA-07** | 🟢 LOW | `/dashboard` | Accepted decision (Edit button hidden on rejected listings) |
+| **QA-08** | 🟢 LOW | `/contact` | Fixed (single line success text) |
+| **QA-09** | 🟢 LOW | Auth Modal | Fixed (`generalError` added to focus-trap deps) |
+| **v1.2-01**| 🟢 PASS | `/admin/listings` | Admin single & bulk reject with inline confirmation and partial failure handling (v1.2 addition) |
+

@@ -32,8 +32,8 @@ test.describe('Flow 2 & 3: Auth Modal Signup & Verification Gate', () => {
 
     await page.locator('button[type="submit"]').click();
 
-    // Wait for response: either "Check your inbox" appears, modal closes (auto-confirmed), or rate-limit alert is shown
-    await page.waitForTimeout(2000);
+    // Wait for Supabase signup network response to complete (loading spinner clears)
+    await page.waitForTimeout(5000);
     const inboxHeadingVisible = await page.getByRole('heading', { name: 'Check your inbox' }).isVisible();
     const modalVisible = await page.getByRole('dialog').isVisible();
     const hasAlert = await page.getByRole('dialog').getByRole('alert').first().isVisible().catch(() => false);

@@ -3,11 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShieldCheck, Settings, Clock, AlertTriangle, Users, ArrowLeft } from 'lucide-react';
+import { ShieldCheck, Settings, Clock, ListFilter, AlertTriangle, Users, ArrowLeft } from 'lucide-react';
 
 const adminNavLinks = [
   { href: '/admin', label: 'Settings', icon: Settings },
   { href: '/admin/listings/pending', label: 'Pending Queue', icon: Clock },
+  { href: '/admin/listings', label: 'Listings', icon: ListFilter },
   { href: '/admin/reports', label: 'Reports', icon: AlertTriangle },
   { href: '/admin/users', label: 'Users', icon: Users },
 ];

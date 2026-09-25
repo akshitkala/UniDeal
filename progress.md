@@ -302,4 +302,20 @@ Context: report.md (QA audit, 49 criteria) scoped 9 tickets. As of today no QA e
 - Generated HTML test report at `playwright-report/index.html`.
 - Verification gates: `npx tsc --noEmit` clean; `npm run build` clean.
 
+## 2026-09-26 — Admin Bulk Reject (v1.2 Addition), 50/day Rate Limit & Verification Pass
+- **50/day Rate Limit Verification**: Added test scenario verifying that the 51st contact reveal attempt in 24 hours hits `429 RATE_LIMITED` ("Daily limit reached. Try again tomorrow.") and UI disables/renders daily limit notice cleanly.
+- **Signup / Email Verification Clarity**: Verified AuthModal signup confirmation state displays clear guidance (`"Check your inbox"`), explicit recipient email, and focus-trapped navigation buttons.
+- **Admin Listing Single & Bulk Reject Governance (v1.2 Addition)**:
+  - Built `GET /api/admin/listings` returning all listings with status & title search filters.
+  - Built `app/admin/listings/page.tsx` — Admin Listings view displaying title, seller name, category, price, status badge, created date, and row selection checkboxes. Updated `AdminShell.tsx` sub-nav to include `Listings` tab.
+  - Extended single reject pattern (`PATCH /api/admin/listings/[id]/reject`) to work on any listing (approved or pending) from the general listings view. Persists `rejection_reason` for seller Dashboard. Blocks rejection on already-sold listings (`400 INVALID_STATUS`).
+  - Implemented `PATCH /api/admin/listings/bulk-reject` (admin-only, server-side `is_admin` re-check). Accepts `{ listing_ids: string[], reason: string }`.
+  - Added inline confirmation modal displaying count of listings to be affected (`"Reject 3 listings?"`) and single rejection reason field.
+  - Fail-closed validation for non-admin/malformed requests. Handles partial failures gracefully: skips already-sold, already-rejected, or missing listings, returning `{ data: { rejected: string[], skipped: { id, reason }[] } }`.
+  - Open reports on bulk-rejected listings are deliberately left as-is for separate human moderation review.
+  - Explicitly excluded edit, hard delete, status override, or admin-triggered Mark Sold per v1.2 scope correction (note: design.md §7.13 originally stated "No bulk actions in v1"; bulk reject is a deliberate v1.2 addition).
+- Created `tests/11_admin_reject_and_ratelimit.spec.ts` covering 50/day rate limit notice, single reject of approved listing, and bulk reject partial failure handling.
+- Verification: **25/25 passed cleanly** (`npx playwright test`). `npx tsc --noEmit` clean.
+
+
 
