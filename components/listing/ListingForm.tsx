@@ -61,6 +61,8 @@ export default function ListingForm({
   const [submitting, setSubmitting] = useState(false);
   const [generalError, setGeneralError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [needsWhatsApp, setNeedsWhatsApp] = useState(false);
+  const [whatsapp, setWhatsapp] = useState('');
 
   // Sync categoryId if categories load late
   useEffect(() => {
@@ -68,6 +70,27 @@ export default function ListingForm({
       setCategoryId(categories[0].id);
     }
   }, [categories, initialData, categoryId]);
+
+  // First-listing gate: collect the WhatsApp number in this submission only when
+  // the profile has none saved (server enforces the same rule in POST /api/listings).
+  // On fetch failure, show the field anyway — collecting it is always safe, and the
+  // server rejects creation when no number ends up on file.
+  useEffect(() => {
+    if (isEditing) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch('/api/profile');
+        const json = await res.json();
+        if (!cancelled && (!res.ok || !json.data?.whatsapp_number)) setNeedsWhatsApp(true);
+      } catch {
+        if (!cancelled) setNeedsWhatsApp(true);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [isEditing]);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -140,6 +163,7 @@ export default function ListingForm({
       category_id: Number(categoryId),
       condition,
       images,
+      whatsapp_number: needsWhatsApp ? whatsapp.trim() : undefined,
     });
 
     if (!result.success) {
@@ -176,6 +200,7 @@ export default function ListingForm({
         category_id: Number(categoryId),
         condition,
         images,
+        ...(needsWhatsApp && { whatsapp_number: whatsapp.trim() }),
       };
 
       const url = isEditing && initialData?.id
@@ -424,6 +449,42 @@ export default function ListingForm({
           )}
         </div>
       </div>
+
+      {/* 8. WhatsApp number — only when the profile has none saved yet (first listing) */}
+      {needsWhatsApp && !isEditing && (
+        <div>
+          <label htmlFor="listing-whatsapp" className="block text-sm font-semibold text-neutral-text mb-1">
+            WhatsApp Number <span className="text-danger">*</span>
+          </label>
+          <input
+            id="listing-whatsapp"
+            type="tel"
+            autoComplete="tel"
+            inputMode="tel"
+            value={whatsapp}
+            onChange={(e) => {
+              setWhatsapp(e.target.value);
+              if (fieldErrors.whatsapp_number) setFieldErrors((prev) => ({ ...prev, whatsapp_number: '' }));
+            }}
+            placeholder="+919876543210"
+            className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-neutral-text placeholder:text-neutral-muted bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary min-h-[44px] ${
+              fieldErrors.whatsapp_number ? 'border-danger ring-1 ring-danger' : 'border-border'
+            }`}
+            aria-required="true"
+            aria-invalid={!!fieldErrors.whatsapp_number}
+            aria-describedby="listing-whatsapp-hint listing-whatsapp-error"
+          />
+          <p id="listing-whatsapp-hint" className="mt-1 text-xs text-neutral-muted">
+            Buyers reach you on WhatsApp after tapping &ldquo;Contact Seller&rdquo;. International format
+            required, e.g. +919876543210. Never shown publicly — saved once to your profile.
+          </p>
+          {fieldErrors.whatsapp_number && (
+            <p id="listing-whatsapp-error" role="alert" className="mt-1 text-xs text-danger font-medium">
+              {fieldErrors.whatsapp_number}
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Submit Action */}
       <div className="pt-4 border-t border-border flex justify-end gap-3">

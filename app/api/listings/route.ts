@@ -137,11 +137,58 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { title, description, price, negotiable, category_id, condition, images } =
+    const { title, description, price, negotiable, category_id, condition, images, whatsapp_number } =
       parseResult.data;
 
-    // 3. Check approval mode server-side via service-role client (TRD §3.6, §5.2)
+    // 3. Contact-on-file check (service-role client: whatsapp_number is REVOKE'd from
+    // client roles — rules.md §3). A listing must never be created while the seller's
+    // number is still null: buyers would hit a permanently broken "Seller contact not
+    // available" state. If no number is on file yet, this request must supply one and
+    // it is saved before the insert (fail closed — rules.md §7.4).
     const adminClient = createAdminClient();
+
+    const { data: profile, error: profileError } = await adminClient
+      .from('profiles')
+      .select('whatsapp_number')
+      .eq('id', user.id)
+      .single();
+
+    if (profileError || !profile) {
+      console.error('Profile lookup failed during listing creation', profileError);
+      return NextResponse.json(
+        { error: { message: "Couldn't verify your profile. Please try again.", code: 'SERVER_ERROR' } },
+        { status: 500 }
+      );
+    }
+
+    if (!profile.whatsapp_number) {
+      if (!whatsapp_number) {
+        return NextResponse.json(
+          {
+            error: {
+              message: 'Add a WhatsApp number to this form so buyers can contact you.',
+              code: 'VALIDATION_ERROR',
+            },
+          },
+          { status: 400 }
+        );
+      }
+
+      const { error: saveNumberError } = await adminClient
+        .from('profiles')
+        .update({ whatsapp_number })
+        .eq('id', user.id);
+
+      if (saveNumberError) {
+        console.error('Saving WhatsApp number before listing creation failed', saveNumberError);
+        return NextResponse.json(
+          { error: { message: "Couldn't save your WhatsApp number. Please try again.", code: 'UPDATE_ERROR' } },
+          { status: 500 }
+        );
+      }
+    }
+
+    // 4. Check approval mode server-side via service-role client (TRD §3.6, §5.2)
     const { data: settings } = await adminClient
       .from('admin_settings')
       .select('approval_mode')
@@ -151,10 +198,10 @@ export async function POST(request: NextRequest) {
     const approvalMode = settings?.approval_mode ?? 'auto';
     const status: ListingStatus = approvalMode === 'manual' ? 'pending' : 'approved';
 
-    // 4. Generate slug
+    // 5. Generate slug
     const slug = generateSlug(title);
 
-    // 5. Insert listing row as authenticated user (RLS listings_insert_own enforces verified + not banned)
+    // 6. Insert listing row as authenticated user (RLS listings_insert_own enforces verified + not banned)
     const listing: Database['public']['Tables']['listings']['Insert'] = {
         slug,
         seller_id: user.id,

@@ -75,7 +75,7 @@ Every component that renders a seller's name on a listing card, listing detail p
 
 **Why this approach over a schema split:** splitting into `first_name`/`last_name` columns would require a migration and touches auth-trigger logic for no functional gain — the full name is still useful to store (e.g. for admin-side identification, future full-name display if the tradeoff is revisited) and the display restriction is purely a UI concern. If this assumption is wrong for your use case, flag it and we can migrate to split columns instead.
 
-**Note on `whatsapp_number` is optional:** a listing can go live without the seller having set a contact number yet — TRD §5.5 already handles this as a valid "Seller contact not available" state. Do not block listing creation on this field being set; nudge the user to add it on their Profile page instead.
+**Note on `whatsapp_number` is optional:** the field stays optional on the Profile page and for rows that already exist — a user can leave it blank there in isolation, and TRD §5.5 still handles a null number as a valid "Seller contact not available" state for listings that already exist. One enforcement point was added post-launch (2026-09-24): `POST /api/listings` refuses to create a *new* listing while the seller's number is null — it collects the number in the same submission when the seller has none yet (see §5.2). Do not block a *Profile* save on this field being set.
 
 **Trigger — auto-create profile on signup:**
 ```sql
@@ -424,11 +424,13 @@ Email verification: Supabase sends the verification email automatically. Gate po
   "negotiable": "boolean",
   "category_id": "int",
   "condition": "New | Like New | Good | Used | Damaged",
-  "images": ["array of 1-4 Cloudinary URLs, already uploaded client-side before this call"]
+  "images": ["array of 1-4 Cloudinary URLs, already uploaded client-side before this call"],
+  "whatsapp_number": "E.164 string — required only when the seller's profile has no number saved yet; omitted otherwise"
 }
 ```
 Logic:
 1. Verify session server-side.
+1a. Read `profiles.whatsapp_number` for the seller (service-role client — the column is REVOKE'd from client roles). If no number is on file, this body must include `whatsapp_number` (E.164) and it is saved to the profile **before** the insert; if the body omits it too → 400 `VALIDATION_ERROR`. A listing is never created with a null seller number. If a number is already on file the field is ignored — the Profile page remains the place to change it. (Post-launch addition, 2026-09-24 — see §2.1a.)
 2. Generate slug: `slugify(title) + '-' + nanoid(5)`.
 3. Read `admin_settings.approval_mode`. If `'auto'` → insert with `status = 'approved'`. If `'manual'` → insert with `status = 'pending'`. (`'ai'` branch is `[FUTURE]` — do not implement conditional logic for it yet; treat any unexpected value as `'manual'` as a safe fallback.)
 4. Insert row. RLS `listings_insert_own` policy enforces email-verified + not-banned.

@@ -129,6 +129,10 @@ Images uploaded directly to Cloudinary (unsigned preset) → URLs returned
 POST /api/listings with form data + image URLs
         │
         ▼
+Server requires a WhatsApp number on file (collected in this same
+form, only when the profile has none saved yet — first listing)
+        │
+        ▼
 Server checks admin_settings.approval_mode
         │
         ├── 'auto'   → status = 'approved' → live immediately, appears in Browse

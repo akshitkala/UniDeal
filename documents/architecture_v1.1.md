@@ -213,6 +213,10 @@ unideal/
 │   │   └── listings/pending/page.tsx    → only relevant in manual mode
 │   │
 │   └── api/
+│       ├── profile/
+│       │   └── route.ts                 → GET (owner-only own profile incl. whatsapp_number)
+│       ├── account/
+│       │   └── route.ts                 → DELETE (self-deletion; FK cascade removes profile + listings)
 │       ├── listings/
 │       │   ├── route.ts                 → GET (browse), POST (create)
 │       │   └── [id]/

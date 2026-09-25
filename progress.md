@@ -262,3 +262,14 @@ Context: report.md (QA audit, 49 criteria) scoped 9 tickets. As of today no QA e
 - Configured `vercel.json` for the daily keepalive cron job.
 - Verified TypeScript compilation (`tsc --noEmit`) with zero errors.
 - Initial git commit created.
+
+## 2026-09-25 — WhatsApp Number Rules (Complete Spec Verification)
+- Verified and expanded complete WhatsApp Number Rules compliance across the codebase:
+  1. **One number per account**: `whatsapp_number` exists strictly on `profiles`, never on `listings`. Contact reveal joins `listings.seller_id` -> `profiles.whatsapp_number` dynamically at request time. Profile number updates take effect immediately on all past listings without per-listing updates.
+  2. **First-listing gate**: `POST /api/listings` rejects numberless seller creation requests with `400 VALIDATION_ERROR` unless a valid E.164 number is supplied, which is stored to `profiles.whatsapp_number` during the request. Sell form displays inline WhatsApp field dynamically for numberless users.
+  3. **Secrecy & Non-Exposure**: Column-level REVOKE keeps `profiles.whatsapp_number` hidden from `anon` and `authenticated` roles. `public_profiles` view omits the column entirely. `POST /api/listings/[id]/contact` uses service-role client and returns strictly `{ data: { waLink } }` without exposing phone number string in API responses or SSR HTML.
+  4. **Ban isolation**: Admin ban (`POST /api/admin/users/[id]/ban`) only updates `is_banned = true`, keeping `whatsapp_number` untouched. Banned user listings are filtered live via RLS, and unban (`POST /api/admin/users/[id]/unban`) restores listing browse visibility and contact reveal immediately.
+  5. **Account Deletion**: Self-service deletion (`DELETE /api/account`) invokes Supabase Auth admin `deleteUser()`, cascading `auth.users` -> `profiles` (removing number) -> `listings` & `contact_reveals` on live schema.
+- Added comprehensive 24-point test suite in `scripts/test_whatsapp_and_delete_account.js` covering all 5 rules end-to-end against live local server. All 24 checks passed cleanly.
+- `npx tsc --noEmit` and `npm run build` passed with zero errors.
+

@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
+import { Trash2, Loader2 } from 'lucide-react';
 
 interface ProfileForm {
   full_name: string;
@@ -14,7 +16,8 @@ interface ProfileForm {
 const YEAR_OPTIONS = ['1st Year', '2nd Year', '3rd Year', '4th Year', 'Postgraduate'];
 
 export default function ProfilePage() {
-  const { user, refreshUser } = useAuth();
+  const { user, refreshUser, signOut } = useAuth();
+  const router = useRouter();
   const supabase = createClient();
 
   const [form, setForm] = useState<ProfileForm>({
@@ -28,6 +31,8 @@ export default function ProfilePage() {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState<Partial<ProfileForm>>({});
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
 
   useEffect(() => {
     if (!user) return;
@@ -94,6 +99,36 @@ export default function ProfilePage() {
       setSaved(true);
       await refreshUser();
       setTimeout(() => setSaved(false), 3000);
+    }
+  }
+
+  // Destructive, irreversible action — explicit confirm first (same lightweight
+  // window.confirm pattern as Admin › Users Promote/Ban, no modal wizard).
+  async function handleDeleteAccount() {
+    if (
+      !window.confirm(
+        'Delete your account permanently? Your profile, all your listings, and your saved WhatsApp number will be removed. This cannot be undone.'
+      )
+    ) {
+      return;
+    }
+
+    setDeleting(true);
+    setDeleteError('');
+    try {
+      const res = await fetch('/api/account', { method: 'DELETE' });
+      const json = await res.json().catch(() => null);
+      if (!res.ok) {
+        setDeleteError(json?.error?.message || "Couldn't delete your account. Please try again.");
+        return;
+      }
+      await signOut();
+      router.push('/');
+      router.refresh();
+    } catch {
+      setDeleteError("Couldn't delete your account. Please try again.");
+    } finally {
+      setDeleting(false);
     }
   }
 
@@ -221,6 +256,35 @@ export default function ProfilePage() {
             {saving ? 'Saving…' : 'Save Changes'}
           </button>
         </form>
+
+        {/* Danger zone — account deletion */}
+        <div className="mt-10 pt-6 border-t border-border">
+          <h2 className="text-sm font-semibold text-neutral-text">Delete Account</h2>
+          <p className="text-xs text-neutral-muted mt-1">
+            Permanently deletes your account, your profile, and all of your listings. This cannot be undone.
+          </p>
+          {deleteError && (
+            <p role="alert" className="mt-2 text-sm text-danger">{deleteError}</p>
+          )}
+          <button
+            type="button"
+            onClick={handleDeleteAccount}
+            disabled={deleting}
+            className="mt-3 px-4 py-2 bg-danger/10 text-danger border border-danger/20 rounded-md text-sm font-semibold hover:bg-danger/20 focus:outline-none focus:ring-2 focus:ring-danger focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transition-colors min-h-[44px] flex items-center gap-2"
+          >
+            {deleting ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Deleting…</span>
+              </>
+            ) : (
+              <>
+                <Trash2 className="w-4 h-4" />
+                <span>Delete Account</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </main>
   );
