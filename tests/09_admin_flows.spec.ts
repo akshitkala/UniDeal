@@ -15,10 +15,10 @@ test.describe('Flow 13: Admin Console & Governance', () => {
     await expect(page.getByRole('heading', { name: 'UniDeal Admin Console' })).toBeVisible();
 
     await page.locator('button:has-text("Manual Review Queue")').click();
-    await expect(page.locator('text=Approval mode set to Manual Review')).toBeVisible();
+    await expect(page.locator('text=/Approval mode set to Manual Review/')).toBeVisible();
 
     await page.locator('button:has-text("Auto-Approve")').click();
-    await expect(page.locator('text=Approval mode set to Auto-Approve')).toBeVisible();
+    await expect(page.locator('text=/Approval mode set to Auto-Approve/')).toBeVisible();
   });
 
   test('Admin Queue & Reports pages render properly', async ({ page }) => {

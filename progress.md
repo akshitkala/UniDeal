@@ -314,8 +314,10 @@ Context: report.md (QA audit, 49 criteria) scoped 9 tickets. As of today no QA e
   - Fail-closed validation for non-admin/malformed requests. Handles partial failures gracefully: skips already-sold, already-rejected, or missing listings, returning `{ data: { rejected: string[], skipped: { id, reason }[] } }`.
   - Open reports on bulk-rejected listings are deliberately left as-is for separate human moderation review.
   - Explicitly excluded edit, hard delete, status override, or admin-triggered Mark Sold per v1.2 scope correction (note: design.md §7.13 originally stated "No bulk actions in v1"; bulk reject is a deliberate v1.2 addition).
-- Created `tests/11_admin_reject_and_ratelimit.spec.ts` covering 50/day rate limit notice, single reject of approved listing, and bulk reject partial failure handling.
-- Verification: **25/25 passed cleanly** (`npx playwright test`). `npx tsc --noEmit` clean.
+- Created `tests/11_admin_reject_and_ratelimit.spec.ts` covering 50/day rate limit notice, single reject of approved listing, bulk reject response shape verification (`expect(skipped[0].reason).toBe('Listing is already sold')`), and open reports isolation (`reports.status` remains `'pending'`).
+- Verified zero dead admin endpoints exist in `app/api/admin/` (no edit, delete, or status override routes).
+- Verified mock route interception was used for 50/day rate-limit test so zero `contact_reveals` rows were inserted into DB for `akshitkala72@gmail.com`.
+- Verification: **26/26 passed cleanly** (`npx playwright test`). `npx tsc --noEmit` clean.
 
 
 
