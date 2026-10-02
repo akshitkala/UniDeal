@@ -14,8 +14,13 @@ const updateSettingsSchema = z.object({
  * Spec: TRD §5.9
  */
 export async function GET() {
+  const isTrace = process.env.PERF_TRACE === '1';
+  const t0 = isTrace ? performance.now() : 0;
+
   const { isAdmin, response } = await requireAdminSession();
   if (!isAdmin) return response!;
+
+  const tSession = isTrace ? performance.now() : 0;
 
   const adminClient = createAdminClient();
   const { data, error } = await adminClient
@@ -24,6 +29,11 @@ export async function GET() {
     .eq('id', 1)
     .single();
 
+  const tQuery = isTrace ? performance.now() : 0;
+  if (isTrace) {
+    console.log(`[PERF_TRACE] GET /api/admin/settings: session=${(tSession - t0).toFixed(2)}ms, query=${(tQuery - tSession).toFixed(2)}ms, total=${(tQuery - t0).toFixed(2)}ms`);
+  }
+
   if (error || !data) {
     return NextResponse.json(
       { error: { message: 'Failed to fetch admin settings.', code: 'FETCH_ERROR' } },
@@ -31,7 +41,11 @@ export async function GET() {
     );
   }
 
-  return NextResponse.json({ data });
+  const res = NextResponse.json({ data });
+  if (isTrace) {
+    res.headers.set('x-perf-handler-ms', (performance.now() - t0).toFixed(2));
+  }
+  return res;
 }
 
 /**

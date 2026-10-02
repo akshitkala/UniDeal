@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { createClient } from '@/lib/supabase/server';
 import HeroSection from '@/components/home/HeroSection';
 import ProblemSection from '@/components/home/ProblemSection';
 import HowItWorksSection from '@/components/home/HowItWorksSection';
 import RecentListingsSection from '@/components/home/RecentListingsSection';
 import CTASection from '@/components/home/CTASection';
+import ListingGridSkeleton from '@/components/skeletons/ListingGridSkeleton';
+import Skeleton from '@/components/ui/Skeleton';
 import type { ListingCardData } from '@/components/listing/ListingCard';
 
 export const metadata: Metadata = {
@@ -13,8 +16,24 @@ export const metadata: Metadata = {
     'Buy and sell physical items with verified students on your university campus. No buried WhatsApp messages.',
 };
 
-export default async function HomePage() {
-  // Fetch 8 most recent approved listings for the preview grid (server-side, no API round-trip)
+function RecentListingsSkeleton() {
+  return (
+    <section aria-hidden="true" className="bg-surface border-b border-border">
+      <div className="container mx-auto px-4 py-16 max-w-5xl">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <Skeleton className="h-3 w-28 mb-2" />
+            <Skeleton className="h-8 w-44 sm:w-56" />
+          </div>
+          <Skeleton className="h-4 w-16" />
+        </div>
+        <ListingGridSkeleton count={4} />
+      </div>
+    </section>
+  );
+}
+
+async function RecentListingsFetcher() {
   let recentListings: ListingCardData[] = [];
   try {
     const supabase = await createClient();
@@ -34,13 +53,22 @@ export default async function HomePage() {
     // Non-critical — page renders fine without listings
   }
 
+  if (recentListings.length === 0) return null;
+
+  return <RecentListingsSection listings={recentListings} />;
+}
+
+export default function HomePage() {
   return (
     <main className="flex-1 flex flex-col">
       <HeroSection />
       <ProblemSection />
       <HowItWorksSection />
-      {recentListings.length > 0 && <RecentListingsSection listings={recentListings} />}
+      <Suspense fallback={<RecentListingsSkeleton />}>
+        <RecentListingsFetcher />
+      </Suspense>
       <CTASection />
     </main>
   );
 }
+

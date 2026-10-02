@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { AlertTriangle, CheckCircle2, Trash2, XCircle, Loader2, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import AdminReportsLoading from './loading';
 
 interface PendingReport {
   id: string;
@@ -73,12 +74,7 @@ export default function AdminReportsPage() {
   };
 
   if (loading) {
-    return (
-      <div className="p-8 text-center text-neutral-muted flex items-center justify-center gap-2">
-        <Loader2 className="w-5 h-5 animate-spin text-primary" />
-        <span>Loading reports queue...</span>
-      </div>
-    );
+    return <AdminReportsLoading />;
   }
 
   return (

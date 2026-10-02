@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import EditListingLoading from './loading';
 import { useAuth } from '@/contexts/AuthContext';
 import { createClient } from '@/lib/supabase/client';
 import ListingForm from '@/components/listing/ListingForm';
@@ -69,11 +70,7 @@ export default function EditListingPage({ params }: EditListingPageProps) {
   }, [slug, supabase]);
 
   if (isLoading || loadingListing) {
-    return (
-      <div className="container mx-auto px-4 py-16 text-center text-neutral-muted">
-        Loading listing details...
-      </div>
-    );
+    return <EditListingLoading />;
   }
 
   if (!user) {

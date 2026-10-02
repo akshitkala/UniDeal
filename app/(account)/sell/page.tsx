@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import SellLoading from './loading';
 import { useAuth } from '@/contexts/AuthContext';
 import { createClient } from '@/lib/supabase/client';
 import ListingForm from '@/components/listing/ListingForm';
@@ -35,11 +36,7 @@ export default function SellPage() {
   }, [supabase]);
 
   if (isLoading || loadingCategories) {
-    return (
-      <div className="container mx-auto px-4 py-16 text-center text-neutral-muted">
-        Loading...
-      </div>
-    );
+    return <SellLoading />;
   }
 
   // Not logged in gate

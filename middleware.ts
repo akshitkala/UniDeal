@@ -40,7 +40,15 @@ export async function middleware(request: NextRequest) {
   );
 
   // Refresh auth token
-  await supabase.auth.getUser();
+  if (process.env.PERF_TRACE === '1') {
+    const t0 = performance.now();
+    await supabase.auth.getUser();
+    const dur = performance.now() - t0;
+    response.headers.set('x-perf-middleware-ms', dur.toFixed(2));
+    console.log(`[PERF_TRACE] Middleware auth.getUser: ${dur.toFixed(2)}ms (path: ${request.nextUrl.pathname})`);
+  } else {
+    await supabase.auth.getUser();
+  }
 
   return response;
 }

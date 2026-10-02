@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
+import DashboardLoading from './loading';
 import { useAuth } from '@/contexts/AuthContext';
 import { createClient } from '@/lib/supabase/client';
 import {
@@ -128,12 +129,7 @@ export default function DashboardPage() {
   };
 
   if (authLoading || loading) {
-    return (
-      <div className="container mx-auto px-4 py-16 text-center text-neutral-muted flex items-center justify-center gap-2">
-        <Loader2 className="w-5 h-5 animate-spin text-primary" />
-        <span>Loading your dashboard...</span>
-      </div>
-    );
+    return <DashboardLoading />;
   }
 
   if (!user) {

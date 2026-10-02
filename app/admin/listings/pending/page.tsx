@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Clock, CheckCircle2, XCircle, AlertTriangle, Loader2, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import AdminPendingLoading from './loading';
 
 interface PendingListing {
   id: string;
@@ -94,12 +95,7 @@ export default function AdminPendingQueuePage() {
   };
 
   if (loading) {
-    return (
-      <div className="p-8 text-center text-neutral-muted flex items-center justify-center gap-2">
-        <Loader2 className="w-5 h-5 animate-spin text-primary" />
-        <span>Loading pending queue...</span>
-      </div>
-    );
+    return <AdminPendingLoading />;
   }
 
   return (

@@ -319,5 +319,58 @@ Context: report.md (QA audit, 49 criteria) scoped 9 tickets. As of today no QA e
 - Verified mock route interception was used for 50/day rate-limit test so zero `contact_reveals` rows were inserted into DB for `akshitkala72@gmail.com`.
 - Verification: **26/26 passed cleanly** (`npx playwright test`). `npx tsc --noEmit` clean.
 
+## 2026-09-30 — Skeleton Loading Screens Pass: Route transition skeletons & primitives
+
+Context: UX optimization pass across all App Router screens to eliminate dead time during route transitions. Implemented flat, token-compliant loading skeletons (`loading.tsx` and shared primitives) adhering strictly to design system rules and WCAG accessibility standards.
+
+### Step 1: Shared Primitives
+- **`components/ui/Skeleton.tsx`**: Base primitive component using flat `bg-border rounded animate-pulse motion-reduce:animate-none` with `aria-hidden="true"`. Accepts `className` and standard HTML props.
+- **`components/skeletons/ListingCardSkeleton.tsx`**: Matches `ListingCard` dimensions, borders, and padding exactly (square image placeholder, 2 title lines, price line, condition badge, category/seller line) to ensure zero layout shift.
+- **`components/skeletons/ListingGridSkeleton.tsx`**: Shared grid container exporting `LISTING_GRID_CLASSES = "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"` to ensure skeleton grid matches `ListingGrid` layout at all breakpoints (2 columns on 375px mobile).
+- **`components/skeletons/TableRowSkeleton.tsx`**: Accessible table row skeleton for admin directory tables (`<tr>` with avatar, text line, role badge, status badge, action button skeletons).
+- **`components/skeletons/PageHeaderSkeleton.tsx`**: Reusable heading + optional subtitle skeleton block.
+
+### Step 2: Route-specific loading.tsx Screens
+- **`app/(public)/browse/loading.tsx`**: Sticky top bar skeleton (search bar + filter trigger + sort dropdown + category pills) + `ListingGridSkeleton count={8}`.
+- **`app/(public)/listing/[slug]/loading.tsx`**: Back link skeleton, image gallery block (`aspect-square`), title/price/badges/seller box, description card skeleton, and a neutral muted block for Contact Seller (strictly no `--color-accent-contact` / `#15803D`).
+- **`app/(public)/page.tsx` (Home)**: Static sections (Hero, Problem, How It Works, CTA) render instantly without full-page `loading.tsx`. Extracted live listings query into `<RecentListingsFetcher>` server component wrapped in `<Suspense fallback={<RecentListingsSkeleton />}>` (4 cards).
+- **`app/(account)/dashboard/loading.tsx`**: Header skeleton + 4 status tab pill skeletons (Active, Under Review, Sold, Rejected) + 4 card skeletons.
+- **`app/(account)/profile/loading.tsx`**: Page header + 4 field skeletons (Full Name, Branch, Year, WhatsApp number) + Save button block.
+- **`app/(account)/listing/[slug]/edit/loading.tsx`**: Back link + form field skeletons in exact design.md §7.6 order (title, category, condition badges, price, negotiable toggle, taller description textarea block, dashed image upload box, submit button).
+- **`app/(account)/sell/loading.tsx`**: Form field skeletons in §7.6 order.
+- **`app/admin/loading.tsx`**: Header + 3 snapshot card blocks (Pending Listings, Open Reports, Total Users) + approval-mode toggle card with 2 option box skeletons. Keeps `admin/layout.tsx` nav intact.
+- **`app/admin/listings/pending/loading.tsx`**: Header + 6 queue item cards (thumbnail + title/meta + 2 right-aligned button blocks min-h-[38px] + description box).
+- **`app/admin/reports/loading.tsx`**: Header + 6 report item cards (thumbnail + reported reason/reporter + title + Remove/Dismiss button blocks).
+- **`app/admin/users/loading.tsx`**: Header + search input block + table with 8 `TableRowSkeleton` rows.
+
+### Step 3: Client-side Loading & Grid Integration
+- Updated `ListingGrid.tsx` to render `<ListingGridSkeleton count={8} />` during initial fetch, and append 4 `ListingCardSkeleton` blocks when `loadingMore` is active.
+- Replaced generic spinners (`Loader2` text lines) in client component pages (`DashboardPage`, `ProfilePage`, `EditListingPage`, `SellPage`, `AdminOverviewPage`, `AdminPendingQueuePage`, `AdminReportsPage`, `AdminUserManagementPage`) with their corresponding skeleton loading states.
+
+### Compliance & Verification
+- **Design Rules**: 100% flat only (`animate-pulse motion-reduce:animate-none` on solid `bg-border`), zero hex codes / arbitrary px, zero gradients / shimmer sweep, zero fake titles/prices/names. Contact Seller button skeleton uses neutral `bg-border` block.
+- **Accessibility**: All skeleton blocks marked `aria-hidden="true"`, wrappers have `role="status"`, `aria-busy="true"`, and `<span className="sr-only">Loading...</span>`. Reduced motion disables pulsing (`motion-reduce:animate-none`).
+- **Verification**: `npx tsc --noEmit` passed clean with zero errors. `npm run build` compiled all 29 routes successfully. `graphify update .` completed cleanly.
+- Deferred: None.
+
+## 2026-10-02: Performance Measurement & Latency Benchmark (Read-Only)
+- **Task**: Executed comprehensive performance measurement across all major pages and API routes in both Development (`npm run dev`) and Production (`npm run build && npm start`) modes.
+- **Measured Surface**:
+  - Pages: `/`, `/browse`, `/listing/[slug]`, `/our-story`, `/how-it-works`, `/contact`, `/verify-email`, `/sell`, `/dashboard`, `/profile`, `/listing/[slug]/edit`, `/admin`, `/admin/listings/pending`, `/admin/reports`, `/admin/users`.
+  - API Routes: `/api/listings` (default, search, category, sort), `/api/admin/settings`, `/api/admin/overview`, `/api/admin/listings/pending`, `/api/admin/reports`, `/api/profile`, `/api/cron/keepalive`.
+  - Mutating routes (POST/PATCH/DELETE) explicitly excluded per rules and listed as "not measured (mutating)".
+- **Key Findings**:
+  1. **Middleware `getUser()` Overhead**: `middleware.ts` runs `supabase.auth.getUser()` on every request, adding ~150-500ms network overhead for every authenticated request.
+  2. **Duplicate `auth.getUser()` Verification**: `requireAdminSession()` duplicates `getUser()`, making a second network call to Supabase Auth on every admin API route.
+  3. **Sequential Auth & Admin DB Checks**: `requireAdminSession()` executes 2 sequential network round-trips (`auth.getUser()` + `profiles` lookup) before the route handler executes its main query.
+  4. **Cross-Continent Development RTT**: Local dev machine in India incurs ~200-300ms RTT per database hop to Supabase (`us-east-1`). On Vercel (`iad1`), functions and Supabase are co-located (<5ms RTT).
+  5. **Client-Side Waterfalls in Admin Pages**: Admin pages render client skeletons and then fire secondary API calls (`/api/admin/settings`, `/api/admin/overview`) in `useEffect`.
+- **Deliverables**:
+  - Benchmark script: `scripts/perf-report.mjs`
+  - Comprehensive report document: `docs/perf-report.md`
+- **Verification**: `npx tsc --noEmit` passed clean with 0 errors. `npm run build` compiled all routes successfully.
+- **Deferred**: Optimization implementations deferred per task prompt (measurement only).
+
+
 
 

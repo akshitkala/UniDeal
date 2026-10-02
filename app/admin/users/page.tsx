@@ -4,6 +4,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Users, Shield, ShieldCheck, UserX, UserCheck, Search, Loader2 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
+import AdminUsersLoading from './loading';
+
 interface UserProfile {
   id: string;
   full_name: string;
@@ -90,12 +92,7 @@ export default function AdminUserManagementPage() {
   );
 
   if (loading) {
-    return (
-      <div className="p-8 text-center text-neutral-muted flex items-center justify-center gap-2">
-        <Loader2 className="w-5 h-5 animate-spin text-primary" />
-        <span>Loading user directory...</span>
-      </div>
-    );
+    return <AdminUsersLoading />;
   }
 
   return (

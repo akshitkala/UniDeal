@@ -2,11 +2,16 @@
 
 import React from 'react';
 import ListingCard, { ListingCardData } from './ListingCard';
+import ListingGridSkeleton, {
+  LISTING_GRID_CLASSES,
+} from '@/components/skeletons/ListingGridSkeleton';
+import ListingCardSkeleton from '@/components/skeletons/ListingCardSkeleton';
 import { PackageOpen } from 'lucide-react';
 
 interface ListingGridProps {
   listings: ListingCardData[];
   loading?: boolean;
+  loadingMore?: boolean;
   emptyTitle?: string;
   emptyDescription?: string;
   onClearFilters?: () => void;
@@ -15,32 +20,16 @@ interface ListingGridProps {
 export default function ListingGrid({
   listings,
   loading = false,
+  loadingMore = false,
   emptyTitle = 'No listings match these filters',
   emptyDescription = 'Try adjusting your search keywords, category, or condition filters.',
   onClearFilters,
 }: ListingGridProps) {
-  if (loading) {
-    return (
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div
-            key={i}
-            className="rounded-lg border border-border bg-white overflow-hidden animate-pulse"
-          >
-            <div className="aspect-square w-full bg-surface" />
-            <div className="p-3.5 space-y-2.5">
-              <div className="h-5 w-20 bg-surface rounded" />
-              <div className="h-4 w-full bg-surface rounded" />
-              <div className="h-4 w-2/3 bg-surface rounded" />
-              <div className="h-3 w-full bg-surface rounded pt-2 border-t border-border" />
-            </div>
-          </div>
-        ))}
-      </div>
-    );
+  if (loading && listings.length === 0) {
+    return <ListingGridSkeleton count={8} />;
   }
 
-  if (listings.length === 0) {
+  if (!loading && listings.length === 0) {
     return (
       <div className="py-16 px-4 text-center rounded-lg border border-dashed border-border bg-surface/50 max-w-lg mx-auto my-8">
         <div className="w-12 h-12 rounded-full bg-surface border border-border text-neutral-muted flex items-center justify-center mx-auto mb-3">
@@ -68,10 +57,15 @@ export default function ListingGrid({
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+    <div className={LISTING_GRID_CLASSES}>
       {listings.map((listing) => (
         <ListingCard key={listing.id} listing={listing} />
       ))}
+      {loadingMore &&
+        Array.from({ length: 4 }).map((_, i) => (
+          <ListingCardSkeleton key={`loading-more-${i}`} />
+        ))}
     </div>
   );
 }
+

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Settings, ShieldCheck, CheckCircle2, Clock, AlertCircle, AlertTriangle, Users, Loader2 } from 'lucide-react';
+import AdminOverviewLoading from './loading';
 
 export default function AdminOverviewPage() {
   const [approvalMode, setApprovalMode] = useState<'auto' | 'manual'>('auto');
@@ -62,12 +63,7 @@ export default function AdminOverviewPage() {
   };
 
   if (loading) {
-    return (
-      <div className="p-8 text-center text-neutral-muted flex items-center justify-center gap-2">
-        <Loader2 className="w-5 h-5 animate-spin text-primary" />
-        <span>Loading admin settings...</span>
-      </div>
-    );
+    return <AdminOverviewLoading />;
   }
 
   return (

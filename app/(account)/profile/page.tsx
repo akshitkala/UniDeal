@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import ProfileLoading from './loading';
 import { createClient } from '@/lib/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { Trash2, Loader2 } from 'lucide-react';
@@ -133,11 +134,7 @@ export default function ProfilePage() {
   }
 
   if (loading) {
-    return (
-      <div className="container mx-auto px-4 py-12 max-w-xl">
-        <p className="text-neutral-muted text-sm">Loading profile…</p>
-      </div>
-    );
+    return <ProfileLoading />;
   }
 
   return (

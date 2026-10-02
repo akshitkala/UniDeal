@@ -11,6 +11,9 @@ import type { ListingCondition, ListingStatus } from '@/types/domain';
  * Spec: TRD §5.3, architecture §4
  */
 export async function GET(request: NextRequest) {
+  const isTrace = process.env.PERF_TRACE === '1';
+  const t0 = isTrace ? performance.now() : 0;
+
   try {
     const { searchParams } = new URL(request.url);
     const categorySlug = searchParams.get('category');
@@ -75,6 +78,11 @@ export async function GET(request: NextRequest) {
 
     const { data: listings, error, count } = await query;
 
+    const tQuery = isTrace ? performance.now() : 0;
+    if (isTrace) {
+      console.log(`[PERF_TRACE] GET /api/listings: queryDuration=${(tQuery - t0).toFixed(2)}ms`);
+    }
+
     if (error) {
       return NextResponse.json(
         { error: { message: `Failed to fetch listings: ${error.message}`, code: 'FETCH_ERROR' } },
@@ -85,7 +93,7 @@ export async function GET(request: NextRequest) {
     const total = count ?? 0;
     const totalPages = Math.ceil(total / limit);
 
-    return NextResponse.json({
+    const res = NextResponse.json({
       data: {
         listings: listings || [],
         pagination: {
@@ -96,6 +104,10 @@ export async function GET(request: NextRequest) {
         },
       },
     });
+    if (isTrace) {
+      res.headers.set('x-perf-handler-ms', (performance.now() - t0).toFixed(2));
+    }
+    return res;
   } catch {
     return NextResponse.json(
       { error: { message: 'An unexpected error occurred while fetching listings.', code: 'SERVER_ERROR' } },
