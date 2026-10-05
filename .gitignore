@@ -38,5 +38,8 @@ next-env.d.ts
 graphify-out/cache/
 graphify-out/2*
 
-
-
+# Playwright and HAR files
+*.har
+docs/perf-har/
+playwright/.auth/
+blob-report/

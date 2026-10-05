@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAdminSession } from '@/lib/auth-admin';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { z } from 'zod';
+import { getAdminSettings } from '@/lib/admin/queries';
 
 const updateSettingsSchema = z.object({
   approval_mode: z.enum(['auto', 'manual'], {
@@ -22,12 +23,7 @@ export async function GET() {
 
   const tSession = isTrace ? performance.now() : 0;
 
-  const adminClient = createAdminClient();
-  const { data, error } = await adminClient
-    .from('admin_settings')
-    .select('id, approval_mode')
-    .eq('id', 1)
-    .single();
+  const { data, error } = await getAdminSettings();
 
   const tQuery = isTrace ? performance.now() : 0;
   if (isTrace) {

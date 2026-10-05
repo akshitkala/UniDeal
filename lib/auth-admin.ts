@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
+import { cache } from 'react';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 
-export async function requireAdminSession() {
+export const requireAdminSession = cache(async () => {
   const supabase = await createServerClient();
 
   const isTrace = process.env.PERF_TRACE === '1';
@@ -53,5 +54,5 @@ export async function requireAdminSession() {
   }
 
   return { user, isAdmin: true, response: null };
-}
+});
 
