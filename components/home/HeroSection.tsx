@@ -81,7 +81,7 @@ export default function HeroSection() {
 
   return (
     <section className="bg-white border-b border-border overflow-hidden">
-      <div className="container mx-auto px-4 py-16 sm:py-24 max-w-5xl">
+      <div className="container mx-auto px-4 py-16 sm:py-24 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
           {/* ── Left: text + CTAs ── */}

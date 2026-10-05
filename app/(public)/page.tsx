@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 function RecentListingsSkeleton() {
   return (
     <section aria-hidden="true" className="bg-surface border-b border-border">
-      <div className="container mx-auto px-4 py-16 max-w-5xl">
+      <div className="container mx-auto px-4 py-16 max-w-7xl">
         <div className="flex items-end justify-between mb-8">
           <div>
             <Skeleton className="h-3 w-28 mb-2" />
