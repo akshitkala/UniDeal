@@ -4,6 +4,8 @@ import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
 import AuthModal from '@/components/auth/AuthModal';
 import TopNav from '@/components/nav/TopNav';
+import Footer from '@/components/nav/Footer';
+
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -35,6 +37,7 @@ export default function RootLayout({
           <div className="flex-1 flex flex-col">
             {children}
           </div>
+          <Footer />
           <AuthModal />
         </AuthProvider>
       </body>

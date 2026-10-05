@@ -6,8 +6,8 @@ test('Group 2 Debug Failure', async ({ page }) => {
   await page.goto('/admin');
   
   const checkNavigation = async (linkText: string) => {
-    const requests = [];
-    const requestHandler = (req) => {
+    const requests: any[] = [];
+    const requestHandler = (req: any) => {
       const url = new URL(req.url());
       const headers = req.headers();
       if (url.search.includes('_rsc=') || url.pathname.includes('/admin')) {
