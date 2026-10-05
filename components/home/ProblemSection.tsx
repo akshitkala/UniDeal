@@ -4,95 +4,130 @@ import { motion } from 'framer-motion';
 import { MessageSquareX, EyeOff, SearchX } from 'lucide-react';
 import { useMotion, MOTION } from '@/lib/motion-variants';
 
-const problems = [
-  {
-    icon: MessageSquareX,
-    heading: 'Listings vanish in hours',
-    body: 'A post in a WhatsApp group gets buried under 40 messages by noon. Even great deals disappear before the right buyer sees them.',
-    image: '/problem-vanish.jpg'
-  },
-  {
-    icon: EyeOff,
-    heading: 'Sellers are anonymous',
-    body: "There's no way to know if the poster is a real student on campus, or if the item actually exists.",
-    image: '/problem-anonymous.jpg'
-  },
-  {
-    icon: SearchX,
-    heading: 'No way to search or filter',
-    body: 'Looking for a ₹500 charger? Good luck scrolling through months of messages to find one.',
-    image: '/problem-search.jpg'
-  },
-];
-
 export default function ProblemSection() {
-  const { staggerContainer, fadeUp, fadeIn, scaleIn, MOTION: M } = useMotion();
+  const { fadeUp, MOTION: M } = useMotion();
 
   return (
-    <section className="bg-surface border-b border-border">
-      <div className="container mx-auto px-4 py-16 max-w-7xl">
+    <section className="bg-white border-b border-border py-24 sm:py-32">
+      <div className="container mx-auto px-4 max-w-3xl">
+        
+        {/* Intro */}
         <motion.div
           variants={fadeUp(M.offset.md, M.duration.entrance)}
           initial="hidden"
           whileInView="show"
           viewport={MOTION.viewport}
-          className="mb-12 text-center sm:text-left"
         >
-          <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">The problem</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-text font-heading">
+          <p className="text-[11px] font-bold text-neutral-muted uppercase tracking-[0.2em] mb-4">The problem</p>
+          <h2 className="text-4xl sm:text-5xl font-bold text-neutral-text font-heading leading-tight tracking-tight mb-8">
             WhatsApp groups weren&rsquo;t built for this.
           </h2>
+          <p className="text-lg text-neutral-text/80 leading-relaxed mb-16">
+            The listings weren&apos;t the problem. Students were trying. Every week, someone posted something in a group. But WhatsApp groups aren&apos;t marketplaces — they&apos;re conversations.
+          </p>
         </motion.div>
 
-        <motion.ul
-          variants={staggerContainer(MOTION.stagger.loose)}
+        {/* WhatsApp Mockup */}
+        <motion.div
+          variants={fadeUp(M.offset.md, M.duration.entrance)}
           initial="hidden"
           whileInView="show"
           viewport={MOTION.viewport}
-          className="grid md:grid-cols-3 gap-8"
-          aria-label="Problems with WhatsApp groups"
+          className="mb-8"
         >
-          {problems.map(({ icon: Icon, heading, body, image }, i) => {
-            const altOffset = i % 2 === 0 ? M.offset.md : -M.offset.md;
-            return (
-              <motion.li
-                key={heading}
-                variants={fadeUp(altOffset, M.duration.entrance)}
-                className="flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-sm"
-              >
-                <div className="relative aspect-[4/3] w-full bg-neutral-50 overflow-hidden border-b border-border">
-                  <img src={image} alt={heading} className="w-full h-full object-cover object-top" loading="lazy" />
+          <div className="bg-[#0b141a] rounded-2xl p-6 sm:p-8 shadow-xl overflow-hidden relative">
+            <div className="flex flex-col gap-6 relative z-10">
+              {/* Message 1 */}
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] text-[#8696a0] font-medium tracking-wide">RAHUL (B.TECH)</span>
+                <div className="bg-[#202c33] text-[#e9edef] text-sm p-3 rounded-xl rounded-tl-none self-start max-w-[85%] leading-relaxed shadow-sm">
+                  Selling my sem-3 Physics book. Brand new condition. Anyone interested?
                 </div>
-                <div className="flex flex-col gap-4 p-6 sm:p-8 flex-1">
-                  <motion.div
-                    variants={scaleIn(0.8, 1, M.duration.entrance, 0.08)}
-                    className="w-12 h-12 rounded-lg bg-danger/10 text-danger flex items-center justify-center flex-shrink-0"
-                    aria-hidden="true"
-                  >
-                    <Icon className="w-6 h-6" />
-                  </motion.div>
-                  <div>
-                    <h3 className="text-lg font-bold text-neutral-text mb-2">{heading}</h3>
-                    <p className="text-sm text-neutral-muted leading-relaxed">{body}</p>
-                  </div>
+              </div>
+              
+              {/* Message 2 */}
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] text-[#8696a0] font-medium tracking-wide">ISHA P.</span>
+                <div className="bg-[#202c33] text-[#e9edef] text-sm p-3 rounded-xl rounded-tl-none self-start max-w-[85%] leading-relaxed shadow-sm">
+                  Does anyone have a Drafter for sale?
                 </div>
-              </motion.li>
-            );
-          })}
-        </motion.ul>
+              </div>
 
-        {/* Bridge line */}
-        <motion.p
-          variants={fadeIn(M.duration.entrance, 0.2)}
+              {/* Message 3 */}
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] text-[#8696a0] font-medium tracking-wide">AMAN DEEP</span>
+                <div className="bg-[#202c33] text-[#e9edef] text-sm p-3 rounded-xl rounded-tl-none self-start max-w-[85%] leading-relaxed shadow-sm">
+                  Lab coat available. Never used. ₹200.
+                </div>
+              </div>
+
+              {/* Faded Message */}
+              <div className="flex flex-col gap-1 opacity-40">
+                <span className="text-[10px] text-[#8696a0] font-medium tracking-wide">SNEHA GUPTA</span>
+                <div className="bg-[#202c33] text-[#e9edef] text-sm p-3 rounded-xl rounded-tl-none self-start max-w-[85%] leading-relaxed shadow-sm">
+                  Giving away my previous year notes for free. Hostel 4.
+                </div>
+              </div>
+            </div>
+            {/* Fade out gradient at bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0b141a] to-transparent z-20 pointer-events-none"></div>
+          </div>
+          <p className="text-center text-xs text-neutral-muted italic mt-4">
+            "And then, new messages pushed them all out of view."
+          </p>
+        </motion.div>
+
+        {/* Narrative continuation */}
+        <motion.div
+          variants={fadeUp(M.offset.md, M.duration.entrance)}
           initial="hidden"
           whileInView="show"
           viewport={MOTION.viewport}
-          className="mt-8 text-sm text-neutral-muted max-w-xl"
+          className="space-y-6 mt-16"
         >
-          UniDeal is the structured layer that was missing — discovery and trust on one clean page,
-          deal still closes on WhatsApp.
-        </motion.p>
+          <p className="text-lg text-neutral-text/80 leading-relaxed">
+            A listing lives for a few hours before 200 new messages bury it. There&apos;s no search. No filter. No way to find a book from three weeks ago. It just disappears.
+          </p>
+          <p className="text-lg text-neutral-text/80 leading-relaxed">
+            Sellers are completely anonymous—there&apos;s no way to know if the poster is a real student on campus. The buyer gives up, the seller gives up, and perfectly good items get thrown away.
+          </p>
+        </motion.div>
+
+        {/* Pull Quote */}
+        <motion.div
+          variants={fadeUp(M.offset.md, M.duration.entrance)}
+          initial="hidden"
+          whileInView="show"
+          viewport={MOTION.viewport}
+          className="mt-16 border-l-4 border-primary pl-6 py-2"
+        >
+          <p className="text-2xl font-serif italic text-neutral-text leading-snug">
+            “The items existed. The demand existed. The only thing missing was a connection.”
+          </p>
+        </motion.div>
+
+        {/* The Solution Transition */}
+        <motion.div
+          variants={fadeUp(M.offset.md, M.duration.entrance)}
+          initial="hidden"
+          whileInView="show"
+          viewport={MOTION.viewport}
+          className="mt-20 pt-10 border-t border-border"
+        >
+          <p className="text-[11px] font-bold text-neutral-muted uppercase tracking-[0.2em] mb-4">The gap</p>
+          <h3 className="text-2xl font-bold text-neutral-text mb-4">
+            OLX works for cities. Not for hostels.
+          </h3>
+          <p className="text-lg text-neutral-text/80 leading-relaxed mb-8">
+            The existing platforms have no concept of campus. No trust signal between a buyer and a seller who live two buildings apart. No awareness that you can just walk over and check the condition yourself.
+          </p>
+          <div className="bg-surface border border-border rounded-xl p-6 text-neutral-text font-medium text-center">
+            They're built for strangers across a city. We're neighbours. That's a fundamentally different transaction, and it deserves a fundamentally different platform.
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
 }
+
