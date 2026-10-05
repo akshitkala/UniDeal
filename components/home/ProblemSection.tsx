@@ -9,16 +9,19 @@ const problems = [
     icon: MessageSquareX,
     heading: 'Listings vanish in hours',
     body: 'A post in a WhatsApp group gets buried under 40 messages by noon. Even great deals disappear before the right buyer sees them.',
+    image: '/problem-vanish.jpg'
   },
   {
     icon: EyeOff,
     heading: 'Sellers are anonymous',
     body: "There's no way to know if the poster is a real student on campus, or if the item actually exists.",
+    image: '/problem-anonymous.jpg'
   },
   {
     icon: SearchX,
     heading: 'No way to search or filter',
     body: 'Looking for a ₹500 charger? Good luck scrolling through months of messages to find one.',
+    image: '/problem-search.jpg'
   },
 ];
 
@@ -33,10 +36,10 @@ export default function ProblemSection() {
           initial="hidden"
           whileInView="show"
           viewport={MOTION.viewport}
-          className="mb-10"
+          className="mb-12 text-center sm:text-left"
         >
           <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-2">The problem</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-neutral-text font-heading">
+          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-text font-heading">
             WhatsApp groups weren&rsquo;t built for this.
           </h2>
         </motion.div>
@@ -46,27 +49,32 @@ export default function ProblemSection() {
           initial="hidden"
           whileInView="show"
           viewport={MOTION.viewport}
-          className="grid sm:grid-cols-3 gap-6"
+          className="grid md:grid-cols-3 gap-8"
           aria-label="Problems with WhatsApp groups"
         >
-          {problems.map(({ icon: Icon, heading, body }, i) => {
+          {problems.map(({ icon: Icon, heading, body, image }, i) => {
             const altOffset = i % 2 === 0 ? M.offset.md : -M.offset.md;
             return (
               <motion.li
                 key={heading}
                 variants={fadeUp(altOffset, M.duration.entrance)}
-                className="flex flex-col gap-3 p-5 rounded-lg border border-border bg-white"
+                className="flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-sm"
               >
-                <motion.div
-                  variants={scaleIn(0.8, 1, M.duration.entrance, 0.08)}
-                  className="w-9 h-9 rounded-md bg-danger/8 text-danger flex items-center justify-center flex-shrink-0"
-                  aria-hidden="true"
-                >
-                  <Icon className="w-4.5 h-4.5" />
-                </motion.div>
-                <div>
-                  <h3 className="text-sm font-semibold text-neutral-text mb-1">{heading}</h3>
-                  <p className="text-sm text-neutral-muted leading-relaxed">{body}</p>
+                <div className="relative aspect-[4/3] w-full bg-neutral-50 overflow-hidden border-b border-border">
+                  <img src={image} alt={heading} className="w-full h-full object-cover object-top" loading="lazy" />
+                </div>
+                <div className="flex flex-col gap-4 p-6 sm:p-8 flex-1">
+                  <motion.div
+                    variants={scaleIn(0.8, 1, M.duration.entrance, 0.08)}
+                    className="w-12 h-12 rounded-lg bg-danger/10 text-danger flex items-center justify-center flex-shrink-0"
+                    aria-hidden="true"
+                  >
+                    <Icon className="w-6 h-6" />
+                  </motion.div>
+                  <div>
+                    <h3 className="text-lg font-bold text-neutral-text mb-2">{heading}</h3>
+                    <p className="text-sm text-neutral-muted leading-relaxed">{body}</p>
+                  </div>
                 </div>
               </motion.li>
             );
