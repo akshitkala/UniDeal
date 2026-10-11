@@ -80,39 +80,39 @@ export default function HeroSection() {
   });
 
   return (
-    <section className="bg-white border-b border-border overflow-hidden">
-      <div className="container mx-auto px-4 py-16 sm:py-24 max-w-7xl">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+    <section className="bg-white border-b border-border overflow-hidden py-10 md:py-14">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 
           {/* ── Left: text + CTAs ── */}
-          <div className="flex-1 text-center lg:text-left space-y-6">
-            <motion.div {...entrance(24, 0.65)}>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-xs font-semibold text-primary mb-4">
+          <div className="flex-1 text-center lg:text-left space-y-4 md:space-y-5">
+            <motion.div {...entrance(20, 0.6)}>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-xs font-semibold text-primary mb-3">
                 <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
                 Verified students only
               </span>
-              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-neutral-text font-display leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-text font-display leading-[1.15]">
                 Buy and sell on campus
                 <br />
                 <span className="text-primary">without the chaos.</span>
               </h1>
             </motion.div>
 
-            <motion.p {...entrance(16, 0.5, 0.1)} className="text-lg text-neutral-muted max-w-md mx-auto lg:mx-0">
+            <motion.p {...entrance(16, 0.5, 0.1)} className="text-base sm:text-lg text-neutral-muted max-w-md mx-auto lg:mx-0">
               No buried WhatsApp messages. No anonymous strangers. A structured, searchable marketplace
               built for university life.
             </motion.p>
 
-            <motion.div {...entrance(12, 0.5, 0.18)} className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+            <motion.div {...entrance(12, 0.5, 0.18)} className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-1">
               <Link
                 href="/browse"
-                className="py-3 px-6 bg-primary text-white rounded-md font-semibold text-base hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 min-h-[44px] flex items-center justify-center"
+                className="py-2.5 px-6 bg-primary text-white rounded-md font-semibold text-base hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 min-h-[44px] flex items-center justify-center"
               >
                 Browse Listings
               </Link>
               <Link
                 href="/sell"
-                className="py-3 px-6 bg-white text-neutral-text border border-border rounded-md font-semibold text-base hover:bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 min-h-[44px] flex items-center justify-center"
+                className="py-2.5 px-6 bg-white text-neutral-text border border-border rounded-md font-semibold text-base hover:bg-surface focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200 min-h-[44px] flex items-center justify-center"
               >
                 Sell an Item
               </Link>
@@ -123,7 +123,7 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: reduced ? 0 : 0.5, delay: reduced ? 0 : 0.3 }}
-              className="flex items-center gap-6 justify-center lg:justify-start pt-4 border-t border-border"
+              className="flex items-center gap-6 justify-center lg:justify-start pt-3 border-t border-border"
             >
               <StatBadge value="₹0" label="Always free" delay={0.32} />
               <div className="w-px h-8 bg-border" aria-hidden="true" />
@@ -136,7 +136,7 @@ export default function HeroSection() {
           {/* ── Right: icon composition ── */}
           <motion.div
             {...entrance(6, 0.7, 0.15)}
-            className="hidden lg:flex flex-shrink-0 w-72 h-72 relative items-center justify-center"
+            className="hidden lg:flex flex-shrink-0 w-64 h-64 relative items-center justify-center"
             aria-hidden="true"
           >
             <motion.div

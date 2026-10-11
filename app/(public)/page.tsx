@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { createClient } from '@/lib/supabase/server';
-import HeroSection from '@/components/home/HeroSection';
-import ProblemSection from '@/components/home/ProblemSection';
-import HowItWorksSection from '@/components/home/HowItWorksSection';
-import RecentListingsSection from '@/components/home/RecentListingsSection';
-import CTASection from '@/components/home/CTASection';
+import Hero from '@/components/home/Hero';
+import FreshOnCampus from '@/components/home/FreshOnCampus';
+import ProblemStory from '@/components/home/ProblemStory';
+import HowItWorks from '@/components/home/HowItWorks';
+import SafeByDesign from '@/components/home/SafeByDesign';
+import FounderCta from '@/components/home/FounderCta';
 import ListingGridSkeleton from '@/components/skeletons/ListingGridSkeleton';
 import Skeleton from '@/components/ui/Skeleton';
 import type { ListingCardData } from '@/components/listing/ListingCard';
@@ -18,9 +19,9 @@ export const metadata: Metadata = {
 
 function RecentListingsSkeleton() {
   return (
-    <section aria-hidden="true" className="bg-surface border-b border-border">
-      <div className="container mx-auto px-4 py-16 max-w-7xl">
-        <div className="flex items-end justify-between mb-8">
+    <section aria-hidden="true" className="bg-surface border-b border-border py-10 md:py-16">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
+        <div className="flex items-end justify-between mb-6 md:mb-10">
           <div>
             <Skeleton className="h-3 w-28 mb-2" />
             <Skeleton className="h-8 w-44 sm:w-56" />
@@ -55,19 +56,20 @@ async function RecentListingsFetcher() {
 
   if (recentListings.length === 0) return null;
 
-  return <RecentListingsSection listings={recentListings} />;
+  return <FreshOnCampus listings={recentListings} />;
 }
 
 export default function HomePage() {
   return (
     <main className="flex-1 flex flex-col">
-      <HeroSection />
-      <ProblemSection />
-      <HowItWorksSection />
+      <Hero />
       <Suspense fallback={<RecentListingsSkeleton />}>
         <RecentListingsFetcher />
       </Suspense>
-      <CTASection />
+      <ProblemStory />
+      <HowItWorks />
+      <SafeByDesign />
+      <FounderCta />
     </main>
   );
 }

@@ -8,8 +8,8 @@ export default function CTASection() {
   const { fadeUp, staggerContainer } = useMotion();
 
   return (
-    <section className="bg-white border-t border-border">
-      <div className="container mx-auto px-4 py-16 max-w-7xl">
+    <section className="bg-white border-t border-border py-10 md:py-16">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <motion.div
           variants={fadeUp(M.offset.md, M.duration.entrance)}
           initial="hidden"

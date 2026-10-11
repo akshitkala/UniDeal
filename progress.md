@@ -1,6 +1,28 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-11 — Message Templates & Contact Wiring Update
+## 2026-10-11 — Homepage Restructuring & Unified Spacing System
+
+Context: Restructured homepage into dedicated section components under `components/home/` with exact required sequence and a unified spacing system.
+
+- **Component Restructuring & Section Order:**
+  - `Hero` (`components/home/Hero.tsx` forwarding to `HeroSection.tsx`)
+  - `FreshOnCampus` (`components/home/FreshOnCampus.tsx` forwarding to `RecentListingsSection.tsx`)
+  - `ProblemStory` (`components/home/ProblemStory.tsx` forwarding to `ProblemSection.tsx`)
+  - `HowItWorks` (`components/home/HowItWorks.tsx` forwarding to `HowItWorksSection.tsx`)
+  - `SafeByDesign` (`components/home/SafeByDesign.tsx` created as placeholder for subsequent prompts)
+  - `FounderCta` (`components/home/FounderCta.tsx` forwarding to `CTASection.tsx`)
+  - Updated `app/(public)/page.tsx` to render sections in exact 1–6 order, keeping Suspense boundary on `FreshOnCampus`.
+- **Unified Spacing System:**
+  - All sections wrapped in `max-w-6xl mx-auto px-4 md:px-6`.
+  - Standard section vertical padding: `py-10 md:py-16` (64px max). Hero exception: `py-10 md:py-14`.
+  - Heading block to content spacing: `mb-6 md:mb-10`.
+  - Clean 1px hairline dividers (`border-b border-border`) between sections without oversized margins.
+- **Acceptance Verification:**
+  - Verified 1440x900 viewport: Hero headline, CTA buttons, stats strip, and top of the first listing row (card top at y = 749px) are all visible above the fold without scrolling.
+  - Verified 768px tablet and 375px mobile viewports: zero horizontal scroll, touch targets ≥ 44px, clean typography and responsive layouts.
+  - `npx tsc --noEmit` and `npm run build` pass clean.
+- **Deferred:** Subsequent prompt fills in detailed content for `SafeByDesign` and customized sections.
+
 
 Context: Updated WhatsApp seller contact pre-fill and Resend support contact email templates per spec requirements.
 

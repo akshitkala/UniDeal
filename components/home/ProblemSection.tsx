@@ -8,8 +8,8 @@ export default function ProblemSection() {
   const { fadeUp, MOTION: M } = useMotion();
 
   return (
-    <section className="bg-white border-b border-border py-24 sm:py-32">
-      <div className="container mx-auto px-4 max-w-3xl">
+    <section className="bg-white border-b border-border py-10 md:py-16">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         
         {/* Intro */}
         <motion.div
