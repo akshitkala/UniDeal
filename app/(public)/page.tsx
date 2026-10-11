@@ -23,12 +23,17 @@ function RecentListingsSkeleton() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="flex items-end justify-between mb-6 md:mb-10">
           <div>
-            <Skeleton className="h-3 w-28 mb-2" />
-            <Skeleton className="h-8 w-44 sm:w-56" />
+            <Skeleton className="h-8 w-44 sm:w-56 mb-2" />
+            <Skeleton className="h-4 w-48" />
           </div>
           <Skeleton className="h-4 w-16" />
         </div>
-        <ListingGridSkeleton count={16} />
+        <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
+          {[...Array(6)].map((_, i) => (
+            <Skeleton key={i} className="h-9 w-24 rounded-full" />
+          ))}
+        </div>
+        <ListingGridSkeleton count={4} />
       </div>
     </section>
   );
@@ -47,14 +52,12 @@ async function RecentListingsFetcher() {
       `)
       .eq('status', 'approved')
       .order('created_at', { ascending: false })
-      .limit(16);
+      .limit(4);
 
     if (data) recentListings = data as unknown as ListingCardData[];
   } catch {
     // Non-critical — page renders fine without listings
   }
-
-  if (recentListings.length === 0) return null;
 
   return <FreshOnCampus listings={recentListings} />;
 }

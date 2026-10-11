@@ -164,7 +164,7 @@ Carry these into every screen-generation prompt — these are documented failure
 
 - No seller avatar, department, branch, or year displayed anywhere except the seller's own Profile page
 - No ".edu-only" or college-restriction language — signup is open to any email
-- No fabricated WhatsApp chat mockups or message previews
+- No fabricated WhatsApp chat mockups or message previews (Note: An illustrative example message pile on the ProblemStory section is an approved exception, because it is explicitly labelled "Illustrative example", neutral grey, and unbranded with no WhatsApp logo or branding).
 - No invented trust claims, verified badges, star ratings, or review counts — reviews are out of scope entirely
 - No wishlist/save/heart icons — out of scope
 - No drawer or bottom-sheet pattern for listing detail — standalone page only

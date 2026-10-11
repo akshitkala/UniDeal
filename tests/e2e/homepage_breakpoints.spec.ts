@@ -22,11 +22,11 @@ test.describe('Homepage Responsiveness & Layout Across Breakpoints', () => {
 
       console.log(`${bp.name} Headings found:`, sections);
       expect(sections.some(h => h?.includes('Buy and sell on campus'))).toBe(true);
-      expect(sections.some(h => h?.includes('Recent listings'))).toBe(true);
+      expect(sections.some(h => h?.includes('Fresh on campus'))).toBe(true);
       expect(sections.some(h => h?.includes('WhatsApp groups weren'))).toBe(true);
       expect(sections.some(h => h?.includes('Three steps from listing to deal'))).toBe(true);
       expect(sections.some(h => h?.includes('Safe by design'))).toBe(true);
-      expect(sections.some(h => h?.includes('Ready to find something'))).toBe(true);
+      expect(sections.some(h => h?.includes('Ready to find something, or clear out your room?'))).toBe(true);
     });
   }
 });

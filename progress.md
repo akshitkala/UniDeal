@@ -1,6 +1,21 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-11 — Homepage Restructuring & Unified Spacing System
+## 2026-10-11 — Homepage Six Section Components Rebuild (Exact Copy & Flat Design)
+
+Context: Rebuilt all six homepage sections under `components/home/` in exact order using word-for-word prompt copy, strict design tokens, and verified responsive layouts.
+
+- **`components/home/Hero.tsx`** — Rebuilt as centered single column (`max-w-3xl`), deleted right-side orbit graphic and all floating pills. Added `Email-verified accounts` shield badge. Headline preserved. Subhead updated to "No buried WhatsApp messages. A structured, searchable marketplace built for university life." Primary Browse Listings and secondary Sell an Item (opens AuthModal if unauthenticated). Compact 3-item stats strip ("2 min / to list an item", "1 tap / to open WhatsApp", "₹0 / to use") separated by hairline dividers; removed the 6 Categories stat.
+- **`components/home/FreshOnCampus.tsx`** — Heading "Fresh on campus" + subtext "Just listed by students on campus." with "See all →" link. Added wrapping row of all 6 category chips linking to `/browse?category=<slug>` (neutral outlined, accent on hover/focus, no horizontal scroll). Limited query and rendering to 4 newest approved listings. Added bordered empty state when 0 listings. Reused `ListingCard` unchanged with first-name-only display.
+- **`components/home/ProblemStory.tsx`** — Two-column desktop layout with sticky left narrative copy and pull-quote ("A listing lives for a few hours before 200 new messages bury it."). Right side features an unbranded, neutral grey "Illustrative example" message pile card with IntersectionObserver sliding in 6 filler messages and fading listings to opacity 0.3 with divider "...and 200 more messages" (respects `prefers-reduced-motion`). Noted approved exception in `documents/design (2).md` §8.
+- **`components/home/HowItWorks.tsx`** — Three steps ("List your item", "Buyer finds it", "Connect on WhatsApp") with number badges, single-line descriptions, and flat static UI fragments (mini post form, filter chips, and neutral ghost Contact Seller button). Joined by hairline connector on desktop and vertical left line on mobile. Did not use `--color-accent-contact`.
+- **`components/home/SafeByDesign.tsx`** — 4 security rules in bordered cells with Lucide icons (No numbers on listings, First name only, Email-verified accounts, Report anything) across 1 column (mobile), 2 (md), 4 (lg). Added "Read our safety tips →" link to `/safety`.
+- **`components/home/FounderCta.tsx`** — Part 1: Narrow single-column founder note from Akshit without photo/avatar linking to `/our-story`. Part 2: Hairline divider followed by centered final CTA ("Ready to find something, or clear out your room?", Browse Listings + Sell an Item buttons).
+- **Verification:**
+  - Automated Playwright tests passed for 1440x900 viewport (card top at y = 772px, well within the 900px fold).
+  - Responsive verification across 375px mobile, 768px tablet, and 1440px desktop passed with 0 horizontal scroll.
+  - `npx tsc --noEmit` and `npm run build` passed clean.
+- **Deferred:** None.
+
 
 Context: Restructured homepage into dedicated section components under `components/home/` with exact required sequence and a unified spacing system.
 

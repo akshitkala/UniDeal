@@ -8,7 +8,7 @@ test.describe('Homepage 1440x900 viewport visibility test', () => {
     const h1 = page.locator('h1');
     await expect(h1).toBeVisible();
 
-    const stats = page.locator('text=Always free');
+    const stats = page.locator('text=to list an item');
     await expect(stats).toBeVisible();
 
     const firstCard = page.locator('a[href^="/listing/"]').first();
