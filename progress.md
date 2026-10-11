@@ -1,6 +1,26 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-11 — Redesign /contact Page and ContactForm Component (Exact Copy & Flat Design)
+## 2026-10-12 — Redesign Presentation of components/auth/AuthModal.tsx (Flat Design & Strict Copy)
+
+Context: Redesigned the visual and interactive presentation of `components/auth/AuthModal.tsx` per strict design tokens and copy rules without modifying Supabase auth logic, the verification flow, or resume-action behavior.
+
+- **`components/auth/AuthModal.tsx`**:
+  - Modal Shell: Centered dialog (`max-w-3xl`) with flat 1px border (`border-border`), subtle shadow (`shadow-sm`), dim backdrop (`bg-black/60`). Desktop (md+) features a two-column layout: left form column (~55%), right brand panel (~45%). Mobile (<md) renders a single column with the brand panel hidden and clean internal scrolling (`max-h-[92vh]`).
+  - Accessibility & Trapping: `role="dialog"`, `aria-modal="true"`, `aria-labelledby="auth-modal-title"`. Focus trap cycles through active controls with Tab/Shift+Tab. Escape key and backdrop clicks close the modal. Browser Back gesture cleanly closes the modal via `history.pushState` / `popstate` without leaving the underlying page. Focus returns to the opening trigger element upon close.
+  - Tablist & Headers: Underline-style tabs (`Sign in` / `Create account`) with active border-accent indicator, preserving typed email across switches. Contextual Outfit headings and muted subheads:
+    - Signup: "Create an account" / "Takes a minute. Free to use."
+    - Login: "Welcome back" / "Sign in to pick up where you left off."
+  - Form Fields: Visible labels above 48px inputs (`h-12 text-base` to prevent iOS zoom), border `border-border`, rounded `rounded-md`, visible focus rings `focus:ring-2 focus:ring-accent`. Signup includes Full name with helper "Only your first name is shown on listings." Password field includes accessible show/hide eye toggle (`aria-label`, `aria-pressed`) and rule helper text "Password must be at least 6 characters".
+  - Validation & Errors: Inline field errors rendered in `--color-destructive` (`text-danger`). Auth failures display a red bordered banner with `role="alert"` in plain language without exposing raw Supabase internals. Input focus moves to first invalid field or error banner on failure.
+  - Submit & Links: Submit button spans full width with labels "Create account" (signup) and "Sign in" (login), disabling with "Creating account..." / "Signing in..." to prevent double submits. Terms footnote on signup links to `/terms` and `/privacy` (`target="_blank" rel="noopener noreferrer"`). Below-form text links switch tabs.
+  - Right Brand Panel (desktop md+ only): Flat near-black solid background (`bg-[#0F172A]`), small UniDeal logo mark, contextual Outfit headline with green highlight phrase:
+    - Contact: "Sign in to contact" + green "the seller."
+    - Sell: "Sign in to" + green "list your item."
+    - Dashboard/Profile: "Sign in to see" + green "your listings."
+    - General/Default: "Buy and sell on" + green "campus."
+    - 3 check lines with green Lucide Check icons and white text: "Phone numbers are never shown", "Only your first name appears on listings", "Free to use".
+- **Verification**: Captured screenshot matrix across 375px and 1440px viewports covering default, error, failure, and all four brand panel headlines. Verified Tab trap, Escape, backdrop click, browser Back, and trigger focus restoration. `npx tsc --noEmit` and `npm run build` passed clean.
+
 
 Context: Redesigned the `/contact` route and `ContactForm` component strictly within the defined scope (no changes to `/api/contact`, validation schema, nav, footer, database, or RLS).
 

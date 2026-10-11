@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/client';
 interface AuthModalOptions {
   tab?: 'login' | 'signup';
   returnTo?: string;
+  context?: 'contact' | 'sell' | 'dashboard' | 'profile' | string;
   onSuccess?: () => void;
 }
 
