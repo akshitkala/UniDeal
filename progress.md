@@ -1,6 +1,16 @@
 # UniDeal — Project Progress Log
 
-## 2026-09-23 — Visual-verification follow-up: mobile drawer Profile/Admin links + nav doc correction
+## 2026-10-11 — Message Templates & Contact Wiring Update
+
+Context: Updated WhatsApp seller contact pre-fill and Resend support contact email templates per spec requirements.
+
+- **`lib/whatsapp.ts`** — Replaced `buildWhatsAppLink` with new `WhatsAppLinkInput` signature (`phone`, `title`, `price`, `slug`, `buyerFirstName`). Strips phone digits strictly without `+`, truncates title to 60 characters ending with `…`, dynamically builds canonical listing URL using `NEXT_PUBLIC_SITE_URL` (logging server-side warning and omitting URL line if unset), and safely URL-encodes complete prefill message via `encodeURIComponent()`.
+- **`app/api/listings/[id]/contact/route.ts`** — Extended listing query to fetch `title, price, slug`. Looked up buyer's name from `public_profiles` view using session user ID, routed through `firstName()`, with safe fallback to `"a student"` and server-side logging if profile query fails. Called updated `buildWhatsAppLink` with price and slug. Response shape strictly `{ data: { waLink } }` with no phone number exposure anywhere.
+- **`app/api/contact/route.ts`** — Added `clean()` helper sanitizing CR/LF characters from sender names to prevent email header injection. Formatted plain text email with sanitized name, sender email, IST timestamp (`Asia/Kolkata`), message body, and direct reply footer. Maintained fail-closed 500 handling with user-facing plain language on Resend errors without leaking raw errors.
+- **Environment & TRD Docs** — Added `NEXT_PUBLIC_SITE_URL` and documented `CONTACT_EMAIL` in `.env.local`, `.env.example`, and `documents/UniDeal_TRD_v1.1.md` §7.
+- **Verification** — `npx tsc --noEmit` and `npm run build` pass clean with 0 errors. Verified `buildWhatsAppLink` with titles containing quotes, apostrophes, emojis, and length > 60 chars.
+- **Deferred** — None.
+
 
 Context: follow-up to the desktop + 375px visual verification pass over the QA-01/04/05/08 fixes (flag-first report; two flags accepted for fixing). Post-launch QA (Phase 6 follow-up).
 

@@ -1,7 +1,8 @@
-﻿import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { buildWhatsAppLink } from '@/lib/whatsapp';
+import { firstName } from '@/lib/display-name';
 
 interface RouteContext {
   params: { id: string };
@@ -28,7 +29,7 @@ export async function POST(_request: NextRequest, { params }: RouteContext) {
     else if ((revealCount ?? 0) >= 50) {
       return NextResponse.json({ error: { message: 'Daily limit reached. Try again tomorrow.', code: 'RATE_LIMITED' } }, { status: 429 });
     }
-    const { data: listingData } = await adminClient.from('listings').select('title, seller_id, profiles!inner(whatsapp_number)').eq('id', listingId).single();
+    const { data: listingData } = await adminClient.from('listings').select('title, price, slug, seller_id, profiles!inner(whatsapp_number)').eq('id', listingId).single();
     if (!listingData) {
       return NextResponse.json({ error: { message: 'Listing not found.', code: 'NOT_FOUND' } }, { status: 404 });
     }
@@ -41,7 +42,31 @@ export async function POST(_request: NextRequest, { params }: RouteContext) {
       console.error('[contact] reveal insert error:', revealError);
       return NextResponse.json({ error: { message: 'Could not process your request. Please try again.', code: 'REVEAL_ERROR' } }, { status: 500 });
     }
-    const waLink = buildWhatsAppLink(whatsappNumber, listingData.title);
+
+    let buyerFirstName = 'a student';
+    try {
+      const { data: buyerProfile, error: buyerError } = await supabase
+        .from('public_profiles')
+        .select('full_name')
+        .eq('id', user.id)
+        .single();
+
+      if (buyerError) {
+        console.error('[contact] buyer profile lookup error:', buyerError.message);
+      } else if (buyerProfile?.full_name) {
+        buyerFirstName = firstName(buyerProfile.full_name);
+      }
+    } catch (buyerErr) {
+      console.error('[contact] unexpected buyer profile error:', buyerErr);
+    }
+
+    const waLink = buildWhatsAppLink({
+      phone: whatsappNumber,
+      title: listingData.title,
+      price: Number(listingData.price),
+      slug: listingData.slug,
+      buyerFirstName,
+    });
     return NextResponse.json({ data: { waLink } });
   } catch (err) {
     console.error('[contact] unexpected error:', err);

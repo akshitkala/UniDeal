@@ -576,10 +576,12 @@ This route is unrelated to the seller-contact mechanic in §5.5 — no rate limi
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=          # server-only, never exposed to client
+NEXT_PUBLIC_SITE_URL=               # public canonical origin (e.g. http://localhost:3000), used in WhatsApp deep links
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=
 CRON_SECRET=                        # random string, used to protect /api/cron/keepalive
 RESEND_API_KEY=                     # server-only, used by /api/contact (new in v1.1)
+CONTACT_EMAIL=                      # server-only, recipient support inbox for /api/contact
 ```
 
 ---

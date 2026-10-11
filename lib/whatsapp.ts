@@ -1,11 +1,35 @@
+export interface WhatsAppLinkInput {
+  phone: string;           // E.164, server-side only
+  title: string;
+  price: number;
+  slug: string;
+  buyerFirstName: string;  // MUST come from firstName() in lib/display-name.ts
+}
+
 /**
  * WhatsApp deep link builder.
  * TRD §5.5: Generates a wa.me deep link with pre-filled message.
- * Note: Phone number is embedded inside the URL only; raw phone number must never
- * be returned as a standalone field in API responses.
+ * Embeds phone into URL; raw phone number must never be returned as a standalone field.
  */
-export function buildWhatsAppLink(whatsappNumber: string, listingTitle: string): string {
-  const cleanNumber = whatsappNumber.replace(/\D/g, '');
-  const message = `Hi! I'm interested in your listing "${listingTitle}" on UniDeal.`;
-  return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
+export function buildWhatsAppLink(input: WhatsAppLinkInput): string {
+  const cleanPhone = input.phone.replace(/\D/g, '');
+
+  const titleChars = Array.from(input.title);
+  const shortTitle = titleChars.length > 60
+    ? `${titleChars.slice(0, 59).join('')}…`
+    : input.title;
+
+  const baseMessage = `Hi, I'm ${input.buyerFirstName}. I found your "${shortTitle}" (₹${input.price}) on UniDeal and I'm interested. Is it still available?`;
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, '');
+  if (!siteUrl) {
+    console.warn('[whatsapp] NEXT_PUBLIC_SITE_URL is unset; omitting listing URL from pre-filled message.');
+  }
+
+  const message = siteUrl
+    ? `${baseMessage}\n\n${siteUrl}/listing/${input.slug}`
+    : baseMessage;
+
+  return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 }
+
