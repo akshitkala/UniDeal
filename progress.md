@@ -1,6 +1,26 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-11 — Homepage Six Section Components Rebuild (Exact Copy & Flat Design)
+## 2026-10-11 — Redesign /contact Page and ContactForm Component (Exact Copy & Flat Design)
+
+Context: Redesigned the `/contact` route and `ContactForm` component strictly within the defined scope (no changes to `/api/contact`, validation schema, nav, footer, database, or RLS).
+
+- **`app/(public)/contact/page.tsx`**:
+  - Container updated to `max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-16`.
+  - Full-width, left-aligned heading block with `h1` "Contact Us", subhead "Have feedback, questions, or issues? Write to us here and we'll get back to you." with `max-w-xl` and `[text-wrap:balance]`.
+- **`components/contact/ContactForm.tsx`**:
+  - Two-column layout on desktop (`lg+`): left form column (~60%, `max-w-xl`), right "Before you write" panel (~40%, top-aligned, `gap-10`). Single column on mobile and tablet with form first and panel below.
+  - Visible fields: Name, Email, Message, with right-aligned muted counter `0/1000`.
+  - Inputs 48px tall (`h-12`), 16px font (`text-base`), border-border, rounded-md, `focus:ring-2 focus:ring-accent`. Message textarea `min-h-[160px]`, `resize-y` only.
+  - Autocomplete (`name`, `email`) and `inputmode="email"`.
+  - User session prefill: pre-fills Email from session and Name from `profiles.full_name`, remaining editable. Guests see empty fields.
+  - Inline validation on blur and submit following Zod rules (Name 2-100, valid email, Message 10-1000) using `--color-destructive` (`text-danger`) text messages. Focus jumps to first invalid field on submit failure.
+  - Submit button: "Send Message", full width on mobile, auto-width from md, disabled with "Sending..." and double-submit blocking while sending. Muted helper line: "We'll reply to the email address above."
+  - States:
+    - Success: Confirmation card replacing the form with check icon, heading "Message sent", body "We'll get back to you soon.", primary button "Back to Browse" (`/browse`), ghost button "Send another message" (resets form). Focus shifts to heading with `aria-live="polite"`.
+    - Server error: Bordered banner above submit button with `role="alert"`: "Couldn't send your message. Check your connection and try again."
+  - "Before you write" panel: flat bordered card with hairline dividers, Lucide neutral grey icons (`Flag`, `ShieldAlert`, `UserMinus`), exact copy and links to `/browse` and `/safety`. Bottom footer: "Messages go straight to the founder's inbox."
+- **Verification**: `npx tsc --noEmit` and `npm run build` both passed clean.
+
 
 Context: Rebuilt all six homepage sections under `components/home/` in exact order using word-for-word prompt copy, strict design tokens, and verified responsive layouts.
 
