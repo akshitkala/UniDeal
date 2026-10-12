@@ -33,7 +33,7 @@ function RecentListingsSkeleton() {
             <Skeleton key={i} className="h-9 w-24 rounded-full" />
           ))}
         </div>
-        <ListingGridSkeleton count={4} />
+        <ListingGridSkeleton count={12} />
       </div>
     </section>
   );
@@ -52,7 +52,7 @@ async function RecentListingsFetcher() {
       `)
       .eq('status', 'approved')
       .order('created_at', { ascending: false })
-      .limit(4);
+      .limit(12);
 
     if (data) recentListings = data as unknown as ListingCardData[];
   } catch {

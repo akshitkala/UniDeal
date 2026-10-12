@@ -1,5 +1,20 @@
 # UniDeal — Project Progress Log
 
+## 2026-10-12 — Update Homepage to Display 3 Rows of Listings
+
+Context: User requested 3 rows of listings on the homepage (previously limited to 4 items / 1 row).
+
+- **`app/(public)/page.tsx`**:
+  - Increased recent listings fetch limit in `RecentListingsFetcher` from 4 to 12 (`.limit(12)`).
+  - Updated `RecentListingsSkeleton` count to 12 (`<ListingGridSkeleton count={12} />`).
+- **`components/home/FreshOnCampus.tsx`**:
+  - Imported and applied standard `LISTING_GRID_CLASSES` (`grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4`) matching the site-wide grid and skeleton layout.
+  - Updated rendered listing slice from 4 to 12 items (`listings.slice(0, 12)`), providing 3 complete rows of 4 cards on desktop.
+- **Verification**:
+  - `npx tsc --noEmit` passed clean.
+  - `npm run build` passed clean.
+
+
 ## 2026-10-12 — Redesign Presentation of components/auth/AuthModal.tsx (Flat Design & Strict Copy)
 
 Context: Redesigned the visual and interactive presentation of `components/auth/AuthModal.tsx` per strict design tokens and copy rules without modifying Supabase auth logic, the verification flow, or resume-action behavior.

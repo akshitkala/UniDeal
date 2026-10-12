@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import ListingCard from '@/components/listing/ListingCard';
 import type { ListingCardData } from '@/components/listing/ListingCard';
+import { LISTING_GRID_CLASSES } from '@/components/skeletons/ListingGridSkeleton';
 
 interface Props {
   listings: ListingCardData[];
@@ -68,8 +69,8 @@ export default function FreshOnCampus({ listings }: Props) {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {listings.slice(0, 4).map((listing) => (
+          <div className={LISTING_GRID_CLASSES}>
+            {listings.slice(0, 12).map((listing) => (
               <ListingCard key={listing.id} listing={listing} />
             ))}
           </div>
