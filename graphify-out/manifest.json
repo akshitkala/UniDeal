@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "progress.md": {
-    "mtime": 1791804875.6692512,
-    "seen": 1791804891.856448,
-    "ast_hash": "a948db337b719d4ccedc5b87259aeeb5",
+    "mtime": 1791813642.8660405,
+    "seen": 1791813666.527992,
+    "ast_hash": "6684c89f113abd5653fd8d39c8e5d602",
     "semantic_hash": ""
   },
   ".agents/skills/brand/scripts/extract-colors.cjs": {
@@ -1668,9 +1668,9 @@
     "semantic_hash": ""
   },
   "components/nav/Footer.tsx": {
-    "mtime": 1791304512.9015145,
-    "seen": 1791738935.5750504,
-    "ast_hash": "5595cdf4e234ca7ac3c0c8c00049a776",
+    "mtime": 1791805159.4764082,
+    "seen": 1791805310.7084,
+    "ast_hash": "4605fe7f5f56aa0c81df09392472d470",
     "semantic_hash": ""
   },
   "components/ui/LegalPage.tsx": {
@@ -1806,27 +1806,27 @@
     "semantic_hash": ""
   },
   "components/home/FounderCta.tsx": {
-    "mtime": 1791741337.061795,
-    "seen": 1791741523.0178099,
-    "ast_hash": "c7e3952b3755d3223e90a16281677849",
+    "mtime": 1791805190.7107048,
+    "seen": 1791805310.7074149,
+    "ast_hash": "1966f020751680f6bdd635467493e094",
     "semantic_hash": ""
   },
   "components/home/FreshOnCampus.tsx": {
-    "mtime": 1791804790.5743835,
-    "seen": 1791804891.843448,
-    "ast_hash": "483fbd301ce77cada4398c340c694c5d",
+    "mtime": 1791805178.8565495,
+    "seen": 1791805310.7074149,
+    "ast_hash": "221bf2c633c50e4dda7b3645cd235e60",
     "semantic_hash": ""
   },
   "components/home/Hero.tsx": {
-    "mtime": 1791741190.0566168,
-    "seen": 1791741523.0178099,
-    "ast_hash": "b631491d357b5fef969bc5dbd8a1cc3e",
+    "mtime": 1791813356.1815116,
+    "seen": 1791813666.490819,
+    "ast_hash": "dcf7f7b67b334b33a982d6f3434d3cc4",
     "semantic_hash": ""
   },
   "components/home/HowItWorks.tsx": {
-    "mtime": 1791741297.6195452,
-    "seen": 1791741523.0178099,
-    "ast_hash": "a2759a70a97d1e33b0969fc8f13f2b52",
+    "mtime": 1791805221.837751,
+    "seen": 1791805310.7074149,
+    "ast_hash": "affc81818277e825450bdb1246422e76",
     "semantic_hash": ""
   },
   "components/home/ProblemStory.tsx": {
@@ -1836,9 +1836,9 @@
     "semantic_hash": ""
   },
   "components/home/SafeByDesign.tsx": {
-    "mtime": 1791741314.475277,
-    "seen": 1791741523.0178099,
-    "ast_hash": "dafb89c00fbb39b3afff9415ee3fe0d8",
+    "mtime": 1791805207.4082296,
+    "seen": 1791805310.7084,
+    "ast_hash": "b561867fea339e5bc889129a0a4481ba",
     "semantic_hash": ""
   },
   "tests/e2e/homepage_breakpoints.spec.ts": {
@@ -1863,6 +1863,12 @@
     "mtime": 1791744260.7869592,
     "seen": 1791744594.601188,
     "ast_hash": "10ecde167ac7babfbab7b8da3892708a",
+    "semantic_hash": ""
+  },
+  "public/hero-campus.webp": {
+    "mtime": 1791813132.0587425,
+    "seen": 1791813666.527992,
+    "ast_hash": "542844c4158199535c3e0982f66064d0",
     "semantic_hash": ""
   }
 }

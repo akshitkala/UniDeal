@@ -1,5 +1,30 @@
 # UniDeal — Project Progress Log
 
+## 2026-10-12 — Redesign UniDeal Homepage Hero Section (Mobile-First & Flat Design)
+
+Context: Redesigned only the homepage hero section (`components/home/Hero.tsx`) strictly per `design.md` and `rules.md` tokens and layout rules.
+
+- **Asset Generation (`public/hero-campus.webp`)**:
+  - Generated photorealistic product still-life image (used textbooks, desk lamp, scientific calculator, over-ear headphones, backpack, potted plant) matching the prompt.
+  - Converted and resized to 1200x1500px WebP, 75.79 KB (under 300KB budget).
+- **Hero Redesign (`components/home/Hero.tsx`)**:
+  - Layout: Mobile-first (<768px single column, no image; desktop >=1024px two columns ~55/45; full-width category tiles below). Tight vertical padding `py-10 lg:py-16`.
+  - Left Column:
+    1. Eyebrow: `CAMPUS MARKETPLACE` (uppercase, tracked, `--color-accent`) with short 1px horizontal line.
+    2. Headline (Outfit bold): "Buy and sell on campus," / "without the group-chat chaos." with accent green highlighting.
+    3. Subcopy (Work Sans, max-w-md): "Find what you need, trust who you're buying from, and close the deal on WhatsApp."
+    4. CTAs: Primary "Browse listings" (accent green, rounded-full, min-h 44px, ArrowRight) + Ghost "Sell an item" (rounded-full, existing AuthModal guest trigger).
+    5. Trust row: 3 items with thin vertical dividers (shield-check, eye-off, message-circle) with exact two-line text.
+  - Right Column (desktop only, hidden on mobile/tablet):
+    - Rounded-3xl panel with flat accent tint (`bg-accent/10 border-accent/20`), two concentric 1px circles echoing a ring motif, and `next/image` `/hero-campus.webp` (1200x1500, priority, rounded-2xl, object-cover).
+  - Category Tiles (spans full width inside hero):
+    - Heading row: "Browse by category" + hairline divider line + "View all →" link.
+    - 6 fixed category tiles (Books & Notes, Electronics, Furniture, Clothing, Sports & Fitness, Miscellaneous) with Lucide icons (BookOpen, Laptop, Armchair, Shirt, Dumbbell, Package), 1px border-border, rounded-2xl, hover:border-accent.
+- **Verification**:
+  - `npx tsc --noEmit` passed clean.
+  - Responsive verification across 375px, 768px, 1024px, 1440px passed with zero horizontal scroll and expected image visibility.
+
+
 ## 2026-10-12 — Fix Odd Green Border on Click (Switch focus: to focus-visible:)
 
 Context: User reported odd styling where clicking on footer links or text links displayed a 2px green border around the element. Replaced plain `focus:ring-2` with accessible `focus-visible:ring-2` so mouse clicks produce no outline while preserving keyboard navigation accessibility.
