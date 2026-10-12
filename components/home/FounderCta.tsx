@@ -29,7 +29,7 @@ export default function FounderCta() {
             </span>
             <Link
               href="/our-story"
-              className="text-xs text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded mt-1.5 min-h-[44px] inline-flex items-center"
+              className="text-xs text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded mt-1.5 min-h-[44px] inline-flex items-center"
             >
               Read the full story →
             </Link>

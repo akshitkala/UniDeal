@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Column 1 */}
           <div className="flex flex-col">
-            <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-neutral-text font-heading focus:outline-none focus:ring-2 focus:ring-primary rounded p-1 -m-1 w-fit">
+            <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight text-neutral-text font-heading focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded p-1 -m-1 w-fit">
               <span className="w-8 h-8 rounded-md bg-primary text-white flex items-center justify-center font-display font-extrabold text-lg">
                 U
               </span>
@@ -39,17 +39,17 @@ export default function Footer() {
             <h3 className="font-bold text-sm text-neutral-text tracking-wider uppercase mb-2">Explore</h3>
             <ul className="flex flex-col">
               <li>
-                <Link href="/browse" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center min-h-[44px]">
+                <Link href="/browse" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center min-h-[44px]">
                   Browse Listings
                 </Link>
               </li>
               <li>
-                <Link href="/our-story" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center min-h-[44px]">
+                <Link href="/our-story" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center min-h-[44px]">
                   About Our Story
                 </Link>
               </li>
               <li>
-                <Link href="/how-it-works" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center min-h-[44px]">
+                <Link href="/how-it-works" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center min-h-[44px]">
                   How it works
                 </Link>
               </li>
@@ -65,7 +65,7 @@ export default function Footer() {
                   <button
                     type="button"
                     onClick={() => openAuthModal({ tab: 'login' })}
-                    className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded text-left flex items-center min-h-[44px] w-full"
+                    className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded text-left flex items-center min-h-[44px] w-full"
                   >
                     Sign In
                   </button>
@@ -75,7 +75,7 @@ export default function Footer() {
                 <Link
                   href="/dashboard"
                   onClick={(e) => handleProtectedNavigation(e, '/dashboard')}
-                  className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center min-h-[44px]"
+                  className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center min-h-[44px]"
                 >
                   My Dashboard
                 </Link>
@@ -84,7 +84,7 @@ export default function Footer() {
                 <Link
                   href="/profile"
                   onClick={(e) => handleProtectedNavigation(e, '/profile')}
-                  className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center min-h-[44px]"
+                  className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center min-h-[44px]"
                 >
                   Profile
                 </Link>
@@ -97,17 +97,17 @@ export default function Footer() {
             <h3 className="font-bold text-sm text-neutral-text tracking-wider uppercase mb-2">Support</h3>
             <ul className="flex flex-col">
               <li>
-                <Link href="/contact" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center min-h-[44px]">
+                <Link href="/contact" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center min-h-[44px]">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center min-h-[44px]">
+                <Link href="/privacy" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center min-h-[44px]">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center min-h-[44px]">
+                <Link href="/terms" className="text-sm text-neutral-muted hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center min-h-[44px]">
                   Terms of Service
                 </Link>
               </li>
@@ -121,10 +121,10 @@ export default function Footer() {
             Handcrafted for the campus community
           </p>
           <div className="flex gap-4">
-            <Link href="/terms" className="text-xs text-neutral-muted hover:text-primary transition-colors uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center justify-center min-h-[44px] px-2">
+            <Link href="/terms" className="text-xs text-neutral-muted hover:text-primary transition-colors uppercase tracking-wider focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center justify-center min-h-[44px] px-2">
               Terms
             </Link>
-            <Link href="/safety" className="text-xs text-neutral-muted hover:text-primary transition-colors uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-primary rounded flex items-center justify-center min-h-[44px] px-2">
+            <Link href="/safety" className="text-xs text-neutral-muted hover:text-primary transition-colors uppercase tracking-wider focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded flex items-center justify-center min-h-[44px] px-2">
               Safety
             </Link>
           </div>

@@ -36,7 +36,7 @@ export default function FreshOnCampus({ listings }: Props) {
           </div>
           <Link
             href="/browse"
-            className="text-sm text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded shrink-0 self-start sm:self-end min-h-[44px] flex items-center"
+            className="text-sm text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded shrink-0 self-start sm:self-end min-h-[44px] flex items-center"
           >
             See all →
           </Link>
@@ -48,7 +48,7 @@ export default function FreshOnCampus({ listings }: Props) {
             <Link
               key={cat.slug}
               href={`/browse?category=${cat.slug}`}
-              className="px-3.5 py-1.5 rounded-full border border-border bg-white text-xs font-medium text-neutral-text hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 transition-colors duration-200 min-h-[36px] flex items-center"
+              className="px-3.5 py-1.5 rounded-full border border-border bg-white text-xs font-medium text-neutral-text hover:border-primary hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1 transition-colors duration-200 min-h-[36px] flex items-center"
             >
               {cat.name}
             </Link>

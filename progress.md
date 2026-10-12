@@ -1,5 +1,20 @@
 # UniDeal — Project Progress Log
 
+## 2026-10-12 — Fix Odd Green Border on Click (Switch focus: to focus-visible:)
+
+Context: User reported odd styling where clicking on footer links or text links displayed a 2px green border around the element. Replaced plain `focus:ring-2` with accessible `focus-visible:ring-2` so mouse clicks produce no outline while preserving keyboard navigation accessibility.
+
+- **`components/nav/Footer.tsx`**:
+  - Replaced `focus:ring-2 focus:ring-primary` with `focus-visible:ring-2 focus-visible:ring-primary` on all navigation and support links (`Browse Listings`, `About Our Story`, `How it works`, `Sign In`, `My Dashboard`, `Profile`, `Contact Us`, `Privacy Policy`, `Terms of Service`, `Terms`, `Safety`, logo).
+- **`components/home/FreshOnCampus.tsx`**:
+  - Replaced `focus:ring-2` with `focus-visible:ring-2` on "See all →" link and category chips.
+- **`components/home/HowItWorks.tsx`**, **`components/home/SafeByDesign.tsx`**, **`components/home/FounderCta.tsx`**:
+  - Replaced `focus:ring-2` with `focus-visible:ring-2` on text links ("Full walkthrough →", "Read our safety tips →", "Read the full story →").
+- **Verification**:
+  - `npx tsc --noEmit` passed clean.
+  - `npm run build` passed clean.
+
+
 ## 2026-10-12 — Update Homepage to Display 3 Rows of Listings
 
 Context: User requested 3 rows of listings on the homepage (previously limited to 4 items / 1 row).

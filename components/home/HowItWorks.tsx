@@ -82,7 +82,7 @@ export default function HowItWorks() {
           </div>
           <Link
             href="/how-it-works"
-            className="text-sm text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded shrink-0 self-start sm:self-end min-h-[44px] flex items-center"
+            className="text-sm text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded shrink-0 self-start sm:self-end min-h-[44px] flex items-center"
           >
             Full walkthrough →
           </Link>

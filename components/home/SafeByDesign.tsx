@@ -74,7 +74,7 @@ export default function SafeByDesign() {
         <div className="mt-8">
           <Link
             href="/safety"
-            className="text-sm text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded min-h-[44px] inline-flex items-center"
+            className="text-sm text-primary font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded min-h-[44px] inline-flex items-center"
           >
             Read our safety tips →
           </Link>
