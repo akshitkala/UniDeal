@@ -1,0 +1,50 @@
+{
+  "chrome-desktop-1440": {
+    "home": "baseline_chrome-desktop-1440_home.png",
+    "browse": "baseline_chrome-desktop-1440_browse.png",
+    "listing_detail": "baseline_chrome-desktop-1440_listing_detail.png",
+    "auth_modal": "baseline_chrome-desktop-1440_auth_modal.png"
+  },
+  "chrome-laptop-1024": {
+    "home": "baseline_chrome-laptop-1024_home.png",
+    "browse": "baseline_chrome-laptop-1024_browse.png",
+    "listing_detail": "baseline_chrome-laptop-1024_listing_detail.png",
+    "auth_modal": "baseline_chrome-laptop-1024_auth_modal.png"
+  },
+  "safari-desktop": {
+    "home": "baseline_safari-desktop_home.png",
+    "browse": "baseline_safari-desktop_browse.png",
+    "listing_detail": "baseline_safari-desktop_listing_detail.png",
+    "auth_modal": "baseline_safari-desktop_auth_modal.png"
+  },
+  "ipad": {
+    "home": "baseline_ipad_home.png",
+    "browse": "baseline_ipad_browse.png",
+    "listing_detail": "baseline_ipad_listing_detail.png",
+    "auth_modal": "baseline_ipad_auth_modal.png"
+  },
+  "iphone-se-375": {
+    "home": "baseline_iphone-se-375_home.png",
+    "browse": "baseline_iphone-se-375_browse.png",
+    "listing_detail": "baseline_iphone-se-375_listing_detail.png",
+    "auth_modal": "baseline_iphone-se-375_auth_modal.png"
+  },
+  "iphone-14": {
+    "home": "baseline_iphone-14_home.png",
+    "browse": "baseline_iphone-14_browse.png",
+    "listing_detail": "baseline_iphone-14_listing_detail.png",
+    "auth_modal": "baseline_iphone-14_auth_modal.png"
+  },
+  "android-pixel-7": {
+    "home": "baseline_android-pixel-7_home.png",
+    "browse": "baseline_android-pixel-7_browse.png",
+    "listing_detail": "baseline_android-pixel-7_listing_detail.png",
+    "auth_modal": "baseline_android-pixel-7_auth_modal.png"
+  },
+  "android-small-360": {
+    "home": "baseline_android-small-360_home.png",
+    "browse": "baseline_android-small-360_browse.png",
+    "listing_detail": "baseline_android-small-360_listing_detail.png",
+    "auth_modal": "baseline_android-small-360_auth_modal.png"
+  }
+}

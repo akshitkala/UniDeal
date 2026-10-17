@@ -1,0 +1,1474 @@
+[
+  {
+    "id": "SEC-01",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-33 & SEC-01: Contact API returns { waLink } only and never leaks raw phone -> passed; FUN-44 & SEC-01: Listing Detail shows seller first name only, no phone or branch -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "SEC-02",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "SEC-02: Secrets absent from page source and scripts -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "SEC-03",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-04",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-05",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-06",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "SEC-06: Guest/unauthorized receives 401 or 403 on admin routes -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "SEC-07",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-08",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-09",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-10",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "SEC-10 & FUN-34: 51st contact reveal returns 429 and displays daily limit warning -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "SEC-11",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-12",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-13",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "SEC-13 & FUN-25: Guest can load Browse and search by title -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "SEC-14",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "SEC-14: /api/cron/keepalive returns 401 without CRON_SECRET, 200 with Bearer -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "SEC-15",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-16",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-17",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-18",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "FAIL",
+    "evidence": "FUN-42 & SEC-18: Contact form validates fields and handles success state -> passed; FUN-42 & SEC-18: Mocked Resend failure returns standard error and never leaks stack trace -> failed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "SEC-19",
+    "section": "SEC",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "SEC-19: Security headers present on responses -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "SEC-20",
+    "section": "SEC",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "SEC-20: XSS prevention renders script tags as literal text -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "SEC-21",
+    "section": "SEC",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-22",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "SEC-23",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-01",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-01 & A11Y-03: Modal opens via Sell and Sign In when logged out, has role=dialog and aria-modal -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-02",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-03",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-03: Backdrop click closes the modal -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-04",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-04: Browser back closes the modal and stays on the underlying page -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-05",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-06",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-06: Wrong password shows inline error, modal stays open -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-07",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-07: /login and /signup return 404 -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-08",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-09",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-10",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-11",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-12",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-13",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-14",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-15",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-16",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-17",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-18",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-19",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-20",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-21",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-22",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-23",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-24",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-25",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "SEC-13 & FUN-25: Guest can load Browse and search by title -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-26",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-26: Category filter and condition filter work -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-27",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-27: Sorting options available without Most Viewed -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-28",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-29",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "FUN-29: Filter and sort persist in the URL -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-30",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-31",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-31 & UI-01: Contact Seller button has contact green and gates logged out user -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-32",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-33",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-33 & SEC-01: Contact API returns { waLink } only and never leaks raw phone -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-34",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "SEC-10 & FUN-34: 51st contact reveal returns 429 and displays daily limit warning -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-35",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-36",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-37",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-38",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-39",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-40",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-41",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "FUN-42",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "FAIL",
+    "evidence": "FUN-42 & SEC-18: Contact form validates fields and handles success state -> passed; FUN-42 & SEC-18: Mocked Resend failure returns standard error and never leaks stack trace -> failed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-43",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-43 & LNK-01: / loads without auth -> passed; FUN-43 & LNK-01: /browse loads without auth -> passed; FUN-43 & LNK-01: /how-it-works loads without auth -> passed; FUN-43 & LNK-01: /our-story loads without auth -> passed; FUN-43 & LNK-01: /contact loads without auth -> passed; FUN-43 & LNK-01: /privacy loads without auth -> passed; FUN-43 & LNK-01: /terms loads without auth -> passed; FUN-43 & LNK-01: /safety loads without auth -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-44",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-44 & SEC-01: Listing Detail shows seller first name only, no phone or branch -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "FUN-45",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-01",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-31 & UI-01: Contact Seller button has contact green and gates logged out user -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "UI-02",
+    "section": "UI",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-03",
+    "section": "UI",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-04",
+    "section": "UI",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-05",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "UI-05: Typography loads Outfit for headings and Work Sans for body -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "UI-06",
+    "section": "UI",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-07",
+    "section": "UI",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-08",
+    "section": "UI",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-09",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "UI-09 & UI-10: Listing cards keep aspect ratio and have alt text -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "UI-10",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "UI-09 & UI-10: Listing cards keep aspect ratio and have alt text -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "UI-11",
+    "section": "UI",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-12",
+    "section": "UI",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-13",
+    "section": "UI",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-14",
+    "section": "UI",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-15",
+    "section": "UI",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "UI-16",
+    "section": "UI",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "LNK-01",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "FUN-43 & LNK-01: / loads without auth -> passed; FUN-43 & LNK-01: /browse loads without auth -> passed; FUN-43 & LNK-01: /how-it-works loads without auth -> passed; FUN-43 & LNK-01: /our-story loads without auth -> passed; FUN-43 & LNK-01: /contact loads without auth -> passed; FUN-43 & LNK-01: /privacy loads without auth -> passed; FUN-43 & LNK-01: /terms loads without auth -> passed; FUN-43 & LNK-01: /safety loads without auth -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "LNK-02",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "LNK-02: External links use target=\"_blank\" and rel=\"noopener noreferrer\" -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "LNK-03",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "LNK-04",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "LNK-04: Zero href=\"#\" or empty href on rendered pages -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "LNK-05",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "LNK-06",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "LNK-06 & META-13: Custom 404 page returns 404 and links back to Browse -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "LNK-07",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "LNK-08",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "LNK-09",
+    "section": "LNK",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "LNK-10",
+    "section": "LNK",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "LNK-11",
+    "section": "LNK",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "META-01",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "META-01 & META-02: Favicon and apple-touch-icon links exist and resolve -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "META-02",
+    "section": "META",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "META-01 & META-02: Favicon and apple-touch-icon links exist and resolve -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "META-03",
+    "section": "META",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "META-04",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "META-04 & META-05: Pages have unique non-default title and meta description -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "META-05",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "META-04 & META-05: Pages have unique non-default title and meta description -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "META-06",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "META-06: OpenGraph tags present on Home -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "META-07",
+    "section": "META",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "META-08",
+    "section": "META",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "META-09",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "META-09: robots.txt disallows protected routes -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "META-10",
+    "section": "META",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "META-10: sitemap.xml exists and lists public routes -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "META-11",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "META-11: HTML element has lang=\"en\" -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "META-12",
+    "section": "META",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "META-13",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "LNK-06 & META-13: Custom 404 page returns 404 and links back to Browse -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "META-14",
+    "section": "META",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-01",
+    "section": "STA",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-02",
+    "section": "STA",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-03",
+    "section": "STA",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-04",
+    "section": "STA",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-05",
+    "section": "STA",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-06",
+    "section": "STA",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-07",
+    "section": "STA",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-08",
+    "section": "STA",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-09",
+    "section": "STA",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "STA-10",
+    "section": "STA",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-01",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "RSP-01: No horizontal overflow on / -> passed; RSP-01: No horizontal overflow on /browse -> passed; RSP-01: No horizontal overflow on /how-it-works -> passed; RSP-01: No horizontal overflow on /our-story -> passed; RSP-01: No horizontal overflow on /contact -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "RSP-02",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "RSP-02: Interactive primary buttons meet minimum touch target sizes -> passed",
+    "notes": "Directly verified from Playwright JSON reporter output."
+  },
+  {
+    "id": "RSP-03",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-04",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-05",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-06",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-07",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-08",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-09",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-10",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-11",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-12",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-13",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-14",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "RSP-15",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-01",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-02",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-03",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-04",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-05",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-06",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-07",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-08",
+    "section": "A11Y",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-09",
+    "section": "A11Y",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "A11Y-10",
+    "section": "A11Y",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CPY-01",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CPY-02",
+    "section": "CPY",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CPY-03",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CPY-04",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CPY-05",
+    "section": "CPY",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CPY-06",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CPY-07",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CPY-08",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-01",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-02",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-03",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-04",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-05",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-06",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-07",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-08",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-09",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-10",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-11",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "CODE-12",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "PERF-01",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "PERF-02",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "PERF-03",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "PERF-04",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "PERF-05",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "INF-01",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "INF-02",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "INF-03",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "INF-04",
+    "section": "INF",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "INF-05",
+    "section": "INF",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "INF-06",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "INF-07",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "INF-08",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "MAN-01",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "MAN-02",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "MAN-03",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "MAN-04",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "MAN-05",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "MAN-06",
+    "section": "MAN",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  },
+  {
+    "id": "MAN-07",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "No matching automated Playwright test found in JSON reporter output.",
+    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+  }
+]

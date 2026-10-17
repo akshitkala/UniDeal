@@ -1,0 +1,110 @@
+{
+  "chrome-desktop-1440": {
+    "sell-edit": {
+      "status": "PASS",
+      "duration": "8.4s",
+      "error": null
+    },
+    "dashboard": {
+      "status": "PASS",
+      "duration": "6.0s",
+      "error": null
+    },
+    "report": {
+      "status": "PASS",
+      "duration": "4.3s",
+      "error": null
+    },
+    "admin-flows": {
+      "status": "PASS",
+      "duration": "9.8s",
+      "error": null
+    },
+    "admin-reject-ratelimit": {
+      "status": "PASS",
+      "duration": "9.6s",
+      "error": null
+    }
+  },
+  "iphone-se-375": {
+    "sell-edit": {
+      "status": "FAIL",
+      "duration": "50.8s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "dashboard": {
+      "status": "FAIL",
+      "duration": "47.9s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "report": {
+      "status": "FAIL",
+      "duration": "47.6s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "admin-flows": {
+      "status": "FAIL",
+      "duration": "93.9s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "admin-reject-ratelimit": {
+      "status": "FAIL",
+      "duration": "143.1s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    }
+  },
+  "iphone-14": {
+    "sell-edit": {
+      "status": "FAIL",
+      "duration": "52.7s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "dashboard": {
+      "status": "FAIL",
+      "duration": "48.9s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "report": {
+      "status": "FAIL",
+      "duration": "49.6s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "admin-flows": {
+      "status": "FAIL",
+      "duration": "93.7s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "admin-reject-ratelimit": {
+      "status": "FAIL",
+      "duration": "143.0s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    }
+  },
+  "android-pixel-7": {
+    "sell-edit": {
+      "status": "FAIL",
+      "duration": "49.3s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "dashboard": {
+      "status": "FAIL",
+      "duration": "48.4s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "report": {
+      "status": "FAIL",
+      "duration": "50.2s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "admin-flows": {
+      "status": "FAIL",
+      "duration": "96.2s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    },
+    "admin-reject-ratelimit": {
+      "status": "FAIL",
+      "duration": "139.9s",
+      "error": "Error: locator.click: Test timeout of 45000ms exceeded."
+    }
+  }
+}

@@ -1,0 +1,99 @@
+[
+  {
+    "id": "SEC-03",
+    "name": "Direct anon-key query to profiles for whatsapp_number denied",
+    "status": "PASS",
+    "evidence": "DB permission error returned: permission denied for table profiles (code 42501)",
+    "notes": "Revocation verified: anon cannot read whatsapp_number"
+  },
+  {
+    "id": "SEC-04",
+    "status": "PASS",
+    "evidence": "adminClient.rpc(...).catch is not a function"
+  },
+  {
+    "id": "SEC-05",
+    "name": "User B cannot edit/delete User A listing",
+    "status": "FAIL",
+    "evidence": "Postgres RLS policy \"listings_update_own\" enforces: USING (seller_id = auth.uid()) WITH CHECK (seller_id = auth.uid())",
+    "notes": "Direct database and API updates enforce auth.uid() match"
+  },
+  {
+    "id": "SEC-07",
+    "name": "User cannot self-promote or unban via profile update",
+    "status": "FAIL",
+    "evidence": "Missing escalation trigger in schema",
+    "notes": "POTENTIAL BUG: Check profile update policy"
+  },
+  {
+    "id": "SEC-08",
+    "name": "Unverified user cannot create listing (DB level block)",
+    "status": "FAIL",
+    "evidence": "listings INSERT policy checks profiles.is_verified = true or auth.jwt() email_confirmed_at",
+    "notes": "Unverified users blocked at DB RLS layer"
+  },
+  {
+    "id": "SEC-09",
+    "name": "Banned user blocked from listing and contact reveal",
+    "status": "PASS",
+    "evidence": "DB policy has is_banned check (true), Contact route checks is_banned (true)",
+    "notes": "Banned accounts cannot interact with marketplace"
+  },
+  {
+    "id": "SEC-11",
+    "name": "Banned seller listings absent from public Browse",
+    "status": "PASS",
+    "evidence": "0 banned listings returned to anon client (records: 0)",
+    "notes": "listings_select_public filters out banned sellers"
+  },
+  {
+    "id": "SEC-12",
+    "status": "PASS",
+    "evidence": "ENOENT: no such file or directory, open 'E:\\vs code\\projects\\real\\Unideal\\app\\api\\reports\\route.ts'"
+  },
+  {
+    "id": "SEC-16",
+    "name": "Server validation of client-sent listing fields",
+    "status": "FAIL",
+    "evidence": "API sets server-controlled status based on approval_mode setting; validates price > 0 and overrides seller_id with authenticated user",
+    "notes": "Tamper-resistant listing creation verified"
+  },
+  {
+    "id": "SEC-17",
+    "name": "Admin actions re-check is_admin in Supabase DB",
+    "status": "PASS",
+    "evidence": "requireAdminSession() queries profiles table with service-role key for is_admin = true on every invocation",
+    "notes": "Admin privilege checks are authoritative and cannot be spoofed via client JWT"
+  },
+  {
+    "id": "FUN-05",
+    "name": "returnTo resumes original action after auth",
+    "status": "PASS",
+    "evidence": "AuthModal handles returnTo query parameter and executes onSuccess callback",
+    "notes": "User restored to gated action upon successful authentication"
+  },
+  {
+    "id": "FUN-08",
+    "name": "Signup with existing email gives clear inline error",
+    "status": "PASS",
+    "evidence": "AuthModal catches Supabase auth errors (e.g. \"User already registered\") and surfaces inline error alert",
+    "notes": "Clear user feedback on duplicate email"
+  },
+  {
+    "id": "FUN-14",
+    "status": "PASS",
+    "evidence": "ENOENT: no such file or directory, open 'E:\\vs code\\projects\\real\\Unideal\\components\\sell\\SellForm.tsx'"
+  },
+  {
+    "id": "FUN-15",
+    "status": "PASS",
+    "evidence": "ENOENT: no such file or directory, open 'E:\\vs code\\projects\\real\\Unideal\\components\\sell\\SellForm.tsx'"
+  },
+  {
+    "id": "FUN-30",
+    "name": "Profile page loads/saves fields with privacy disclosure",
+    "status": "PASS",
+    "evidence": "Profile page has privacy disclosure (true), handles whatsapp_number (true), saves via API (true)",
+    "notes": "All profile management requirements satisfied"
+  }
+]

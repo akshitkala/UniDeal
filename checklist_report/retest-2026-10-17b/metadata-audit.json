@@ -1,0 +1,21 @@
+{
+  "testedAt": "2026-10-17T08:06:02.568Z",
+  "assets": {
+    "favicon.ico": 200,
+    "robots.txt": 200,
+    "sitemap.xml": 200,
+    "manifest.webmanifest": 200
+  },
+  "home": {
+    "ogUrl": "http://localhost:3000",
+    "ogImage": "http://localhost:3000/hero-campus.webp",
+    "canonical": null
+  },
+  "listing": {
+    "slug": "spec-item-1790362626728-f27ux",
+    "ogUrl": null,
+    "ogImage": "https://res.cloudinary.com/dkoguefrb/image/upload/v1790362627/jodyeqeayssniwoayc9v.png",
+    "canonical": null
+  },
+  "containsLocalhost": true
+}

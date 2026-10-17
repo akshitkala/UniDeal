@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "progress.md": {
-    "mtime": 1792219579.2007236,
-    "seen": 1792219877.3241189,
-    "ast_hash": "184bdf1fc11e7848aebb0a63d59e6acb",
+    "mtime": 1792225440.500318,
+    "seen": 1792225471.671581,
+    "ast_hash": "401376dc490530492d7024396298cac9",
     "semantic_hash": ""
   },
   ".agents/skills/brand/scripts/extract-colors.cjs": {
@@ -1992,9 +1992,9 @@
     "semantic_hash": ""
   },
   "checklist_report/retest-2026-10-17/playwright-results.json": {
-    "mtime": 1792219841.173026,
-    "seen": 1792219877.257606,
-    "ast_hash": "556fa5dbe4f03ec5ff11988e17225d48",
+    "mtime": 1792225409.1206493,
+    "seen": 1792225471.6090317,
+    "ast_hash": "afbc805d791b4392f1202e9604206881",
     "semantic_hash": ""
   },
   "checklist_report/retest-2026-10-17/results.json": {
@@ -2013,18 +2013,6 @@
     "mtime": 1792218636.73129,
     "seen": 1792219877.2677832,
     "ast_hash": "8ed395d88357b3121905ecb6edf6ba8d",
-    "semantic_hash": ""
-  },
-  "e2e/checklist_report/playwright-results.json": {
-    "mtime": 1792216093.681239,
-    "seen": 1792219877.2677832,
-    "ast_hash": "e9ca5d9ca9579ce8cb5696b9e0b3af0c",
-    "semantic_hash": ""
-  },
-  "e2e/checklist_report/retest-2026-10-17/playwright-results.json": {
-    "mtime": 1792219166.925715,
-    "seen": 1792219877.2677832,
-    "ast_hash": "e2ebd4f6db14eb1ce3b21f783df7b96f",
     "semantic_hash": ""
   },
   "e2e/contact-seller.spec.ts": {
@@ -2297,18 +2285,6 @@
     "ast_hash": "7fba720429ba13e6d69ed66eab2fbbda",
     "semantic_hash": ""
   },
-  "e2e/checklist_report/playwright-report/index.html": {
-    "mtime": 1792216093.8426511,
-    "seen": 1792219877.3241189,
-    "ast_hash": "6f29006649b4878554fbe579587b93c1",
-    "semantic_hash": ""
-  },
-  "e2e/checklist_report/retest-2026-10-17/playwright-report/index.html": {
-    "mtime": 1792219166.9462202,
-    "seen": 1792219877.3241189,
-    "ast_hash": "2fd4b97c97d679df3d15c08a34ee2da9",
-    "semantic_hash": ""
-  },
   "app/apple-icon.png": {
     "mtime": 1792214858.622692,
     "seen": 1792219877.3241189,
@@ -2361,6 +2337,360 @@
     "mtime": 1792214858.624713,
     "seen": 1792219877.3250852,
     "ast_hash": "0329ed124c493439bfc6d3220cdc0d1c",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/contrast-audit.json": {
+    "mtime": 1792224316.5722268,
+    "seen": 1792225471.6090317,
+    "ast_hash": "d954597867ff61be377c431902a031e1",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/earlier-pass-audit.json": {
+    "mtime": 1792224671.5124698,
+    "seen": 1792225471.6090317,
+    "ast_hash": "b051d7939077ebd87a16570340253a11",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/metadata-audit.json": {
+    "mtime": 1792224362.5701587,
+    "seen": 1792225471.6090317,
+    "ast_hash": "255afc4e3d801712014c0c410738b981",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/mobile-coverage.json": {
+    "mtime": 1792225409.2720802,
+    "seen": 1792225471.6090317,
+    "ast_hash": "d08b737f46ae08f9f3cf24e8af2e6e0a",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/playwright-results.json": {
+    "mtime": 1792224986.2216923,
+    "seen": 1792225471.6090317,
+    "ast_hash": "647c0c746f52cbdcc566e4b2c81bcee8",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/results.json": {
+    "mtime": 1792225007.9969661,
+    "seen": 1792225471.6090317,
+    "ast_hash": "71bd7d1d2578aa1ff946780024fbfb9d",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/visual-baselines.json": {
+    "mtime": 1792224895.8043735,
+    "seen": 1792225471.6090317,
+    "ast_hash": "fd8398199c2781356aba681e7477dd2f",
+    "semantic_hash": ""
+  },
+  "e2e/visual.spec.ts": {
+    "mtime": 1792224774.2260518,
+    "seen": 1792225471.624287,
+    "ast_hash": "b19d3c586dc1bc4d47b06e4b487cb06f",
+    "semantic_hash": ""
+  },
+  "scripts/build_retest_10_17b_reports.js": {
+    "mtime": 1792225086.6487238,
+    "seen": 1792225471.63017,
+    "ast_hash": "4a14968b68fa6eece981512cc65626ed",
+    "semantic_hash": ""
+  },
+  "scripts/capture_visual_baselines.js": {
+    "mtime": 1792224860.779418,
+    "seen": 1792225471.63017,
+    "ast_hash": "e7197d6aebc20eaa507629742f3c889c",
+    "semantic_hash": ""
+  },
+  "scripts/measure_contrast.js": {
+    "mtime": 1792224303.8404572,
+    "seen": 1792225471.63017,
+    "ast_hash": "e26bf7e3d56f1e4d2fea848593a6b4db",
+    "semantic_hash": ""
+  },
+  "scripts/run_mobile_coverage.js": {
+    "mtime": 1792224209.5571702,
+    "seen": 1792225471.6331697,
+    "ast_hash": "705bac0e7df5209ac086ee365b5f1f6e",
+    "semantic_hash": ""
+  },
+  "scripts/verify_15_earlier_pass.js": {
+    "mtime": 1792224660.9882998,
+    "seen": 1792225471.6351736,
+    "ast_hash": "3dc5f004a492a2669affc54b20a24055",
+    "semantic_hash": ""
+  },
+  "scripts/verify_metadata.js": {
+    "mtime": 1792224354.8622606,
+    "seen": 1792225471.6361697,
+    "ast_hash": "de8e1162f8142ba1815735cf8546bfaf",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17/playwright-report/data/233125fa54c11fe5b944b9c760698327ea0a987b.md": {
+    "mtime": 1792225409.1648984,
+    "seen": 1792225471.6654265,
+    "ast_hash": "d0488bdc80b5fc8bfb2a172dfb006249",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17/playwright-report/data/2f5a931f5f95dbefc4ccac0dad7ca4b251db7659.md": {
+    "mtime": 1792225409.1479182,
+    "seen": 1792225471.6654265,
+    "ast_hash": "ee82dd2e69d7b442e1a2687925af6265",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17/playwright-report/data/639ac114ed75da502e9c4fb73344add23002aa3a.md": {
+    "mtime": 1792225409.1328208,
+    "seen": 1792225471.6654265,
+    "ast_hash": "7c77980d17a2241b6549cd60e415b331",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17/playwright-report/index.html": {
+    "mtime": 1792225409.2010317,
+    "seen": 1792225471.6654265,
+    "ast_hash": "5155b33986794000e6550e9bf22fd0cb",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/SUMMARY.md": {
+    "mtime": 1792225095.4022202,
+    "seen": 1792225471.667126,
+    "ast_hash": "a151722691014be3eb44ceffdcac0be5",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/contrast.md": {
+    "mtime": 1792225095.405548,
+    "seen": 1792225471.667126,
+    "ast_hash": "ad8fee147ee044073a4df26132178b20",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/earlier-pass-audit.md": {
+    "mtime": 1792225095.4033206,
+    "seen": 1792225471.667126,
+    "ast_hash": "23c7f7eecaaac1a500a46b8089169723",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/metadata.md": {
+    "mtime": 1792225095.405548,
+    "seen": 1792225471.667126,
+    "ast_hash": "10f5087ec1dcae4d8ee73c54cdcb7f48",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/mobile-coverage.md": {
+    "mtime": 1792225420.9497247,
+    "seen": 1792225471.667126,
+    "ast_hash": "4eb8960d60f1d0368b2224226dba4184",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/performance.md": {
+    "mtime": 1792225095.4050164,
+    "seen": 1792225471.667126,
+    "ast_hash": "6d4396dd26d387e7c2838990350823e8",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/provenance.md": {
+    "mtime": 1792225095.4027789,
+    "seen": 1792225471.667126,
+    "ast_hash": "c0f663560e6212329105b83e777c6eaa",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17/playwright-report/data/bc2a307cef61f22011860acddc6667424e1d9f01.png": {
+    "mtime": 1792225409.163138,
+    "seen": 1792225471.6721025,
+    "ast_hash": "8977b93f5f903d07e362272e2810bc02",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_android-pixel-7_auth_modal.png": {
+    "mtime": 1792224877.4818435,
+    "seen": 1792225471.6721025,
+    "ast_hash": "822a152cc62737c52f0e7f2ea59e00af",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_android-pixel-7_browse.png": {
+    "mtime": 1792224816.8012753,
+    "seen": 1792225471.6721025,
+    "ast_hash": "964f37424b734c3abb3560ab21478276",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_android-pixel-7_home.png": {
+    "mtime": 1792224814.415773,
+    "seen": 1792225471.6721025,
+    "ast_hash": "4823c473b26f72d9ef309fd50b25b94d",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_android-pixel-7_listing_detail.png": {
+    "mtime": 1792224819.070742,
+    "seen": 1792225471.6721025,
+    "ast_hash": "82f5236e34ef215137dd4bbb351d5b3a",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_android-small-360_auth_modal.png": {
+    "mtime": 1792224878.9536705,
+    "seen": 1792225471.6721025,
+    "ast_hash": "e7d20544ae4a79c0b387320ba65bf493",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_android-small-360_browse.png": {
+    "mtime": 1792224836.4727347,
+    "seen": 1792225471.6721025,
+    "ast_hash": "5053bd66a95df398591c96b7ddd98c68",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_android-small-360_home.png": {
+    "mtime": 1792224834.2495842,
+    "seen": 1792225471.6721025,
+    "ast_hash": "1c4615af738e1db9414ac44867d83dfe",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_android-small-360_listing_detail.png": {
+    "mtime": 1792224838.2948878,
+    "seen": 1792225471.6721025,
+    "ast_hash": "839bd07fc0d1c229451e6aa63da4f626",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_chrome-desktop-1440_auth_modal.png": {
+    "mtime": 1792224736.173071,
+    "seen": 1792225471.6721025,
+    "ast_hash": "53929e7c1b5a9b86237bec50d473e0e8",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_chrome-desktop-1440_browse.png": {
+    "mtime": 1792224731.374129,
+    "seen": 1792225471.6721025,
+    "ast_hash": "0825775063c8c127270f424f7e125d05",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_chrome-desktop-1440_home.png": {
+    "mtime": 1792224728.5027683,
+    "seen": 1792225471.6721025,
+    "ast_hash": "c225aab147a913c3b7d632f3a5bf3e7e",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_chrome-desktop-1440_listing_detail.png": {
+    "mtime": 1792224734.141535,
+    "seen": 1792225471.6721025,
+    "ast_hash": "bd210fd4a9145bd570ab3b40f5b77e99",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_chrome-laptop-1024_auth_modal.png": {
+    "mtime": 1792224746.915125,
+    "seen": 1792225471.6721025,
+    "ast_hash": "a390db8f7e9bc4da954a78306e631206",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_chrome-laptop-1024_browse.png": {
+    "mtime": 1792224742.7654932,
+    "seen": 1792225471.6721025,
+    "ast_hash": "f2f2d20bdccb0bdae29e82ab5b8c32d8",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_chrome-laptop-1024_home.png": {
+    "mtime": 1792224740.1344607,
+    "seen": 1792225471.6721025,
+    "ast_hash": "2ba843e0c5f75076304ffa14ac789b67",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_chrome-laptop-1024_listing_detail.png": {
+    "mtime": 1792224744.8668468,
+    "seen": 1792225471.6721025,
+    "ast_hash": "19d4bd37b03e4ffc6518b0f1e115f1b7",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_ipad_auth_modal.png": {
+    "mtime": 1792224771.8775349,
+    "seen": 1792225471.6721025,
+    "ast_hash": "09ff86418a725ec4cdb03794ba645f17",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_ipad_browse.png": {
+    "mtime": 1792224767.558786,
+    "seen": 1792225471.6721025,
+    "ast_hash": "d703d855e8344cdbac4d355dcee0906a",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_ipad_home.png": {
+    "mtime": 1792224764.9194317,
+    "seen": 1792225471.6721025,
+    "ast_hash": "b8efb9c52469c10b3e19021250d0ba54",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_ipad_listing_detail.png": {
+    "mtime": 1792224769.550506,
+    "seen": 1792225471.6721025,
+    "ast_hash": "44c078ad73a693820dc91208f348f373",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_iphone-14_auth_modal.png": {
+    "mtime": 1792224875.9196281,
+    "seen": 1792225471.6721025,
+    "ast_hash": "f43559245a1190dbbb96a82179aa1368",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_iphone-14_browse.png": {
+    "mtime": 1792224797.1393123,
+    "seen": 1792225471.6721025,
+    "ast_hash": "4b02f4673f9a3aa7afef6e6329be6c5f",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_iphone-14_home.png": {
+    "mtime": 1792224794.8415456,
+    "seen": 1792225471.6721025,
+    "ast_hash": "253df656c44013990cc205851edc89f1",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_iphone-14_listing_detail.png": {
+    "mtime": 1792224799.300252,
+    "seen": 1792225471.6721025,
+    "ast_hash": "3de60483dffd6f44d3925024dcd89a10",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_iphone-se-375_auth_modal.png": {
+    "mtime": 1792224872.9633548,
+    "seen": 1792225471.6721025,
+    "ast_hash": "71bd57ddacf3c0e660f4bfd3e759a691",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_iphone-se-375_browse.png": {
+    "mtime": 1792224776.9364955,
+    "seen": 1792225471.6721025,
+    "ast_hash": "0967625d16cb5c3b4b66230fde5c98f7",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_iphone-se-375_home.png": {
+    "mtime": 1792224774.3449073,
+    "seen": 1792225471.6721025,
+    "ast_hash": "4a1809036e1c14aba8b1dcb0e248a812",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_iphone-se-375_listing_detail.png": {
+    "mtime": 1792224779.1104462,
+    "seen": 1792225471.6721025,
+    "ast_hash": "bb60b05023e088509462b35fa13c92c8",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_safari-desktop_auth_modal.png": {
+    "mtime": 1792224762.046274,
+    "seen": 1792225471.6721025,
+    "ast_hash": "0455585d58b4c4e7824dc32e4b6edf07",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_safari-desktop_browse.png": {
+    "mtime": 1792224757.6693466,
+    "seen": 1792225471.6721025,
+    "ast_hash": "34b8909e2c13b0c98d24fadebc933509",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_safari-desktop_home.png": {
+    "mtime": 1792224754.3915925,
+    "seen": 1792225471.6721025,
+    "ast_hash": "f5eecb5008f7b0f0986e62418abe0010",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/baseline_safari-desktop_listing_detail.png": {
+    "mtime": 1792224759.7283642,
+    "seen": 1792225471.6721025,
+    "ast_hash": "c610684a9be3061a60a623b222d58839",
+    "semantic_hash": ""
+  },
+  "checklist_report/retest-2026-10-17b/screenshots/button_contrast_comparison.png": {
+    "mtime": 1792224316.570001,
+    "seen": 1792225471.6721025,
+    "ast_hash": "c9393d51195aecf93f6888922ae3bddc",
     "semantic_hash": ""
   }
 }

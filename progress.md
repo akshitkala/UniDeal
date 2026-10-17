@@ -557,3 +557,31 @@ Context: Fixed all audit failures identified in pre-launch QA across CODE, A11Y,
   - Computed all status and severity counts in `SUMMARY.md` directly from `results.json` programmatically via script.
   - Final retest verdict: **GO** (0 automated P0 or P1 failures remain).
 
+
+## 2026-10-17: Pre-Launch Follow-Up Audit (2026-10-17b Strict Provenance Re-Verification)
+
+Context: Executed rigorous follow-up audit strictly per user instructions (test and report only, zero application code modifications). Rebuilt checklist results directly from Playwright JSON reporter output, audited 15 non-automated earlier-pass items, measured cross-project mobile coverage, captured 32 visual baselines, performed detailed Lighthouse performance diagnosis, and measured button contrast.
+
+- **1. Provenance Rebuild**:
+  - Rebuilt `results.json` strictly from Playwright JSON reporter output (`checklist_report/retest-2026-10-17b/playwright-results.json`).
+  - Strict classification: 41 PASS, 2 FAIL (`SEC-18`, `FUN-42` on strict mode locator clash), 141 NEEDS-HUMAN (no unverified item marked PASS).
+- **2. Earlier-Pass Audit (15 IDs)**:
+  - Re-verified 15 items (`SEC-03, 04, 05, 07, 08, 09, 11, 12, 16, 17`, `FUN-05, 08, 14, 15, 30`) via live database queries and code inspections. All 15 invariants hold true in PostgreSQL RLS and server API logic.
+- **3. Mobile Spec Coverage Matrix**:
+  - Tested `sell-edit`, `dashboard`, `report`, `admin-flows`, `admin-reject-ratelimit` across `chrome-desktop-1440`, `iphone-se-375`, `iphone-14`, and `android-pixel-7`.
+  - Result: 5/5 PASS on desktop; 0/5 PASS on mobile viewports due to desktop navbar locators (`button:has-text("Sign In").first()`) being hidden behind mobile drawers.
+- **4. Visual Baselines**:
+  - Captured 32 baseline PNG screenshots across all 8 projects covering Home, Browse, Listing Detail, and Auth Modal in `checklist_report/retest-2026-10-17b/screenshots/`.
+  - Created formal visual spec in `e2e/visual.spec.ts`.
+- **5. Mobile Performance Diagnosis (Browse Score 71)**:
+  - Extracted metrics: LCP 2.9s, CLS 0.814, TBT 0ms, INP 16ms. LCP element: `<h1 ...>Campus Marketplace</h1>` (2.41s render delay).
+  - Top 3 causes documented: CLS 0.814 caused by footer displacement on dynamic listing load, client-side hydration/font delay, and oversized Unsplash images on mobile.
+- **6. Button Contrast Audit**:
+  - Real measured contrast: Primary button (`#166534`) = 7.13:1 (AAA), Contact Seller (`#14532D`) = 9.11:1 (AAA), Danger = 4.52:1 (AA).
+  - Side-by-side screenshot saved to `button_contrast_comparison.png`.
+- **7. Metadata Verification**:
+  - Confirmed HTTP 200 on `/favicon.ico`, `/robots.txt`, `/sitemap.xml`, and `/manifest.webmanifest`.
+  - Confirmed OpenGraph tags resolve to `https://unideal.app` with zero localhost occurrences when `NEXT_PUBLIC_SITE_URL` is set.
+- **Corrected Verdict**: **NO-GO** (due to 2 automated P0 locator failures in test runner and 141 checklist items requiring physical human sign-off).
+
+

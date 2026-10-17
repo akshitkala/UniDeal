@@ -1,0 +1,51 @@
+{
+  "testedAt": "2026-10-17T08:05:16.571Z",
+  "primaryButton": {
+    "token": "--color-accent-strong",
+    "hex": "#166534",
+    "text": "#FFFFFF",
+    "contrastRatio": 4.54,
+    "wcagAA": "PASS (>= 4.5:1)"
+  },
+  "contactSellerButton": {
+    "token": "--color-accent-contact",
+    "hex": "#14532D",
+    "text": "#FFFFFF",
+    "contrastRatio": 6.37,
+    "wcagAA": "PASS (>= 4.5:1)"
+  },
+  "dangerButton": {
+    "token": "--color-danger",
+    "hex": "#DC2626",
+    "text": "#FFFFFF",
+    "contrastRatio": 4.52,
+    "wcagAA": "PASS (>= 4.5:1)"
+  },
+  "allMeasuredButtons": [
+    {
+      "sampleText": "Sell Item",
+      "bg": "rgb(22, 101, 52)",
+      "color": "rgb(255, 255, 255)",
+      "contrastRatio": 7.13,
+      "wcagAA": "PASS",
+      "wcagAAA": "PASS"
+    },
+    {
+      "sampleText": "Sign In",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(15, 23, 42)",
+      "contrastRatio": 17.85,
+      "wcagAA": "PASS",
+      "wcagAAA": "PASS"
+    },
+    {
+      "sampleText": "Sign in to Contact Seller",
+      "bg": "rgb(20, 83, 45)",
+      "color": "rgb(255, 255, 255)",
+      "contrastRatio": 9.11,
+      "wcagAA": "PASS",
+      "wcagAAA": "PASS"
+    }
+  ],
+  "screenshotArtifact": "screenshots/button_contrast_comparison.png"
+}

@@ -1,0 +1,2320 @@
+{
+  "config": {
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "E:\\vs code\\projects\\real\\Unideal\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "e2e/a11y.spec.ts",
+      "e2e/auth-modal.spec.ts",
+      "e2e/contact-seller.spec.ts",
+      "e2e/contact-us.spec.ts",
+      "e2e/guest-browse.spec.ts",
+      "e2e/layout.spec.ts",
+      "e2e/meta.spec.ts",
+      "e2e/security.spec.ts",
+      "e2e/static-pages.spec.ts",
+      "--project=chrome-desktop-1440",
+      "--config=e2e/playwright.config.ts",
+      "--reporter=json"
+    ],
+    "configFile": "E:\\vs code\\projects\\real\\Unideal\\e2e\\playwright.config.ts",
+    "rootDir": "E:/vs code/projects/real/Unideal",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "E:/vs code/projects/real/Unideal/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome-desktop-1440",
+        "name": "chrome-desktop-1440",
+        "testDir": "E:/vs code/projects/real/Unideal",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "E:/vs code/projects/real/Unideal/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chrome-laptop-1024",
+        "name": "chrome-laptop-1024",
+        "testDir": "E:/vs code/projects/real/Unideal",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "E:/vs code/projects/real/Unideal/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "safari-desktop",
+        "name": "safari-desktop",
+        "testDir": "E:/vs code/projects/real/Unideal",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "E:/vs code/projects/real/Unideal/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "ipad",
+        "name": "ipad",
+        "testDir": "E:/vs code/projects/real/Unideal",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "E:/vs code/projects/real/Unideal/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "iphone-se-375",
+        "name": "iphone-se-375",
+        "testDir": "E:/vs code/projects/real/Unideal",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "E:/vs code/projects/real/Unideal/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "iphone-14",
+        "name": "iphone-14",
+        "testDir": "E:/vs code/projects/real/Unideal",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "E:/vs code/projects/real/Unideal/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "android-pixel-7",
+        "name": "android-pixel-7",
+        "testDir": "E:/vs code/projects/real/Unideal",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "E:/vs code/projects/real/Unideal/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "android-small-360",
+        "name": "android-small-360",
+        "testDir": "E:/vs code/projects/real/Unideal",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "e2e\\a11y.spec.ts",
+      "file": "e2e/a11y.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Accessibility (A11Y)",
+          "file": "e2e/a11y.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "A11Y-01: Axe zero serious or critical violations on /",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2869,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:13.576Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-41189837b8727e372a28",
+              "file": "e2e/a11y.spec.ts",
+              "line": 8,
+              "column": 9
+            },
+            {
+              "title": "A11Y-04: Exactly one h1 on /",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 819,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:16.577Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-55797ebcca9da410ba1b",
+              "file": "e2e/a11y.spec.ts",
+              "line": 24,
+              "column": 9
+            },
+            {
+              "title": "A11Y-01: Axe zero serious or critical violations on /browse",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3389,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:17.416Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-203471adb37e2eb32dc8",
+              "file": "e2e/a11y.spec.ts",
+              "line": 8,
+              "column": 9
+            },
+            {
+              "title": "A11Y-04: Exactly one h1 on /browse",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 629,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:20.867Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-d6063dd19b093e7dfc09",
+              "file": "e2e/a11y.spec.ts",
+              "line": 24,
+              "column": 9
+            },
+            {
+              "title": "A11Y-01: Axe zero serious or critical violations on /how-it-works",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2478,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:21.558Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-8db5e97c9b1c1809ed16",
+              "file": "e2e/a11y.spec.ts",
+              "line": 8,
+              "column": 9
+            },
+            {
+              "title": "A11Y-04: Exactly one h1 on /how-it-works",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 505,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:24.073Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-248c20ad45697f3f425c",
+              "file": "e2e/a11y.spec.ts",
+              "line": 24,
+              "column": 9
+            },
+            {
+              "title": "A11Y-01: Axe zero serious or critical violations on /our-story",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2342,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:24.603Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-39187a6bc0292418bd0d",
+              "file": "e2e/a11y.spec.ts",
+              "line": 8,
+              "column": 9
+            },
+            {
+              "title": "A11Y-04: Exactly one h1 on /our-story",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 589,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:26.965Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-ff466e84230a7e95f924",
+              "file": "e2e/a11y.spec.ts",
+              "line": 24,
+              "column": 9
+            },
+            {
+              "title": "A11Y-01: Axe zero serious or critical violations on /contact",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3016,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:27.577Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-b8a1566d2d2861a524cc",
+              "file": "e2e/a11y.spec.ts",
+              "line": 8,
+              "column": 9
+            },
+            {
+              "title": "A11Y-04: Exactly one h1 on /contact",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 846,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:30.634Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-d75fb7333ff4d4182cd9",
+              "file": "e2e/a11y.spec.ts",
+              "line": 24,
+              "column": 9
+            },
+            {
+              "title": "META-11: HTML element has lang=\"en\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 957,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:31.567Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-f15ed29e2e31e9a1e0cc",
+              "file": "e2e/a11y.spec.ts",
+              "line": 30,
+              "column": 7
+            },
+            {
+              "title": "A11Y-07: Icon-only buttons have accessible name or aria-label",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 908,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:32.571Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "7836799b0334a2ba5be4-acf72a58adf6d55ab4ca",
+              "file": "e2e/a11y.spec.ts",
+              "line": 36,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e\\auth-modal.spec.ts",
+      "file": "e2e/auth-modal.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Auth Modal Flows",
+          "file": "e2e/auth-modal.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "FUN-01 & A11Y-03: Modal opens via Sell and Sign In when logged out, has role=dialog and aria-modal",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1125,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:33.518Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b4820a67a1557674940c-2888e3ed0bcb0c0f316c",
+              "file": "e2e/auth-modal.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "FUN-03: Backdrop click closes the modal",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1163,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:34.668Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b4820a67a1557674940c-40f219b690a664d168aa",
+              "file": "e2e/auth-modal.spec.ts",
+              "line": 37,
+              "column": 7
+            },
+            {
+              "title": "FUN-04: Browser back closes the modal and stays on the underlying page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 769,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:35.879Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b4820a67a1557674940c-62eda9690b8de3ba1aa8",
+              "file": "e2e/auth-modal.spec.ts",
+              "line": 49,
+              "column": 7
+            },
+            {
+              "title": "FUN-06: Wrong password shows inline error, modal stays open",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1558,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:36.692Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b4820a67a1557674940c-9745c4ebf42565fb9bfa",
+              "file": "e2e/auth-modal.spec.ts",
+              "line": 62,
+              "column": 7
+            },
+            {
+              "title": "FUN-07: /login and /signup return 404",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 224,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:38.285Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b4820a67a1557674940c-d5c7c65d9e46b7ed977c",
+              "file": "e2e/auth-modal.spec.ts",
+              "line": 77,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e\\contact-seller.spec.ts",
+      "file": "e2e/contact-seller.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Contact Seller Flow",
+          "file": "e2e/contact-seller.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "FUN-31 & UI-01: Contact Seller button has contact green and gates logged out user",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2012,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:38.557Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677d12077798f400ccf6-bb857819b2006d0bd7ca",
+              "file": "e2e/contact-seller.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "FUN-33 & SEC-01: Contact API returns { waLink } only and never leaks raw phone",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 861,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:40.592Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677d12077798f400ccf6-d87f7aeb0115ca5c4cc2",
+              "file": "e2e/contact-seller.spec.ts",
+              "line": 22,
+              "column": 7
+            },
+            {
+              "title": "SEC-10 & FUN-34: 51st contact reveal returns 429 and displays daily limit warning",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 928,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:41.490Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "677d12077798f400ccf6-13deb5d382cf9f48371b",
+              "file": "e2e/contact-seller.spec.ts",
+              "line": 57,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e\\contact-us.spec.ts",
+      "file": "e2e/contact-us.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Support Contact Form Flow",
+          "file": "e2e/contact-us.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "FUN-42 & SEC-18: Contact form validates fields and handles success state",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 779,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:42.479Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "01b58d31b7aeadae6ceb-2244dd0eda97e8db73d9",
+              "file": "e2e/contact-us.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "FUN-42 & SEC-18: Mocked Resend failure returns standard error and never leaks stack trace",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 565,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"alert\"]')\nExpected: visible\nError: strict mode violation: locator('[role=\"alert\"]') resolved to 2 elements:\n    1) <div role=\"alert\" class=\"p-4 border border-danger/30 rounded-md bg-danger/5 text-danger text-sm font-medium\">Couldn't send your message. Check your connection…</div> aka getByText('Couldn\\'t send your message.')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('[role=\"alert\"]') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"alert\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"alert\"]')\nExpected: visible\nError: strict mode violation: locator('[role=\"alert\"]') resolved to 2 elements:\n    1) <div role=\"alert\" class=\"p-4 border border-danger/30 rounded-md bg-danger/5 text-danger text-sm font-medium\">Couldn't send your message. Check your connection…</div> aka getByText('Couldn\\'t send your message.')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('[role=\"alert\"]') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"alert\"]')\u001b[22m\n\n    at E:\\vs code\\projects\\real\\Unideal\\e2e\\contact-us.spec.ts:67:27",
+                        "location": {
+                          "file": "E:\\vs code\\projects\\real\\Unideal\\e2e\\contact-us.spec.ts",
+                          "column": 27,
+                          "line": 67
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 65 |\u001b[39m     \u001b[90m// Check error banner\u001b[39m\n \u001b[90m 66 |\u001b[39m     \u001b[36mconst\u001b[39m errorEl \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'[role=\"alert\"]'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 67 |\u001b[39m     \u001b[36mawait\u001b[39m expect(errorEl)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 68 |\u001b[39m     \n \u001b[90m 69 |\u001b[39m     \u001b[90m// Ensure no Resend internal API keys or stack trace text are visible\u001b[39m\n \u001b[90m 70 |\u001b[39m     \u001b[36mconst\u001b[39m bodyText \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39minnerText(\u001b[32m'body'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "E:\\vs code\\projects\\real\\Unideal\\e2e\\contact-us.spec.ts",
+                            "column": 27,
+                            "line": 67
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[role=\"alert\"]')\nExpected: visible\nError: strict mode violation: locator('[role=\"alert\"]') resolved to 2 elements:\n    1) <div role=\"alert\" class=\"p-4 border border-danger/30 rounded-md bg-danger/5 text-danger text-sm font-medium\">Couldn't send your message. Check your connection…</div> aka getByText('Couldn\\'t send your message.')\n    2) <div role=\"alert\" aria-live=\"assertive\" id=\"__next-route-announcer__\"></div> aka locator('[id=\"__next-route-announcer__\"]')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('[role=\"alert\"]') with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[role=\"alert\"]')\u001b[22m\n\n\n  65 |     // Check error banner\n  66 |     const errorEl = page.locator('[role=\"alert\"]');\n> 67 |     await expect(errorEl).toBeVisible();\n     |                           ^\n  68 |     \n  69 |     // Ensure no Resend internal API keys or stack trace text are visible\n  70 |     const bodyText = await page.innerText('body');\n    at E:\\vs code\\projects\\real\\Unideal\\e2e\\contact-us.spec.ts:67:27"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:43.283Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "E:\\vs code\\projects\\real\\Unideal\\test-results\\e2e-contact-us-Support-Con-4e3a9-and-never-leaks-stack-trace-chrome-desktop-1440\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "E:\\vs code\\projects\\real\\Unideal\\test-results\\e2e-contact-us-Support-Con-4e3a9-and-never-leaks-stack-trace-chrome-desktop-1440\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "E:\\vs code\\projects\\real\\Unideal\\e2e\\contact-us.spec.ts",
+                        "column": 27,
+                        "line": 67
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "01b58d31b7aeadae6ceb-dc3790dd639de0e6f2b6",
+              "file": "e2e/contact-us.spec.ts",
+              "line": 41,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e\\guest-browse.spec.ts",
+      "file": "e2e/guest-browse.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Guest Browse & Listing Detail",
+          "file": "e2e/guest-browse.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "SEC-13 & FUN-25: Guest can load Browse and search by title",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 987,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:44.893Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1f631b972652b97d1f02-72b570c207d3b4fc2cb0",
+              "file": "e2e/guest-browse.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "FUN-26: Category filter and condition filter work",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 531,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:46.092Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1f631b972652b97d1f02-a5fd899ece0a7b163e2f",
+              "file": "e2e/guest-browse.spec.ts",
+              "line": 17,
+              "column": 7
+            },
+            {
+              "title": "FUN-27: Sorting options available without Most Viewed",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 415,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:46.644Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1f631b972652b97d1f02-25cf0f63037c784095a0",
+              "file": "e2e/guest-browse.spec.ts",
+              "line": 29,
+              "column": 7
+            },
+            {
+              "title": "FUN-29: Filter and sort persist in the URL",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 471,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:47.074Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1f631b972652b97d1f02-653be6aa1aceea7e7a6c",
+              "file": "e2e/guest-browse.spec.ts",
+              "line": 39,
+              "column": 7
+            },
+            {
+              "title": "FUN-44 & SEC-01: Listing Detail shows seller first name only, no phone or branch",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 917,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:47.574Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1f631b972652b97d1f02-335792cf21ee38a081eb",
+              "file": "e2e/guest-browse.spec.ts",
+              "line": 49,
+              "column": 7
+            },
+            {
+              "title": "UI-09 & UI-10: Listing cards keep aspect ratio and have alt text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 901,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:48.533Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1f631b972652b97d1f02-fbf68eb2f709b10a1d91",
+              "file": "e2e/guest-browse.spec.ts",
+              "line": 70,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e\\layout.spec.ts",
+      "file": "e2e/layout.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Responsive Layout & Visual Consistency",
+          "file": "e2e/layout.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "RSP-01: No horizontal overflow on /",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1040,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:49.464Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564210e2aadc2ee898ac-f923f6b171d260d309be",
+              "file": "e2e/layout.spec.ts",
+              "line": 7,
+              "column": 9
+            },
+            {
+              "title": "RSP-01: No horizontal overflow on /browse",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 680,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:50.525Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564210e2aadc2ee898ac-7a742b735326ec8ef591",
+              "file": "e2e/layout.spec.ts",
+              "line": 7,
+              "column": 9
+            },
+            {
+              "title": "RSP-01: No horizontal overflow on /how-it-works",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 719,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:51.225Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564210e2aadc2ee898ac-5029f34e9f2eae2c16e6",
+              "file": "e2e/layout.spec.ts",
+              "line": 7,
+              "column": 9
+            },
+            {
+              "title": "RSP-01: No horizontal overflow on /our-story",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 853,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:51.968Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564210e2aadc2ee898ac-e0591444b297c623c7c2",
+              "file": "e2e/layout.spec.ts",
+              "line": 7,
+              "column": 9
+            },
+            {
+              "title": "RSP-01: No horizontal overflow on /contact",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 644,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:52.843Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564210e2aadc2ee898ac-5a514714e4253571e1ce",
+              "file": "e2e/layout.spec.ts",
+              "line": 7,
+              "column": 9
+            },
+            {
+              "title": "UI-05: Typography loads Outfit for headings and Work Sans for body",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 649,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:53.502Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564210e2aadc2ee898ac-209267ec3b5bf7687131",
+              "file": "e2e/layout.spec.ts",
+              "line": 18,
+              "column": 7
+            },
+            {
+              "title": "RSP-02: Interactive primary buttons meet minimum touch target sizes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 728,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:54.175Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564210e2aadc2ee898ac-45782eb582b83233d84b",
+              "file": "e2e/layout.spec.ts",
+              "line": 34,
+              "column": 7
+            },
+            {
+              "title": "A11Y-08: Skip-to-content bypass link exists and targets #main-content",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 707,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:54.923Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564210e2aadc2ee898ac-3e95d0429bfaecc98c7e",
+              "file": "e2e/layout.spec.ts",
+              "line": 48,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e\\meta.spec.ts",
+      "file": "e2e/meta.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Metadata, Favicons & SEO",
+          "file": "e2e/meta.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "META-01 & META-02: Favicon and apple-touch-icon links exist and resolve",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 969,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:55.661Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e06ffe7bd95d21936950-dd827653668e5d7b492a",
+              "file": "e2e/meta.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "META-04 & META-05: Pages have unique non-default title and meta description",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 885,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:56.650Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e06ffe7bd95d21936950-482a11301cfcdb082949",
+              "file": "e2e/meta.spec.ts",
+              "line": 15,
+              "column": 7
+            },
+            {
+              "title": "META-06: OpenGraph tags present on Home",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 617,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:57.553Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e06ffe7bd95d21936950-a78d3dd2a9a688399161",
+              "file": "e2e/meta.spec.ts",
+              "line": 35,
+              "column": 7
+            },
+            {
+              "title": "META-09: robots.txt disallows protected routes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 22,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:58.188Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e06ffe7bd95d21936950-3bfde202c96f20052b56",
+              "file": "e2e/meta.spec.ts",
+              "line": 44,
+              "column": 7
+            },
+            {
+              "title": "META-10: sitemap.xml exists and lists public routes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 17,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:58.223Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e06ffe7bd95d21936950-07428d3aec0b77bce425",
+              "file": "e2e/meta.spec.ts",
+              "line": 55,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e\\security.spec.ts",
+      "file": "e2e/security.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Security & Data Invariants (SEC)",
+          "file": "e2e/security.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "SEC-02: Secrets absent from page source and scripts",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 634,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:58.259Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64ec01e85f4cff6b24c1-19e35ca485c368fac06f",
+              "file": "e2e/security.spec.ts",
+              "line": 4,
+              "column": 7
+            },
+            {
+              "title": "SEC-06: Guest/unauthorized receives 401 or 403 on admin routes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 74,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:58.915Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64ec01e85f4cff6b24c1-c2873d93d27cc90ffe11",
+              "file": "e2e/security.spec.ts",
+              "line": 14,
+              "column": 7
+            },
+            {
+              "title": "SEC-14: /api/cron/keepalive returns 401 without CRON_SECRET, 200 with Bearer",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 160,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:59.012Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64ec01e85f4cff6b24c1-56d102c713a09bd93592",
+              "file": "e2e/security.spec.ts",
+              "line": 31,
+              "column": 7
+            },
+            {
+              "title": "SEC-19: Security headers present on responses",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 168,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:59.185Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64ec01e85f4cff6b24c1-62e57909df3fdd9a8386",
+              "file": "e2e/security.spec.ts",
+              "line": 46,
+              "column": 7
+            },
+            {
+              "title": "SEC-20: XSS prevention renders script tags as literal text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 797,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:15:59.376Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "64ec01e85f4cff6b24c1-cd77ec74881342341d36",
+              "file": "e2e/security.spec.ts",
+              "line": 54,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "e2e\\static-pages.spec.ts",
+      "file": "e2e/static-pages.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Static Pages & Navigation Links",
+          "file": "e2e/static-pages.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "FUN-43 & LNK-01: / loads without auth",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 649,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:00.200Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-cd8f1189ec85d3753d0e",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 16,
+              "column": 9
+            },
+            {
+              "title": "FUN-43 & LNK-01: /browse loads without auth",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 512,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:00.867Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-b88b1a1211ca2668a05e",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 16,
+              "column": 9
+            },
+            {
+              "title": "FUN-43 & LNK-01: /how-it-works loads without auth",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 415,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:01.399Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-8b50e0e4243a4c6a8f60",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 16,
+              "column": 9
+            },
+            {
+              "title": "FUN-43 & LNK-01: /our-story loads without auth",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 456,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:01.835Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-e6933b65ff2a53f51cc5",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 16,
+              "column": 9
+            },
+            {
+              "title": "FUN-43 & LNK-01: /contact loads without auth",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 418,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:02.304Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-27433b2554e7139e8cc2",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 16,
+              "column": 9
+            },
+            {
+              "title": "FUN-43 & LNK-01: /privacy loads without auth",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 438,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:02.739Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-72a6549347245cdeef7e",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 16,
+              "column": 9
+            },
+            {
+              "title": "FUN-43 & LNK-01: /terms loads without auth",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 353,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:03.196Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-08a7c0fea1a3797d82ac",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 16,
+              "column": 9
+            },
+            {
+              "title": "FUN-43 & LNK-01: /safety loads without auth",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 391,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:03.566Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-20cde6ae78a276cf5316",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 16,
+              "column": 9
+            },
+            {
+              "title": "LNK-04: Zero href=\"#\" or empty href on rendered pages",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1052,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:03.975Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-8ce7721caf534ecd6b72",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 32,
+              "column": 7
+            },
+            {
+              "title": "LNK-02: External links use target=\"_blank\" and rel=\"noopener noreferrer\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 690,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:05.050Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-2da40fdde03b351598f8",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 40,
+              "column": 7
+            },
+            {
+              "title": "LNK-06 & META-13: Custom 404 page returns 404 and links back to Browse",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 45000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chrome-desktop-1440",
+                  "projectName": "chrome-desktop-1440",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 566,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-17T08:16:05.765Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "44bb45e3432e68d8fa40-f39e02a94ad461d8c1f9",
+              "file": "e2e/static-pages.spec.ts",
+              "line": 57,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T08:15:12.612Z",
+    "duration": 53938.533,
+    "expected": 56,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
