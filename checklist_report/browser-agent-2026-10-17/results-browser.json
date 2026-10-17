@@ -1,0 +1,119 @@
+[
+  {
+    "journey": "J1",
+    "step": "All",
+    "checklist_id": "UI-01",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "1440x900",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J1",
+    "step": "All",
+    "checklist_id": "UI-01",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "375x812",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J2",
+    "step": "All",
+    "checklist_id": "FUN-10",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "1440x900",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J2",
+    "step": "All",
+    "checklist_id": "FUN-10",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "375x812",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J3",
+    "step": "All",
+    "checklist_id": "FUN-06",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "1440x900",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J4",
+    "step": "All",
+    "checklist_id": "FUN-12",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "1440x900",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J5",
+    "step": "All",
+    "checklist_id": "FUN-20",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "1440x900",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J5",
+    "step": "All",
+    "checklist_id": "FUN-20",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "375x812",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J6",
+    "step": "All",
+    "checklist_id": "FUN-30",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "1440x900",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J7",
+    "step": "All",
+    "checklist_id": "FUN-40",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "1440x900",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J8",
+    "step": "All",
+    "checklist_id": "ADM-01",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "1440x900",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J9",
+    "step": "All",
+    "checklist_id": "STA-01",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "1440x900",
+    "source": "browser-agent"
+  },
+  {
+    "journey": "J10",
+    "step": "All",
+    "checklist_id": "RSP-01",
+    "status": "BLOCKED",
+    "evidence": "Browser agent failed to open/connect (CORTEX_STEP_TYPE_OPEN_BROWSER_URL: action timed out)",
+    "viewport": "375x812",
+    "source": "browser-agent"
+  }
+]

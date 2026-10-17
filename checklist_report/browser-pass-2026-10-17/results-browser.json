@@ -1,0 +1,254 @@
+[
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J0",
+    "step": "Layout shift measurement on Browse at 375x812 and 1440x900",
+    "checklist_id": "PERF-03",
+    "status": "PASS",
+    "evidence": "CLS mobile: 0.002, CLS desktop: 0.000. Footer position moved 0px between 0.5s and 8s.",
+    "viewport": "375x812 & 1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J1",
+    "step": "Home hero and problem section visual and scroll flow",
+    "checklist_id": "UI-05",
+    "status": "PASS",
+    "evidence": "J1_01_home_desktop.png, J1_02_home_problem_desktop.png, J1_03_home_footer_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J1",
+    "step": "Browse search, category and condition filter, and sort",
+    "checklist_id": "FUN-26",
+    "status": "PASS",
+    "evidence": "J1_05_search_engineering_desktop.png, J1_06_filter_category_condition_desktop.png, J1_07_sort_price_asc_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J1",
+    "step": "Mobile browse filtering and drawer navigation",
+    "checklist_id": "RSP-01",
+    "status": "PASS",
+    "evidence": "J1_04_mobile_drawer_open.png, J1_05_browse_mobile.png, J1_06_mobile_filters_open.png",
+    "viewport": "375x812"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J2",
+    "step": "Guest taps Contact Seller, Auth Modal opens with returnTo",
+    "checklist_id": "FUN-01",
+    "status": "PASS",
+    "evidence": "J2_02_auth_modal_opened_desktop.png, J2_02_auth_modal_opened_mobile.png",
+    "viewport": "1440x900 & 375x812"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J2",
+    "step": "Auth modal dismisses via Escape, backdrop click, and browser back",
+    "checklist_id": "FUN-03",
+    "status": "PASS",
+    "evidence": "J2_03_modal_closed_escape_desktop.png, J2_04_modal_closed_browser_back_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J2",
+    "step": "Wrong password displays inline error message in modal",
+    "checklist_id": "FUN-06",
+    "status": "PASS",
+    "evidence": "J2_05_wrong_password_desktop.png, J2_05_wrong_password_mobile.png",
+    "viewport": "1440x900 & 375x812"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J2",
+    "step": "Login resumes pending Contact Seller action seamlessly",
+    "checklist_id": "FUN-31",
+    "status": "PASS",
+    "evidence": "J2_06_action_resumed_desktop.png, J2_06_action_resumed_mobile.png",
+    "viewport": "1440x900 & 375x812"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J3",
+    "step": "Sign up with throwaway email leads to verification instructions",
+    "checklist_id": "FUN-08",
+    "status": "PASS",
+    "evidence": "J3_02_signup_form_desktop.png, J3_03_verify_email_state_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J4",
+    "step": "Verified user opens wa.me link with prefilled listing title",
+    "checklist_id": "FUN-33",
+    "status": "PASS",
+    "evidence": "J4_03_contact_clicked_desktop.png, target: https://wa.me/919876500001?text=...",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J4",
+    "step": "User contacting own listing or seller without phone number handled safely",
+    "checklist_id": "FUN-35",
+    "status": "PASS",
+    "evidence": "J4_04_own_listing_desktop.png, J4_06_seller_no_contact_notice_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J5",
+    "step": "Image upload enforces under 5MB and maximum 4 photos client-side",
+    "checklist_id": "FUN-13",
+    "status": "PASS",
+    "evidence": "J5_02_error_over_5mb_desktop.png, J5_03_photo_limit_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J5",
+    "step": "Post listing, thumbnail gallery interaction, edit price, and mark sold",
+    "checklist_id": "FUN-18",
+    "status": "PASS",
+    "evidence": "J5_05_listing_posted_desktop.png, J5_06_gallery_thumbnail_2_desktop.png, J5_08_edited_listing_desktop.png, J5_09_marked_sold_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J5",
+    "step": "Delete listing with confirm dialog removes item from dashboard",
+    "checklist_id": "FUN-20",
+    "status": "PASS",
+    "evidence": "J5_10_second_listing_posted_desktop.png, J5_11_listing_deleted_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J6",
+    "step": "Dashboard all 4 tabs (Active, Under Review, Sold, Rejected) and status badges",
+    "checklist_id": "FUN-21",
+    "status": "PASS",
+    "evidence": "J6_01_tab_active_desktop.png, J6_02_tab_under_review_desktop.png, J6_03_tab_sold_desktop.png, J6_04_tab_rejected_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J6",
+    "step": "Rejected card displays exact database rejection reason",
+    "checklist_id": "FUN-22",
+    "status": "PASS",
+    "evidence": "J6_04_tab_rejected_desktop.png, Reason: Policy violation: incorrect item details",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J7",
+    "step": "Report a listing through UI",
+    "checklist_id": "FUN-36",
+    "status": "FAIL",
+    "evidence": "J7_03_missing_report_button_desktop.png — Report button completely absent from listing detail page",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J8",
+    "step": "Admin approval mode toggle between Auto-Approve and Manual Review Queue",
+    "checklist_id": "FUN-37",
+    "status": "PASS",
+    "evidence": "J8_01_admin_overview_desktop.png, J8_02_approval_mode_toggled_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J8",
+    "step": "Admin approves and rejects pending listing with mandatory reason",
+    "checklist_id": "FUN-38",
+    "status": "PASS",
+    "evidence": "J8_04_reject_modal_desktop.png, J8_05_listing_rejected_desktop.png, J8_07_item_approved_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J8",
+    "step": "Admin ban and unban updates user state and removes seller items from Browse",
+    "checklist_id": "FUN-40",
+    "status": "PASS",
+    "evidence": "J8_10_user_unbanned_desktop.png, J8_11_user_banned_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J8",
+    "step": "Non-admin access to /admin redirected to home",
+    "checklist_id": "FUN-41",
+    "status": "PASS",
+    "evidence": "J8_13_non_admin_redirect_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J9",
+    "step": "Static pages (Our Story, How It Works, Privacy, Terms, Safety) render without auth",
+    "checklist_id": "FUN-43",
+    "status": "PASS",
+    "evidence": "J9_01_our_story_desktop.png, J9_02_how_it_works_desktop.png, J9_05_privacy_policy_desktop.png, J9_06_terms_desktop.png, J9_07_safety_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J9",
+    "step": "Contact Us form submission with validation and success feedback",
+    "checklist_id": "FUN-42",
+    "status": "PASS",
+    "evidence": "J9_03_contact_us_form_desktop.png, J9_04_contact_us_success_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J9",
+    "step": "Made-up URL returns 404 with custom branded not-found view",
+    "checklist_id": "STA-05",
+    "status": "PASS",
+    "evidence": "J9_08_404_page_desktop.png",
+    "viewport": "1440x900"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J10",
+    "step": "Mobile bottom/drawer nav and immediate guest sign-in discoverability",
+    "checklist_id": "RSP-01",
+    "status": "PASS",
+    "evidence": "J10_01_mobile_home_mobile.png, J10_02_mobile_drawer_open_mobile.png",
+    "viewport": "375x812"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J10",
+    "step": "Mobile Auth modal fits keyboard-free viewport without overflow clipping",
+    "checklist_id": "RSP-06",
+    "status": "PASS",
+    "evidence": "J10_03_auth_modal_mobile.png, scrollHeight = clientHeight = 812px",
+    "viewport": "375x812"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J10",
+    "step": "Mobile sticky search/filter bar remains pinned without layout jump",
+    "checklist_id": "RSP-03",
+    "status": "PASS",
+    "evidence": "J10_05_sticky_browse_bar_mobile.png, top: 0px at scrollY 710px",
+    "viewport": "375x812"
+  },
+  {
+    "source": "playwright-mcp-browser",
+    "journey": "J10",
+    "step": "Mobile Sell form fields and dropzone fit without horizontal scroll",
+    "checklist_id": "RSP-02",
+    "status": "PASS",
+    "evidence": "J10_06_sell_form_mobile.png, scrollWidth 360px <= window 375px",
+    "viewport": "375x812"
+  }
+]

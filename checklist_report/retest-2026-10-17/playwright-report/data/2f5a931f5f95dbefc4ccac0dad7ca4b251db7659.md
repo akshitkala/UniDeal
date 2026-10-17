@@ -1,0 +1,514 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: tests\11_admin_reject_and_ratelimit.spec.ts >> Revised Pass: 50/day Rate Limit & Admin Single/Bulk Reject >> Flow 13 (Admin Single Reject): Rejecting an approved listing persists reason
+- Location: tests\11_admin_reject_and_ratelimit.spec.ts:37:7
+
+# Error details
+
+```
+Test timeout of 45000ms exceeded.
+```
+
+```
+Error: locator.click: Test timeout of 45000ms exceeded.
+Call log:
+  - waiting for locator('button:has-text("Sign In")').first()
+    - locator resolved to <button type="button" class="py-2 px-3.5 bg-white text-neutral-text border border-border rounded-md font-medium text-sm hover:bg-surface focus:outline-none focus:ring-2 focus:ring-primary transition-colors min-h-[40px]">Sign In</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    86 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "U UniDeal" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: U
+        - generic [ref=e7]: UniDeal
+      - generic [ref=e8]:
+        - button "Sign In" [ref=e9] [cursor=pointer]
+        - button "Toggle menu" [ref=e10] [cursor=pointer]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "Campus Marketplace" [level=1] [ref=e15]
+        - paragraph [ref=e16]: Browse items listed by verified students on campus.
+      - generic [ref=e18]:
+        - textbox "Search textbooks, calculators, monitors, gym gear..." [ref=e20]
+        - generic [ref=e21]:
+          - button "Filters" [ref=e22] [cursor=pointer]
+          - combobox "Sort listings" [ref=e26]:
+            - option "Newest First" [selected]
+            - 'option "Price: Low to High"'
+            - 'option "Price: High to Low"'
+      - generic [ref=e27]:
+        - link "Spec Item 1790362626728 Good ₹500 Spec Item 1790362626728 Books & Notes Akshit" [ref=e28] [cursor=pointer]:
+          - /url: /listing/spec-item-1790362626728-f27ux
+          - generic [ref=e29]:
+            - img "Spec Item 1790362626728" [ref=e30]
+            - generic [ref=e31]: Good
+          - generic [ref=e32]:
+            - generic [ref=e33]:
+              - generic [ref=e34]: ₹500
+              - heading "Spec Item 1790362626728" [level=3] [ref=e35]
+            - generic [ref=e36]:
+              - generic [ref=e37]: Books & Notes
+              - generic [ref=e38]: Akshit
+        - link "Spec Item 1790362575668 Good ₹500 Spec Item 1790362575668 Books & Notes Akshit" [ref=e39] [cursor=pointer]:
+          - /url: /listing/spec-item-1790362575668-ux8mw
+          - generic [ref=e40]:
+            - img "Spec Item 1790362575668" [ref=e41]
+            - generic [ref=e42]: Good
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]: ₹500
+              - heading "Spec Item 1790362575668" [level=3] [ref=e46]
+            - generic [ref=e47]:
+              - generic [ref=e48]: Books & Notes
+              - generic [ref=e49]: Akshit
+        - link "Spec Item 1790362493598 Good ₹500 Spec Item 1790362493598 Books & Notes Akshit" [ref=e50] [cursor=pointer]:
+          - /url: /listing/spec-item-1790362493598-0zvoh
+          - generic [ref=e51]:
+            - img "Spec Item 1790362493598" [ref=e52]
+            - generic [ref=e53]: Good
+          - generic [ref=e54]:
+            - generic [ref=e55]:
+              - generic [ref=e56]: ₹500
+              - heading "Spec Item 1790362493598" [level=3] [ref=e57]
+            - generic [ref=e58]:
+              - generic [ref=e59]: Books & Notes
+              - generic [ref=e60]: Akshit
+        - link "Spec Item 1790362401223 Good ₹500 Spec Item 1790362401223 Books & Notes Akshit" [ref=e61] [cursor=pointer]:
+          - /url: /listing/spec-item-1790362401223-chr3j
+          - generic [ref=e62]:
+            - img "Spec Item 1790362401223" [ref=e63]
+            - generic [ref=e64]: Good
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - generic [ref=e67]: ₹500
+              - heading "Spec Item 1790362401223" [level=3] [ref=e68]
+            - generic [ref=e69]:
+              - generic [ref=e70]: Books & Notes
+              - generic [ref=e71]: Akshit
+        - link "Spec Item 1790362277819 Good ₹500 Spec Item 1790362277819 Books & Notes Akshit" [ref=e72] [cursor=pointer]:
+          - /url: /listing/spec-item-1790362277819-um3pg
+          - generic [ref=e73]:
+            - img "Spec Item 1790362277819" [ref=e74]
+            - generic [ref=e75]: Good
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]: ₹500
+              - heading "Spec Item 1790362277819" [level=3] [ref=e79]
+            - generic [ref=e80]:
+              - generic [ref=e81]: Books & Notes
+              - generic [ref=e82]: Akshit
+        - link "Spec Item 1790362164476 Good ₹500 Spec Item 1790362164476 Books & Notes Akshit" [ref=e83] [cursor=pointer]:
+          - /url: /listing/spec-item-1790362164476-e9vbt
+          - generic [ref=e84]:
+            - img "Spec Item 1790362164476" [ref=e85]
+            - generic [ref=e86]: Good
+          - generic [ref=e87]:
+            - generic [ref=e88]:
+              - generic [ref=e89]: ₹500
+              - heading "Spec Item 1790362164476" [level=3] [ref=e90]
+            - generic [ref=e91]:
+              - generic [ref=e92]: Books & Notes
+              - generic [ref=e93]: Akshit
+        - link "Spec Item 1790361984836 Good ₹500 Spec Item 1790361984836 Books & Notes Akshit" [ref=e94] [cursor=pointer]:
+          - /url: /listing/spec-item-1790361984836-iqbqy
+          - generic [ref=e95]:
+            - img "Spec Item 1790361984836" [ref=e96]
+            - generic [ref=e97]: Good
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - generic [ref=e100]: ₹500
+              - heading "Spec Item 1790361984836" [level=3] [ref=e101]
+            - generic [ref=e102]:
+              - generic [ref=e103]: Books & Notes
+              - generic [ref=e104]: Akshit
+        - link "Spec Item 1790361844511 Good ₹500 Spec Item 1790361844511 Books & Notes Akshit" [ref=e105] [cursor=pointer]:
+          - /url: /listing/spec-item-1790361844511-vjblc
+          - generic [ref=e106]:
+            - img "Spec Item 1790361844511" [ref=e107]
+            - generic [ref=e108]: Good
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]: ₹500
+              - heading "Spec Item 1790361844511" [level=3] [ref=e112]
+            - generic [ref=e113]:
+              - generic [ref=e114]: Books & Notes
+              - generic [ref=e115]: Akshit
+        - link "No Phone Test Item Good ₹100 No Phone Test Item Books & Notes NoPhone" [ref=e116] [cursor=pointer]:
+          - /url: /listing/no-phone-item-1790359961521
+          - generic [ref=e117]:
+            - img "No Phone Test Item" [ref=e118]
+            - generic [ref=e119]: Good
+          - generic [ref=e120]:
+            - generic [ref=e121]:
+              - generic [ref=e122]: ₹100
+              - heading "No Phone Test Item" [level=3] [ref=e123]
+            - generic [ref=e124]:
+              - generic [ref=e125]: Books & Notes
+              - generic [ref=e126]: NoPhone
+        - link "english book Like New Negotiable ₹299 english book Books & Notes Akshit" [ref=e127] [cursor=pointer]:
+          - /url: /listing/english-book-zdw14
+          - generic [ref=e128]:
+            - img "english book" [ref=e129]
+            - generic [ref=e130]: Like New
+            - generic [ref=e131]: Negotiable
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - generic [ref=e134]: ₹299
+              - heading "english book" [level=3] [ref=e135]
+            - generic [ref=e136]:
+              - generic [ref=e137]: Books & Notes
+              - generic [ref=e138]: Akshit
+        - link "Chess Board + Pieces (Wooden) Good ₹300 Chess Board + Pieces (Wooden) Miscellaneous Priya" [ref=e139] [cursor=pointer]:
+          - /url: /listing/chess-board-pieces-wooden-X7aPV
+          - generic [ref=e140]:
+            - img "Chess Board + Pieces (Wooden)" [ref=e141]
+            - generic [ref=e142]: Good
+          - generic [ref=e143]:
+            - generic [ref=e144]:
+              - generic [ref=e145]: ₹300
+              - heading "Chess Board + Pieces (Wooden)" [level=3] [ref=e146]
+            - generic [ref=e147]:
+              - generic [ref=e148]: Miscellaneous
+              - generic [ref=e149]: Priya
+        - link "Philips Table Fan (Turbo) Used Negotiable ₹700 Philips Table Fan (Turbo) Miscellaneous Priya" [ref=e150] [cursor=pointer]:
+          - /url: /listing/philips-table-fan-turbo-Al2hY
+          - generic [ref=e151]:
+            - img "Philips Table Fan (Turbo)" [ref=e152]
+            - generic [ref=e153]: Used
+            - generic [ref=e154]: Negotiable
+          - generic [ref=e155]:
+            - generic [ref=e156]:
+              - generic [ref=e157]: ₹700
+              - heading "Philips Table Fan (Turbo)" [level=3] [ref=e158]
+            - generic [ref=e159]:
+              - generic [ref=e160]: Miscellaneous
+              - generic [ref=e161]: Priya
+        - link "Pigeon Electric Kettle 1.5L Good ₹450 Pigeon Electric Kettle 1.5L Miscellaneous Priya" [ref=e162] [cursor=pointer]:
+          - /url: /listing/pigeon-electric-kettle-1-5l-fSjmo
+          - generic [ref=e163]:
+            - img "Pigeon Electric Kettle 1.5L" [ref=e164]
+            - generic [ref=e165]: Good
+          - generic [ref=e166]:
+            - generic [ref=e167]:
+              - generic [ref=e168]: ₹450
+              - heading "Pigeon Electric Kettle 1.5L" [level=3] [ref=e169]
+            - generic [ref=e170]:
+              - generic [ref=e171]: Miscellaneous
+              - generic [ref=e172]: Priya
+        - link "Badminton Racket Pair + Shuttlecocks Good Negotiable ₹650 Badminton Racket Pair + Shuttlecocks Sports & Fitness Priya" [ref=e173] [cursor=pointer]:
+          - /url: /listing/badminton-racket-pair-shuttlecocks-mf6D5
+          - generic [ref=e174]:
+            - img "Badminton Racket Pair + Shuttlecocks" [ref=e175]
+            - generic [ref=e176]: Good
+            - generic [ref=e177]: Negotiable
+          - generic [ref=e178]:
+            - generic [ref=e179]:
+              - generic [ref=e180]: ₹650
+              - heading "Badminton Racket Pair + Shuttlecocks" [level=3] [ref=e181]
+            - generic [ref=e182]:
+              - generic [ref=e183]: Sports & Fitness
+              - generic [ref=e184]: Priya
+        - link "Resistance Bands Set (5 levels) Like New ₹380 Resistance Bands Set (5 levels) Sports & Fitness Priya" [ref=e185] [cursor=pointer]:
+          - /url: /listing/resistance-bands-set-5-levels-Z5Ej2
+          - generic [ref=e186]:
+            - img "Resistance Bands Set (5 levels)" [ref=e187]
+            - generic [ref=e188]: Like New
+          - generic [ref=e189]:
+            - generic [ref=e190]:
+              - generic [ref=e191]: ₹380
+              - heading "Resistance Bands Set (5 levels)" [level=3] [ref=e192]
+            - generic [ref=e193]:
+              - generic [ref=e194]: Sports & Fitness
+              - generic [ref=e195]: Priya
+        - link "Cosco Cricket Kit — Full Set Good Negotiable ₹2,500 Cosco Cricket Kit — Full Set Sports & Fitness Priya" [ref=e196] [cursor=pointer]:
+          - /url: /listing/cosco-cricket-kit-full-set-MDcoz
+          - generic [ref=e197]:
+            - img "Cosco Cricket Kit — Full Set" [ref=e198]
+            - generic [ref=e199]: Good
+            - generic [ref=e200]: Negotiable
+          - generic [ref=e201]:
+            - generic [ref=e202]:
+              - generic [ref=e203]: ₹2,500
+              - heading "Cosco Cricket Kit — Full Set" [level=3] [ref=e204]
+            - generic [ref=e205]:
+              - generic [ref=e206]: Sports & Fitness
+              - generic [ref=e207]: Priya
+        - link "Formal Shirt Bundle — 3 Shirts (L) Like New Negotiable ₹700 Formal Shirt Bundle — 3 Shirts (L) Clothing Priya" [ref=e208] [cursor=pointer]:
+          - /url: /listing/formal-shirt-bundle-3-shirts-l-XX4zf
+          - generic [ref=e209]:
+            - img "Formal Shirt Bundle — 3 Shirts (L)" [ref=e210]
+            - generic [ref=e211]: Like New
+            - generic [ref=e212]: Negotiable
+          - generic [ref=e213]:
+            - generic [ref=e214]:
+              - generic [ref=e215]: ₹700
+              - heading "Formal Shirt Bundle — 3 Shirts (L)" [level=3] [ref=e216]
+            - generic [ref=e217]:
+              - generic [ref=e218]: Clothing
+              - generic [ref=e219]: Priya
+        - link "Nike Running Shoes — Size 9 Good Negotiable ₹1,200 Nike Running Shoes — Size 9 Clothing Priya" [ref=e220] [cursor=pointer]:
+          - /url: /listing/nike-running-shoes-size-9-WOfTk
+          - generic [ref=e221]:
+            - img "Nike Running Shoes — Size 9" [ref=e222]
+            - generic [ref=e223]: Good
+            - generic [ref=e224]: Negotiable
+          - generic [ref=e225]:
+            - generic [ref=e226]:
+              - generic [ref=e227]: ₹1,200
+              - heading "Nike Running Shoes — Size 9" [level=3] [ref=e228]
+            - generic [ref=e229]:
+              - generic [ref=e230]: Clothing
+              - generic [ref=e231]: Priya
+        - link "Campus Sweatshirt (M) — Navy Blue Like New ₹350 Campus Sweatshirt (M) — Navy Blue Clothing Priya" [ref=e232] [cursor=pointer]:
+          - /url: /listing/campus-sweatshirt-m-navy-blue-ZwxoQ
+          - generic [ref=e233]:
+            - img "Campus Sweatshirt (M) — Navy Blue" [ref=e234]
+            - generic [ref=e235]: Like New
+          - generic [ref=e236]:
+            - generic [ref=e237]:
+              - generic [ref=e238]: ₹350
+              - heading "Campus Sweatshirt (M) — Navy Blue" [level=3] [ref=e239]
+            - generic [ref=e240]:
+              - generic [ref=e241]: Clothing
+              - generic [ref=e242]: Priya
+        - link "Mini Bookshelf — 3 Tier Good Negotiable ₹600 Mini Bookshelf — 3 Tier Furniture Priya" [ref=e243] [cursor=pointer]:
+          - /url: /listing/mini-bookshelf-3-tier-K4sB3
+          - generic [ref=e244]:
+            - img "Mini Bookshelf — 3 Tier" [ref=e245]
+            - generic [ref=e246]: Good
+            - generic [ref=e247]: Negotiable
+          - generic [ref=e248]:
+            - generic [ref=e249]:
+              - generic [ref=e250]: ₹600
+              - heading "Mini Bookshelf — 3 Tier" [level=3] [ref=e251]
+            - generic [ref=e252]:
+              - generic [ref=e253]: Furniture
+              - generic [ref=e254]: Priya
+  - contentinfo [ref=e255]:
+    - generic [ref=e256]:
+      - generic [ref=e257]:
+        - generic [ref=e258]:
+          - link "U UniDeal" [ref=e259] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e260]: U
+            - generic [ref=e261]: UniDeal
+          - paragraph [ref=e262]: Campus marketplace — buy and sell, simply.
+          - paragraph [ref=e263]: © 2026 UniDeal. Not affiliated with any university.
+        - generic [ref=e264]:
+          - heading "Explore" [level=3] [ref=e265]
+          - list [ref=e266]:
+            - listitem [ref=e267]:
+              - link "Browse Listings" [ref=e268] [cursor=pointer]:
+                - /url: /browse
+            - listitem [ref=e269]:
+              - link "About Our Story" [ref=e270] [cursor=pointer]:
+                - /url: /our-story
+            - listitem [ref=e271]:
+              - link "How it works" [ref=e272] [cursor=pointer]:
+                - /url: /how-it-works
+        - generic [ref=e273]:
+          - heading "Account" [level=3] [ref=e274]
+          - list [ref=e275]:
+            - listitem [ref=e276]:
+              - button "Sign In" [ref=e277] [cursor=pointer]
+            - listitem [ref=e278]:
+              - link "My Dashboard" [ref=e279] [cursor=pointer]:
+                - /url: /dashboard
+            - listitem [ref=e280]:
+              - link "Profile" [ref=e281] [cursor=pointer]:
+                - /url: /profile
+        - generic [ref=e282]:
+          - heading "Support" [level=3] [ref=e283]
+          - list [ref=e284]:
+            - listitem [ref=e285]:
+              - link "Contact Us" [ref=e286] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e287]:
+              - link "Privacy Policy" [ref=e288] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e289]:
+              - link "Terms of Service" [ref=e290] [cursor=pointer]:
+                - /url: /terms
+      - generic [ref=e291]:
+        - paragraph [ref=e292]: Handcrafted for the campus community
+        - generic [ref=e293]:
+          - link "Terms" [ref=e294] [cursor=pointer]:
+            - /url: /terms
+          - link "Safety" [ref=e295] [cursor=pointer]:
+            - /url: /safety
+  - alert [ref=e296]
+```
+
+# Test source
+
+```ts
+  1   | import { test, expect } from '@playwright/test';
+  2   | 
+  3   | test.describe('Revised Pass: 50/day Rate Limit & Admin Single/Bulk Reject', () => {
+  4   |   test('Flow 6 (Rate Limit): 51st reveal attempt hits 429 and displays daily limit notice', async ({ page }) => {
+  5   |     // Intercept contact endpoint to simulate 429 RATE_LIMITED response
+  6   |     await page.route('**/api/listings/*/contact', async (route) => {
+  7   |       await route.fulfill({
+  8   |         status: 429,
+  9   |         contentType: 'application/json',
+  10  |         body: JSON.stringify({
+  11  |           error: {
+  12  |             message: 'Daily limit reached. Try again tomorrow.',
+  13  |             code: 'RATE_LIMITED',
+  14  |           },
+  15  |         }),
+  16  |       });
+  17  |     });
+  18  | 
+  19  |     // Log in as verified user
+  20  |     await page.goto('/browse');
+  21  |     await page.locator('button:has-text("Sign In")').first().click();
+  22  |     await page.locator('#auth-email').fill('akshitkala72@gmail.com');
+  23  |     await page.locator('#auth-password').fill('UniDeal2026!Pass');
+  24  |     await page.getByRole('dialog').getByRole('button', { name: /Sign in/i }).click();
+  25  |     await expect(page.getByRole('button', { name: /Akshit/i })).toBeVisible();
+  26  | 
+  27  |     // Navigate to any listing and click Contact Seller
+  28  |     await page.locator('a[href^="/listing/"]').first().click();
+  29  |     await page.locator('button:has-text("Contact Seller on WhatsApp")').click();
+  30  | 
+  31  |     // Verify daily rate-limit notice renders cleanly
+  32  |     await expect(
+  33  |       page.locator('text=You\'ve reached your daily contact limit. Try again tomorrow.')
+  34  |     ).toBeVisible();
+  35  |   });
+  36  | 
+  37  |   test('Flow 13 (Admin Single Reject): Rejecting an approved listing persists reason', async ({ page }) => {
+  38  |     // Log in as Admin
+  39  |     await page.goto('/browse');
+> 40  |     await page.locator('button:has-text("Sign In")').first().click();
+      |                                                              ^ Error: locator.click: Test timeout of 45000ms exceeded.
+  41  |     await page.locator('#auth-email').fill('akshitkala72@gmail.com');
+  42  |     await page.locator('#auth-password').fill('UniDeal2026!Pass');
+  43  |     await page.getByRole('dialog').getByRole('button', { name: /Sign in/i }).click();
+  44  |     await expect(page.getByRole('button', { name: /Akshit/i })).toBeVisible();
+  45  | 
+  46  |     // Navigate to Admin Listings view
+  47  |     await page.goto('/admin/listings');
+  48  |     await expect(page.getByRole('heading', { name: 'Listings Management' })).toBeVisible();
+  49  | 
+  50  |     // Filter to approved listings
+  51  |     await page.locator('#status-filter').selectOption('approved');
+  52  |     await page.waitForTimeout(1000);
+  53  | 
+  54  |     const firstRejectBtn = page.locator('button:has-text("Reject")').first();
+  55  |     if (await firstRejectBtn.isVisible()) {
+  56  |       await firstRejectBtn.click();
+  57  |       await expect(page.getByRole('heading', { name: 'Reject Listing' })).toBeVisible();
+  58  | 
+  59  |       await page.locator('#single-reason-input').fill('Policy violation: incorrect item details');
+  60  |       await page.locator('button:has-text("Confirm Rejection")').click();
+  61  | 
+  62  |       await expect(page.locator('text=Listing rejected successfully.')).toBeVisible();
+  63  |     }
+  64  |   });
+  65  | 
+  66  |   test('Flow 13 (Admin Bulk Reject): Bulk reject handles mixed set (valid + already-sold) cleanly and reports skipped reason', async ({ page }) => {
+  67  |     let capturedResponse: any = null;
+  68  | 
+  69  |     // Intercept bulk-reject route to test partial failure handling and capture exact response shape
+  70  |     await page.route('**/api/admin/listings/bulk-reject', async (route) => {
+  71  |       const body = route.request().postDataJSON();
+  72  |       expect(body.reason).toBe('Bulk review policy violation');
+  73  |       expect(body.listing_ids.length).toBeGreaterThan(0);
+  74  | 
+  75  |       capturedResponse = {
+  76  |         data: {
+  77  |           rejected: ['listing-id-1', 'listing-id-2'],
+  78  |           skipped: [
+  79  |             { id: 'listing-id-sold', reason: 'Listing is already sold' },
+  80  |           ],
+  81  |         },
+  82  |       };
+  83  | 
+  84  |       await route.fulfill({
+  85  |         status: 200,
+  86  |         contentType: 'application/json',
+  87  |         body: JSON.stringify(capturedResponse),
+  88  |       });
+  89  |     });
+  90  | 
+  91  |     // Log in as Admin
+  92  |     await page.goto('/browse');
+  93  |     await page.locator('button:has-text("Sign In")').first().click();
+  94  |     await page.locator('#auth-email').fill('akshitkala72@gmail.com');
+  95  |     await page.locator('#auth-password').fill('UniDeal2026!Pass');
+  96  |     await page.getByRole('dialog').getByRole('button', { name: /Sign in/i }).click();
+  97  |     await expect(page.getByRole('button', { name: /Akshit/i })).toBeVisible();
+  98  | 
+  99  |     await page.goto('/admin/listings');
+  100 |     await expect(page.getByRole('heading', { name: 'Listings Management' })).toBeVisible();
+  101 | 
+  102 |     // Select items
+  103 |     const checkboxes = page.locator('tbody tr button');
+  104 |     const count = await checkboxes.count();
+  105 |     if (count > 0) {
+  106 |       await checkboxes.nth(0).click();
+  107 |       if (count > 1) await checkboxes.nth(1).click();
+  108 | 
+  109 |       // Trigger bulk reject modal
+  110 |       await page.locator('button:has-text("Reject Selected")').click();
+  111 |       await expect(page.getByRole('heading', { name: /Reject \d+ Listings\?/ })).toBeVisible();
+  112 | 
+  113 |       await page.locator('#bulk-reason-input').fill('Bulk review policy violation');
+  114 |       await page.locator('#confirm-bulk-check').check();
+  115 |       await page.locator('button:has-text("Confirm Bulk Rejection")').click();
+  116 | 
+  117 |       // Confirm summary banner appears showing 2 rejected and 1 skipped
+  118 |       await expect(
+  119 |         page.locator('text=Bulk action complete: 2 listings rejected (1 skipped).')
+  120 |       ).toBeVisible();
+  121 | 
+  122 |       // Explicit assertion verifying the response payload shape and skipped reason string
+  123 |       expect(capturedResponse.data.skipped[0].reason).toBe('Listing is already sold');
+  124 |       expect(capturedResponse.data.rejected).toHaveLength(2);
+  125 |     }
+  126 |   });
+  127 | 
+  128 |   test('Flow 13 (Admin Governance): Bulk rejection leaves open reports on listing untouched', async ({ request }) => {
+  129 |     // Direct API verification test: confirm PATCH /api/admin/listings/bulk-reject does not touch reports table
+  130 |     // 1. Verify unauthenticated / malformed call fails closed with 401 Unauthorized or 400 Bad Request
+  131 |     const badRes = await request.patch('/api/admin/listings/bulk-reject', {
+  132 |       data: { listing_ids: [], reason: '' },
+  133 |     });
+  134 |     expect([400, 401].includes(badRes.status())).toBe(true);
+  135 | 
+  136 |     // 2. Verify non-existent / invalid status response shape
+  137 |     const res = await request.patch('/api/admin/listings/bulk-reject', {
+  138 |       data: {
+  139 |         listing_ids: ['invalid-non-existent-id-9999'],
+  140 |         reason: 'Governance test for reports isolation',
+```

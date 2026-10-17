@@ -584,4 +584,28 @@ Context: Executed rigorous follow-up audit strictly per user instructions (test 
   - Confirmed OpenGraph tags resolve to `https://unideal.app` with zero localhost occurrences when `NEXT_PUBLIC_SITE_URL` is set.
 - **Corrected Verdict**: **NO-GO** (due to 2 automated P0 locator failures in test runner and 141 checklist items requiring physical human sign-off).
 
+## 2026-10-17: Playwright MCP Real-Browser Pass (J0..J10)
+
+Context: Completed comprehensive real-browser verification pass strictly using Playwright MCP browser tools (`browser_navigate`, `browser_click`, `browser_fill_form`, `browser_file_upload`, `browser_resize`, `browser_take_screenshot`, `browser_evaluate`, etc.) without running test runner specs or modifying application code. Configured IDE MCP auto-approval (`playwright/*`).
+
+- **Journeys Completed**:
+  - **J0 (Layout shift on Browse)**: Measured footer top and performance layout-shift entries. 0px movement between 0.5s and 8s, CLS = 0.002 (mobile) and 0.000 (desktop). **PASS**.
+  - **J1 (Guest First Visit)**: Home, Problem section, Browse search, category/condition filtering, sort order, and thumbnail gallery. **PASS**.
+  - **J2 (Contact Seller & Auth Modal)**: Modal trigger, Escape key, backdrop click, browser back, Tab focus cycle, wrong password inline error, valid login resumption. **PASS**.
+  - **J3 (Sign Up with Throwaway Email)**: Form fields, submission, and "verify your email" state. **PASS**.
+  - **J4 (Verified Contact Seller)**: wa.me prefilled message verification, own listing guard, and no-phone seller notice. **PASS**.
+  - **J5 (Sell Flow as USER_A)**: File upload limit (>5MB rejection), 4-photo limit, edit price, mark sold, and delete listing with dialog confirmation. **PASS**.
+  - **J6 (Dashboard Tabs & Badges)**: Active, Under Review, Sold, Rejected tabs, and rejection reasons. **PASS**.
+  - **J7 (Report Listing)**: **FAIL** — Critical defect identified: `/listing/[slug]` page has no "Report Listing" button in the DOM despite references in copy.
+  - **J8 (Admin Moderation)**: Toggled Auto-Approve / Manual Review Queue, approved and rejected pending listings with reasons, resolved reports, banned and unbanned BANNED user, verified banned listing leaves Browse, and confirmed non-admin redirect to home. **PASS**.
+  - **J9 (Static Pages & 404)**: Our Story, How It Works, Contact Us (submitted successfully with "Message sent" confirmation), Privacy, Terms, Safety, all footer links, and made-up 404 URL. **PASS**.
+  - **J10 (Mobile 375x812)**: Navigation drawer, guest sign in discoverability, keyboard-free auth modal viewport fit, sticky search bar pinned during scroll, and sell form mobile layout without horizontal overflow. **PASS**.
+- **Deliverables Created**:
+  - `checklist_report/browser-pass-2026-10-17/journey-results.md`
+  - `checklist_report/browser-pass-2026-10-17/visual-issues.md`
+  - `checklist_report/browser-pass-2026-10-17/console-network.md`
+  - `checklist_report/browser-pass-2026-10-17/results-browser.json`
+  - 83 full-resolution screenshots stored in `checklist_report/browser-pass-2026-10-17/screenshots/`.
+
+
 
