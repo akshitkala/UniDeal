@@ -1,6 +1,21 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-17 — Redesign Mobile Navigation Drawer with Structured User Account Card
+## 2026-10-17 — Redesign How It Works Page with Interactive Animated Pathway Storytelling
+
+Context: Redesigned the "How It Works" page (`/how-it-works`) from a static 4-item vertical list into an interactive, dual-perspective ("I want to Buy" vs. "I want to Sell") animated pathway story. Adheres strictly to UniDeal design system (flat, Outfit/Work Sans, green `#16A34A` tokens, zero gradients/glassmorphism/invented trust badges).
+
+- **`app/(public)/how-it-works/HowItWorksClient.tsx`**:
+  - Added interactive role switcher pill toggle (`I want to Buy` vs `I want to Sell`) with smooth Framer Motion spring layout pill indicator.
+  - Implemented continuous animated center milestone pathway (`useScroll` + `useSpring` progress bar) connecting steps 01, 02, and 03.
+  - Built 6 bespoke vector-based CSS UI demonstration preview mockups (no external placeholder images):
+    - Buyer: Filter & Search chip preview, pre-filled WhatsApp message bubble preview, campus meetup spots & checklist preview.
+    - Seller: 90-second listing photo grid preview, shielded phone number privacy preview, 1-tap "Sold" status transition preview.
+  - Added dedicated **Campus Rules of Engagement** trust section covering Public Spots, Hands-on Inspection, and Zero Advance Payments.
+  - Dual action bottom conversion bar (`Browse Campus Listings` + `Post an Item for Free`).
+- **Verification**:
+  - `npx tsc --noEmit`: 0 errors.
+  - `npm run build`: Production build succeeded across all 37 routes clean.
+
 
 Context: Resolved confusing plain-white centered buttons under "Sell an Item" in the mobile navigation drawer. Replaced the disconnected centered text links with a structured, left-aligned User Account Card featuring visual hierarchy, avatar bubble, admin pill badge, Lucide icons, and chevron indicators.
 
