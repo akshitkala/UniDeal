@@ -1,6 +1,20 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-17 — Redesign How It Works Page with Interactive Animated Pathway Storytelling
+## 2026-10-17 — Implement Infinite Scroll with Pagination on Campus Marketplace Browse Page
+
+Context: Implemented infinite scroll with pagination on `/browse` per `design (2).md §7.2`. The initial view displays page 1 (20 items) for ultra-fast performance, and as the user scrolls within 300px of the bottom, subsequent pages are automatically loaded and appended seamlessly without duplicate keys.
+
+- **`app/(public)/browse/page.tsx`**:
+  - Added `IntersectionObserver` sentinel listener at the bottom of the grid with a 300px `rootMargin` pre-fetch threshold.
+  - Added `loadMoreListings` callback that requests subsequent pages (`/api/listings?page=2...`), appends unique items, and tracks total pages from backend pagination metadata.
+  - Added live item counter badge: `Showing [loadedCount] of [total] items` (e.g., `Showing 20 of 999 items`).
+  - Added skeleton loading indicators during next-page fetches (`loadingMore` prop on `ListingGrid`).
+  - Added end-of-marketplace indicator once all items in the database or filtered query have been loaded.
+  - Resets automatically to page 1 whenever category, condition, search, or sort filters change.
+- **Verification**:
+  - `npx tsc --noEmit`: 0 errors.
+  - `npm run build`: Production build succeeded across all 37 routes clean.
+
 
 Context: Redesigned the "How It Works" page (`/how-it-works`) from a static 4-item vertical list into an interactive, dual-perspective ("I want to Buy" vs. "I want to Sell") animated pathway story. Adheres strictly to UniDeal design system (flat, Outfit/Work Sans, green `#16A34A` tokens, zero gradients/glassmorphism/invented trust badges).
 
