@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "progress.md": {
-    "mtime": 1792253668.6671143,
-    "seen": 1792253695.084081,
-    "ast_hash": "fb4d5aba5e0f33d829056df0fe5534f8",
+    "mtime": 1792254685.5807114,
+    "seen": 1792254701.0340033,
+    "ast_hash": "6bd3f07a5a040275a042579a0e4979c4",
     "semantic_hash": ""
   },
   ".agents/skills/brand/scripts/extract-colors.cjs": {
@@ -660,9 +660,9 @@
     "semantic_hash": ""
   },
   "components/auth/AuthModal.tsx": {
-    "mtime": 1791744087.3403933,
-    "seen": 1791744594.5882947,
-    "ast_hash": "97c3caa4b5fc2c7fbf6486f1170f6f76",
+    "mtime": 1792254492.260305,
+    "seen": 1792254701.009998,
+    "ast_hash": "f97e70ea0727b3da07c271b32523acd5",
     "semantic_hash": ""
   },
   "components/filters/ListingFilters.tsx": {
@@ -702,9 +702,9 @@
     "semantic_hash": ""
   },
   "contexts/AuthContext.tsx": {
-    "mtime": 1791743978.2569215,
-    "seen": 1791744594.5936518,
-    "ast_hash": "162ec7f7454512bb8b2ef36d60dbba36",
+    "mtime": 1792254239.452488,
+    "seen": 1792254701.0120842,
+    "ast_hash": "38acce353b4fb02bd705f6dcc9e8b59c",
     "semantic_hash": ""
   },
   "middleware.ts": {
@@ -2010,9 +2010,9 @@
     "semantic_hash": ""
   },
   "e2e/auth-modal.spec.ts": {
-    "mtime": 1792250058.007161,
-    "seen": 1792253695.0640268,
-    "ast_hash": "f3834b463f9d7369900110b748df7d2c",
+    "mtime": 1792254596.1366904,
+    "seen": 1792254701.0120842,
+    "ast_hash": "4beb58d0e53b38b65fb7490d542e9d6c",
     "semantic_hash": ""
   },
   "e2e/contact-seller.spec.ts": {
@@ -3498,9 +3498,9 @@
     "semantic_hash": ""
   },
   "checklist_report/final-regression-2026-10-17/playwright-results.json": {
-    "mtime": 1792251369.443479,
-    "seen": 1792253695.0585225,
-    "ast_hash": "806edd5799fd8675533341e1e913cc99",
+    "mtime": 1792254667.9965146,
+    "seen": 1792254701.0080903,
+    "ast_hash": "08cf4a5d31fc2109026799266d859bed",
     "semantic_hash": ""
   },
   "checklist_report/final-regression-2026-10-17/results.json": {
@@ -3552,15 +3552,15 @@
     "semantic_hash": ""
   },
   "checklist_report/final-regression-2026-10-17/playwright-report/data/b3aa2e3d020f62a7f4580680c45ca7d2e338b82c.md": {
-    "mtime": 1792251369.5158176,
-    "seen": 1792253695.0800738,
-    "ast_hash": "0275cc43ecec05b60b45da528f171f96",
+    "mtime": 1792254667.989279,
+    "seen": 1792254701.0298853,
+    "ast_hash": "0130b2c2e7894832d686c848c7d2a9d1",
     "semantic_hash": ""
   },
   "checklist_report/final-regression-2026-10-17/playwright-report/index.html": {
-    "mtime": 1792251369.7361164,
-    "seen": 1792253695.0800738,
-    "ast_hash": "b21ba73e55cf1a4f595e5baf6ddcc79a",
+    "mtime": 1792254667.9937508,
+    "seen": 1792254701.0298853,
+    "ast_hash": "2b0204d41ea8946ec0d9fce3085f37d9",
     "semantic_hash": ""
   },
   "checklist_report/final-regression-2026-10-17/scope-check.md": {
@@ -3570,8 +3570,8 @@
     "semantic_hash": ""
   },
   "checklist_report/final-regression-2026-10-17/playwright-report/data/7f3d89dc47c958529ba8e61688c3523e36ee7195.png": {
-    "mtime": 1792251369.5147743,
-    "seen": 1792253695.0946012,
+    "mtime": 1792254667.988714,
+    "seen": 1792254701.0452816,
     "ast_hash": "98a35eb467d872343b7f8652b235740e",
     "semantic_hash": ""
   },

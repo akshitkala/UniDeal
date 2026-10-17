@@ -4,8 +4,10 @@ import React, { createContext, useContext, useEffect, useState, useCallback } fr
 import type { User } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
 
+export type AuthModalTab = 'login' | 'signup' | 'forgot_password';
+
 interface AuthModalOptions {
-  tab?: 'login' | 'signup';
+  tab?: AuthModalTab;
   returnTo?: string;
   context?: 'contact' | 'sell' | 'dashboard' | 'profile' | string;
   onSuccess?: () => void;
@@ -16,7 +18,7 @@ interface AuthContextType {
   isLoading: boolean;
   isVerified: boolean;
   isAuthModalOpen: boolean;
-  authModalTab: 'login' | 'signup';
+  authModalTab: AuthModalTab;
   authModalOptions: AuthModalOptions;
   openAuthModal: (options?: AuthModalOptions) => void;
   closeAuthModal: () => void;
@@ -30,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authModalTab, setAuthModalTab] = useState<'login' | 'signup'>('login');
+  const [authModalTab, setAuthModalTab] = useState<AuthModalTab>('login');
   const [authModalOptions, setAuthModalOptions] = useState<AuthModalOptions>({});
 
   const supabase = createClient();

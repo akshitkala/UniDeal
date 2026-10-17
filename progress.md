@@ -1,5 +1,27 @@
 # UniDeal — Project Progress Log
 
+## 2026-10-17 — Restore Google OAuth Sign-in & Implement Complete Auth Testing (Sign Up, Sign In, Forgot Password)
+
+Context: Restored the Google OAuth sign-in option ("Continue with Google") in `AuthModal.tsx`, implemented the complete Forgot Password flow with Supabase `resetPasswordForEmail` and dedicated confirmation screen, and created comprehensive automated Playwright tests covering Sign Up, Sign In, Forgot Password, and Google OAuth flows across desktop and mobile viewports.
+
+- **`components/auth/AuthModal.tsx` & `contexts/AuthContext.tsx`**:
+  - Restored Google OAuth button (`#google-signin-btn`) with inline SVG "G" icon, disabled/loading states, and "or" hairline divider on both Sign In and Create Account tabs.
+  - Wired `handleGoogleSignIn` via `supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })`.
+  - Added full support for `forgot_password` tab in `AuthContext` and `AuthModal`.
+  - On Sign In tab, added `#forgot-password-link` ("Forgot password?") adjacent to the Password field label.
+  - Forgot Password view displays contextual header ("Reset password" / "Enter your email and we'll send you a link to reset your password."), hides full name/password/Google button, provides "← Back to Sign in" navigation, and submits via `supabase.auth.resetPasswordForEmail`.
+  - Added dedicated confirmation card when `resetSuccessEmail` is active ("Check your inbox", instructions with entered email, "Back to Sign in", and "Close" buttons).
+- **Automated Testing (`e2e/auth-modal.spec.ts`)**:
+  - Added test suite covering:
+    1. Google OAuth: Button appearance on Sign In & Sign Up tabs, SVG icon presence, absence on Forgot Password tab, and OAuth redirect trigger verification.
+    2. Sign In: Empty field client validation, invalid email format, and password visibility eye toggle.
+    3. Sign Up: Full name field with helper text, empty & short field validations, password length validation, target="_blank" terms & privacy links, and friendly duplicate email account detection.
+    4. Forgot Password: Tab navigation from login, view layout verification, empty & invalid email validation, password reset submission, confirmation view rendering, and return to sign in.
+  - Verified 9/9 tests pass cleanly on both `chrome-desktop-1440` (13.2s) and `iphone-14` (27.5s).
+- **Verification**:
+  - `npx tsc --noEmit` passed clean (0 errors).
+  - `npm run build` passed clean (0 errors).
+
 ## 2026-10-17 — Final Regression Audit & Full Suite Verification
 
 Context: Executed complete final regression audit adhering strictly to read-only test protocol, multi-device Playwright run, real browser MCP walkthrough (J0–J10), mobile Lighthouse audits, and scope verification.

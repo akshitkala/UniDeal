@@ -100,17 +100,17 @@
       "source_location": "L8"
     },
     {
-      "id": "app_account_profile_page_profileform",
-      "label": "ProfileForm",
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testpersistence",
+      "label": "TestPersistence",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 118,
-      "community_name": "profile/page.tsx",
+      "community": 104,
+      "community_name": "design_system.py",
       "file_type": "code",
-      "norm_label": "profileform",
-      "source_file": "app/(account)/profile/page.tsx",
-      "source_location": "L10"
+      "norm_label": "testpersistence",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L252"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testgeneratedcatalogcontract",
@@ -139,6 +139,19 @@
       "source_location": "L261"
     },
     {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract",
+      "label": "TestReasoningContract",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": "testreasoningcontract",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L87"
+    },
+    {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_teststyleidentitycontract",
       "label": "TestStyleIdentityContract",
       "_callable": true,
@@ -158,11 +171,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "tabtype",
       "source_file": "app/(account)/dashboard/page.tsx",
       "source_location": "L38"
+    },
+    {
+      "id": "app_account_profile_page_profileform",
+      "label": "ProfileForm",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "profileform",
+      "source_file": "app/(account)/profile/page.tsx",
+      "source_location": "L10"
     },
     {
       "id": "app_account_sell_page_categoryoption",
@@ -171,11 +197,50 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "categoryoption",
       "source_file": "app/(account)/sell/page.tsx",
       "source_location": "L11"
+    },
+    {
+      "id": "components_contact_contactform_fielderrors",
+      "label": "FieldErrors",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "fielderrors",
+      "source_file": "components/contact/ContactForm.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "components_contact_contactform_formstate",
+      "label": "FormState",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "formstate",
+      "source_file": "components/contact/ContactForm.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "components_contact_contactform_touchedstate",
+      "label": "TouchedState",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "touchedstate",
+      "source_file": "components/contact/ContactForm.tsx",
+      "source_location": "L15"
     },
     {
       "id": "contexts_authcontext_authcontexttype",
@@ -184,11 +249,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "authcontexttype",
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L14"
+      "source_location": "L16"
     },
     {
       "id": "contexts_authcontext_authmodaloptions",
@@ -197,24 +262,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "authmodaloptions",
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L7"
+      "source_location": "L9"
     },
     {
-      "id": "components_home_freshoncampus_props",
-      "label": "Props",
+      "id": "contexts_authcontext_authmodaltab",
+      "label": "AuthModalTab",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
+      "community": 15,
+      "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "props",
-      "source_file": "components/home/FreshOnCampus.tsx",
-      "source_location": "L9"
+      "norm_label": "authmodaltab",
+      "source_file": "contexts/AuthContext.tsx",
+      "source_location": "L7"
     },
     {
       "id": "components_home_recentlistingssection_props",
@@ -228,45 +293,6 @@
       "norm_label": "props",
       "source_file": "components/home/RecentListingsSection.tsx",
       "source_location": "L9"
-    },
-    {
-      "id": "components_listing_listingcard_listingcarddata",
-      "label": "ListingCardData",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "listingcarddata",
-      "source_file": "components/listing/ListingCard.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "components_listing_listinggrid_listinggridprops",
-      "label": "ListingGridProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "listinggridprops",
-      "source_file": "components/listing/ListingGrid.tsx",
-      "source_location": "L11"
-    },
-    {
-      "id": "components_ui_legalpage_legalpageprops",
-      "label": "LegalPageProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "legalpageprops",
-      "source_file": "components/ui/LegalPage.tsx",
-      "source_location": "L3"
     },
     {
       "id": "lib_motion_variants_motionapi",
@@ -293,6 +319,32 @@
       "norm_label": "bm25",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/core.py",
       "source_location": "L282"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior",
+      "label": "TestBm25CoreBehavior",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "code",
+      "norm_label": "testbm25corebehavior",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L65"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testdiagnosticscontracts",
+      "label": "TestDiagnosticsContracts",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "code",
+      "norm_label": "testdiagnosticscontracts",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L326"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testtokenizer",
@@ -327,37 +379,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 172,
-      "community_name": "lucide-react",
+      "community_name": "listings/page.tsx",
       "file_type": "code",
       "norm_label": "adminlistingitem",
       "source_file": "app/admin/listings/page.tsx",
       "source_location": "L7"
-    },
-    {
-      "id": "components_listing_reportbutton_reportbuttonprops",
-      "label": "ReportButtonProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "reportbuttonprops",
-      "source_file": "components/listing/ReportButton.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "components_listing_reportbutton_reportreason",
-      "label": "ReportReason",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "reportreason",
-      "source_file": "components/listing/ReportButton.tsx",
-      "source_location": "L21"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_relevance_evaluator_testfixturevalidation",
@@ -399,6 +425,19 @@
       "source_location": "L77"
     },
     {
+      "id": "app_account_dashboard_page_sellerlisting",
+      "label": "SellerListing",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "sellerlisting",
+      "source_file": "app/(account)/dashboard/page.tsx",
+      "source_location": "L23"
+    },
+    {
       "id": "app_account_listing_slug_edit_page_categoryoption",
       "label": "CategoryOption",
       "_callable": true,
@@ -423,6 +462,45 @@
       "norm_label": "editlistingpageprops",
       "source_file": "app/(account)/listing/[slug]/edit/page.tsx",
       "source_location": "L19"
+    },
+    {
+      "id": "app_public_browse_page_categoryitem",
+      "label": "CategoryItem",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "categoryitem",
+      "source_file": "app/(public)/browse/page.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "components_filters_listingfilters_categoryitem",
+      "label": "CategoryItem",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "categoryitem",
+      "source_file": "components/filters/ListingFilters.tsx",
+      "source_location": "L7"
+    },
+    {
+      "id": "components_filters_listingfilters_listingfiltersprops",
+      "label": "ListingFiltersProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "listingfiltersprops",
+      "source_file": "components/filters/ListingFilters.tsx",
+      "source_location": "L13"
     },
     {
       "id": "components_listing_listingform_categoryoption",
@@ -477,6 +555,32 @@
       "source_location": "L6"
     },
     {
+      "id": "types_domain_listingcondition",
+      "label": "ListingCondition",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "listingcondition",
+      "source_file": "types/domain.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "types_domain_listingstatus",
+      "label": "ListingStatus",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "listingstatus",
+      "source_file": "types/domain.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_catalog_refresh_catalogrefreshtest",
       "label": "CatalogRefreshTest",
       "_callable": true,
@@ -496,7 +600,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": "testluminance",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -509,7 +613,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": "testpaletteselection",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -633,32 +737,6 @@
       "source_location": "L7"
     },
     {
-      "id": "components_listing_contactsellerbutton_contactsellerbuttonprops",
-      "label": "ContactSellerButtonProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 254,
-      "community_name": "ContactSellerButton.tsx",
-      "file_type": "code",
-      "norm_label": "contactsellerbuttonprops",
-      "source_file": "components/listing/ContactSellerButton.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "components_listing_contactsellerbutton_contactstate",
-      "label": "ContactState",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 254,
-      "community_name": "ContactSellerButton.tsx",
-      "file_type": "code",
-      "norm_label": "contactstate",
-      "source_file": "components/listing/ContactSellerButton.tsx",
-      "source_location": "L14"
-    },
-    {
       "id": "agents_skills_ui_styling_scripts_shadcn_add_shadcninstaller",
       "label": "ShadcnInstaller",
       "_callable": true,
@@ -685,121 +763,17 @@
       "source_location": "L16"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testdiagnosticscontracts",
-      "label": "TestDiagnosticsContracts",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 266,
-      "community_name": "TestDiagnosticsContracts",
-      "file_type": "code",
-      "norm_label": "testdiagnosticscontracts",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L326"
-    },
-    {
-      "id": "app_public_browse_page_categoryitem",
-      "label": "CategoryItem",
+      "id": "components_ui_legalpage_legalpageprops",
+      "label": "LegalPageProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "browse/page.tsx",
+      "community_name": "next",
       "file_type": "code",
-      "norm_label": "categoryitem",
-      "source_file": "app/(public)/browse/page.tsx",
-      "source_location": "L11"
-    },
-    {
-      "id": "components_filters_listingfilters_categoryitem",
-      "label": "CategoryItem",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "browse/page.tsx",
-      "file_type": "code",
-      "norm_label": "categoryitem",
-      "source_file": "components/filters/ListingFilters.tsx",
-      "source_location": "L7"
-    },
-    {
-      "id": "components_filters_listingfilters_listingfiltersprops",
-      "label": "ListingFiltersProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "browse/page.tsx",
-      "file_type": "code",
-      "norm_label": "listingfiltersprops",
-      "source_file": "components/filters/ListingFilters.tsx",
-      "source_location": "L13"
-    },
-    {
-      "id": "components_contact_contactform_fielderrors",
-      "label": "FieldErrors",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "ContactForm.tsx",
-      "file_type": "code",
-      "norm_label": "fielderrors",
-      "source_file": "components/contact/ContactForm.tsx",
-      "source_location": "L21"
-    },
-    {
-      "id": "components_contact_contactform_formstate",
-      "label": "FormState",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "ContactForm.tsx",
-      "file_type": "code",
-      "norm_label": "formstate",
-      "source_file": "components/contact/ContactForm.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "components_contact_contactform_touchedstate",
-      "label": "TouchedState",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "ContactForm.tsx",
-      "file_type": "code",
-      "norm_label": "touchedstate",
-      "source_file": "components/contact/ContactForm.tsx",
-      "source_location": "L15"
-    },
-    {
-      "id": "app_account_dashboard_page_sellerlisting",
-      "label": "SellerListing",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 361,
-      "community_name": "[slug]/page.tsx",
-      "file_type": "code",
-      "norm_label": "sellerlisting",
-      "source_file": "app/(account)/dashboard/page.tsx",
-      "source_location": "L23"
-    },
-    {
-      "id": "app_api_listings_id_contact_route_routecontext",
-      "label": "RouteContext",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 361,
-      "community_name": "[slug]/page.tsx",
-      "file_type": "code",
-      "norm_label": "routecontext",
-      "source_file": "app/api/listings/[id]/contact/route.ts",
-      "source_location": "L7"
+      "norm_label": "legalpageprops",
+      "source_file": "components/ui/LegalPage.tsx",
+      "source_location": "L3"
     },
     {
       "id": "app_public_listing_slug_listingdetailclient_listingdetailclientprops",
@@ -841,69 +815,56 @@
       "source_location": "L19"
     },
     {
-      "id": "lib_whatsapp_whatsapplinkinput",
-      "label": "WhatsAppLinkInput",
+      "id": "components_listing_contactsellerbutton_contactsellerbuttonprops",
+      "label": "ContactSellerButtonProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 361,
       "community_name": "[slug]/page.tsx",
       "file_type": "code",
-      "norm_label": "whatsapplinkinput",
-      "source_file": "lib/whatsapp.ts",
-      "source_location": "L1"
+      "norm_label": "contactsellerbuttonprops",
+      "source_file": "components/listing/ContactSellerButton.tsx",
+      "source_location": "L8"
     },
     {
-      "id": "types_domain_listingcondition",
-      "label": "ListingCondition",
+      "id": "components_listing_contactsellerbutton_contactstate",
+      "label": "ContactState",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 361,
       "community_name": "[slug]/page.tsx",
       "file_type": "code",
-      "norm_label": "listingcondition",
-      "source_file": "types/domain.ts",
-      "source_location": "L3"
+      "norm_label": "contactstate",
+      "source_file": "components/listing/ContactSellerButton.tsx",
+      "source_location": "L14"
     },
     {
-      "id": "types_domain_listingstatus",
-      "label": "ListingStatus",
+      "id": "components_listing_reportbutton_reportbuttonprops",
+      "label": "ReportButtonProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 361,
       "community_name": "[slug]/page.tsx",
       "file_type": "code",
-      "norm_label": "listingstatus",
-      "source_file": "types/domain.ts",
-      "source_location": "L4"
+      "norm_label": "reportbuttonprops",
+      "source_file": "components/listing/ReportButton.tsx",
+      "source_location": "L8"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior",
-      "label": "TestBm25CoreBehavior",
+      "id": "components_listing_reportbutton_reportreason",
+      "label": "ReportReason",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 37,
-      "community_name": "test_core.py",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
       "file_type": "code",
-      "norm_label": "testbm25corebehavior",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L65"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testpersistence",
-      "label": "TestPersistence",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "test_core.py",
-      "file_type": "code",
-      "norm_label": "testpersistence",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L252"
+      "norm_label": "reportreason",
+      "source_file": "components/listing/ReportButton.tsx",
+      "source_location": "L21"
     },
     {
       "id": "lib_validation_contact_contactinput",
@@ -945,6 +906,32 @@
       "source_location": "L5"
     },
     {
+      "id": "app_api_admin_listings_id_reject_route_routecontext",
+      "label": "RouteContext",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "createAdminClient",
+      "file_type": "code",
+      "norm_label": "routecontext",
+      "source_file": "app/api/admin/listings/[id]/reject/route.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "app_api_admin_reports_id_resolve_route_routecontext",
+      "label": "RouteContext",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "createAdminClient",
+      "file_type": "code",
+      "norm_label": "routecontext",
+      "source_file": "app/api/admin/reports/[id]/resolve/route.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "app_api_admin_users_id_ban_route_routecontext",
       "label": "RouteContext",
       "_callable": true,
@@ -982,6 +969,19 @@
       "norm_label": "routecontext",
       "source_file": "app/api/admin/users/[id]/unban/route.ts",
       "source_location": "L5"
+    },
+    {
+      "id": "app_admin_listings_pending_client_pendinglisting",
+      "label": "PendingListing",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "pendinglisting",
+      "source_file": "app/admin/listings/pending/client.tsx",
+      "source_location": "L8"
     },
     {
       "id": "components_skeletons_pageheaderskeleton_pageheaderskeletonprops",
@@ -1049,6 +1049,32 @@
       "source_location": "L24"
     },
     {
+      "id": "components_home_freshoncampus_props",
+      "label": "Props",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "(public)/page.tsx",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "components/home/FreshOnCampus.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "components_listing_listingcard_listingcarddata",
+      "label": "ListingCardData",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "(public)/page.tsx",
+      "file_type": "code",
+      "norm_label": "listingcarddata",
+      "source_file": "components/listing/ListingCard.tsx",
+      "source_location": "L9"
+    },
+    {
       "id": "components_listing_listingcard_listingcardprops",
       "label": "ListingCardProps",
       "_callable": true,
@@ -1062,6 +1088,19 @@
       "source_location": "L29"
     },
     {
+      "id": "components_listing_listinggrid_listinggridprops",
+      "label": "ListingGridProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "(public)/page.tsx",
+      "file_type": "code",
+      "norm_label": "listinggridprops",
+      "source_file": "components/listing/ListingGrid.tsx",
+      "source_location": "L11"
+    },
+    {
       "id": "components_skeletons_listinggridskeleton_listinggridskeletonprops",
       "label": "ListingGridSkeletonProps",
       "_callable": true,
@@ -1073,19 +1112,6 @@
       "norm_label": "listinggridskeletonprops",
       "source_file": "components/skeletons/ListingGridSkeleton.tsx",
       "source_location": "L7"
-    },
-    {
-      "id": "app_admin_listings_pending_client_pendinglisting",
-      "label": "PendingListing",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "requireAdminSession",
-      "file_type": "code",
-      "norm_label": "pendinglisting",
-      "source_file": "app/admin/listings/pending/client.tsx",
-      "source_location": "L8"
     },
     {
       "id": "agents_skills_ui_styling_scripts_tailwind_config_gen_tailwindconfiggenerator",
@@ -1140,19 +1166,6 @@
       "source_location": "L313"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract",
-      "label": "TestReasoningContract",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "DesignSystemGenerator",
-      "file_type": "code",
-      "norm_label": "testreasoningcontract",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L87"
-    },
-    {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_design_system_mode_testendtoendcoherence",
       "label": "TestEndToEndCoherence",
       "_callable": true,
@@ -1192,17 +1205,43 @@
       "source_location": "L120"
     },
     {
+      "id": "app_api_listings_id_contact_route_routecontext",
+      "label": "RouteContext",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 81,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "routecontext",
+      "source_file": "app/api/listings/[id]/contact/route.ts",
+      "source_location": "L7"
+    },
+    {
       "id": "app_api_listings_id_sold_route_routecontext",
       "label": "RouteContext",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "routecontext",
       "source_file": "app/api/listings/[id]/sold/route.ts",
       "source_location": "L4"
+    },
+    {
+      "id": "lib_whatsapp_whatsapplinkinput",
+      "label": "WhatsAppLinkInput",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 81,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "whatsapplinkinput",
+      "source_file": "lib/whatsapp.ts",
+      "source_location": "L1"
     },
     {
       "id": "app_api_listings_id_route_routecontext",
@@ -1244,39 +1283,13 @@
       "source_location": "L47"
     },
     {
-      "id": "app_api_admin_listings_id_reject_route_routecontext",
-      "label": "RouteContext",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "reject/route.ts",
-      "file_type": "code",
-      "norm_label": "routecontext",
-      "source_file": "app/api/admin/listings/[id]/reject/route.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "app_api_admin_reports_id_resolve_route_routecontext",
-      "label": "RouteContext",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "reject/route.ts",
-      "file_type": "code",
-      "norm_label": "routecontext",
-      "source_file": "app/api/admin/reports/[id]/resolve/route.ts",
-      "source_location": "L6"
-    },
-    {
       "id": "app_api_listings_id_report_route_routecontext",
       "label": "RouteContext",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 91,
-      "community_name": "reject/route.ts",
+      "community_name": "report/route.ts",
       "file_type": "code",
       "norm_label": "routecontext",
       "source_file": "app/api/listings/[id]/report/route.ts",
@@ -1459,6 +1472,54 @@
       "norm_label": "runphase4exitgatetests()",
       "source_file": "scripts/test_phase4_exit_gate.js",
       "source_location": "L3"
+    },
+    {
+      "id": "scripts_test_whatsapp_and_delete_account_check",
+      "label": "check()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "check()",
+      "source_file": "scripts/test_whatsapp_and_delete_account.js",
+      "source_location": "L35"
+    },
+    {
+      "id": "scripts_test_whatsapp_and_delete_account_cookieheader",
+      "label": "cookieHeader()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "cookieheader()",
+      "source_file": "scripts/test_whatsapp_and_delete_account.js",
+      "source_location": "L40"
+    },
+    {
+      "id": "scripts_test_whatsapp_and_delete_account_listingbody",
+      "label": "listingBody()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "listingbody()",
+      "source_file": "scripts/test_whatsapp_and_delete_account.js",
+      "source_location": "L55"
+    },
+    {
+      "id": "scripts_test_whatsapp_and_delete_account_req",
+      "label": "req()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "req()",
+      "source_file": "scripts/test_whatsapp_and_delete_account.js",
+      "source_location": "L47"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_data_quality_read_rows",
@@ -2109,16 +2170,64 @@
       "source_location": "L58"
     },
     {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_ansi_ljust",
+      "label": "ansi_ljust()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": "ansi_ljust()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L625"
+    },
+    {
       "id": "agents_skills_ui_ux_pro_max_scripts_design_system_detect_page_type",
       "label": "_detect_page_type()",
       "_callable": true,
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "code",
       "norm_label": "_detect_page_type()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
       "source_location": "L1596"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_format_ascii_box",
+      "label": "format_ascii_box()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": "format_ascii_box()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L640"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_format_ascii_box_wrap_text",
+      "label": "wrap_text()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": "wrap_text()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L652"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_format_markdown",
+      "label": "format_markdown()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": "format_markdown()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L791"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_design_system_format_master_md",
@@ -2126,7 +2235,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "code",
       "norm_label": "format_master_md()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -2138,11 +2247,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "code",
       "norm_label": "format_page_override_md()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
       "source_location": "L1381"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_generate_design_system",
+      "label": "generate_design_system()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": "generate_design_system()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L919"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_design_system_generate_intelligent_overrides",
@@ -2150,11 +2271,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "code",
       "norm_label": "_generate_intelligent_overrides()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
       "source_location": "L1490"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_hex_to_ansi",
+      "label": "hex_to_ansi()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": "hex_to_ansi()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L611"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_design_system_persist_design_system",
@@ -2162,7 +2295,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "code",
       "norm_label": "persist_design_system()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -2174,11 +2307,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "code",
       "norm_label": "safe_slug()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
       "source_location": "L961"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_section_header",
+      "label": "section_header()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": "section_header()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L633"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_design_system_write_persisted_file",
@@ -2186,11 +2331,47 @@
       "_callable": true,
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "code",
       "norm_label": "_write_persisted_file()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
       "source_location": "L972"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_concurrent_non_force_persist_has_one_writer",
+      "label": ".test_concurrent_non_force_persist_has_one_writer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": ".test_concurrent_non_force_persist_has_one_writer()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L253"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_persist_then_skip_then_force",
+      "label": ".test_persist_then_skip_then_force()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": ".test_persist_then_skip_then_force()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L271"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_persist_writes_only_under_output_dir",
+      "label": ".test_persist_writes_only_under_output_dir()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": ".test_persist_writes_only_under_output_dir()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L306"
     },
     {
       "id": "agents_skills_ui_styling_scripts_tests_test_shadcn_add_testshadcninstaller_test_list_installed_no_config",
@@ -2277,24 +2458,12 @@
       "source_location": "L192"
     },
     {
-      "id": "app_account_profile_loading_profileloading",
-      "label": "ProfileLoading()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 118,
-      "community_name": "profile/page.tsx",
-      "file_type": "code",
-      "norm_label": "profileloading()",
-      "source_file": "app/(account)/profile/loading.tsx",
-      "source_location": "L5"
-    },
-    {
       "id": "app_account_profile_page_profilepage",
       "label": "ProfilePage()",
       "_callable": true,
       "_origin": "ast",
       "community": 118,
-      "community_name": "profile/page.tsx",
+      "community_name": "ProfilePage",
       "file_type": "code",
       "norm_label": "profilepage()",
       "source_file": "app/(account)/profile/page.tsx",
@@ -2306,7 +2475,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 118,
-      "community_name": "profile/page.tsx",
+      "community_name": "ProfilePage",
       "file_type": "code",
       "norm_label": "handledeleteaccount()",
       "source_file": "app/(account)/profile/page.tsx",
@@ -2318,7 +2487,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 118,
-      "community_name": "profile/page.tsx",
+      "community_name": "ProfilePage",
       "file_type": "code",
       "norm_label": "handlesave()",
       "source_file": "app/(account)/profile/page.tsx",
@@ -2330,7 +2499,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 118,
-      "community_name": "profile/page.tsx",
+      "community_name": "ProfilePage",
       "file_type": "code",
       "norm_label": "load()",
       "source_file": "app/(account)/profile/page.tsx",
@@ -2342,7 +2511,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 118,
-      "community_name": "profile/page.tsx",
+      "community_name": "ProfilePage",
       "file_type": "code",
       "norm_label": "validate()",
       "source_file": "app/(account)/profile/page.tsx",
@@ -2937,6 +3106,102 @@
       "source_location": "L270"
     },
     {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_canonical_style_priority_is_not_limited_to_bm25_top_three",
+      "label": ".test_canonical_style_priority_is_not_limited_to_bm25_top_three()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": ".test_canonical_style_priority_is_not_limited_to_bm25_top_three()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L209"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_constraints_reach_domain_queries",
+      "label": ".test_constraints_reach_domain_queries()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": ".test_constraints_reach_domain_queries()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L187"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_constraints_reach_domain_queries_capture",
+      "label": "capture()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": "capture()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L191"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_decision_rules_use_closed_array_grammar",
+      "label": ".test_decision_rules_use_closed_array_grammar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": ".test_decision_rules_use_closed_array_grammar()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L101"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_duplicate_semantic_reasoning_labels_fail_validation",
+      "label": ".test_duplicate_semantic_reasoning_labels_fail_validation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": ".test_duplicate_semantic_reasoning_labels_fail_validation()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L218"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_every_exact_product_label_resolves_to_itself",
+      "label": ".test_every_exact_product_label_resolves_to_itself()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": ".test_every_exact_product_label_resolves_to_itself()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L231"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_every_known_product_generates_a_traceable_landing_pattern",
+      "label": ".test_every_known_product_generates_a_traceable_landing_pattern()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": ".test_every_known_product_generates_a_traceable_landing_pattern()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L153"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_generator_matches_reasoning_exactly_and_defaults_only_for_unknown",
+      "label": ".test_generator_matches_reasoning_exactly_and_defaults_only_for_unknown()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": ".test_generator_matches_reasoning_exactly_and_defaults_only_for_unknown()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L133"
+    },
+    {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_known_product_sets_match_exactly",
       "label": ".test_known_product_sets_match_exactly()",
       "_callable": true,
@@ -2959,6 +3224,30 @@
       "norm_label": ".test_reasoning_patterns_reference_landing_identities()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
       "source_location": "L142"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_representative_new_products_generate_traceable_sources",
+      "label": ".test_representative_new_products_generate_traceable_sources()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": ".test_representative_new_products_generate_traceable_sources()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L161"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_style_aliases_have_one_exact_owner",
+      "label": ".test_style_aliases_have_one_exact_owner()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": ".test_style_aliases_have_one_exact_owner()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_location": "L248"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_teststyleidentitycontract_setup",
@@ -2997,6 +3286,18 @@
       "source_location": "L45"
     },
     {
+      "id": "agents_skills_ui_ux_pro_max_scripts_validate_data_check_reasoning_contract",
+      "label": "_check_reasoning_contract()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 132,
+      "community_name": "test_data_contracts.py",
+      "file_type": "code",
+      "norm_label": "_check_reasoning_contract()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/validate_data.py",
+      "source_location": "L331"
+    },
+    {
       "id": "agents_skills_ui_ux_pro_max_scripts_design_system_designsystemgenerator_apply_reasoning",
       "label": "._apply_reasoning()",
       "_callable": true,
@@ -3019,30 +3320,6 @@
       "norm_label": "._find_reasoning_rule()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
       "source_location": "L357"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_designsystemgenerator_resolve_style",
-      "label": "._resolve_style()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 149,
-      "community_name": "parse_decision_rules",
-      "file_type": "code",
-      "norm_label": "._resolve_style()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L307"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_designsystemgenerator_select_best_match",
-      "label": "._select_best_match()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 149,
-      "community_name": "parse_decision_rules",
-      "file_type": "code",
-      "norm_label": "._select_best_match()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L408"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_reasoning_contract_apply_decision_rules",
@@ -3093,30 +3370,6 @@
       "source_location": "L87"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_decision_rules_use_closed_array_grammar",
-      "label": ".test_decision_rules_use_closed_array_grammar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 149,
-      "community_name": "parse_decision_rules",
-      "file_type": "code",
-      "norm_label": ".test_decision_rules_use_closed_array_grammar()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L101"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_duplicate_semantic_reasoning_labels_fail_validation",
-      "label": ".test_duplicate_semantic_reasoning_labels_fail_validation()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 149,
-      "community_name": "parse_decision_rules",
-      "file_type": "code",
-      "norm_label": ".test_duplicate_semantic_reasoning_labels_fail_validation()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L218"
-    },
-    {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_duplicate_unknown_keys_and_unknown_actions_fail_closed",
       "label": ".test_duplicate_unknown_keys_and_unknown_actions_fail_closed()",
       "_callable": true,
@@ -3141,24 +3394,12 @@
       "source_location": "L119"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_validate_data_check_reasoning_contract",
-      "label": "_check_reasoning_contract()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 149,
-      "community_name": "parse_decision_rules",
-      "file_type": "code",
-      "norm_label": "_check_reasoning_contract()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/validate_data.py",
-      "source_location": "L331"
-    },
-    {
       "id": "app_account_dashboard_loading_dashboardloading",
       "label": "DashboardLoading()",
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "dashboardloading()",
       "source_file": "app/(account)/dashboard/loading.tsx",
@@ -3170,7 +3411,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "dashboardpage()",
       "source_file": "app/(account)/dashboard/page.tsx",
@@ -3182,7 +3423,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "editlistingpage()",
       "source_file": "app/(account)/listing/[slug]/edit/page.tsx",
@@ -3194,11 +3435,35 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "loaddata()",
       "source_file": "app/(account)/listing/[slug]/edit/page.tsx",
       "source_location": "L46"
+    },
+    {
+      "id": "app_account_profile_loading_profileloading",
+      "label": "ProfileLoading()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "profileloading()",
+      "source_file": "app/(account)/profile/loading.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "app_account_sell_loading_sellloading",
+      "label": "SellLoading()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "sellloading()",
+      "source_file": "app/(account)/sell/loading.tsx",
+      "source_location": "L5"
     },
     {
       "id": "app_account_sell_page_sellpage",
@@ -3206,7 +3471,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "sellpage()",
       "source_file": "app/(account)/sell/page.tsx",
@@ -3218,7 +3483,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "loadcategories()",
       "source_file": "app/(account)/sell/page.tsx",
@@ -3230,7 +3495,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "verifyemailcontent()",
       "source_file": "app/(auth)/verify-email/page.tsx",
@@ -3242,7 +3507,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "handleverification()",
       "source_file": "app/(auth)/verify-email/page.tsx",
@@ -3254,7 +3519,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "verifyemailpage()",
       "source_file": "app/(auth)/verify-email/page.tsx",
@@ -3266,11 +3531,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "rootlayout()",
       "source_file": "app/layout.tsx",
       "source_location": "L57"
+    },
+    {
+      "id": "app_not_found_notfound",
+      "label": "NotFound()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "notfound()",
+      "source_file": "app/not-found.tsx",
+      "source_location": "L9"
     },
     {
       "id": "components_auth_authmodal_authmodal",
@@ -3278,23 +3555,35 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "authmodal()",
       "source_file": "components/auth/AuthModal.tsx",
-      "source_location": "L10"
+      "source_location": "L22"
     },
     {
-      "id": "components_home_foundercta_foundercta",
-      "label": "FounderCta()",
+      "id": "components_auth_authmodal_googleicon",
+      "label": "GoogleIcon()",
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "foundercta()",
-      "source_file": "components/home/FounderCta.tsx",
-      "source_location": "L7"
+      "norm_label": "googleicon()",
+      "source_file": "components/auth/AuthModal.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "components_home_hero_hero",
+      "label": "Hero()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "hero()",
+      "source_file": "components/home/Hero.tsx",
+      "source_location": "L29"
     },
     {
       "id": "components_nav_footer_footer",
@@ -3302,23 +3591,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "footer()",
       "source_file": "components/nav/Footer.tsx",
       "source_location": "L7"
-    },
-    {
-      "id": "components_nav_topnav_topnav",
-      "label": "TopNav()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "useAuth",
-      "file_type": "code",
-      "norm_label": "topnav()",
-      "source_file": "components/nav/TopNav.tsx",
-      "source_location": "L11"
     },
     {
       "id": "contexts_authcontext_authprovider",
@@ -3326,11 +3603,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "authprovider()",
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L29"
+      "source_location": "L31"
     },
     {
       "id": "contexts_authcontext_useauth",
@@ -3338,11 +3615,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "useauth()",
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L100"
+      "source_location": "L102"
     },
     {
       "id": "lib_supabase_client_createclient",
@@ -3350,7 +3627,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "createclient()",
       "source_file": "lib/supabase/client.ts",
@@ -3537,30 +3814,6 @@
       "source_location": "L122"
     },
     {
-      "id": "app_manifest_manifest",
-      "label": "manifest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "manifest()",
-      "source_file": "app/manifest.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "app_public_browse_layout_browselayout",
-      "label": "BrowseLayout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "browselayout()",
-      "source_file": "app/(public)/browse/layout.tsx",
-      "source_location": "L12"
-    },
-    {
       "id": "app_public_how_it_works_howitworksclient_howitworksclient",
       "label": "HowItWorksClient()",
       "_callable": true,
@@ -3655,54 +3908,6 @@
       "norm_label": "ourstorypage()",
       "source_file": "app/(public)/our-story/page.tsx",
       "source_location": "L9"
-    },
-    {
-      "id": "app_public_privacy_page_privacypage",
-      "label": "PrivacyPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "privacypage()",
-      "source_file": "app/(public)/privacy/page.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "app_public_safety_page_safetypage",
-      "label": "SafetyPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "safetypage()",
-      "source_file": "app/(public)/safety/page.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "app_public_terms_page_termspage",
-      "label": "TermsPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "termspage()",
-      "source_file": "app/(public)/terms/page.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "app_robots_robots",
-      "label": "robots()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "robots()",
-      "source_file": "app/robots.ts",
-      "source_location": "L3"
     },
     {
       "id": "components_about_illualmirah_illualmirah",
@@ -3861,18 +4066,6 @@
       "source_location": "L86"
     },
     {
-      "id": "components_ui_legalpage_legalpage",
-      "label": "LegalPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "legalpage()",
-      "source_file": "components/ui/LegalPage.tsx",
-      "source_location": "L9"
-    },
-    {
       "id": "lib_motion_variants_usemotion",
       "label": "useMotion()",
       "_callable": true,
@@ -3943,6 +4136,78 @@
       "norm_label": ".vocabulary()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/core.py",
       "source_location": "L345"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior_test_bm25_cache_rebuilds_after_file_mtime_changes",
+      "label": ".test_bm25_cache_rebuilds_after_file_mtime_changes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "code",
+      "norm_label": ".test_bm25_cache_rebuilds_after_file_mtime_changes()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L72"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior_test_empty_documents_produce_no_scores_or_vocab",
+      "label": ".test_empty_documents_produce_no_scores_or_vocab()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "code",
+      "norm_label": ".test_empty_documents_produce_no_scores_or_vocab()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L66"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior_test_search_uses_one_verified_rows_and_index_snapshot",
+      "label": ".test_search_uses_one_verified_rows_and_index_snapshot()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "code",
+      "norm_label": ".test_search_uses_one_verified_rows_and_index_snapshot()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L87"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior_test_search_uses_one_verified_rows_and_index_snapshot_replace_after_read",
+      "label": "replace_after_read()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "code",
+      "norm_label": "replace_after_read()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L94"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testdiagnosticscontracts_test_diagnostics_opt_in_is_additive_for_domain_search",
+      "label": ".test_diagnostics_opt_in_is_additive_for_domain_search()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "code",
+      "norm_label": ".test_diagnostics_opt_in_is_additive_for_domain_search()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L327"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testdiagnosticscontracts_test_diagnostics_opt_in_is_additive_for_stack_search",
+      "label": ".test_diagnostics_opt_in_is_additive_for_stack_search()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "code",
+      "norm_label": ".test_diagnostics_opt_in_is_additive_for_stack_search()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L335"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testtokenizer_test_boundary_safe_nav_normalization_preserves_existing_words",
@@ -4238,46 +4503,10 @@
       "_callable": true,
       "_origin": "ast",
       "community": 172,
-      "community_name": "lucide-react",
+      "community_name": "listings/page.tsx",
       "file_type": "code",
       "norm_label": "adminlistingspage()",
       "source_file": "app/admin/listings/page.tsx",
-      "source_location": "L23"
-    },
-    {
-      "id": "app_not_found_notfound",
-      "label": "NotFound()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "notfound()",
-      "source_file": "app/not-found.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "components_home_hero_hero",
-      "label": "Hero()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "hero()",
-      "source_file": "components/home/Hero.tsx",
-      "source_location": "L29"
-    },
-    {
-      "id": "components_listing_reportbutton_reportbutton",
-      "label": "ReportButton()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "reportbutton()",
-      "source_file": "components/listing/ReportButton.tsx",
       "source_location": "L23"
     },
     {
@@ -4447,6 +4676,54 @@
       "norm_label": "editlistingloading()",
       "source_file": "app/(account)/listing/[slug]/edit/loading.tsx",
       "source_location": "L4"
+    },
+    {
+      "id": "app_public_browse_page_browsecontent",
+      "label": "BrowseContent()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "browsecontent()",
+      "source_file": "app/(public)/browse/page.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "app_public_browse_page_browsecontent_loadcategories",
+      "label": "loadCategories()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "loadcategories()",
+      "source_file": "app/(public)/browse/page.tsx",
+      "source_location": "L35"
+    },
+    {
+      "id": "app_public_browse_page_browsepage",
+      "label": "BrowsePage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "browsepage()",
+      "source_file": "app/(public)/browse/page.tsx",
+      "source_location": "L126"
+    },
+    {
+      "id": "components_filters_listingfilters_listingfilters",
+      "label": "ListingFilters()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "listingfilters()",
+      "source_file": "components/filters/ListingFilters.tsx",
+      "source_location": "L28"
     },
     {
       "id": "components_listing_listingform_listingform",
@@ -5270,7 +5547,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": "_contrast_ratio()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -5282,7 +5559,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": "_derive_dark_palette()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -5294,7 +5571,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": "_palette_is_dark()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -5306,7 +5583,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": "_relative_luminance()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -5318,7 +5595,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": "_select_palette_for_mode()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -5330,7 +5607,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": ".test_classifies_backgrounds_from_the_shipped_data()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -5342,7 +5619,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": ".test_missing_background_is_not_dark()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -5354,7 +5631,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": ".test_parses_six_and_three_digit_hex()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -5366,7 +5643,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": ".test_returns_none_for_unparseable()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -5378,7 +5655,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": ".test_category_identity_wins_over_unrelated_dark_palette()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -5390,7 +5667,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": ".test_dark_mode_falls_back_to_top_hit_when_no_dark_ramp_exists()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -5402,7 +5679,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": ".test_dark_mode_skips_light_palettes()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -5414,7 +5691,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": ".test_empty_results()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -5426,7 +5703,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": ".test_light_mode_keeps_the_existing_top_hit_behaviour()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -6225,66 +6502,6 @@
       "source_location": "L290"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_ansi_ljust",
-      "label": "ansi_ljust()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 241,
-      "community_name": "format_ascii_box",
-      "file_type": "code",
-      "norm_label": "ansi_ljust()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L625"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_format_ascii_box",
-      "label": "format_ascii_box()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 241,
-      "community_name": "format_ascii_box",
-      "file_type": "code",
-      "norm_label": "format_ascii_box()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L640"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_format_ascii_box_wrap_text",
-      "label": "wrap_text()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 241,
-      "community_name": "format_ascii_box",
-      "file_type": "code",
-      "norm_label": "wrap_text()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L652"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_hex_to_ansi",
-      "label": "hex_to_ansi()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 241,
-      "community_name": "format_ascii_box",
-      "file_type": "code",
-      "norm_label": "hex_to_ansi()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L611"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_section_header",
-      "label": "section_header()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 241,
-      "community_name": "format_ascii_box",
-      "file_type": "code",
-      "norm_label": "section_header()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L633"
-    },
-    {
       "id": "scripts_run_final_lighthouse_getmedian",
       "label": "getMedian()",
       "_callable": true,
@@ -6741,42 +6958,6 @@
       "source_location": "L75"
     },
     {
-      "id": "components_listing_contactsellerbutton_contactsellerbutton",
-      "label": "ContactSellerButton()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 254,
-      "community_name": "ContactSellerButton.tsx",
-      "file_type": "code",
-      "norm_label": "contactsellerbutton()",
-      "source_file": "components/listing/ContactSellerButton.tsx",
-      "source_location": "L55"
-    },
-    {
-      "id": "components_listing_contactsellerbutton_contactsellerbutton_handlecontactclick",
-      "label": "handleContactClick()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 254,
-      "community_name": "ContactSellerButton.tsx",
-      "file_type": "code",
-      "norm_label": "handlecontactclick()",
-      "source_file": "components/listing/ContactSellerButton.tsx",
-      "source_location": "L168"
-    },
-    {
-      "id": "components_listing_contactsellerbutton_genericchaticon",
-      "label": "GenericChatIcon()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 254,
-      "community_name": "ContactSellerButton.tsx",
-      "file_type": "code",
-      "norm_label": "genericchaticon()",
-      "source_file": "components/listing/ContactSellerButton.tsx",
-      "source_location": "L24"
-    },
-    {
       "id": "agents_skills_ui_styling_scripts_tailwind_config_gen_tailwindconfiggenerator_base_config",
       "label": "._base_config()",
       "_callable": true,
@@ -7089,30 +7270,6 @@
       "source_location": "L281"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testdiagnosticscontracts_test_diagnostics_opt_in_is_additive_for_domain_search",
-      "label": ".test_diagnostics_opt_in_is_additive_for_domain_search()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 266,
-      "community_name": "TestDiagnosticsContracts",
-      "file_type": "code",
-      "norm_label": ".test_diagnostics_opt_in_is_additive_for_domain_search()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L327"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testdiagnosticscontracts_test_diagnostics_opt_in_is_additive_for_stack_search",
-      "label": ".test_diagnostics_opt_in_is_additive_for_stack_search()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 266,
-      "community_name": "TestDiagnosticsContracts",
-      "file_type": "code",
-      "norm_label": ".test_diagnostics_opt_in_is_additive_for_stack_search()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L335"
-    },
-    {
       "id": "agents_skills_ui_styling_scripts_tests_test_tailwind_config_gen_testtailwindconfiggenerator_test_default_content_paths_react",
       "label": ".test_default_content_paths_react()",
       "_callable": true,
@@ -7149,64 +7306,88 @@
       "source_location": "L1"
     },
     {
-      "id": "app_public_browse_page_browsecontent",
-      "label": "BrowseContent()",
+      "id": "app_manifest_manifest",
+      "label": "manifest()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "browse/page.tsx",
+      "community_name": "next",
       "file_type": "code",
-      "norm_label": "browsecontent()",
-      "source_file": "app/(public)/browse/page.tsx",
-      "source_location": "L17"
+      "norm_label": "manifest()",
+      "source_file": "app/manifest.ts",
+      "source_location": "L3"
     },
     {
-      "id": "app_public_browse_page_browsecontent_loadcategories",
-      "label": "loadCategories()",
+      "id": "app_public_browse_layout_browselayout",
+      "label": "BrowseLayout()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "browse/page.tsx",
+      "community_name": "next",
       "file_type": "code",
-      "norm_label": "loadcategories()",
-      "source_file": "app/(public)/browse/page.tsx",
-      "source_location": "L35"
+      "norm_label": "browselayout()",
+      "source_file": "app/(public)/browse/layout.tsx",
+      "source_location": "L12"
     },
     {
-      "id": "app_public_browse_page_browsepage",
-      "label": "BrowsePage()",
+      "id": "app_public_privacy_page_privacypage",
+      "label": "PrivacyPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "browse/page.tsx",
+      "community_name": "next",
       "file_type": "code",
-      "norm_label": "browsepage()",
-      "source_file": "app/(public)/browse/page.tsx",
-      "source_location": "L126"
+      "norm_label": "privacypage()",
+      "source_file": "app/(public)/privacy/page.tsx",
+      "source_location": "L9"
     },
     {
-      "id": "components_filters_listingfilters_listingfilters",
-      "label": "ListingFilters()",
+      "id": "app_public_safety_page_safetypage",
+      "label": "SafetyPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "browse/page.tsx",
+      "community_name": "next",
       "file_type": "code",
-      "norm_label": "listingfilters()",
-      "source_file": "components/filters/ListingFilters.tsx",
-      "source_location": "L28"
+      "norm_label": "safetypage()",
+      "source_file": "app/(public)/safety/page.tsx",
+      "source_location": "L9"
     },
     {
-      "id": "components_listing_listinggrid_listinggrid",
-      "label": "ListingGrid()",
+      "id": "app_public_terms_page_termspage",
+      "label": "TermsPage()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
-      "community_name": "browse/page.tsx",
+      "community_name": "next",
       "file_type": "code",
-      "norm_label": "listinggrid()",
-      "source_file": "components/listing/ListingGrid.tsx",
-      "source_location": "L20"
+      "norm_label": "termspage()",
+      "source_file": "app/(public)/terms/page.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "app_robots_robots",
+      "label": "robots()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "robots()",
+      "source_file": "app/robots.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "components_ui_legalpage_legalpage",
+      "label": "LegalPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "legalpage()",
+      "source_file": "components/ui/LegalPage.tsx",
+      "source_location": "L9"
     },
     {
       "id": "agents_skills_design_system_scripts_slide_token_validator_main",
@@ -7358,7 +7539,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "contactuspage()",
       "source_file": "app/(public)/contact/page.tsx",
@@ -7370,7 +7551,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "contactform()",
       "source_file": "components/contact/ContactForm.tsx",
@@ -7382,7 +7563,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "handleblur()",
       "source_file": "components/contact/ContactForm.tsx",
@@ -7394,7 +7575,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "handlechange()",
       "source_file": "components/contact/ContactForm.tsx",
@@ -7406,7 +7587,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "handlereset()",
       "source_file": "components/contact/ContactForm.tsx",
@@ -7418,7 +7599,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "handlesubmit()",
       "source_file": "components/contact/ContactForm.tsx",
@@ -7430,7 +7611,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "loadprofilename()",
       "source_file": "components/contact/ContactForm.tsx",
@@ -7442,7 +7623,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "validateall()",
       "source_file": "components/contact/ContactForm.tsx",
@@ -7454,7 +7635,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "validatefield()",
       "source_file": "components/contact/ContactForm.tsx",
@@ -7581,18 +7762,6 @@
       "source_location": "L169"
     },
     {
-      "id": "app_api_listings_id_contact_route_post",
-      "label": "POST()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 361,
-      "community_name": "[slug]/page.tsx",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "app/api/listings/[id]/contact/route.ts",
-      "source_location": "L11"
-    },
-    {
       "id": "app_public_listing_slug_listingdetailclient_listingdetailclient",
       "label": "ListingDetailClient()",
       "_callable": true,
@@ -7629,6 +7798,66 @@
       "source_location": "L82"
     },
     {
+      "id": "components_listing_contactsellerbutton_contactsellerbutton",
+      "label": "ContactSellerButton()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
+      "file_type": "code",
+      "norm_label": "contactsellerbutton()",
+      "source_file": "components/listing/ContactSellerButton.tsx",
+      "source_location": "L55"
+    },
+    {
+      "id": "components_listing_contactsellerbutton_contactsellerbutton_handlecontactclick",
+      "label": "handleContactClick()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
+      "file_type": "code",
+      "norm_label": "handlecontactclick()",
+      "source_file": "components/listing/ContactSellerButton.tsx",
+      "source_location": "L168"
+    },
+    {
+      "id": "components_listing_contactsellerbutton_genericchaticon",
+      "label": "GenericChatIcon()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
+      "file_type": "code",
+      "norm_label": "genericchaticon()",
+      "source_file": "components/listing/ContactSellerButton.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "components_listing_reportbutton_reportbutton",
+      "label": "ReportButton()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
+      "file_type": "code",
+      "norm_label": "reportbutton()",
+      "source_file": "components/listing/ReportButton.tsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "components_nav_topnav_topnav",
+      "label": "TopNav()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
+      "file_type": "code",
+      "norm_label": "topnav()",
+      "source_file": "components/nav/TopNav.tsx",
+      "source_location": "L11"
+    },
+    {
       "id": "lib_display_name_firstname",
       "label": "firstName()",
       "_callable": true,
@@ -7639,18 +7868,6 @@
       "norm_label": "firstname()",
       "source_file": "lib/display-name.ts",
       "source_location": "L8"
-    },
-    {
-      "id": "lib_whatsapp_buildwhatsapplink",
-      "label": "buildWhatsAppLink()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 361,
-      "community_name": "[slug]/page.tsx",
-      "file_type": "code",
-      "norm_label": "buildwhatsapplink()",
-      "source_file": "lib/whatsapp.ts",
-      "source_location": "L14"
     },
     {
       "id": "scripts_seed_admin_and_listings_seed",
@@ -7677,112 +7894,52 @@
       "source_location": "L119"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_format_markdown",
-      "label": "format_markdown()",
+      "id": "app_admin_listings_pending_client_adminpendingqueueclient",
+      "label": "AdminPendingQueueClient()",
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "test_core.py",
+      "community_name": "pending/page.tsx",
       "file_type": "code",
-      "norm_label": "format_markdown()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L791"
+      "norm_label": "adminpendingqueueclient()",
+      "source_file": "app/admin/listings/pending/client.tsx",
+      "source_location": "L23"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_generate_design_system",
-      "label": "generate_design_system()",
+      "id": "app_admin_listings_pending_page_adminpendingqueuepage",
+      "label": "AdminPendingQueuePage()",
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "test_core.py",
+      "community_name": "pending/page.tsx",
       "file_type": "code",
-      "norm_label": "generate_design_system()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L919"
+      "norm_label": "adminpendingqueuepage()",
+      "source_file": "app/admin/listings/pending/page.tsx",
+      "source_location": "L5"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior_test_bm25_cache_rebuilds_after_file_mtime_changes",
-      "label": ".test_bm25_cache_rebuilds_after_file_mtime_changes()",
+      "id": "app_api_admin_listings_pending_route_get",
+      "label": "GET()",
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "test_core.py",
+      "community_name": "pending/page.tsx",
       "file_type": "code",
-      "norm_label": ".test_bm25_cache_rebuilds_after_file_mtime_changes()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L72"
+      "norm_label": "get()",
+      "source_file": "app/api/admin/listings/pending/route.ts",
+      "source_location": "L9"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior_test_empty_documents_produce_no_scores_or_vocab",
-      "label": ".test_empty_documents_produce_no_scores_or_vocab()",
+      "id": "lib_admin_queries_getpendinglistings",
+      "label": "getPendingListings()",
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "test_core.py",
+      "community_name": "pending/page.tsx",
       "file_type": "code",
-      "norm_label": ".test_empty_documents_produce_no_scores_or_vocab()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L66"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior_test_search_uses_one_verified_rows_and_index_snapshot",
-      "label": ".test_search_uses_one_verified_rows_and_index_snapshot()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "test_core.py",
-      "file_type": "code",
-      "norm_label": ".test_search_uses_one_verified_rows_and_index_snapshot()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L87"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testbm25corebehavior_test_search_uses_one_verified_rows_and_index_snapshot_replace_after_read",
-      "label": "replace_after_read()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "test_core.py",
-      "file_type": "code",
-      "norm_label": "replace_after_read()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L94"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_concurrent_non_force_persist_has_one_writer",
-      "label": ".test_concurrent_non_force_persist_has_one_writer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "test_core.py",
-      "file_type": "code",
-      "norm_label": ".test_concurrent_non_force_persist_has_one_writer()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L253"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_persist_then_skip_then_force",
-      "label": ".test_persist_then_skip_then_force()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "test_core.py",
-      "file_type": "code",
-      "norm_label": ".test_persist_then_skip_then_force()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L271"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testpersistence_test_persist_writes_only_under_output_dir",
-      "label": ".test_persist_writes_only_under_output_dir()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "test_core.py",
-      "file_type": "code",
-      "norm_label": ".test_persist_writes_only_under_output_dir()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L306"
+      "norm_label": "getpendinglistings()",
+      "source_file": "lib/admin/queries.ts",
+      "source_location": "L35"
     },
     {
       "id": "app_api_contact_route_clean",
@@ -7845,6 +8002,18 @@
       "source_location": "L13"
     },
     {
+      "id": "app_api_admin_listings_id_reject_route_patch",
+      "label": "PATCH()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "createAdminClient",
+      "file_type": "code",
+      "norm_label": "patch()",
+      "source_file": "app/api/admin/listings/[id]/reject/route.ts",
+      "source_location": "L18"
+    },
+    {
       "id": "app_api_admin_listings_route_get",
       "label": "GET()",
       "_callable": true,
@@ -7855,6 +8024,18 @@
       "norm_label": "get()",
       "source_file": "app/api/admin/listings/route.ts",
       "source_location": "L9"
+    },
+    {
+      "id": "app_api_admin_reports_id_resolve_route_patch",
+      "label": "PATCH()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "createAdminClient",
+      "file_type": "code",
+      "norm_label": "patch()",
+      "source_file": "app/api/admin/reports/[id]/resolve/route.ts",
+      "source_location": "L20"
     },
     {
       "id": "app_api_admin_users_id_ban_route_post",
@@ -7905,18 +8086,6 @@
       "source_location": "L9"
     },
     {
-      "id": "app_api_profile_route_get",
-      "label": "GET()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 39,
-      "community_name": "createAdminClient",
-      "file_type": "code",
-      "norm_label": "get()",
-      "source_file": "app/api/profile/route.ts",
-      "source_location": "L14"
-    },
-    {
       "id": "lib_supabase_admin_createadminclient",
       "label": "createAdminClient()",
       "_callable": true,
@@ -7927,18 +8096,6 @@
       "norm_label": "createadminclient()",
       "source_file": "lib/supabase/admin.ts",
       "source_location": "L18"
-    },
-    {
-      "id": "app_account_sell_loading_sellloading",
-      "label": "SellLoading()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "react",
-      "file_type": "code",
-      "norm_label": "sellloading()",
-      "source_file": "app/(account)/sell/loading.tsx",
-      "source_location": "L5"
     },
     {
       "id": "app_admin_listings_pending_loading_adminpendingloading",
@@ -8047,54 +8204,6 @@
       "norm_label": "skeleton()",
       "source_file": "components/ui/Skeleton.tsx",
       "source_location": "L7"
-    },
-    {
-      "id": "scripts_test_whatsapp_and_delete_account_check",
-      "label": "check()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_whatsapp_and_delete_account.js",
-      "file_type": "code",
-      "norm_label": "check()",
-      "source_file": "scripts/test_whatsapp_and_delete_account.js",
-      "source_location": "L35"
-    },
-    {
-      "id": "scripts_test_whatsapp_and_delete_account_cookieheader",
-      "label": "cookieHeader()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_whatsapp_and_delete_account.js",
-      "file_type": "code",
-      "norm_label": "cookieheader()",
-      "source_file": "scripts/test_whatsapp_and_delete_account.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "scripts_test_whatsapp_and_delete_account_listingbody",
-      "label": "listingBody()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_whatsapp_and_delete_account.js",
-      "file_type": "code",
-      "norm_label": "listingbody()",
-      "source_file": "scripts/test_whatsapp_and_delete_account.js",
-      "source_location": "L55"
-    },
-    {
-      "id": "scripts_test_whatsapp_and_delete_account_req",
-      "label": "req()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_whatsapp_and_delete_account.js",
-      "file_type": "code",
-      "norm_label": "req()",
-      "source_file": "scripts/test_whatsapp_and_delete_account.js",
-      "source_location": "L47"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_core_search",
@@ -8373,18 +8482,6 @@
       "source_location": "L65"
     },
     {
-      "id": "app_public_page_recentlistingsfetcher",
-      "label": "RecentListingsFetcher()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "(public)/page.tsx",
-      "file_type": "code",
-      "norm_label": "recentlistingsfetcher()",
-      "source_file": "app/(public)/page.tsx",
-      "source_location": "L42"
-    },
-    {
       "id": "app_public_page_recentlistingsskeleton",
       "label": "RecentListingsSkeleton()",
       "_callable": true,
@@ -8395,6 +8492,18 @@
       "norm_label": "recentlistingsskeleton()",
       "source_file": "app/(public)/page.tsx",
       "source_location": "L20"
+    },
+    {
+      "id": "components_home_foundercta_foundercta",
+      "label": "FounderCta()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "(public)/page.tsx",
+      "file_type": "code",
+      "norm_label": "foundercta()",
+      "source_file": "components/home/FounderCta.tsx",
+      "source_location": "L7"
     },
     {
       "id": "components_home_freshoncampus_freshoncampus",
@@ -8457,6 +8566,18 @@
       "source_location": "L41"
     },
     {
+      "id": "components_listing_listinggrid_listinggrid",
+      "label": "ListingGrid()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "(public)/page.tsx",
+      "file_type": "code",
+      "norm_label": "listinggrid()",
+      "source_file": "components/listing/ListingGrid.tsx",
+      "source_location": "L20"
+    },
+    {
       "id": "components_skeletons_listingcardskeleton_listingcardskeleton",
       "label": "ListingCardSkeleton()",
       "_callable": true,
@@ -8486,35 +8607,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "adminoverviewclient()",
       "source_file": "app/admin/client.tsx",
       "source_location": "L7"
-    },
-    {
-      "id": "app_admin_listings_pending_client_adminpendingqueueclient",
-      "label": "AdminPendingQueueClient()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "requireAdminSession",
-      "file_type": "code",
-      "norm_label": "adminpendingqueueclient()",
-      "source_file": "app/admin/listings/pending/client.tsx",
-      "source_location": "L23"
-    },
-    {
-      "id": "app_admin_listings_pending_page_adminpendingqueuepage",
-      "label": "AdminPendingQueuePage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "requireAdminSession",
-      "file_type": "code",
-      "norm_label": "adminpendingqueuepage()",
-      "source_file": "app/admin/listings/pending/page.tsx",
-      "source_location": "L5"
     },
     {
       "id": "app_admin_page_adminoverviewpage",
@@ -8522,23 +8619,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "adminoverviewpage()",
       "source_file": "app/admin/page.tsx",
       "source_location": "L5"
-    },
-    {
-      "id": "app_api_admin_listings_pending_route_get",
-      "label": "GET()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "requireAdminSession",
-      "file_type": "code",
-      "norm_label": "get()",
-      "source_file": "app/api/admin/listings/pending/route.ts",
-      "source_location": "L9"
     },
     {
       "id": "app_api_admin_overview_route_get",
@@ -8546,7 +8631,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "get()",
       "source_file": "app/api/admin/overview/route.ts",
@@ -8558,7 +8643,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "get()",
       "source_file": "app/api/admin/settings/route.ts",
@@ -8570,7 +8655,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "patch()",
       "source_file": "app/api/admin/settings/route.ts",
@@ -8582,7 +8667,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "getadminoverview()",
       "source_file": "lib/admin/queries.ts",
@@ -8594,23 +8679,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "getadminsettings()",
       "source_file": "lib/admin/queries.ts",
       "source_location": "L3"
-    },
-    {
-      "id": "lib_admin_queries_getpendinglistings",
-      "label": "getPendingListings()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "requireAdminSession",
-      "file_type": "code",
-      "norm_label": "getpendinglistings()",
-      "source_file": "lib/admin/queries.ts",
-      "source_location": "L35"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_core_exact_row_identity",
@@ -8997,6 +9070,30 @@
       "source_location": "L275"
     },
     {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_designsystemgenerator_resolve_style",
+      "label": "._resolve_style()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "DesignSystemGenerator",
+      "file_type": "code",
+      "norm_label": "._resolve_style()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L307"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_designsystemgenerator_select_best_match",
+      "label": "._select_best_match()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "DesignSystemGenerator",
+      "file_type": "code",
+      "norm_label": "._select_best_match()",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L408"
+    },
+    {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_testreasoningmatch_test_known_category_matches_exactly",
       "label": ".test_known_category_matches_exactly()",
       "_callable": true,
@@ -9019,102 +9116,6 @@
       "norm_label": ".test_unknown_category_falls_back_gracefully()",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
       "source_location": "L319"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_canonical_style_priority_is_not_limited_to_bm25_top_three",
-      "label": ".test_canonical_style_priority_is_not_limited_to_bm25_top_three()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "DesignSystemGenerator",
-      "file_type": "code",
-      "norm_label": ".test_canonical_style_priority_is_not_limited_to_bm25_top_three()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L209"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_constraints_reach_domain_queries",
-      "label": ".test_constraints_reach_domain_queries()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "DesignSystemGenerator",
-      "file_type": "code",
-      "norm_label": ".test_constraints_reach_domain_queries()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L187"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_constraints_reach_domain_queries_capture",
-      "label": "capture()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "DesignSystemGenerator",
-      "file_type": "code",
-      "norm_label": "capture()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L191"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_every_exact_product_label_resolves_to_itself",
-      "label": ".test_every_exact_product_label_resolves_to_itself()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "DesignSystemGenerator",
-      "file_type": "code",
-      "norm_label": ".test_every_exact_product_label_resolves_to_itself()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L231"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_every_known_product_generates_a_traceable_landing_pattern",
-      "label": ".test_every_known_product_generates_a_traceable_landing_pattern()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "DesignSystemGenerator",
-      "file_type": "code",
-      "norm_label": ".test_every_known_product_generates_a_traceable_landing_pattern()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L153"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_generator_matches_reasoning_exactly_and_defaults_only_for_unknown",
-      "label": ".test_generator_matches_reasoning_exactly_and_defaults_only_for_unknown()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "DesignSystemGenerator",
-      "file_type": "code",
-      "norm_label": ".test_generator_matches_reasoning_exactly_and_defaults_only_for_unknown()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L133"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_representative_new_products_generate_traceable_sources",
-      "label": ".test_representative_new_products_generate_traceable_sources()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "DesignSystemGenerator",
-      "file_type": "code",
-      "norm_label": ".test_representative_new_products_generate_traceable_sources()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L161"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_data_contracts_testreasoningcontract_test_style_aliases_have_one_exact_owner",
-      "label": ".test_style_aliases_have_one_exact_owner()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "DesignSystemGenerator",
-      "file_type": "code",
-      "norm_label": ".test_style_aliases_have_one_exact_owner()",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
-      "source_location": "L248"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_design_system_mode_testendtoendcoherence_test_dark_query_does_not_advise_against_dark_mode",
@@ -9650,7 +9651,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "cleanuplistingimages()",
       "source_file": "app/api/account/route.ts",
@@ -9662,11 +9663,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "delete()",
       "source_file": "app/api/account/route.ts",
       "source_location": "L61"
+    },
+    {
+      "id": "app_api_listings_id_contact_route_post",
+      "label": "POST()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 81,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "app/api/listings/[id]/contact/route.ts",
+      "source_location": "L11"
     },
     {
       "id": "app_api_listings_id_sold_route_post",
@@ -9674,11 +9687,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "post()",
       "source_file": "app/api/listings/[id]/sold/route.ts",
       "source_location": "L12"
+    },
+    {
+      "id": "app_api_profile_route_get",
+      "label": "GET()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 81,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "get()",
+      "source_file": "app/api/profile/route.ts",
+      "source_location": "L14"
     },
     {
       "id": "app_auth_callback_route_get",
@@ -9686,11 +9711,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "get()",
       "source_file": "app/auth/callback/route.ts",
       "source_location": "L9"
+    },
+    {
+      "id": "app_public_page_recentlistingsfetcher",
+      "label": "RecentListingsFetcher()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 81,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "recentlistingsfetcher()",
+      "source_file": "app/(public)/page.tsx",
+      "source_location": "L42"
     },
     {
       "id": "lib_supabase_server_createclient",
@@ -9698,11 +9735,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "createclient()",
       "source_file": "lib/supabase/server.ts",
       "source_location": "L5"
+    },
+    {
+      "id": "lib_whatsapp_buildwhatsapplink",
+      "label": "buildWhatsAppLink()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 81,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "buildwhatsapplink()",
+      "source_file": "lib/whatsapp.ts",
+      "source_location": "L14"
     },
     {
       "id": "app_api_listings_id_route_delete",
@@ -9765,36 +9814,12 @@
       "source_location": "L11"
     },
     {
-      "id": "app_api_admin_listings_id_reject_route_patch",
-      "label": "PATCH()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "reject/route.ts",
-      "file_type": "code",
-      "norm_label": "patch()",
-      "source_file": "app/api/admin/listings/[id]/reject/route.ts",
-      "source_location": "L18"
-    },
-    {
-      "id": "app_api_admin_reports_id_resolve_route_patch",
-      "label": "PATCH()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "reject/route.ts",
-      "file_type": "code",
-      "norm_label": "patch()",
-      "source_file": "app/api/admin/reports/[id]/resolve/route.ts",
-      "source_location": "L20"
-    },
-    {
       "id": "app_api_listings_id_report_route_post",
       "label": "POST()",
       "_callable": true,
       "_origin": "ast",
       "community": 91,
-      "community_name": "reject/route.ts",
+      "community_name": "report/route.ts",
       "file_type": "code",
       "norm_label": "post()",
       "source_file": "app/api/listings/[id]/report/route.ts",
@@ -10125,6 +10150,17 @@
       "source_location": "L5"
     },
     {
+      "id": "e2e_earlier_pass_15_spec",
+      "label": "earlier-pass-15.spec.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "earlier-pass-15.spec.ts",
+      "source_file": "e2e/earlier-pass-15.spec.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "scripts_test_phase1_exit_gate",
       "label": "test_phase1_exit_gate.js",
       "_origin": "ast",
@@ -10211,6 +10247,61 @@
       "norm_label": "{ createclient }",
       "source_file": "scripts/test_phase4_exit_gate.js",
       "source_location": "L1"
+    },
+    {
+      "id": "scripts_test_whatsapp_and_delete_account",
+      "label": "test_whatsapp_and_delete_account.js",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "test_whatsapp_and_delete_account.js",
+      "source_file": "scripts/test_whatsapp_and_delete_account.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "scripts_test_whatsapp_and_delete_account_createchunks",
+      "label": "{ createChunks }",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "{ createchunks }",
+      "source_file": "scripts/test_whatsapp_and_delete_account.js",
+      "source_location": "L27"
+    },
+    {
+      "id": "scripts_test_whatsapp_and_delete_account_createclient",
+      "label": "{ createClient }",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "{ createclient }",
+      "source_file": "scripts/test_whatsapp_and_delete_account.js",
+      "source_location": "L25"
+    },
+    {
+      "id": "scripts_test_whatsapp_and_delete_account_results",
+      "label": "results",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "results",
+      "source_file": "scripts/test_whatsapp_and_delete_account.js",
+      "source_location": "L34"
+    },
+    {
+      "id": "scripts_test_whatsapp_and_delete_account_stringtobase64url",
+      "label": "{ stringToBase64URL }",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "{ stringtobase64url }",
+      "source_file": "scripts/test_whatsapp_and_delete_account.js",
+      "source_location": "L26"
     },
     {
       "id": "ref_supabase_supabase_js",
@@ -10892,11 +10983,22 @@
       "source_location": "L1"
     },
     {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system",
+      "label": "design_system.py",
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "code",
+      "norm_label": "design_system.py",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L1"
+    },
+    {
       "id": "agents_skills_ui_ux_pro_max_scripts_design_system_py_path",
       "label": "Path",
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "code",
       "norm_label": "path",
       "source_file": "",
@@ -10907,7 +11009,7 @@
       "label": "Format design system as MASTER.md with hierarchical override logic.",
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "rationale",
       "norm_label": "format design system as master.md with hierarchical override logic.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -10918,7 +11020,7 @@
       "label": "Format a page-specific override file with intelligent AI-generated content.",
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "rationale",
       "norm_label": "format a page-specific override file with intelligent ai-generated content.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -10929,7 +11031,7 @@
       "label": "Generate intelligent overrides based on page type using layered search. Uses\u2026",
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "rationale",
       "norm_label": "generate intelligent overrides based on page type using layered search. uses...",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -10940,18 +11042,95 @@
       "label": "Detect page type from context and search results.",
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "rationale",
       "norm_label": "detect page type from context and search results.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
       "source_location": "L1597"
     },
     {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_3",
+      "label": "Design System Generator - Aggregates search results and applies reasoning to\u2026",
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "rationale",
+      "norm_label": "design system generator - aggregates search results and applies reasoning to...",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L3"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_612",
+      "label": "Convert hex color to ANSI True Color swatch (\u2588\u2588) with fallback.",
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "rationale",
+      "norm_label": "convert hex color to ansi true color swatch (\u2588\u2588) with fallback.",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L612"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_626",
+      "label": "Like str.ljust but accounts for zero-width ANSI escape sequences.",
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "rationale",
+      "norm_label": "like str.ljust but accounts for zero-width ansi escape sequences.",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L626"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_634",
+      "label": "Create a Unicode section separator: \u251c\u2500\u2500\u2500 NAME \u2500\u2500\u2500...\u2524",
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "rationale",
+      "norm_label": "create a unicode section separator: \u251c\u2500\u2500\u2500 name \u2500\u2500\u2500...\u2524",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L634"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_641",
+      "label": "Format design system as Unicode box with ANSI color swatches.",
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "rationale",
+      "norm_label": "format design system as unicode box with ansi color swatches.",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L641"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_792",
+      "label": "Format design system as markdown.",
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "rationale",
+      "norm_label": "format design system as markdown.",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L792"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_923",
+      "label": "Main entry point for design system generation. Args: query: Search query (e.g.,\u2026",
+      "_origin": "ast",
+      "community": 104,
+      "community_name": "design_system.py",
+      "file_type": "rationale",
+      "norm_label": "main entry point for design system generation. args: query: search query (e.g.,...",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L923"
+    },
+    {
       "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_962",
       "label": "Slugify a name into a single safe path segment. Only [a-z0-9_-] survives; every\u2026",
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "rationale",
       "norm_label": "slugify a name into a single safe path segment. only [a-z0-9_-] survives; every...",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -10962,7 +11141,7 @@
       "label": "Write fully to a temp file, then publish atomically.",
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "rationale",
       "norm_label": "write fully to a temp file, then publish atomically.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -10973,7 +11152,7 @@
       "label": "Persist design system to design-system/<project>/ folder using Master +\u2026",
       "_origin": "ast",
       "community": 104,
-      "community_name": "persist_design_system",
+      "community_name": "design_system.py",
       "file_type": "rationale",
       "norm_label": "persist design system to design-system/<project>/ folder using master +...",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -12937,28 +13116,6 @@
       "norm_label": "social proof patterns",
       "source_file": ".agents/skills/design/references/slides-copywriting-formulas.md",
       "source_location": "L60"
-    },
-    {
-      "id": "app_account_profile_page",
-      "label": "profile/page.tsx",
-      "_origin": "ast",
-      "community": 118,
-      "community_name": "profile/page.tsx",
-      "file_type": "code",
-      "norm_label": "profile/page.tsx",
-      "source_file": "app/(account)/profile/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_account_profile_page_year_options",
-      "label": "YEAR_OPTIONS",
-      "_origin": "ast",
-      "community": 118,
-      "community_name": "profile/page.tsx",
-      "file_type": "code",
-      "norm_label": "year_options",
-      "source_file": "app/(account)/profile/page.tsx",
-      "source_location": "L17"
     },
     {
       "id": "agents_skills_slides_references_copywriting_formulas",
@@ -16417,17 +16574,6 @@
       "source_location": "L366"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_409",
-      "label": "Select best matching result based on priority keywords.",
-      "_origin": "ast",
-      "community": 149,
-      "community_name": "parse_decision_rules",
-      "file_type": "rationale",
-      "norm_label": "select best matching result based on priority keywords.",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L409"
-    },
-    {
       "id": "agents_skills_ui_ux_pro_max_scripts_reasoning_contract_rationale_102",
       "label": "Return deterministic mutations and an audit trail; never execute data.",
       "_origin": "ast",
@@ -16465,18 +16611,40 @@
       "label": "dashboard/page.tsx",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "dashboard/page.tsx",
       "source_file": "app/(account)/dashboard/page.tsx",
       "source_location": "L1"
     },
     {
+      "id": "app_account_profile_page",
+      "label": "profile/page.tsx",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "profile/page.tsx",
+      "source_file": "app/(account)/profile/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_account_profile_page_year_options",
+      "label": "YEAR_OPTIONS",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "year_options",
+      "source_file": "app/(account)/profile/page.tsx",
+      "source_location": "L17"
+    },
+    {
       "id": "app_account_sell_page",
       "label": "sell/page.tsx",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "sell/page.tsx",
       "source_file": "app/(account)/sell/page.tsx",
@@ -16487,7 +16655,7 @@
       "label": "verify-email/page.tsx",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "verify-email/page.tsx",
       "source_file": "app/(auth)/verify-email/page.tsx",
@@ -16498,7 +16666,7 @@
       "label": "app/layout.tsx",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "app/layout.tsx",
       "source_file": "app/layout.tsx",
@@ -16509,7 +16677,7 @@
       "label": "metadata",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "metadata",
       "source_file": "app/layout.tsx",
@@ -16520,7 +16688,7 @@
       "label": "outfit",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "outfit",
       "source_file": "app/layout.tsx",
@@ -16531,54 +16699,87 @@
       "label": "workSans",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "worksans",
       "source_file": "app/layout.tsx",
       "source_location": "L10"
     },
     {
+      "id": "app_not_found",
+      "label": "not-found.tsx",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "not-found.tsx",
+      "source_file": "app/not-found.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_not_found_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/not-found.tsx",
+      "source_location": "L4"
+    },
+    {
       "id": "components_auth_authmodal",
       "label": "AuthModal.tsx",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "authmodal.tsx",
       "source_file": "components/auth/AuthModal.tsx",
       "source_location": "L1"
     },
     {
-      "id": "components_home_foundercta",
-      "label": "FounderCta.tsx",
+      "id": "components_contact_contactform",
+      "label": "ContactForm.tsx",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
-      "norm_label": "foundercta.tsx",
-      "source_file": "components/home/FounderCta.tsx",
+      "norm_label": "contactform.tsx",
+      "source_file": "components/contact/ContactForm.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "components_home_hero",
+      "label": "Hero.tsx",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "hero.tsx",
+      "source_file": "components/home/Hero.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_home_hero_categories",
+      "label": "CATEGORIES",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "code",
+      "norm_label": "categories",
+      "source_file": "components/home/Hero.tsx",
+      "source_location": "L20"
     },
     {
       "id": "components_nav_footer",
       "label": "Footer.tsx",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "footer.tsx",
       "source_file": "components/nav/Footer.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_nav_topnav",
-      "label": "TopNav.tsx",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "useAuth",
-      "file_type": "code",
-      "norm_label": "topnav.tsx",
-      "source_file": "components/nav/TopNav.tsx",
       "source_location": "L1"
     },
     {
@@ -16586,7 +16787,7 @@
       "label": "AuthContext.tsx",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "authcontext.tsx",
       "source_file": "contexts/AuthContext.tsx",
@@ -16597,22 +16798,33 @@
       "label": "AuthContext",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "authcontext",
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L27"
+      "source_location": "L29"
     },
     {
       "id": "lib_supabase_client",
       "label": "client.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "useAuth",
+      "community_name": "lucide-react",
       "file_type": "code",
       "norm_label": "client.ts",
       "source_file": "lib/supabase/client.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "lucide-react",
+      "file_type": "concept",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L17"
     },
     {
       "id": "checklist_report_retest_2026_10_17_content_copy",
@@ -16718,6 +16930,28 @@
       "source_location": "L3"
     },
     {
+      "id": "tailwind_config",
+      "label": "tailwind.config.ts",
+      "_origin": "ast",
+      "community": 151,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "tailwind.config.ts",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tailwind_config_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 151,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L3"
+    },
+    {
       "id": "ref_autoprefixer",
       "label": "autoprefixer",
       "_origin": "ast",
@@ -16782,6 +17016,17 @@
       "norm_label": "react-dom",
       "source_file": "package.json",
       "source_location": "L21"
+    },
+    {
+      "id": "ref_tailwindcss",
+      "label": "tailwindcss",
+      "_origin": "ast",
+      "community": 151,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "tailwindcss",
+      "source_file": "package.json",
+      "source_location": "L35"
     },
     {
       "id": "ref_types_node",
@@ -17388,39 +17633,6 @@
       "source_location": "L88"
     },
     {
-      "id": "app_manifest",
-      "label": "manifest.ts",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "manifest.ts",
-      "source_file": "app/manifest.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_public_browse_layout",
-      "label": "browse/layout.tsx",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "browse/layout.tsx",
-      "source_file": "app/(public)/browse/layout.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_public_browse_layout_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/(public)/browse/layout.tsx",
-      "source_location": "L3"
-    },
-    {
       "id": "app_public_how_it_works_howitworksclient",
       "label": "HowItWorksClient.tsx",
       "_origin": "ast",
@@ -17496,83 +17708,6 @@
       "norm_label": "metadata",
       "source_file": "app/(public)/our-story/page.tsx",
       "source_location": "L4"
-    },
-    {
-      "id": "app_public_privacy_page",
-      "label": "privacy/page.tsx",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "privacy/page.tsx",
-      "source_file": "app/(public)/privacy/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_public_privacy_page_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/(public)/privacy/page.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "app_public_safety_page",
-      "label": "safety/page.tsx",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "safety/page.tsx",
-      "source_file": "app/(public)/safety/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_public_safety_page_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/(public)/safety/page.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "app_public_terms_page",
-      "label": "terms/page.tsx",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "terms/page.tsx",
-      "source_file": "app/(public)/terms/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_public_terms_page_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/(public)/terms/page.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "app_robots",
-      "label": "robots.ts",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "robots.ts",
-      "source_file": "app/robots.ts",
-      "source_location": "L1"
     },
     {
       "id": "components_about_illualmirah",
@@ -17740,17 +17875,6 @@
       "source_location": "L13"
     },
     {
-      "id": "components_ui_legalpage",
-      "label": "LegalPage.tsx",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "code",
-      "norm_label": "legalpage.tsx",
-      "source_file": "components/ui/LegalPage.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "lib_motion_variants",
       "label": "motion-variants.ts",
       "_origin": "ast",
@@ -17782,17 +17906,6 @@
       "norm_label": "framer-motion",
       "source_file": "package.json",
       "source_location": "L16"
-    },
-    {
-      "id": "ref_next",
-      "label": "next",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "useMotion",
-      "file_type": "concept",
-      "norm_label": "next",
-      "source_file": "package.json",
-      "source_location": "L19"
     },
     {
       "id": "agents_skills_design_system_templates_design_tokens_starter_bg_type",
@@ -17927,6 +18040,17 @@
       "source_location": "L126"
     },
     {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core",
+      "label": "test_core.py",
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "code",
+      "norm_label": "test_core.py",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L1"
+    },
+    {
       "id": "agents_skills_ui_ux_pro_max_scripts_core_rationale_283",
       "label": "BM25 ranking algorithm for text search",
       "_origin": "ast",
@@ -17980,6 +18104,17 @@
       "norm_label": "all indexed terms, for suggestion/typo-recovery purposes.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/core.py",
       "source_location": "L346"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_rationale_3",
+      "label": "Stdlib-only regression tests for core.py / design_system.py (unittest, not\u2026",
+      "_origin": "ast",
+      "community": 161,
+      "community_name": "BM25",
+      "file_type": "rationale",
+      "norm_label": "stdlib-only regression tests for core.py / design_system.py (unittest, not...",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_location": "L3"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_165",
@@ -18803,88 +18938,11 @@
       "label": "listings/page.tsx",
       "_origin": "ast",
       "community": 172,
-      "community_name": "lucide-react",
+      "community_name": "listings/page.tsx",
       "file_type": "code",
       "norm_label": "listings/page.tsx",
       "source_file": "app/admin/listings/page.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "app_not_found",
-      "label": "not-found.tsx",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "not-found.tsx",
-      "source_file": "app/not-found.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_not_found_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/not-found.tsx",
-      "source_location": "L4"
-    },
-    {
-      "id": "components_home_hero",
-      "label": "Hero.tsx",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "hero.tsx",
-      "source_file": "components/home/Hero.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_home_hero_categories",
-      "label": "CATEGORIES",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "categories",
-      "source_file": "components/home/Hero.tsx",
-      "source_location": "L20"
-    },
-    {
-      "id": "components_listing_reportbutton",
-      "label": "ReportButton.tsx",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "reportbutton.tsx",
-      "source_file": "components/listing/ReportButton.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_listing_reportbutton_report_reasons",
-      "label": "REPORT_REASONS",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "code",
-      "norm_label": "report_reasons",
-      "source_file": "components/listing/ReportButton.tsx",
-      "source_location": "L13"
-    },
-    {
-      "id": "ref_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 172,
-      "community_name": "lucide-react",
-      "file_type": "concept",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L17"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_relevance_evaluator",
@@ -18909,17 +18967,6 @@
       "source_location": "L2"
     },
     {
-      "id": "app_account_listing_slug_edit_loading",
-      "label": "edit/loading.tsx",
-      "_origin": "ast",
-      "community": 174,
-      "community_name": "ListingForm.tsx",
-      "file_type": "code",
-      "norm_label": "edit/loading.tsx",
-      "source_file": "app/(account)/listing/[slug]/edit/loading.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "app_account_listing_slug_edit_page",
       "label": "edit/page.tsx",
       "_origin": "ast",
@@ -18929,6 +18976,39 @@
       "norm_label": "edit/page.tsx",
       "source_file": "app/(account)/listing/[slug]/edit/page.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "app_public_browse_page",
+      "label": "browse/page.tsx",
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "browse/page.tsx",
+      "source_file": "app/(public)/browse/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_filters_listingfilters",
+      "label": "ListingFilters.tsx",
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "listingfilters.tsx",
+      "source_file": "components/filters/ListingFilters.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_filters_listingfilters_conditions",
+      "label": "conditions",
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "conditions",
+      "source_file": "components/filters/ListingFilters.tsx",
+      "source_location": "L26"
     },
     {
       "id": "components_listing_listingform",
@@ -18973,6 +19053,17 @@
       "norm_label": "cloudinary_max_images",
       "source_file": "lib/cloudinary.ts",
       "source_location": "L16"
+    },
+    {
+      "id": "types_domain",
+      "label": "domain.ts",
+      "_origin": "ast",
+      "community": 174,
+      "community_name": "ListingForm.tsx",
+      "file_type": "code",
+      "norm_label": "domain.ts",
+      "source_file": "types/domain.ts",
+      "source_location": "L1"
     },
     {
       "id": "eslintrc",
@@ -19525,39 +19616,6 @@
       "norm_label": "load rows for optional identity routing, leaving search to report i/o errors.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/core.py",
       "source_location": "L706"
-    },
-    {
-      "id": "tailwind_config",
-      "label": "tailwind.config.ts",
-      "_origin": "ast",
-      "community": 180,
-      "community_name": "tailwindcss",
-      "file_type": "code",
-      "norm_label": "tailwind.config.ts",
-      "source_file": "tailwind.config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "tailwind_config_config",
-      "label": "config",
-      "_origin": "ast",
-      "community": 180,
-      "community_name": "tailwindcss",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "tailwind.config.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "ref_tailwindcss",
-      "label": "tailwindcss",
-      "_origin": "ast",
-      "community": 180,
-      "community_name": "tailwindcss",
-      "file_type": "concept",
-      "norm_label": "tailwindcss",
-      "source_file": "package.json",
-      "source_location": "L35"
     },
     {
       "id": "agents_skills_design_system_templates_design_tokens_starter_duration_fast",
@@ -23384,22 +23442,11 @@
       "source_location": "L127"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system",
-      "label": "design_system.py",
-      "_origin": "ast",
-      "community": 213,
-      "community_name": "design_system.py",
-      "file_type": "code",
-      "norm_label": "design_system.py",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L1"
-    },
-    {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_design_system_mode",
       "label": "test_design_system_mode.py",
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "code",
       "norm_label": "test_design_system_mode.py",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -23410,7 +23457,7 @@
       "label": "WCAG relative luminance of a #RRGGBB string, or None if unparseable.",
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "rationale",
       "norm_label": "wcag relative luminance of a #rrggbb string, or none if unparseable.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -23421,7 +23468,7 @@
       "label": "True when a colors.csv row's Background is a dark surface.",
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "rationale",
       "norm_label": "true when a colors.csv row's background is a dark surface.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -23432,7 +23479,7 @@
       "label": "WCAG contrast ratio for two hex colors, or None if either is invalid.",
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "rationale",
       "norm_label": "wcag contrast ratio for two hex colors, or none if either is invalid.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -23443,7 +23490,7 @@
       "label": "Keep product brand tokens while deriving accessible dark surfaces.",
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "rationale",
       "norm_label": "keep product brand tokens while deriving accessible dark surfaces.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
@@ -23454,29 +23501,18 @@
       "label": "Pick the highest-ranked palette matching the resolved mode. Only the dark case\u2026",
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "rationale",
       "norm_label": "pick the highest-ranked palette matching the resolved mode. only the dark case...",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
       "source_location": "L222"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_3",
-      "label": "Design System Generator - Aggregates search results and applies reasoning to\u2026",
-      "_origin": "ast",
-      "community": 213,
-      "community_name": "design_system.py",
-      "file_type": "rationale",
-      "norm_label": "design system generator - aggregates search results and applies reasoning to...",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L3"
-    },
-    {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_design_system_mode_rationale_3",
       "label": "Regression tests for color-mode coherence in design_system.py (issue #428).\u2026",
       "_origin": "ast",
       "community": 213,
-      "community_name": "design_system.py",
+      "community_name": "test_design_system_mode.py",
       "file_type": "rationale",
       "norm_label": "regression tests for color-mode coherence in design_system.py (issue #428)....",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
@@ -25210,50 +25246,6 @@
       "source_location": "L5"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_612",
-      "label": "Convert hex color to ANSI True Color swatch (\u2588\u2588) with fallback.",
-      "_origin": "ast",
-      "community": 241,
-      "community_name": "format_ascii_box",
-      "file_type": "rationale",
-      "norm_label": "convert hex color to ansi true color swatch (\u2588\u2588) with fallback.",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L612"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_626",
-      "label": "Like str.ljust but accounts for zero-width ANSI escape sequences.",
-      "_origin": "ast",
-      "community": 241,
-      "community_name": "format_ascii_box",
-      "file_type": "rationale",
-      "norm_label": "like str.ljust but accounts for zero-width ansi escape sequences.",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L626"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_634",
-      "label": "Create a Unicode section separator: \u251c\u2500\u2500\u2500 NAME \u2500\u2500\u2500...\u2524",
-      "_origin": "ast",
-      "community": 241,
-      "community_name": "format_ascii_box",
-      "file_type": "rationale",
-      "norm_label": "create a unicode section separator: \u251c\u2500\u2500\u2500 name \u2500\u2500\u2500...\u2524",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L634"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_641",
-      "label": "Format design system as Unicode box with ANSI color swatches.",
-      "_origin": "ast",
-      "community": 241,
-      "community_name": "format_ascii_box",
-      "file_type": "rationale",
-      "norm_label": "format design system as unicode box with ansi color swatches.",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L641"
-    },
-    {
       "id": "checklist_report_browser_agent_2026_10_17_console_network",
       "label": "browser-agent-2026-10-17/console-network.md",
       "_origin": "ast",
@@ -26006,17 +25998,6 @@
       "norm_label": "test source",
       "source_file": "checklist_report/final-regression-2026-10-17/playwright-report/data/b3aa2e3d020f62a7f4580680c45ca7d2e338b82c.md",
       "source_location": "L193"
-    },
-    {
-      "id": "components_listing_contactsellerbutton",
-      "label": "ContactSellerButton.tsx",
-      "_origin": "ast",
-      "community": 254,
-      "community_name": "ContactSellerButton.tsx",
-      "file_type": "code",
-      "norm_label": "contactsellerbutton.tsx",
-      "source_file": "components/listing/ContactSellerButton.tsx",
-      "source_location": "L1"
     },
     {
       "id": "checklist_report_final_regression_2026_10_17_scope_check",
@@ -27721,37 +27702,136 @@
       "source_location": "L2"
     },
     {
-      "id": "app_public_browse_page",
-      "label": "browse/page.tsx",
+      "id": "app_manifest",
+      "label": "manifest.ts",
       "_origin": "ast",
       "community": 3,
-      "community_name": "browse/page.tsx",
+      "community_name": "next",
       "file_type": "code",
-      "norm_label": "browse/page.tsx",
-      "source_file": "app/(public)/browse/page.tsx",
+      "norm_label": "manifest.ts",
+      "source_file": "app/manifest.ts",
       "source_location": "L1"
     },
     {
-      "id": "components_filters_listingfilters",
-      "label": "ListingFilters.tsx",
+      "id": "app_public_browse_layout",
+      "label": "browse/layout.tsx",
       "_origin": "ast",
       "community": 3,
-      "community_name": "browse/page.tsx",
+      "community_name": "next",
       "file_type": "code",
-      "norm_label": "listingfilters.tsx",
-      "source_file": "components/filters/ListingFilters.tsx",
+      "norm_label": "browse/layout.tsx",
+      "source_file": "app/(public)/browse/layout.tsx",
       "source_location": "L1"
     },
     {
-      "id": "components_filters_listingfilters_conditions",
-      "label": "conditions",
+      "id": "app_public_browse_layout_metadata",
+      "label": "metadata",
       "_origin": "ast",
       "community": 3,
-      "community_name": "browse/page.tsx",
+      "community_name": "next",
       "file_type": "code",
-      "norm_label": "conditions",
-      "source_file": "components/filters/ListingFilters.tsx",
-      "source_location": "L26"
+      "norm_label": "metadata",
+      "source_file": "app/(public)/browse/layout.tsx",
+      "source_location": "L3"
+    },
+    {
+      "id": "app_public_privacy_page",
+      "label": "privacy/page.tsx",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "privacy/page.tsx",
+      "source_file": "app/(public)/privacy/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_public_privacy_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/(public)/privacy/page.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "app_public_safety_page",
+      "label": "safety/page.tsx",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "safety/page.tsx",
+      "source_file": "app/(public)/safety/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_public_safety_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/(public)/safety/page.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "app_public_terms_page",
+      "label": "terms/page.tsx",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "terms/page.tsx",
+      "source_file": "app/(public)/terms/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_public_terms_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/(public)/terms/page.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "app_robots",
+      "label": "robots.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "robots.ts",
+      "source_file": "app/robots.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_ui_legalpage",
+      "label": "LegalPage.tsx",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "code",
+      "norm_label": "legalpage.tsx",
+      "source_file": "components/ui/LegalPage.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_next",
+      "label": "next",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "next",
+      "file_type": "concept",
+      "norm_label": "next",
+      "source_file": "package.json",
+      "source_location": "L19"
     },
     {
       "id": "agents_skills_ui_styling_references_tailwind_responsive",
@@ -28749,7 +28829,7 @@
       "label": "contact/page.tsx",
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "contact/page.tsx",
       "source_file": "app/(public)/contact/page.tsx",
@@ -28760,22 +28840,11 @@
       "label": "metadata",
       "_origin": "ast",
       "community": 34,
-      "community_name": "ContactForm.tsx",
+      "community_name": "ContactForm",
       "file_type": "code",
       "norm_label": "metadata",
       "source_file": "app/(public)/contact/page.tsx",
       "source_location": "L4"
-    },
-    {
-      "id": "components_contact_contactform",
-      "label": "ContactForm.tsx",
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "ContactForm.tsx",
-      "file_type": "code",
-      "norm_label": "contactform.tsx",
-      "source_file": "components/contact/ContactForm.tsx",
-      "source_location": "L1"
     },
     {
       "id": "agents_skills_ui_styling_scripts_tests_test_tailwind_config_gen_rationale_259",
@@ -29282,17 +29351,6 @@
       "source_location": "L80"
     },
     {
-      "id": "app_api_listings_id_contact_route",
-      "label": "[id]/contact/route.ts",
-      "_origin": "ast",
-      "community": 361,
-      "community_name": "[slug]/page.tsx",
-      "file_type": "code",
-      "norm_label": "[id]/contact/route.ts",
-      "source_file": "app/api/listings/[id]/contact/route.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "app_public_listing_slug_listingdetailclient",
       "label": "ListingDetailClient.tsx",
       "_origin": "ast",
@@ -29326,6 +29384,50 @@
       "source_location": "L36"
     },
     {
+      "id": "components_listing_contactsellerbutton",
+      "label": "ContactSellerButton.tsx",
+      "_origin": "ast",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
+      "file_type": "code",
+      "norm_label": "contactsellerbutton.tsx",
+      "source_file": "components/listing/ContactSellerButton.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_listing_reportbutton",
+      "label": "ReportButton.tsx",
+      "_origin": "ast",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
+      "file_type": "code",
+      "norm_label": "reportbutton.tsx",
+      "source_file": "components/listing/ReportButton.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_listing_reportbutton_report_reasons",
+      "label": "REPORT_REASONS",
+      "_origin": "ast",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
+      "file_type": "code",
+      "norm_label": "report_reasons",
+      "source_file": "components/listing/ReportButton.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "components_nav_topnav",
+      "label": "TopNav.tsx",
+      "_origin": "ast",
+      "community": 361,
+      "community_name": "[slug]/page.tsx",
+      "file_type": "code",
+      "norm_label": "topnav.tsx",
+      "source_file": "components/nav/TopNav.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "lib_display_name",
       "label": "display-name.ts",
       "_origin": "ast",
@@ -29334,28 +29436,6 @@
       "file_type": "code",
       "norm_label": "display-name.ts",
       "source_file": "lib/display-name.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_whatsapp",
-      "label": "whatsapp.ts",
-      "_origin": "ast",
-      "community": 361,
-      "community_name": "[slug]/page.tsx",
-      "file_type": "code",
-      "norm_label": "whatsapp.ts",
-      "source_file": "lib/whatsapp.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "types_domain",
-      "label": "domain.ts",
-      "_origin": "ast",
-      "community": 361,
-      "community_name": "[slug]/page.tsx",
-      "file_type": "code",
-      "norm_label": "domain.ts",
-      "source_file": "types/domain.ts",
       "source_location": "L1"
     },
     {
@@ -29609,17 +29689,6 @@
       "file_type": "code",
       "norm_label": "contact-us.spec.ts",
       "source_file": "e2e/contact-us.spec.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "e2e_earlier_pass_15_spec",
-      "label": "earlier-pass-15.spec.ts",
-      "_origin": "ast",
-      "community": 366,
-      "community_name": "@playwright/test",
-      "file_type": "code",
-      "norm_label": "earlier-pass-15.spec.ts",
-      "source_file": "e2e/earlier-pass-15.spec.ts",
       "source_location": "L1"
     },
     {
@@ -29986,48 +30055,26 @@
       "source_location": "L11"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core",
-      "label": "test_core.py",
+      "id": "app_admin_listings_pending_page",
+      "label": "pending/page.tsx",
       "_origin": "ast",
       "community": 37,
-      "community_name": "test_core.py",
+      "community_name": "pending/page.tsx",
       "file_type": "code",
-      "norm_label": "test_core.py",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "norm_label": "pending/page.tsx",
+      "source_file": "app/admin/listings/pending/page.tsx",
       "source_location": "L1"
     },
     {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_792",
-      "label": "Format design system as markdown.",
+      "id": "app_api_admin_listings_pending_route",
+      "label": "pending/route.ts",
       "_origin": "ast",
       "community": 37,
-      "community_name": "test_core.py",
-      "file_type": "rationale",
-      "norm_label": "format design system as markdown.",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L792"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_923",
-      "label": "Main entry point for design system generation. Args: query: Search query (e.g.,\u2026",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "test_core.py",
-      "file_type": "rationale",
-      "norm_label": "main entry point for design system generation. args: query: search query (e.g.,...",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
-      "source_location": "L923"
-    },
-    {
-      "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_core_rationale_3",
-      "label": "Stdlib-only regression tests for core.py / design_system.py (unittest, not\u2026",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "test_core.py",
-      "file_type": "rationale",
-      "norm_label": "stdlib-only regression tests for core.py / design_system.py (unittest, not...",
-      "source_file": ".agents/skills/ui-ux-pro-max/scripts/tests/test_core.py",
-      "source_location": "L3"
+      "community_name": "pending/page.tsx",
+      "file_type": "code",
+      "norm_label": "pending/route.ts",
+      "source_file": "app/api/admin/listings/pending/route.ts",
+      "source_location": "L1"
     },
     {
       "id": "app_api_contact_route",
@@ -30107,6 +30154,28 @@
       "source_location": "L1"
     },
     {
+      "id": "app_api_admin_listings_id_reject_route",
+      "label": "reject/route.ts",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "createAdminClient",
+      "file_type": "code",
+      "norm_label": "reject/route.ts",
+      "source_file": "app/api/admin/listings/[id]/reject/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_admin_listings_id_reject_route_rejectschema",
+      "label": "rejectSchema",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "createAdminClient",
+      "file_type": "code",
+      "norm_label": "rejectschema",
+      "source_file": "app/api/admin/listings/[id]/reject/route.ts",
+      "source_location": "L10"
+    },
+    {
       "id": "app_api_admin_listings_route",
       "label": "admin/listings/route.ts",
       "_origin": "ast",
@@ -30116,6 +30185,28 @@
       "norm_label": "admin/listings/route.ts",
       "source_file": "app/api/admin/listings/route.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "app_api_admin_reports_id_resolve_route",
+      "label": "resolve/route.ts",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "createAdminClient",
+      "file_type": "code",
+      "norm_label": "resolve/route.ts",
+      "source_file": "app/api/admin/reports/[id]/resolve/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_admin_reports_id_resolve_route_resolvereportschema",
+      "label": "resolveReportSchema",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "createAdminClient",
+      "file_type": "code",
+      "norm_label": "resolvereportschema",
+      "source_file": "app/api/admin/reports/[id]/resolve/route.ts",
+      "source_location": "L10"
     },
     {
       "id": "app_api_admin_users_id_ban_route",
@@ -30162,15 +30253,26 @@
       "source_location": "L1"
     },
     {
-      "id": "app_api_profile_route",
-      "label": "profile/route.ts",
+      "id": "lib_auth_admin",
+      "label": "auth-admin.ts",
       "_origin": "ast",
       "community": 39,
       "community_name": "createAdminClient",
       "file_type": "code",
-      "norm_label": "profile/route.ts",
-      "source_file": "app/api/profile/route.ts",
+      "norm_label": "auth-admin.ts",
+      "source_file": "lib/auth-admin.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "lib_auth_admin_requireadminsession",
+      "label": "requireAdminSession",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "createAdminClient",
+      "file_type": "code",
+      "norm_label": "requireadminsession",
+      "source_file": "lib/auth-admin.ts",
+      "source_location": "L6"
     },
     {
       "id": "lib_supabase_admin",
@@ -30195,6 +30297,17 @@
       "source_location": "L1"
     },
     {
+      "id": "app_account_listing_slug_edit_loading",
+      "label": "edit/loading.tsx",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "edit/loading.tsx",
+      "source_file": "app/(account)/listing/[slug]/edit/loading.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "app_account_profile_loading",
       "label": "profile/loading.tsx",
       "_origin": "ast",
@@ -30214,6 +30327,17 @@
       "file_type": "code",
       "norm_label": "sell/loading.tsx",
       "source_file": "app/(account)/sell/loading.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_admin_listings_pending_client",
+      "label": "pending/client.tsx",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "react",
+      "file_type": "code",
+      "norm_label": "pending/client.tsx",
+      "source_file": "app/admin/listings/pending/client.tsx",
       "source_location": "L1"
     },
     {
@@ -30673,61 +30797,6 @@
       "norm_label": "website",
       "source_file": ".agents/skills/brand/references/logo-usage-rules.md",
       "source_location": "L156"
-    },
-    {
-      "id": "scripts_test_whatsapp_and_delete_account",
-      "label": "test_whatsapp_and_delete_account.js",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_whatsapp_and_delete_account.js",
-      "file_type": "code",
-      "norm_label": "test_whatsapp_and_delete_account.js",
-      "source_file": "scripts/test_whatsapp_and_delete_account.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "scripts_test_whatsapp_and_delete_account_createchunks",
-      "label": "{ createChunks }",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_whatsapp_and_delete_account.js",
-      "file_type": "code",
-      "norm_label": "{ createchunks }",
-      "source_file": "scripts/test_whatsapp_and_delete_account.js",
-      "source_location": "L27"
-    },
-    {
-      "id": "scripts_test_whatsapp_and_delete_account_createclient",
-      "label": "{ createClient }",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_whatsapp_and_delete_account.js",
-      "file_type": "code",
-      "norm_label": "{ createclient }",
-      "source_file": "scripts/test_whatsapp_and_delete_account.js",
-      "source_location": "L25"
-    },
-    {
-      "id": "scripts_test_whatsapp_and_delete_account_results",
-      "label": "results",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_whatsapp_and_delete_account.js",
-      "file_type": "code",
-      "norm_label": "results",
-      "source_file": "scripts/test_whatsapp_and_delete_account.js",
-      "source_location": "L34"
-    },
-    {
-      "id": "scripts_test_whatsapp_and_delete_account_stringtobase64url",
-      "label": "{ stringToBase64URL }",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "test_whatsapp_and_delete_account.js",
-      "file_type": "code",
-      "norm_label": "{ stringtobase64url }",
-      "source_file": "scripts/test_whatsapp_and_delete_account.js",
-      "source_location": "L26"
     },
     {
       "id": "agents_skills_ui_styling_references_shadcn_accessibility",
@@ -31456,6 +31525,17 @@
       "source_location": "L14"
     },
     {
+      "id": "components_home_foundercta",
+      "label": "FounderCta.tsx",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "(public)/page.tsx",
+      "file_type": "code",
+      "norm_label": "foundercta.tsx",
+      "source_file": "components/home/FounderCta.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "components_home_freshoncampus",
       "label": "FreshOnCampus.tsx",
       "_origin": "ast",
@@ -31614,32 +31694,10 @@
       "label": "admin/client.tsx",
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "admin/client.tsx",
       "source_file": "app/admin/client.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_admin_listings_pending_client",
-      "label": "pending/client.tsx",
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "requireAdminSession",
-      "file_type": "code",
-      "norm_label": "pending/client.tsx",
-      "source_file": "app/admin/listings/pending/client.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_admin_listings_pending_page",
-      "label": "pending/page.tsx",
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "requireAdminSession",
-      "file_type": "code",
-      "norm_label": "pending/page.tsx",
-      "source_file": "app/admin/listings/pending/page.tsx",
       "source_location": "L1"
     },
     {
@@ -31647,21 +31705,10 @@
       "label": "admin/page.tsx",
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "admin/page.tsx",
       "source_file": "app/admin/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_api_admin_listings_pending_route",
-      "label": "pending/route.ts",
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "requireAdminSession",
-      "file_type": "code",
-      "norm_label": "pending/route.ts",
-      "source_file": "app/api/admin/listings/pending/route.ts",
       "source_location": "L1"
     },
     {
@@ -31669,7 +31716,7 @@
       "label": "overview/route.ts",
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "overview/route.ts",
       "source_file": "app/api/admin/overview/route.ts",
@@ -31680,7 +31727,7 @@
       "label": "settings/route.ts",
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "settings/route.ts",
       "source_file": "app/api/admin/settings/route.ts",
@@ -31691,7 +31738,7 @@
       "label": "updateSettingsSchema",
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "updatesettingsschema",
       "source_file": "app/api/admin/settings/route.ts",
@@ -31702,22 +31749,11 @@
       "label": "queries.ts",
       "_origin": "ast",
       "community": 46,
-      "community_name": "requireAdminSession",
+      "community_name": "queries.ts",
       "file_type": "code",
       "norm_label": "queries.ts",
       "source_file": "lib/admin/queries.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "lib_auth_admin_requireadminsession",
-      "label": "requireAdminSession",
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "requireAdminSession",
-      "file_type": "code",
-      "norm_label": "requireadminsession",
-      "source_file": "lib/auth-admin.ts",
-      "source_location": "L6"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_core_rationale_505",
@@ -31916,6 +31952,17 @@
       "norm_label": "load reasoning rules from csv.",
       "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
       "source_location": "L268"
+    },
+    {
+      "id": "agents_skills_ui_ux_pro_max_scripts_design_system_rationale_409",
+      "label": "Select best matching result based on priority keywords.",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "DesignSystemGenerator",
+      "file_type": "rationale",
+      "norm_label": "select best matching result based on priority keywords.",
+      "source_file": ".agents/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_location": "L409"
     },
     {
       "id": "agents_skills_ui_ux_pro_max_scripts_tests_test_design_system_mode_rationale_139",
@@ -37239,10 +37286,21 @@
       "label": "account/route.ts",
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "account/route.ts",
       "source_file": "app/api/account/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_listings_id_contact_route",
+      "label": "[id]/contact/route.ts",
+      "_origin": "ast",
+      "community": 81,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "[id]/contact/route.ts",
+      "source_file": "app/api/listings/[id]/contact/route.ts",
       "source_location": "L1"
     },
     {
@@ -37250,10 +37308,21 @@
       "label": "sold/route.ts",
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "sold/route.ts",
       "source_file": "app/api/listings/[id]/sold/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_api_profile_route",
+      "label": "profile/route.ts",
+      "_origin": "ast",
+      "community": 81,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "profile/route.ts",
+      "source_file": "app/api/profile/route.ts",
       "source_location": "L1"
     },
     {
@@ -37261,21 +37330,10 @@
       "label": "callback/route.ts",
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "callback/route.ts",
       "source_file": "app/auth/callback/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_auth_admin",
-      "label": "auth-admin.ts",
-      "_origin": "ast",
-      "community": 81,
-      "community_name": "auth-admin.ts",
-      "file_type": "code",
-      "norm_label": "auth-admin.ts",
-      "source_file": "lib/auth-admin.ts",
       "source_location": "L1"
     },
     {
@@ -37283,10 +37341,21 @@
       "label": "server.ts",
       "_origin": "ast",
       "community": 81,
-      "community_name": "auth-admin.ts",
+      "community_name": "server.ts",
       "file_type": "code",
       "norm_label": "server.ts",
       "source_file": "lib/supabase/server.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_whatsapp",
+      "label": "whatsapp.ts",
+      "_origin": "ast",
+      "community": 81,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "whatsapp.ts",
+      "source_file": "lib/whatsapp.ts",
       "source_location": "L1"
     },
     {
@@ -39025,55 +39094,11 @@
       "source_location": "L1"
     },
     {
-      "id": "app_api_admin_listings_id_reject_route",
-      "label": "reject/route.ts",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "reject/route.ts",
-      "file_type": "code",
-      "norm_label": "reject/route.ts",
-      "source_file": "app/api/admin/listings/[id]/reject/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_api_admin_listings_id_reject_route_rejectschema",
-      "label": "rejectSchema",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "reject/route.ts",
-      "file_type": "code",
-      "norm_label": "rejectschema",
-      "source_file": "app/api/admin/listings/[id]/reject/route.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "app_api_admin_reports_id_resolve_route",
-      "label": "resolve/route.ts",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "reject/route.ts",
-      "file_type": "code",
-      "norm_label": "resolve/route.ts",
-      "source_file": "app/api/admin/reports/[id]/resolve/route.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_api_admin_reports_id_resolve_route_resolvereportschema",
-      "label": "resolveReportSchema",
-      "_origin": "ast",
-      "community": 91,
-      "community_name": "reject/route.ts",
-      "file_type": "code",
-      "norm_label": "resolvereportschema",
-      "source_file": "app/api/admin/reports/[id]/resolve/route.ts",
-      "source_location": "L10"
-    },
-    {
       "id": "app_api_listings_id_report_route",
       "label": "report/route.ts",
       "_origin": "ast",
       "community": 91,
-      "community_name": "reject/route.ts",
+      "community_name": "report/route.ts",
       "file_type": "code",
       "norm_label": "report/route.ts",
       "source_file": "app/api/listings/[id]/report/route.ts",
@@ -39084,7 +39109,7 @@
       "label": "reportSchema",
       "_origin": "ast",
       "community": 91,
-      "community_name": "reject/route.ts",
+      "community_name": "report/route.ts",
       "file_type": "code",
       "norm_label": "reportschema",
       "source_file": "app/api/listings/[id]/report/route.ts",
@@ -39095,7 +39120,7 @@
       "label": "validReportReasons",
       "_origin": "ast",
       "community": 91,
-      "community_name": "reject/route.ts",
+      "community_name": "report/route.ts",
       "file_type": "code",
       "norm_label": "validreportreasons",
       "source_file": "app/api/listings/[id]/report/route.ts",
@@ -39106,7 +39131,7 @@
       "label": "zod",
       "_origin": "ast",
       "community": 91,
-      "community_name": "reject/route.ts",
+      "community_name": "report/route.ts",
       "file_type": "concept",
       "norm_label": "zod",
       "source_file": "package.json",
@@ -48607,7 +48632,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/auth/AuthModal.tsx",
-      "source_location": "L11",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -48619,7 +48644,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/auth/AuthModal.tsx",
-      "source_location": "L13",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -48943,7 +48968,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L36",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -80733,13 +80758,24 @@
     },
     {
       "source": "components_auth_authmodal",
+      "target": "components_auth_authmodal_googleicon",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/auth/AuthModal.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "components_auth_authmodal",
       "target": "components_auth_authmodal_authmodal",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/auth/AuthModal.tsx",
-      "source_location": "L10",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -81487,7 +81523,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L100",
+      "source_location": "L102",
       "weight": 1.0
     },
     {
@@ -81498,7 +81534,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L14",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -81509,7 +81545,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -81520,7 +81556,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L29",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "contexts_authcontext",
+      "target": "contexts_authcontext_authmodaltab",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "contexts/AuthContext.tsx",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -81531,7 +81578,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "contexts/AuthContext.tsx",
-      "source_location": "L7",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -92432,5 +92479,5 @@
       "source_file": "documents/UniDeal_TRD_v1.1.md"
     }
   ],
-  "built_at_commit": "dcab65021a7e57e58b6534a4b3e7248d5ac44857"
+  "built_at_commit": "84f5a5ba41b0a5bfddd77bcf0f345417b566cd28"
 }
