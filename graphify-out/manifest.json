@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "progress.md": {
-    "mtime": 1791813642.8660405,
-    "seen": 1791813666.527992,
-    "ast_hash": "6684c89f113abd5653fd8d39c8e5d602",
+    "mtime": 1791814424.9127755,
+    "seen": 1791814443.1816356,
+    "ast_hash": "b946cbd5743d29b4375ec6f4bcdc4fe6",
     "semantic_hash": ""
   },
   ".agents/skills/brand/scripts/extract-colors.cjs": {
@@ -1818,9 +1818,9 @@
     "semantic_hash": ""
   },
   "components/home/Hero.tsx": {
-    "mtime": 1791813356.1815116,
-    "seen": 1791813666.490819,
-    "ast_hash": "dcf7f7b67b334b33a982d6f3434d3cc4",
+    "mtime": 1791814347.213411,
+    "seen": 1791814443.167636,
+    "ast_hash": "3298f30a38239cb54dfcc89d1ddb15af",
     "semantic_hash": ""
   },
   "components/home/HowItWorks.tsx": {
@@ -1866,9 +1866,9 @@
     "semantic_hash": ""
   },
   "public/hero-campus.webp": {
-    "mtime": 1791813132.0587425,
-    "seen": 1791813666.527992,
-    "ast_hash": "542844c4158199535c3e0982f66064d0",
+    "mtime": 1791814238.016614,
+    "seen": 1791814443.182369,
+    "ast_hash": "ba19298ad83df28ac2584b80753c891c",
     "semantic_hash": ""
   }
 }
