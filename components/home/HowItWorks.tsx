@@ -12,16 +12,16 @@ const steps = [
     icon: PackagePlus,
     // Mini form row fragment
     fragment: (
-      <div className="p-3 bg-[#f8fafc] border border-border rounded-md flex flex-col gap-2 select-none" aria-hidden="true">
+      <div className="p-3 bg-surface border border-border rounded-md flex flex-col gap-2 select-none" aria-hidden="true">
         <div className="flex gap-2">
-          <div className="flex-1 bg-white border border-border rounded px-2 py-1 text-[11px] text-neutral-muted truncate">
+          <div className="flex-1 bg-white border border-border rounded px-2 py-1 text-xs text-neutral-muted truncate">
             Lab Manual Sem 3
           </div>
-          <div className="w-16 bg-white border border-border rounded px-2 py-1 text-[11px] text-neutral-muted text-right">
+          <div className="w-16 bg-white border border-border rounded px-2 py-1 text-xs text-neutral-muted text-right">
             ₹250
           </div>
         </div>
-        <div className="py-1 px-3 bg-primary text-white text-[11px] font-semibold rounded text-center">
+        <div className="py-1 px-3 bg-primary text-white text-xs font-semibold rounded text-center">
           Post listing
         </div>
       </div>
@@ -34,14 +34,14 @@ const steps = [
     icon: Search,
     // 3 chip-style filters fragment
     fragment: (
-      <div className="p-3 bg-[#f8fafc] border border-border rounded-md flex flex-wrap gap-1.5 select-none" aria-hidden="true">
-        <span className="px-2 py-1 bg-white border border-primary text-primary text-[11px] font-medium rounded-full">
+      <div className="p-3 bg-surface border border-border rounded-md flex flex-wrap gap-1.5 select-none" aria-hidden="true">
+        <span className="px-2 py-1 bg-white border border-primary text-primary text-xs font-medium rounded-full">
           Books & Notes
         </span>
-        <span className="px-2 py-1 bg-white border border-border text-neutral-muted text-[11px] font-medium rounded-full">
+        <span className="px-2 py-1 bg-white border border-border text-neutral-muted text-xs font-medium rounded-full">
           Like New
         </span>
-        <span className="px-2 py-1 bg-white border border-border text-neutral-muted text-[11px] font-medium rounded-full">
+        <span className="px-2 py-1 bg-white border border-border text-neutral-muted text-xs font-medium rounded-full">
           Price: Low to High
         </span>
       </div>
@@ -55,12 +55,12 @@ const steps = [
     // Ghost-style button labelled "Contact Seller" + caption "Opens WhatsApp"
     // IMPORTANT: neutral outlined style or --color-accent, NEVER --color-accent-contact
     fragment: (
-      <div className="p-3 bg-[#f8fafc] border border-border rounded-md flex flex-col items-center justify-center gap-1.5 select-none" aria-hidden="true">
-        <div className="w-full py-1.5 px-3 border border-border bg-white text-neutral-text text-[11px] font-medium rounded text-center flex items-center justify-center gap-1.5">
+      <div className="p-3 bg-surface border border-border rounded-md flex flex-col items-center justify-center gap-1.5 select-none" aria-hidden="true">
+        <div className="w-full py-1.5 px-3 border border-border bg-white text-neutral-text text-xs font-medium rounded text-center flex items-center justify-center gap-1.5">
           <MessageCircle className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
           <span>Contact Seller</span>
         </div>
-        <span className="text-[10px] text-neutral-muted">
+        <span className="text-xs text-neutral-muted">
           Opens WhatsApp
         </span>
       </div>

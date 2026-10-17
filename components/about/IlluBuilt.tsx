@@ -66,8 +66,8 @@ export default function IlluBuilt({ inView }: { inView: boolean }) {
           >
             <svg viewBox="0 0 48 48" className="w-12 h-12">{icon}</svg>
           </motion.div>
-          <span className="text-[11px] font-semibold text-neutral-text text-center leading-tight">{label}</span>
-          <span className="text-[10px] text-neutral-muted text-center leading-tight">{sublabel}</span>
+          <span className="text-xs font-semibold text-neutral-text text-center leading-tight">{label}</span>
+          <span className="text-xs text-neutral-muted text-center leading-tight">{sublabel}</span>
         </motion.div>
       ))}
     </motion.div>

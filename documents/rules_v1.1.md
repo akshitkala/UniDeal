@@ -28,8 +28,9 @@
 
 | Token | Value | Usage |
 |---|---|---|
-| `--color-accent` | `#16A34A` | General accent / primary CTA color across the app |
-| `--color-accent-contact` | `#15803D` | Reserved exclusively for the "Contact Seller" button — never used elsewhere |
+| `--color-accent` | `#16A34A` | General accent / non-text uses (borders, active outlines, badges, icons) |
+| `--color-accent-strong` | `#166534` | Filled primary buttons with white text (WCAG AA compliant 7.3:1) |
+| `--color-accent-contact` | `#14532D` | Reserved exclusively for the "Contact Seller" button (WCAG AA compliant 9.1:1) |
 | Typography | Outfit (headings), Work Sans (body) | See design.md for weight/scale |
 | Visual baseline | Flat/clean | No gradients, glassmorphism, or neumorphism anywhere in the app |
 

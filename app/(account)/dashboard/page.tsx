@@ -293,7 +293,7 @@ export default function DashboardPage() {
                   {item.images?.[0] ? (
                     <img src={item.images[0]} alt={item.title} className="w-full h-full object-cover" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-[10px] text-neutral-muted">No Image</div>
+                    <div className="w-full h-full flex items-center justify-center text-xs text-neutral-muted">No Image</div>
                   )}
                 </div>
 

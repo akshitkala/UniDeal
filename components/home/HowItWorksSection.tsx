@@ -99,7 +99,7 @@ export default function HowItWorksSection() {
                 </motion.div>
 
                 <div>
-                  <p className="text-[11px] font-semibold text-neutral-muted uppercase tracking-wide mb-1">
+                  <p className="text-xs font-semibold text-neutral-muted uppercase tracking-wide mb-1">
                     Step {step}
                   </p>
                   <h3 className="text-base font-semibold text-neutral-text mb-1.5">{label}</h3>

@@ -82,14 +82,14 @@ export default function ProblemStory() {
           {/* Right Column: Illustrative Example Message Pile Card */}
           <div
             ref={cardRef}
-            className="w-full bg-[#f8fafc] border border-border rounded-xl p-5 sm:p-6 shadow-sm overflow-hidden"
+            className="w-full bg-surface border border-border rounded-xl p-5 sm:p-6 shadow-sm overflow-hidden"
           >
             {/* Header label */}
             <div className="flex items-center justify-between pb-3 mb-4 border-b border-border">
-              <span className="text-[11px] font-semibold text-neutral-muted uppercase tracking-wider">
+              <span className="text-xs font-semibold text-neutral-muted uppercase tracking-wider">
                 Illustrative example
               </span>
-              <span className="text-[11px] text-neutral-muted">Group chat</span>
+              <span className="text-xs text-neutral-muted">Group chat</span>
             </div>
 
             {/* Messages stack */}
@@ -103,10 +103,10 @@ export default function ProblemStory() {
               >
                 {INITIAL_MESSAGES.map((msg, i) => (
                   <div key={i} className="flex flex-col gap-0.5 max-w-[90%]">
-                    <span className="text-[10px] font-semibold text-neutral-muted tracking-wide">
+                    <span className="text-xs font-semibold text-neutral-muted tracking-wide">
                       {msg.sender}
                     </span>
-                    <div className="bg-[#e2e8f0] text-neutral-text text-xs sm:text-sm p-2.5 rounded-lg rounded-tl-none leading-relaxed border border-border/60">
+                    <div className="bg-border/40 text-neutral-text text-xs sm:text-sm p-2.5 rounded-lg rounded-tl-none leading-relaxed border border-border/60">
                       {msg.text}
                     </div>
                   </div>
@@ -123,10 +123,10 @@ export default function ProblemStory() {
               >
                 {FILLER_MESSAGES.map((msg, i) => (
                   <div key={i} className="flex flex-col gap-0.5 max-w-[85%] self-start">
-                    <span className="text-[10px] font-semibold text-neutral-muted tracking-wide">
+                    <span className="text-xs font-semibold text-neutral-muted tracking-wide">
                       {msg.sender}
                     </span>
-                    <div className="bg-[#f1f5f9] text-neutral-muted text-xs sm:text-sm p-2 rounded-lg rounded-tl-none leading-relaxed border border-border/40">
+                    <div className="bg-border/20 text-neutral-muted text-xs sm:text-sm p-2 rounded-lg rounded-tl-none leading-relaxed border border-border/40">
                       {msg.text}
                     </div>
                   </div>

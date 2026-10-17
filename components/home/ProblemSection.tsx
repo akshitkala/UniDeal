@@ -18,7 +18,7 @@ export default function ProblemSection() {
           whileInView="show"
           viewport={MOTION.viewport}
         >
-          <p className="text-[11px] font-bold text-neutral-muted uppercase tracking-[0.2em] mb-4">The problem</p>
+          <p className="text-xs font-bold text-neutral-muted uppercase tracking-[0.2em] mb-4">The problem</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-neutral-text font-heading leading-tight tracking-tight mb-8">
             WhatsApp groups weren&rsquo;t built for this.
           </h2>
@@ -27,7 +27,7 @@ export default function ProblemSection() {
           </p>
         </motion.div>
 
-        {/* WhatsApp Mockup */}
+        {/* Problem Breakdown Grid */}
         <motion.div
           variants={fadeUp(M.offset.md, M.duration.entrance)}
           initial="hidden"
@@ -35,46 +35,58 @@ export default function ProblemSection() {
           viewport={MOTION.viewport}
           className="mb-8"
         >
-          <div className="bg-[#0b141a] rounded-2xl p-6 sm:p-8 shadow-xl overflow-hidden relative">
-            <div className="flex flex-col gap-6 relative z-10">
-              {/* Message 1 */}
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] text-[#8696a0] font-medium tracking-wide">RAHUL (B.TECH)</span>
-                <div className="bg-[#202c33] text-[#e9edef] text-sm p-3 rounded-xl rounded-tl-none self-start max-w-[85%] leading-relaxed shadow-sm">
-                  Selling my sem-3 Physics book. Brand new condition. Anyone interested?
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-surface border border-border rounded-xl p-6 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-danger/10 text-danger flex items-center justify-center mb-4">
+                  <MessageSquareX className="w-5 h-5" />
                 </div>
+                <h3 className="text-lg font-bold text-neutral-text font-heading mb-2">
+                  Buried in Chat Streams
+                </h3>
+                <p className="text-sm text-neutral-muted leading-relaxed">
+                  Every week, listings get posted in batch groups and flooded by 200 new messages within hours. What isn&apos;t seen immediately vanishes forever.
+                </p>
               </div>
-              
-              {/* Message 2 */}
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] text-[#8696a0] font-medium tracking-wide">ISHA P.</span>
-                <div className="bg-[#202c33] text-[#e9edef] text-sm p-3 rounded-xl rounded-tl-none self-start max-w-[85%] leading-relaxed shadow-sm">
-                  Does anyone have a Drafter for sale?
-                </div>
-              </div>
-
-              {/* Message 3 */}
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] text-[#8696a0] font-medium tracking-wide">AMAN DEEP</span>
-                <div className="bg-[#202c33] text-[#e9edef] text-sm p-3 rounded-xl rounded-tl-none self-start max-w-[85%] leading-relaxed shadow-sm">
-                  Lab coat available. Never used. ₹200.
-                </div>
-              </div>
-
-              {/* Faded Message */}
-              <div className="flex flex-col gap-1 opacity-40">
-                <span className="text-[10px] text-[#8696a0] font-medium tracking-wide">SNEHA GUPTA</span>
-                <div className="bg-[#202c33] text-[#e9edef] text-sm p-3 rounded-xl rounded-tl-none self-start max-w-[85%] leading-relaxed shadow-sm">
-                  Giving away my previous year notes for free. Hostel 4.
-                </div>
-              </div>
+              <span className="text-xs font-semibold text-neutral-muted uppercase tracking-wider mt-6">
+                Zero Longevity
+              </span>
             </div>
-            {/* Fade out gradient at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0b141a] to-transparent z-20 pointer-events-none"></div>
+
+            <div className="bg-surface border border-border rounded-xl p-6 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-4">
+                  <SearchX className="w-5 h-5" />
+                </div>
+                <h3 className="text-lg font-bold text-neutral-text font-heading mb-2">
+                  Zero Search or Filtering
+                </h3>
+                <p className="text-sm text-neutral-muted leading-relaxed">
+                  Need a specific sem-3 drafter or physics text? Good luck scrolling through weeks of unstructured group chatter with no way to filter or sort.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-neutral-muted uppercase tracking-wider mt-6">
+                Zero Discoverability
+              </span>
+            </div>
+
+            <div className="bg-surface border border-border rounded-xl p-6 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-contact/10 text-contact flex items-center justify-center mb-4">
+                  <EyeOff className="w-5 h-5" />
+                </div>
+                <h3 className="text-lg font-bold text-neutral-text font-heading mb-2">
+                  No Campus Context
+                </h3>
+                <p className="text-sm text-neutral-muted leading-relaxed">
+                  Sellers and buyers live two hostel blocks away, yet transactions stall because there is no trusted directory or structured contact path.
+                </p>
+              </div>
+              <span className="text-xs font-semibold text-neutral-muted uppercase tracking-wider mt-6">
+                Broken Connection
+              </span>
+            </div>
           </div>
-          <p className="text-center text-xs text-neutral-muted italic mt-4">
-            "And then, new messages pushed them all out of view."
-          </p>
         </motion.div>
 
         {/* Narrative continuation */}
@@ -114,7 +126,7 @@ export default function ProblemSection() {
           viewport={MOTION.viewport}
           className="mt-20 pt-10 border-t border-border"
         >
-          <p className="text-[11px] font-bold text-neutral-muted uppercase tracking-[0.2em] mb-4">The gap</p>
+          <p className="text-xs font-bold text-neutral-muted uppercase tracking-[0.2em] mb-4">The gap</p>
           <h3 className="text-2xl font-bold text-neutral-text mb-4">
             OLX works for cities. Not for hostels.
           </h3>
@@ -122,7 +134,7 @@ export default function ProblemSection() {
             The existing platforms have no concept of campus. No trust signal between a buyer and a seller who live two buildings apart. No awareness that you can just walk over and check the condition yourself.
           </p>
           <div className="bg-surface border border-border rounded-xl p-6 text-neutral-text font-medium text-center">
-            They're built for strangers across a city. We're neighbours. That's a fundamentally different transaction, and it deserves a fundamentally different platform.
+            {"They're built for strangers across a city. We're neighbours. That's a fundamentally different transaction, and it deserves a fundamentally different platform."}
           </div>
         </motion.div>
 

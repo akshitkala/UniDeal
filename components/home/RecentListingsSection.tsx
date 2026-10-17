@@ -48,14 +48,14 @@ function AnimatedCard({ listing, index }: { listing: ListingCardData; index: num
             </div>
           )}
           <span
-            className={`absolute top-2 left-2 text-[11px] font-medium px-2 py-0.5 rounded-full border ${
+            className={`absolute top-2 left-2 text-xs font-medium px-2 py-0.5 rounded-full border ${
               conditionColors[listing.condition] ?? 'bg-surface text-neutral-muted border-border'
             }`}
           >
             {listing.condition}
           </span>
           {listing.negotiable && (
-            <span className="absolute top-2 right-2 text-[11px] font-medium px-2 py-0.5 rounded-full bg-primary/90 text-white">
+            <span className="absolute top-2 right-2 text-xs font-medium px-2 py-0.5 rounded-full bg-primary/90 text-white">
               Negotiable
             </span>
           )}

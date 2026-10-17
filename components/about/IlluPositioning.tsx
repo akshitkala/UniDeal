@@ -26,8 +26,8 @@ export default function IlluPositioning({ inView }: { inView: boolean }) {
           <line x1="38" y1="4" x2="46" y2="12" stroke="currentColor" strokeWidth="1.5" className="text-neutral-muted" />
           <line x1="46" y1="4" x2="38" y2="12" stroke="currentColor" strokeWidth="1.5" className="text-neutral-muted" />
         </svg>
-        <span className="text-[11px] font-semibold text-neutral-muted text-center leading-tight">City marketplace</span>
-        <span className="text-[10px] text-neutral-muted text-center leading-tight">Strangers, no trust signal</span>
+        <span className="text-xs font-semibold text-neutral-muted text-center leading-tight">City marketplace</span>
+        <span className="text-xs text-neutral-muted text-center leading-tight">Strangers, no trust signal</span>
       </motion.div>
 
       <motion.div
@@ -48,8 +48,8 @@ export default function IlluPositioning({ inView }: { inView: boolean }) {
           <circle cx="40" cy="8" r="6" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
           <polyline points="37,8 39.5,10.5 43.5,5.5" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
         </svg>
-        <span className="text-[11px] font-semibold text-primary text-center leading-tight">Campus marketplace</span>
-        <span className="text-[10px] text-neutral-muted text-center leading-tight">Verified students, proximity</span>
+        <span className="text-xs font-semibold text-primary text-center leading-tight">Campus marketplace</span>
+        <span className="text-xs text-neutral-muted text-center leading-tight">Verified students, proximity</span>
       </motion.div>
     </div>
   );

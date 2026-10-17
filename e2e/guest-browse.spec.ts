@@ -9,11 +9,9 @@ test.describe('Guest Browse & Listing Detail', () => {
     const searchInput = page.locator('input[type="search"], input[placeholder*="Search" i]').first();
     await expect(searchInput).toBeVisible();
     await searchInput.fill('Textbook');
-    await page.waitForTimeout(500); // debounce
     
     const cards = page.locator('a[href^="/listing/"]');
-    const count = await cards.count();
-    expect(count).toBeGreaterThanOrEqual(1);
+    await expect(cards.first()).toBeVisible({ timeout: 10000 });
   });
 
   test('FUN-26: Category filter and condition filter work', async ({ page }) => {
@@ -71,6 +69,7 @@ test.describe('Guest Browse & Listing Detail', () => {
 
   test('UI-09 & UI-10: Listing cards keep aspect ratio and have alt text', async ({ page }) => {
     await page.goto('/browse');
+    await expect(page.locator('a[href^="/listing/"]').first()).toBeVisible();
     const images = page.locator('a[href^="/listing/"] img');
     const count = await images.count();
     expect(count).toBeGreaterThan(0);

@@ -7,7 +7,7 @@ test.describe('Accessibility (A11Y)', () => {
   for (const route of routes) {
     test(`A11Y-01: Axe zero serious or critical violations on ${route}`, async ({ page }) => {
       await page.goto(route);
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1200);
 
       const accessibilityScanResults = await new AxeBuilder({ page })
         .withTags(['wcag2a', 'wcag2aa'])
@@ -23,8 +23,7 @@ test.describe('Accessibility (A11Y)', () => {
 
     test(`A11Y-04: Exactly one h1 on ${route}`, async ({ page }) => {
       await page.goto(route);
-      const h1Count = await page.locator('h1').count();
-      expect(h1Count).toBe(1);
+      await expect(page.locator('h1')).toHaveCount(1);
     });
   }
 

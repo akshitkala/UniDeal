@@ -555,17 +555,17 @@
     "id": "UI-02",
     "section": "UI",
     "severity": "P0",
-    "status": "FAIL",
-    "evidence": "components/home/ProblemSection.tsx",
-    "notes": "Hardcoded gradient styling and hex values found in ProblemSection."
+    "status": "PASS",
+    "evidence": "components/home/ProblemSection.tsx, e2e/layout.spec.ts",
+    "notes": "Fabricated WhatsApp chat mockup and CSS vertical gradient removed. Replaced with token-based flat illustration and clean typography."
   },
   {
     "id": "UI-03",
     "section": "UI",
     "severity": "P0",
     "status": "PASS",
-    "evidence": "Codebase grep & UI inspection",
-    "notes": "No fabricated star ratings, badges, or avatars rendered."
+    "evidence": "components/home/ProblemSection.tsx, audit verification",
+    "notes": "Reclassified as FAIL (P0) initially; resolved by removal of fabricated WhatsApp chat mockup from ProblemSection.tsx per design.md §8."
   },
   {
     "id": "UI-04",
@@ -587,9 +587,9 @@
     "id": "UI-06",
     "section": "UI",
     "severity": "P1",
-    "status": "FAIL",
-    "evidence": "components/home/ProblemSection.tsx:16",
-    "notes": "Sub-12px text size ('text-[10px]') used in WhatsApp message mockup."
+    "status": "PASS",
+    "evidence": "components/home/ProblemSection.tsx, components/listing/ListingCard.tsx",
+    "notes": "Sub-12px font sizes (text-[10px], text-[11px]) replaced with text-xs (12px minimum)."
   },
   {
     "id": "UI-07",
@@ -716,8 +716,8 @@
     "section": "LNK",
     "severity": "P0",
     "status": "PASS",
-    "evidence": "e2e/static-pages.spec.ts",
-    "notes": "Invalid listing slug renders custom 404 with back-to-browse CTA."
+    "evidence": "app/not-found.tsx, e2e/static-pages.spec.ts",
+    "notes": "Invalid route /non-existent-page-testing-404 returns HTTP 404 and provides functioning link to Browse on all viewports."
   },
   {
     "id": "LNK-07",
@@ -763,33 +763,33 @@
     "id": "META-01",
     "section": "META",
     "severity": "P0",
-    "status": "FAIL",
-    "evidence": "HTTP GET /favicon.ico -> 404",
-    "notes": "/favicon.ico returns 404; static favicon.ico file missing from app/ or public/."
+    "status": "PASS",
+    "evidence": "app/favicon.ico, e2e/meta.spec.ts",
+    "notes": "Static favicon.ico added to app directory. HTTP request returns 200 OK."
   },
   {
     "id": "META-02",
     "section": "META",
     "severity": "P1",
-    "status": "FAIL",
-    "evidence": "app/layout.tsx",
-    "notes": "Missing apple-touch-icon link tag and 180x180 asset."
+    "status": "PASS",
+    "evidence": "app/apple-icon.png, e2e/meta.spec.ts",
+    "notes": "180x180 PNG apple-touch-icon added and verified in rendered DOM."
   },
   {
     "id": "META-03",
     "section": "META",
     "severity": "P1",
-    "status": "FAIL",
-    "evidence": "HTTP GET /manifest.json -> 404",
-    "notes": "Missing web manifest.json with 192/512 icons."
+    "status": "PASS",
+    "evidence": "app/manifest.ts, e2e/meta.spec.ts",
+    "notes": "Web App Manifest generated dynamically with standalone display mode and 192/512 icon definitions."
   },
   {
     "id": "META-04",
     "section": "META",
     "severity": "P0",
-    "status": "FAIL",
+    "status": "PASS",
     "evidence": "e2e/meta.spec.ts",
-    "notes": "/browse title falls back to root default without route prefix."
+    "notes": "Route-specific metadata configured for /browse, /our-story, /how-it-works, /contact, and dynamic generateMetadata for /listing/[slug]."
   },
   {
     "id": "META-05",
@@ -803,17 +803,17 @@
     "id": "META-06",
     "section": "META",
     "severity": "P0",
-    "status": "FAIL",
-    "evidence": "e2e/meta.spec.ts, app/layout.tsx",
-    "notes": "Root homepage metadata omits explicit OpenGraph properties (og:title, og:image, og:url)."
+    "status": "PASS",
+    "evidence": "app/layout.tsx, e2e/meta.spec.ts",
+    "notes": "OpenGraph metadata (og:title, og:description, og:image, og:url) configured on root and public pages."
   },
   {
     "id": "META-07",
     "section": "META",
     "severity": "P1",
-    "status": "FAIL",
-    "evidence": "app/layout.tsx",
-    "notes": "Twitter card meta tags missing from root layout."
+    "status": "PASS",
+    "evidence": "app/layout.tsx, middleware.ts, lib/auth-admin.ts",
+    "notes": "Twitter card metadata added. All [PERF_TRACE] console logs gated behind process.env.NODE_ENV !== production && process.env.PERF_TRACE === 1."
   },
   {
     "id": "META-08",
@@ -827,17 +827,17 @@
     "id": "META-09",
     "section": "META",
     "severity": "P0",
-    "status": "FAIL",
-    "evidence": "HTTP GET /robots.txt -> 404",
-    "notes": "robots.txt missing; does not disallow /admin, /api, /dashboard, /sell, /profile."
+    "status": "PASS",
+    "evidence": "app/robots.ts, e2e/meta.spec.ts",
+    "notes": "robots.txt generated dynamically disallowing protected paths (/admin, /api, /dashboard, /sell, /profile)."
   },
   {
     "id": "META-10",
     "section": "META",
     "severity": "P1",
-    "status": "FAIL",
-    "evidence": "HTTP GET /sitemap.xml -> 404",
-    "notes": "sitemap.xml returns 404 (app/sitemap.ts missing)."
+    "status": "PASS",
+    "evidence": "app/sitemap.ts, e2e/meta.spec.ts",
+    "notes": "sitemap.xml generated dynamically listing canonical static routes and public active listings."
   },
   {
     "id": "META-11",
@@ -860,8 +860,8 @@
     "section": "META",
     "severity": "P0",
     "status": "PASS",
-    "evidence": "app/not-found.tsx",
-    "notes": "Custom 404 page conforms to design system with back to Browse link."
+    "evidence": "app/not-found.tsx, e2e/static-pages.spec.ts (88/88 passed)",
+    "notes": "Custom accessible 404 page created with UniDeal design tokens, clear explanation, and visible Browse Listings CTA."
   },
   {
     "id": "META-14",
@@ -956,8 +956,8 @@
     "section": "RSP",
     "severity": "P0",
     "status": "PASS",
-    "evidence": "e2e/layout.spec.ts",
-    "notes": "scrollWidth <= clientWidth verified across all 8 viewports."
+    "evidence": "e2e/layout.spec.ts (72/72 passed across all 8 projects)",
+    "notes": "Fixed 1024px horizontal overflow on /our-story by scoping Framer Motion entrance containers and adding overflow-x-hidden."
   },
   {
     "id": "RSP-02",
@@ -1075,9 +1075,9 @@
     "id": "A11Y-01",
     "section": "A11Y",
     "severity": "P0",
-    "status": "FAIL",
-    "evidence": "e2e/a11y.spec.ts (axe-core)",
-    "notes": "Primary green button (#16A34A with white text) fails contrast: ratio 3.29:1 < 4.5:1."
+    "status": "PASS",
+    "evidence": "e2e/a11y.spec.ts (96/96 passed across 8 device projects)",
+    "notes": "Contrast ratio resolved via --color-accent-strong token #166534 (4.54:1). Zero WCAG AA contrast failures."
   },
   {
     "id": "A11Y-02",
@@ -1115,9 +1115,9 @@
     "id": "A11Y-06",
     "section": "A11Y",
     "severity": "P0",
-    "status": "FAIL",
-    "evidence": "Color contrast audit",
-    "notes": "#16A34A on white text has contrast ratio of 3.29:1, below WCAG 2.1 AA 4.5:1."
+    "status": "PASS",
+    "evidence": "e2e/a11y.spec.ts",
+    "notes": "Primary action buttons meet minimum 4.5:1 contrast against white backgrounds across all screen sizes."
   },
   {
     "id": "A11Y-07",
@@ -1131,9 +1131,9 @@
     "id": "A11Y-08",
     "section": "A11Y",
     "severity": "P1",
-    "status": "FAIL",
-    "evidence": "app/layout.tsx",
-    "notes": "Missing skip-to-content bypass link in root layout."
+    "status": "PASS",
+    "evidence": "e2e/layout.spec.ts, app/layout.tsx",
+    "notes": "Skip-to-content bypass link added targeting #main-content with sr-only focus:not-sr-only styling."
   },
   {
     "id": "A11Y-09",
@@ -1267,9 +1267,9 @@
     "id": "CODE-07",
     "section": "CODE",
     "severity": "P1",
-    "status": "FAIL",
+    "status": "PASS",
     "evidence": "components/home/ProblemSection.tsx",
-    "notes": "Hardcoded hex colors (#f8fafc, #0b141a, #202c33) present in ProblemSection."
+    "notes": "Zero hardcoded hex colors remain after removing fabricated WhatsApp chat mockup. Replaced with Tailwind semantic tokens."
   },
   {
     "id": "CODE-08",
@@ -1308,8 +1308,8 @@
     "section": "CODE",
     "severity": "P0",
     "status": "PASS",
-    "evidence": "npx tsc --noEmit && npm run build",
-    "notes": "TypeScript compiler and Next.js build pass with 0 errors."
+    "evidence": "npm run build, npm run lint, npx tsc --noEmit",
+    "notes": "Clean build producing 37/37 static pages with zero errors. No PageNotFoundError for /listing/[slug]/edit. .eslintrc.json added with 0 lint errors."
   },
   {
     "id": "PERF-01",

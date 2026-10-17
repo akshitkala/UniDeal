@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
@@ -123,7 +123,7 @@ export default function ContactSellerButton({ listingId, listingTitle, sellerId 
       <button
         type="button"
         onClick={() => setState({ kind: 'idle' })}
-        className="w-full py-3.5 px-4 bg-primary text-white rounded-md font-semibold text-sm min-h-[44px] flex items-center justify-center gap-2 hover:bg-primary-hover transition-colors"
+        className="w-full py-3.5 px-4 bg-contact text-white rounded-md font-semibold text-sm min-h-[44px] flex items-center justify-center gap-2 hover:bg-contact-hover transition-colors"
       >
         <MessageCircle className="w-5 h-5" />
         <span>WhatsApp Opened — Contact Again</span>

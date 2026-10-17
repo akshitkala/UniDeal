@@ -442,7 +442,7 @@ export default function ListingForm({
                 <div className="flex flex-col items-center gap-1 text-neutral-muted">
                   <Upload className="w-6 h-6 text-neutral-muted mb-0.5" />
                   <span className="text-xs font-semibold text-neutral-text">Add Photos</span>
-                  <span className="text-[10px]">Max 5MB each</span>
+                  <span className="text-xs">Max 5MB each</span>
                 </div>
               )}
             </label>

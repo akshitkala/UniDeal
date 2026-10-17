@@ -45,16 +45,16 @@ export default function Hero() {
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             {/* 1. Eyebrow: 12-14px, uppercase, wide letter-spacing, --color-accent + 1px horizontal line */}
             <div className="flex items-center gap-3 mb-3 sm:mb-4">
-              <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-accent">
+              <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-primary">
                 CAMPUS MARKETPLACE
               </span>
-              <span className="h-px w-8 bg-accent" aria-hidden="true" />
+              <span className="h-px w-8 bg-primary" aria-hidden="true" />
             </div>
 
             {/* 2. Headline: Outfit bold, >=32px mobile to <=56px desktop, text-balance, no orphan */}
             <h1 className="text-[clamp(32px,3.2vw,48px)] font-bold font-heading text-neutral-text leading-[1.15] tracking-tight text-balance">
               Buy and sell on campus,<br className="hidden lg:inline" />{' '}
-              <span className="text-accent">
+              <span className="text-primary">
                 without the group&#8209;chat&nbsp;chaos.
               </span>
             </h1>
@@ -68,7 +68,7 @@ export default function Hero() {
             <div className="flex flex-col min-[400px]:flex-row gap-3 mt-6 sm:mt-8 w-full min-[400px]:w-auto">
               <Link
                 href="/browse"
-                className="py-2.5 px-6 bg-accent text-white rounded-full font-medium text-base hover:bg-accent-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 transition-colors duration-200 min-h-[44px] inline-flex items-center justify-center gap-2 cursor-pointer shadow-none"
+                className="py-2.5 px-6 bg-primary text-white rounded-full font-medium text-base hover:bg-primary-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200 min-h-[44px] inline-flex items-center justify-center gap-2 cursor-pointer shadow-none"
               >
                 <span>Browse listings</span>
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -154,7 +154,7 @@ export default function Hero() {
             <div className="flex-1 h-px bg-border hidden sm:block" aria-hidden="true" />
             <Link
               href="/browse"
-              className="text-sm font-medium text-accent hover:underline shrink-0 min-h-[44px] inline-flex items-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+              className="text-sm font-medium text-primary hover:underline shrink-0 min-h-[44px] inline-flex items-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
             >
               View all →
             </Link>

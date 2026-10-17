@@ -59,7 +59,7 @@ test.describe('Static Pages & Navigation Links', () => {
     expect(res?.status()).toBe(404);
     await expect(page.locator('h1')).toBeVisible();
     
-    const browseLink = page.locator('a[href="/browse"]').first();
+    const browseLink = page.locator('main a[href="/browse"]').first();
     await expect(browseLink).toBeVisible();
   });
 });

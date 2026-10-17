@@ -15,7 +15,7 @@ const updateSettingsSchema = z.object({
  * Spec: TRD §5.9
  */
 export async function GET() {
-  const isTrace = process.env.PERF_TRACE === '1';
+  const isTrace = process.env.NODE_ENV !== 'production' && process.env.PERF_TRACE === '1';
   const t0 = isTrace ? performance.now() : 0;
 
   const { isAdmin, response } = await requireAdminSession();

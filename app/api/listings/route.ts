@@ -11,7 +11,7 @@ import type { ListingCondition, ListingStatus } from '@/types/domain';
  * Spec: TRD §5.3, architecture §4
  */
 export async function GET(request: NextRequest) {
-  const isTrace = process.env.PERF_TRACE === '1';
+  const isTrace = process.env.NODE_ENV !== 'production' && process.env.PERF_TRACE === '1';
   const t0 = isTrace ? performance.now() : 0;
 
   try {

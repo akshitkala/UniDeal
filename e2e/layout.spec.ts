@@ -44,4 +44,13 @@ test.describe('Responsive Layout & Visual Consistency', () => {
       }
     }
   });
+
+  test('A11Y-08: Skip-to-content bypass link exists and targets #main-content', async ({ page }) => {
+    await page.goto('/');
+    const skipLink = page.locator('a[href="#main-content"]');
+    await expect(skipLink).toBeAttached();
+    expect(await skipLink.innerText()).toContain('Skip to content');
+    const mainContent = page.locator('main#main-content');
+    await expect(mainContent).toBeAttached();
+  });
 });

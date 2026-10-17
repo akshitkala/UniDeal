@@ -21,7 +21,7 @@ test.describe('Revised Pass: 50/day Rate Limit & Admin Single/Bulk Reject', () =
     await page.locator('button:has-text("Sign In")').first().click();
     await page.locator('#auth-email').fill('akshitkala72@gmail.com');
     await page.locator('#auth-password').fill('UniDeal2026!Pass');
-    await page.getByRole('dialog').getByRole('button', { name: 'Sign In' }).click();
+    await page.getByRole('dialog').getByRole('button', { name: /Sign in/i }).click();
     await expect(page.getByRole('button', { name: /Akshit/i })).toBeVisible();
 
     // Navigate to any listing and click Contact Seller
@@ -40,7 +40,7 @@ test.describe('Revised Pass: 50/day Rate Limit & Admin Single/Bulk Reject', () =
     await page.locator('button:has-text("Sign In")').first().click();
     await page.locator('#auth-email').fill('akshitkala72@gmail.com');
     await page.locator('#auth-password').fill('UniDeal2026!Pass');
-    await page.getByRole('dialog').getByRole('button', { name: 'Sign In' }).click();
+    await page.getByRole('dialog').getByRole('button', { name: /Sign in/i }).click();
     await expect(page.getByRole('button', { name: /Akshit/i })).toBeVisible();
 
     // Navigate to Admin Listings view
@@ -93,7 +93,7 @@ test.describe('Revised Pass: 50/day Rate Limit & Admin Single/Bulk Reject', () =
     await page.locator('button:has-text("Sign In")').first().click();
     await page.locator('#auth-email').fill('akshitkala72@gmail.com');
     await page.locator('#auth-password').fill('UniDeal2026!Pass');
-    await page.getByRole('dialog').getByRole('button', { name: 'Sign In' }).click();
+    await page.getByRole('dialog').getByRole('button', { name: /Sign in/i }).click();
     await expect(page.getByRole('button', { name: /Akshit/i })).toBeVisible();
 
     await page.goto('/admin/listings');

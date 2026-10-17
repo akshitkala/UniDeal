@@ -32,7 +32,7 @@ export default function PrivacyPage() {
 
       <h2>3. How WhatsApp contact works</h2>
       <p>
-        When a verified user taps "Contact Seller", we open a WhatsApp chat with the seller using a link generated on our server. Once that chat opens, the buyer's WhatsApp will show the seller's phone number, and the seller will see the buyer's. If you are not comfortable with that, do not add a WhatsApp number to your profile. Once a chat begins, it happens on WhatsApp and is covered by WhatsApp's own terms and privacy policy, not ours.
+        {"When a verified user taps \"Contact Seller\", we open a WhatsApp chat with the seller using a link generated on our server. Once that chat opens, the buyer's WhatsApp will show the seller's phone number, and the seller will see the buyer's. If you are not comfortable with that, do not add a WhatsApp number to your profile. Once a chat begins, it happens on WhatsApp and is covered by WhatsApp's own terms and privacy policy, not ours."}
       </p>
 
       <h2>4. How we use your information</h2>
@@ -88,7 +88,7 @@ export default function PrivacyPage() {
 
       <h2>11. Changes to this policy</h2>
       <p>
-        We may update this policy from time to time. The "Last updated" date at the top shows the latest version. If changes are significant, we will make that clear on the site.
+        {"We may update this policy from time to time. The \"Last updated\" date at the top shows the latest version. If changes are significant, we will make that clear on the site."}
       </p>
 
       <h2>12. Contact</h2>

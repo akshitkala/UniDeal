@@ -11,16 +11,19 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#16A34A',
-          hover: '#15803D',
+          DEFAULT: '#166534',
+          hover: '#14532D',
         },
         contact: {
-          DEFAULT: '#15803D',
-          hover: '#166534',
+          DEFAULT: '#14532D',
+          hover: '#052E16',
         },
         accent: {
           DEFAULT: '#16A34A',
           hover: '#15803D',
+          strong: '#166534',
+          'strong-hover': '#14532D',
+          contact: '#14532D',
         },
         surface: '#FFFFFF',
         border: '#E2E8F0',

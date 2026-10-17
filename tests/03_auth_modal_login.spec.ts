@@ -6,7 +6,7 @@ test.describe('Flow 4: Auth Modal Login', () => {
     await page.locator('button:has-text("Sign In")').first().click();
 
     await page.locator('input[placeholder="student@example.com"]').fill('akshitkala72@gmail.com');
-    await page.locator('input[placeholder="Your password"]').fill('WrongPassword999!');
+    await page.locator('input[type="password"]').fill('WrongPassword999!');
 
     await page.getByRole('dialog').getByRole('button', { name: 'Sign In' }).click();
 
@@ -19,7 +19,7 @@ test.describe('Flow 4: Auth Modal Login', () => {
     await page.locator('button:has-text("Sign In")').first().click();
 
     await page.locator('input[placeholder="student@example.com"]').fill('akshitkala72@gmail.com');
-    await page.locator('input[placeholder="Your password"]').fill('UniDeal2026!Pass');
+    await page.locator('input[type="password"]').fill('UniDeal2026!Pass');
 
     await page.getByRole('dialog').getByRole('button', { name: 'Sign In' }).click();
 

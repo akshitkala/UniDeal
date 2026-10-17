@@ -40,7 +40,7 @@ export async function middleware(request: NextRequest) {
   );
 
   // Refresh auth token
-  if (process.env.PERF_TRACE === '1') {
+  if (process.env.NODE_ENV !== 'production' && process.env.PERF_TRACE === '1') {
     const t0 = performance.now();
     await supabase.auth.getUser();
     const dur = performance.now() - t0;

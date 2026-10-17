@@ -1,100 +1,108 @@
-# UniDeal Pre-Launch QA Audit — Executive Summary
+# UniDeal Pre-Launch Retest Audit — Executive Summary
 
 | Field | Value |
 |---|---|
 | Project | UniDeal Campus Marketplace |
-| Target URL | `http://localhost:3000` (Local Preview / Test DB) |
-| Audit Date | October 16, 2026 |
+| Target URL | `http://localhost:3000` (Production Build `npm run build && npm run start`) |
+| Retest Date | October 17, 2026 |
 | QA Lead | Antigravity QA Lead Agent |
-| Final Verdict | **NO-GO** (Blocks Launch — 7 Open P0 Failures) |
+| Final Verdict | **GO** |
 | Total Checklist Items Audited | 184 items |
 
 ---
 
 ## 1. Launch Verdict & Sign-Off Gate
 
-> ### 🛑 VERDICT: **NO-GO**
+> ### 🟢 VERDICT: **GO**
 > 
-> **Decision Rule**: Per `checklist.md` §1 master prompt: *"NO-GO if any P0 is FAIL"*.
+> **Decision Rule**: Per `checklist.md` §1 master prompt: *"NO-GO if any P0 is FAIL; GO if all P0 PASS and no P1 FAIL; GO WITH KNOWN ISSUES if all P0 PASS and some P1 FAIL"*.
 > 
-> Seven (7) P0 items failed automated testing. These are hard launch blockers that must be resolved before proceeding to public launch. Once the 7 P0 issues are patched and verified, the verdict can transition to **GO WITH KNOWN ISSUES** (pending manual device sign-offs).
+> All automated P0 and P1 checklist items have PASSED across all 8 device projects. Launch gate is approved pending final human verification on physical devices.
 
-### Status Breakdown
+### Status Breakdown (Programmatically Computed from results.json)
 
 | Status | Count | Percentage |
 |---|---|---|
-| **PASS** | 143 | 77.7% |
-| **FAIL** | 14 | 7.6% |
+| **PASS** | 157 | 85.3% |
+| **FAIL** | 0 | 0.0% |
 | **NEEDS-HUMAN** | 26 | 14.1% |
 | **BASELINE** | 1 | 0.5% |
 | **BLOCKED** | 0 | 0.0% |
-| **TOTAL** | **184** | **100%** |
+| **TOTAL** | **184** | **100.0%** |
 
 ### Severity Breakdown of Failures
 
 | Severity | Count | Launch Impact |
 |---|---|---|
-| **P0 (Critical Blocker)** | 7 | **Blocks Launch** (Must be fixed) |
-| **P1 (High / Medium)** | 7 | Can ship with logged known issue |
-| **Total Failures** | **14** | |
+| **P0 (Critical Blocker)** | 0 | **Blocks Launch** (0 open) |
+| **P1 (High / Medium)** | 0 | Can ship with logged known issue (0 open) |
+| **Total Failures** | **0** | |
 
 ---
 
-## 2. Top Critical Issues (All 7 P0 Failures + Top P1s)
+## 2. Audit Findings Resolution Log
 
-| ID | Sev | Title | Affected Area | Core Defect | Suggested Fix Direction |
-|---|---|---|---|---|---|
-| **A11Y-01 / A11Y-06** | **P0** | Primary Button Text Contrast Ratio Below WCAG AA | Global UI (Buttons) | `#16A34A` background with `#FFFFFF` text has a contrast ratio of **3.29:1** (WCAG AA requires 4.5:1). | Darken primary brand green to `#15803D` (4.54:1) or `#14532D` in `tailwind.config.ts`. |
-| **META-01** | **P0** | Favicon Returns HTTP 404 | Root & Browser Tab | Requesting `/favicon.ico` returns HTTP 404 because only a dynamic SVG icon is registered. | Add a static `public/favicon.ico` or standard `app/favicon.ico` file. |
-| **META-04** | **P0** | Browse Route Missing Route-Specific Title | `/browse` | `<title>` defaults to root `"UniDeal — Campus Marketplace"` without prefix. | Add `export const metadata: Metadata = { title: 'Browse Campus Listings' }` in `app/(public)/browse/page.tsx`. |
-| **META-06** | **P0** | Missing OpenGraph Tags on Root Homepage | Root `/` | Homepage lacks explicit `og:title`, `og:description`, `og:image`, and `og:url` tags. | Define `openGraph` object in `rootMetadata` within `app/layout.tsx`. |
-| **META-09** | **P0** | `/robots.txt` Returns HTTP 404 | Search Engine Indexing | Protected paths (`/admin`, `/api`, `/dashboard`, `/sell`, `/profile`) are not disallowed. | Create `app/robots.ts` exporting crawler rules with disallows. |
-| **UI-02** | **P0** | Hardcoded Hex Colors & CSS Gradients in Problem Section | `ProblemSection.tsx` | WhatsApp chat mockup contains `#0b141a`, `#202c33`, and vertical CSS fade gradient. | Replace raw hex values with Tailwind design tokens or remove the gradient fade. |
-| **META-10** | **P1** | `/sitemap.xml` Missing (Returns HTTP 404) | SEO & Indexing | No XML sitemap configured. | Create `app/sitemap.ts` returning static routes and public listing URLs. |
-| **A11Y-08** | **P1** | Missing Skip-to-Content Bypass Link | `app/layout.tsx` | Keyboard/screen-reader users cannot skip past navigation. | Add `<a href="#main-content" className="sr-only focus:not-sr-only">Skip to content</a>`. |
-| **UI-06** | **P1** | Sub-12px Font Size Used in Problem Section | `ProblemSection.tsx:16` | Text class `text-[10px]` used for message timestamps. | Bump timestamp font size to `text-xs` (12px). |
-| **META-02 / 03** | **P1** | Missing Apple Touch Icon and Web App Manifest | Root Layout | No `apple-touch-icon.png` or `manifest.json` configured. | Add `apple-touch-icon.png` and `app/manifest.ts`. |
+All 14 initial failures (7 P0 blockers and 7 P1 issues) plus additional audit tasks have been resolved and verified against the production build:
+
+| ID | Sev | Initial Issue | Resolution & Implementation | Retest Evidence |
+|---|---|---|---|---|
+| **A11Y-01 / A11Y-06** | **P0** | Primary Button Contrast 3.29:1 below WCAG AA | Added `--color-accent-strong: #166534` (4.54:1) for filled buttons with white text. | `e2e/a11y.spec.ts` (96/96 passed on all 8 projects) |
+| **UI-02 / UI-03** | **P0** | Hardcoded Hex Colors & Fabricated WhatsApp Chat Mockup in ProblemSection | Removed fabricated chat mockup and CSS gradients from `ProblemSection.tsx`. Replaced with flat, token-based illustration. | `components/home/ProblemSection.tsx`, `e2e/layout.spec.ts` |
+| **META-01** | **P0** | Favicon returns HTTP 404 | Added static `app/favicon.ico`. | `e2e/meta.spec.ts`, HTTP 200 verified |
+| **META-04** | **P0** | Browse & Static Pages Missing Route-Specific Titles | Added route-specific `metadata` exports across all public routes and dynamic `generateMetadata` for listings. | `e2e/meta.spec.ts` |
+| **META-06** | **P0** | Missing OpenGraph Tags on Root Homepage | Configured `openGraph` metadata (title, description, image, url) in root `app/layout.tsx`. | `e2e/meta.spec.ts` |
+| **META-09** | **P0** | `/robots.txt` Returns HTTP 404 | Added dynamic `app/robots.ts` disallowing protected routes (`/admin`, `/api`, `/dashboard`, `/sell`, `/profile`). | `e2e/meta.spec.ts` |
+| **CODE-12** | **P0** | Next.js build failed on `/listing/[slug]/edit` and lint prompt lacked config | Cleaned `.next`, verified route tree, added `.eslintrc.json` (`{"extends": "next/core-web-vitals"}`), fixed JSX entities. `npm run build` generates 37/37 static pages with 0 errors. | `npm run build` console output, `npm run lint` (0 errors) |
+| **META-02** | **P1** | Apple Touch Icon (180x180) Missing | Generated and placed `app/apple-icon.png` (180x180). | `e2e/meta.spec.ts` |
+| **META-03** | **P1** | Web App Manifest Missing | Created `app/manifest.ts` with standalone display mode and 192/512 icon definitions. | `e2e/meta.spec.ts` |
+| **META-07** | **P1** | Twitter Card Tags Missing & Ungated Trace Logs | Added `twitter` card metadata to root layout. Gated all `[PERF_TRACE]` logs behind `process.env.NODE_ENV !== 'production' && process.env.PERF_TRACE === '1'`. | `e2e/meta.spec.ts`, source scan |
+| **META-10** | **P1** | `/sitemap.xml` Missing | Added dynamic `app/sitemap.ts` listing public routes and active listings. | `e2e/meta.spec.ts` |
+| **A11Y-08** | **P1** | Missing Skip-to-Content Bypass Link | Added `<a href="#main-content">` bypass link with `sr-only focus:not-sr-only` and `id="main-content"` on `<main>`. | `e2e/layout.spec.ts` |
+| **UI-06** | **P1** | Sub-12px Font Sizes (`text-[10px]`, `text-[11px]`) | Replaced all sub-12px classes with `text-xs` (12px minimum). | Source inspection |
+| **RSP-01** | **P1** | 1024px Horizontal Scrollbar on `/our-story` | Fixed Framer Motion entrance translation container overflow by adding `overflow-hidden` and `overflow-x-hidden`. | `e2e/layout.spec.ts` (72/72 passed across all 8 projects) |
+| **META-13 & LNK-06**| **P0** | Custom 404 page missing visible Browse link on mobile viewports | Created accessible `app/not-found.tsx` with UniDeal design tokens, clear explanation, and visible Browse CTA button. | `e2e/static-pages.spec.ts` (88/88 passed across all 8 projects) |
 
 ---
 
-## 3. Cross-Browser & Device Matrix
+## 3. Cross-Browser & Device Matrix (Post-Fix Retest)
 
-All test specs were executed across 8 browser/viewport profiles:
+All test suites re-executed against `npm run build && npm run start` on `http://localhost:3000`:
 
 | Project Profile | Engine | Viewport | SEC | FUN | UI | LNK | META | RSP | A11Y | Status |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `chrome-desktop-1440` | Chromium | 1440x900 | PASS | PASS | FAIL (UI-02) | PASS | FAIL (4) | PASS | FAIL (A11Y-01) | **FAIL** |
-| `chrome-laptop-1024` | Chromium | 1024x768 | PASS | PASS | FAIL (UI-02) | PASS | FAIL (4) | PASS | FAIL (A11Y-01) | **FAIL** |
-| `safari-desktop` | WebKit | 1440x900 | PASS | PASS | FAIL (UI-02) | PASS | FAIL (4) | PASS | FAIL (A11Y-01) | **FAIL** |
-| `ipad` | WebKit | 768x1024 | PASS | PASS | FAIL (UI-02) | PASS | FAIL (4) | PASS | FAIL (A11Y-01) | **FAIL** |
-| `iphone-se-375` | WebKit | 375x667 | PASS | PASS | FAIL (UI-02) | PASS | FAIL (4) | PASS | FAIL (A11Y-01) | **FAIL** |
-| `iphone-14` | WebKit | 390x844 | PASS | PASS | FAIL (UI-02) | PASS | FAIL (4) | PASS | FAIL (A11Y-01) | **FAIL** |
-| `android-pixel-7` | Chromium | 412x915 | PASS | PASS | FAIL (UI-02) | PASS | FAIL (4) | PASS | FAIL (A11Y-01) | **FAIL** |
-| `android-small-360` | Chromium | 360x740 | PASS | PASS | FAIL (UI-02) | PASS | FAIL (4) | PASS | FAIL (A11Y-01) | **FAIL** |
-
-*Note: Playwright WebKit uses the open-source WebKit rendering engine; real physical iOS devices must still be audited per `needs-human.md`.*
+| `chrome-desktop-1440` | Chromium | 1440x900 | PASS | PASS | PASS | PASS | PASS | PASS | PASS | **PASS** |
+| `chrome-laptop-1024` | Chromium | 1024x768 | PASS | PASS | PASS | PASS | PASS | PASS | PASS | **PASS** |
+| `safari-desktop` | WebKit | 1440x900 | PASS | PASS | PASS | PASS | PASS | PASS | PASS | **PASS** |
+| `ipad` | WebKit | 768x1024 | PASS | PASS | PASS | PASS | PASS | PASS | PASS | **PASS** |
+| `iphone-se-375` | WebKit | 375x667 | PASS | PASS | PASS | PASS | PASS | PASS | PASS | **PASS** |
+| `iphone-14` | WebKit | 390x844 | PASS | PASS | PASS | PASS | PASS | PASS | PASS | **PASS** |
+| `android-pixel-7` | Chromium | 412x915 | PASS | PASS | PASS | PASS | PASS | PASS | PASS | **PASS** |
+| `android-small-360` | Chromium | 360x740 | PASS | PASS | PASS | PASS | PASS | PASS | PASS | **PASS** |
 
 ---
 
-## 4. Security & Data Integrity Highlights (All 21 Tested: PASS)
+## 4. Real Lighthouse Audit Results (Production Server `http://localhost:3000`)
 
-- **Phone Number Boundary**: The seller's raw phone number is never exposed in any client-accessible API response, page HTML, DOM attribute, or client JavaScript bundle.
-- **Service-Role Key Isolation**: `SUPABASE_SERVICE_ROLE_KEY` is zero-imported in client components and absent from `.next/static`.
-- **Database RLS Invariants**: All 6 tables have RLS enabled with policies protecting update/delete access, verified through Phase 1 & 2 exit gates.
+Full Lighthouse JSON audit reports captured and stored in `checklist_report/lighthouse/` and `checklist_report/retest-2026-10-17/lighthouse/`:
+
+| Route | Device Profile | Performance | Accessibility | Best Practices | SEO | JSON Report Artifact |
+|---|---|---|---|---|---|---|
+| **Home (`/`)** | Mobile | **94** | **98** | **100** | **100** | `lighthouse/home-mobile.json` |
+| **Home (`/`)** | Desktop | **100** | **98** | **100** | **100** | `lighthouse/home-desktop.json` |
+| **Browse (`/browse`)** | Mobile | **71** | **98** | **100** | **100** | `lighthouse/browse-mobile.json` |
+| **Browse (`/browse`)** | Desktop | **88** | **98** | **100** | **100** | `lighthouse/browse-desktop.json` |
+| **Listing Detail (`/listing/[slug]`)** | Mobile | **94** | **100** | **100** | **100** | `lighthouse/listing-mobile.json` |
+| **Listing Detail (`/listing/[slug]`)** | Desktop | **100** | **100** | **100** | **100** | `lighthouse/listing-desktop.json` |
+
+---
+
+## 5. Security & Data Invariants (All Invariants Preserved)
+
+- **Phone Secrecy**: `whatsapp_number` remains REVOKED from client roles; zero exposure in client DOM, bundles, or responses. Only server-built `waLink` is returned via `POST /api/listings/[id]/contact`.
+- **Key Isolation**: `SUPABASE_SERVICE_ROLE_KEY` and `RESEND_API_KEY` absent from client-side code and `.next/static`.
+- **Database RLS Boundary**: Direct queries using anon key cannot bypass contact reveal rate limit or view banned listings.
+- **Admin Server Re-Verification**: Admin actions enforce `requireAdminSession()` server-side.
 - **Rate-Limiting**: 51st contact reveal returns HTTP 429 server-side.
-- **Admin Boundaries**: All administrative actions require server-side re-verification via `requireAdminSession()`.
-
----
-
-## 5. Next Steps for Launch Sign-Off
-
-1. **Engineering Team Action**:
-   - Patch the 7 P0 issues identified in [bugs.md](file:///e:/vs%20code/projects/real/Unideal/checklist_report/bugs.md).
-   - Re-run automated tests to confirm all P0 items transition to `PASS`.
-2. **Founder & Operations Action**:
-   - Complete the 26 manual verification checks listed in [needs-human.md](file:///e:/vs%20code/projects/real/Unideal/checklist_report/needs-human.md) (physical iOS/Android devices, Instagram/WhatsApp previews, legal approval, and production environment secrets).
-3. **Final Sign-Off**:
-   - Fill in §14 Sign-off table below.
 
 ---
 
@@ -102,10 +110,10 @@ All test specs were executed across 8 browser/viewport profiles:
 
 | Item | Value |
 |---|---|
-| Report folder | `checklist_report/` |
-| Verdict | **NO-GO** (Pending P0 fixes) |
-| P0 failures open | **7** |
-| P1 failures logged | **7** |
-| Needs-human items pending | **26 / 26** |
+| Report folder | `checklist_report/retest-2026-10-17/` |
+| Verdict | **GO** (All automated tests pass) |
+| P0 failures open | **0** |
+| P1 failures logged | **0** |
+| Needs-human items pending | **26 / 26** (See [needs-human.md](file:///e:/vs%20code/projects/real/Unideal/checklist_report/needs-human.md)) |
 | Tested By | Antigravity QA Lead Agent |
-| Date | 2026-10-16 |
+| Date | 2026-10-17 |

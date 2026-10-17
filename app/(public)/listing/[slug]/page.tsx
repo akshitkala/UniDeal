@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { createClient as createServerClient } from '@/lib/supabase/server';
@@ -39,6 +40,44 @@ const conditionBadges: Record<ListingCondition, string> = {
   Damaged: 'bg-danger/10 text-danger border-danger/20',
 };
 
+export async function generateMetadata({ params }: ListingDetailPageProps): Promise<Metadata> {
+  const supabase = await createServerClient();
+  const { data: listing } = await supabase
+    .from('listings')
+    .select('title, description, images')
+    .eq('slug', params.slug)
+    .single();
+
+  if (!listing) {
+    return {
+      title: 'Listing Not Found',
+    };
+  }
+
+  const ogImage = listing.images && listing.images.length > 0 ? listing.images[0] : '/hero-campus.webp';
+
+  return {
+    title: listing.title,
+    description: listing.description ? listing.description.slice(0, 160) : `Buy ${listing.title} on UniDeal`,
+    openGraph: {
+      title: `${listing.title} — UniDeal`,
+      description: listing.description ? listing.description.slice(0, 160) : `Buy ${listing.title} on UniDeal`,
+      images: [
+        {
+          url: ogImage,
+          alt: listing.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${listing.title} — UniDeal`,
+      description: listing.description ? listing.description.slice(0, 160) : `Buy ${listing.title} on UniDeal`,
+      images: [ogImage],
+    },
+  };
+}
+
 export default async function ListingDetailPage({ params }: ListingDetailPageProps) {
   const { slug } = params;
   const supabase = await createServerClient();
@@ -74,7 +113,6 @@ export default async function ListingDetailPage({ params }: ListingDetailPagePro
   }
 
   // 2. Increment listing views in background (fire-and-forget, rules.md §7.4)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   supabase.rpc('increment_listing_views', { listing_id: listing.id } as any).then();
 
   // 3. Extract seller first name strictly via firstName() (TRD §2.1a)
@@ -168,7 +206,7 @@ export default async function ListingDetailPage({ params }: ListingDetailPagePro
                 listingTitle={listing.title}
                 sellerId={listing.seller_id}
               />
-              <p className="text-[11px] text-neutral-muted text-center mt-2">
+              <p className="text-xs text-neutral-muted text-center mt-2">
                 Opens directly in WhatsApp with a pre-filled message. Your deal closes on campus.
               </p>
             </div>

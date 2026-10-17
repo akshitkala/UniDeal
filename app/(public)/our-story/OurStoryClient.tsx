@@ -18,7 +18,7 @@ function useSection() {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[11px] font-bold text-primary uppercase tracking-widest mb-3">
+    <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">
       {children}
     </p>
   );
@@ -73,7 +73,7 @@ function Beat({
   const TextAnim = flip ? fadeRight : fadeLeft;
 
   return (
-    <section className="border-b border-border last:border-0">
+    <section className="border-b border-border last:border-0 overflow-hidden">
       <div className="container mx-auto px-4 py-16 max-w-5xl">
       <motion.div
         variants={staggerContainer(MV.stagger.normal)}
@@ -125,7 +125,7 @@ export default function OurStoryClient() {
   const builtSection   = useSection();
 
   return (
-    <main className="flex-1 bg-white">
+    <main className="flex-1 bg-white overflow-x-hidden">
 
       {/* ── Hero header ───────────────────────────────────────── */}
       <section className="border-b border-border bg-white">

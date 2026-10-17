@@ -16,8 +16,14 @@ test.describe('Auth Modal Flows', () => {
     await page.keyboard.press('Escape');
     await expect(dialog).not.toBeVisible();
     
-    // Click Sell Item
-    await page.locator('a[href="/sell"]').first().click();
+    // Click Sell Item (use visible element across desktop & mobile)
+    const sellBtn = page.locator('a[href="/sell"]:visible').first();
+    if (await sellBtn.isVisible()) {
+      await sellBtn.click();
+    } else {
+      await page.getByRole('button', { name: 'Toggle menu' }).click();
+      await page.locator('a[href="/sell"]').first().click();
+    }
     await expect(dialog).toBeVisible();
     
     // Close button

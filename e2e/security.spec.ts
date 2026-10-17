@@ -12,18 +12,20 @@ test.describe('Security & Data Invariants (SEC)', () => {
   });
 
   test('SEC-06: Guest/unauthorized receives 401 or 403 on admin routes', async ({ request }) => {
-    const adminRoutes = [
+    const adminGetRoutes = [
       '/api/admin/overview',
       '/api/admin/settings',
       '/api/admin/listings/pending',
       '/api/admin/reports',
-      '/api/admin/users',
     ];
 
-    for (const route of adminRoutes) {
+    for (const route of adminGetRoutes) {
       const res = await request.get(route);
       expect([401, 403]).toContain(res.status());
     }
+
+    const banRes = await request.post('/api/admin/users/fake-id/ban');
+    expect([401, 403]).toContain(banRes.status());
   });
 
   test('SEC-14: /api/cron/keepalive returns 401 without CRON_SECRET, 200 with Bearer', async ({ request }) => {

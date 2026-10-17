@@ -517,8 +517,43 @@ Context: UX optimization pass across all App Router screens to eliminate dead ti
 
 
 
-2 0 2 6 - 1 0 - 0 3 :   b r o w s e r   p e r f o r m a n c e   m e a s u r e m e n t   c o m p l e t e d .   M e a s u r e d   h a r d   l o a d s   a n d   s o f t   n a v i g a t i o n s   u s i n g   P l a y w r i g h t   s c r i p t s .   I d e n t i f i e d   m i d d l e w a r e   o v e r h e a d   a n d   c l i e n t - s i d e   w a t e r f a l l s   a s   p r i m a r y   l a t e n c y   d r i v e r s .   D e f e r r e d   T a r g e t   B   a n d   4 G   t h r o t t l i n g   t o   s a v e   c o m p u t e .  
- 2 0 2 6 - 1 0 - 0 5 :   d e p l o y e d   p e r f o r m a n c e   r e - t e s t   a f t e r   s i n 1   r e g i o n   c h a n g e .   M e a s u r e d   s o f t   n a v   w a t e r f a l l s   a n d   h a r d   l o a d   T T F B s .   C o n f i r m e d   m i d d l e w a r e   T T F B   p e n a l t y   i s   m i t i g a t e d   b y   s i n 1   c o l o c a t i o n ,   b u t   c l i e n t - s i d e   w a t e r f a l l s   d o m i n a t e   L C P   d u e   t o   c r o s s - r e g i o n   u s e r   l a t e n c y .  
- A d d e d   g l o b a l   f o o t e r   c o m p o n e n t  
- A d d e d   / p r i v a c y ,   / t e r m s ,   / s a f e t y   a s   s t a t i c   p u b l i c   p a g e s .  
- 
+2026-10-03: browser performance measurement completed. Measured hard loads and soft navigations using Playwright scripts. Identified middleware overhead and client-side waterfalls as primary latency drivers. Deferred Target B and 4G throttling to save compute.
+2026-10-05: deployed performance re-test after sin1 region change. Measured soft nav waterfalls and hard load TTFBs. Confirmed middleware TTFB penalty is mitigated by sin1 colocation, but client-side waterfalls dominate LCP due to cross-region user latency.
+Added global footer component
+Added /privacy, /terms, /safety as static public pages.
+
+## 2026-10-17: Pre-Launch Audit Fixes & Production Retest Verification
+
+Context: Fixed all audit failures identified in pre-launch QA across CODE, A11Y, UI, META, and RSP sections. Executed full re-verification against production build (`npm run build && npm run start`) on `http://localhost:3000`.
+
+- **CODE-12 & Tooling Hygiene**:
+  - Stopped background `next dev`, cleaned `.next`, executed clean `npm run build` compiling 37/37 static pages with 0 errors. Verified route structure for `/listing/[slug]/edit` resolves properly without `PageNotFoundError`.
+  - Added `.eslintrc.json` (`{"extends": "next/core-web-vitals"}`). Fixed unescaped JSX quotes/entities across static pages. `npm run lint` runs non-interactively with 0 errors.
+- **A11Y-01 & A11Y-06 (Contrast Tokens)**:
+  - Added `--color-accent-strong: #166534` (4.54:1 contrast ratio against white) in `tailwind.config.ts`, `globals.css`, `design (2).md`, and `rules_v1.1.md`.
+  - Kept `--color-accent: #16A34A` for non-text borders/decorations; adjusted `--color-accent-contact` to `#14532D`.
+  - Verified across all 8 device projects in `e2e/a11y.spec.ts`: 96/96 tests passed (100%).
+- **UI-02 & UI-03 (Mockup Removal)**:
+  - Removed fabricated WhatsApp chat mockup and raw CSS gradients from `components/home/ProblemSection.tsx` per `design (2).md` §8. Replaced with flat, token-based illustration and clean typography.
+  - Reclassified `UI-03` as initial FAIL (P0); resolved to PASS by mockup removal.
+- **UI-06 (Typography Scales)**:
+  - Replaced sub-12px font size utility classes (`text-[10px]`, `text-[11px]`) with `text-xs` (12px minimum).
+- **META-01, 02, 03, 04, 06, 07, 09, 10**:
+  - Added static `app/favicon.ico`, `app/apple-icon.png` (180x180), and dynamic `app/manifest.ts` (192/512 icons).
+  - Configured unique route metadata on all public pages and dynamic `generateMetadata` for `/listing/[slug]`.
+  - Added OpenGraph and Twitter card metadata in root `app/layout.tsx`.
+  - Created dynamic `app/robots.ts` and `app/sitemap.ts`.
+  - Gated all `[PERF_TRACE]` console logs behind `process.env.NODE_ENV !== 'production' && process.env.PERF_TRACE === '1'`.
+- **A11Y-08 (Bypass Link)**:
+  - Added skip-to-content bypass link in `app/layout.tsx` targeting `<main id="main-content">`.
+- **LNK-06 & META-13 (Custom 404 Page)**:
+  - Created accessible `app/not-found.tsx` with brand tokens, clear explanation, and prominent visible CTA back to Browse Listings. Verified 88/88 passed across all 8 projects in `e2e/static-pages.spec.ts`.
+- **RSP-01 (1024px Horizontal Scroll)**:
+  - Scoped Framer Motion entrance translation container on `/our-story` with `overflow-hidden` and added `overflow-x-hidden` on main, eliminating horizontal scroll across all breakpoints.
+- **needs-human.md**:
+  - Added explicit checklist entries for `FUN-09` (real verification email delivery) and `MAN-06` (cross-device mobile/laptop verification).
+- **Retest Reports & Real Lighthouse Audits**:
+  - Captured real Lighthouse JSON audits for Home, Browse, and Listing Detail in both mobile and desktop profiles (saved in `checklist_report/lighthouse/` and `checklist_report/retest-2026-10-17/lighthouse/`).
+  - Computed all status and severity counts in `SUMMARY.md` directly from `results.json` programmatically via script.
+  - Final retest verdict: **GO** (0 automated P0 or P1 failures remain).
+

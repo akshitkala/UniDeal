@@ -30,8 +30,8 @@ export default function SafetyPage() {
 
       <h2>Payments</h2>
       <ul>
-        <li>Pay only when you have the item in your hands. Do not send advance payments, deposits, or "booking" money.</li>
-        <li>Be careful with UPI. You only need to enter your PIN to send money, never to receive it. If someone asks you to approve a "collect request" or enter your PIN to get paid, it is a scam.</li>
+        <li>{"Pay only when you have the item in your hands. Do not send advance payments, deposits, or \"booking\" money."}</li>
+        <li>{"Be careful with UPI. You only need to enter your PIN to send money, never to receive it. If someone asks you to approve a \"collect request\" or enter your PIN to get paid, it is a scam."}</li>
         <li>Do not trust screenshots of payments. Check that the money has actually arrived in your account before handing over the item.</li>
         <li>Never share your OTP, PIN, or banking passwords with anyone.</li>
       </ul>

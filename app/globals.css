@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #16A34A;
-  --color-primary-hover: #15803D;
+  --color-primary: #166534;
+  --color-primary-hover: #14532D;
   --color-accent: #16A34A;
-  --color-accent-contact: #15803D;
+  --color-accent-strong: #166534;
+  --color-accent-contact: #14532D;
   --color-surface: #FFFFFF;
   --color-border: #E2E8F0;
   --color-text: #0F172A;

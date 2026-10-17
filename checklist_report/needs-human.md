@@ -17,11 +17,16 @@ The following checklist items require physical hardware, real communication chan
 - [ ] **INF-07 (P0)**: Review rollback plan (reverting to previous Vercel deployment if critical regression occurs).
 - [ ] **INF-08 (P0)**: Confirm custom domain DNS, SSL/HTTPS certificate, and `www` to non-`www` 301 redirects are functional.
 
+### Authentication & Email Delivery (FUN / MAN)
+- [ ] **FUN-09 (P0)**: Complete real student signup flow on live domain: verify confirmation email arrives promptly in inbox, link lands on `/verify-email`, email is confirmed, and session authenticates cleanly.
+- [ ] **MAN-04 (P0)**: Complete real signup on live domain and inspect the verification email appearance, styling, and delivery speed across Gmail and Outlook.
+
 ### Real Physical Device Walkthrough (MAN / RSP)
 - [ ] **RSP-13 & MAN-05 (P0)**: Test on a real **iPhone Safari**:
   - Test keyboard overlap during Sell form entry.
   - Test dynamic address bar expand/collapse on scroll.
   - Test camera / photo upload with an actual full-size iPhone photo (12-48MP HEIC/JPEG).
+- [ ] **MAN-06 (P1)**: Cross-device verification of newly published listing: post a listing on a mobile phone, immediately load it on a laptop browser, and confirm title, condition, and image display properly without stale cache.
 - [ ] **RSP-14 (P0)**: Test on a real **Android Chrome** device:
   - Verify bottom navigation bar against OS gesture navigation.
   - Test physical input focus and viewport height resizing.

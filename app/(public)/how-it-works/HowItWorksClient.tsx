@@ -141,7 +141,7 @@ export default function HowItWorksClient() {
                     className="flex-1"
                   >
                     <motion.span
-                      animate={active ? { color: '#15803d' } : { color: '#64748B' }}
+                      animate={active ? { color: '#166534' } : { color: '#475569' }}
                       transition={{ duration: M.duration.hover }}
                       className="text-xs font-semibold uppercase tracking-wide"
                     >

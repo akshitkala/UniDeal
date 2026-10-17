@@ -6,7 +6,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 export const requireAdminSession = cache(async () => {
   const supabase = await createServerClient();
 
-  const isTrace = process.env.PERF_TRACE === '1';
+  const isTrace = process.env.NODE_ENV !== 'production' && process.env.PERF_TRACE === '1';
   const t0 = isTrace ? performance.now() : 0;
 
   const {

@@ -1,0 +1,521 @@
+{
+  "timestamp": "2026-10-17T06:50:41.168Z",
+  "targetUrl": "http://localhost:3000",
+  "environment": "production build (npm run build && npm run start)",
+  "totals": {
+    "total": 466,
+    "passed": 466,
+    "failed": 0,
+    "skipped": 0,
+    "passRate": "100.0%"
+  },
+  "perProjectSummary": [
+    {
+      "project": "chrome-desktop-1440",
+      "total": 67,
+      "passed": 67,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "project": "chrome-laptop-1024",
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "project": "safari-desktop",
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "project": "ipad",
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "project": "iphone-se-375",
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "project": "iphone-14",
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "project": "android-pixel-7",
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "project": "android-small-360",
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "status": "PASS"
+    }
+  ],
+  "perProject": {
+    "chrome-desktop-1440": {
+      "total": 67,
+      "passed": 67,
+      "failed": 0,
+      "skipped": 0,
+      "specs": {
+        "e2e/a11y.spec.ts": {
+          "total": 12,
+          "passed": 12,
+          "failed": 0
+        },
+        "e2e/layout.spec.ts (visual)": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0
+        },
+        "e2e/static-pages.spec.ts (links)": {
+          "total": 11,
+          "passed": 11,
+          "failed": 0
+        },
+        "e2e/guest-browse.spec.ts": {
+          "total": 6,
+          "passed": 6,
+          "failed": 0
+        },
+        "e2e/auth-modal.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/contact-seller.spec.ts": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0
+        },
+        "e2e/contact-us.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "e2e/security.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/meta.spec.ts": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0
+        },
+        "tests/12_sell_edit.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "tests/06_dashboard_actions.spec.ts": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0
+        },
+        "tests/07_report_listing.spec.ts": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0
+        },
+        "tests/09_admin_flows.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "tests/11_admin_reject_and_ratelimit.spec.ts": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0
+        }
+      }
+    },
+    "chrome-laptop-1024": {
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "specs": {
+        "e2e/a11y.spec.ts": {
+          "total": 12,
+          "passed": 12,
+          "failed": 0
+        },
+        "e2e/layout.spec.ts (visual)": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0
+        },
+        "e2e/static-pages.spec.ts (links)": {
+          "total": 11,
+          "passed": 11,
+          "failed": 0
+        },
+        "e2e/guest-browse.spec.ts": {
+          "total": 6,
+          "passed": 6,
+          "failed": 0
+        },
+        "e2e/auth-modal.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/contact-seller.spec.ts": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0
+        },
+        "e2e/contact-us.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "e2e/security.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/meta.spec.ts": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0
+        }
+      }
+    },
+    "safari-desktop": {
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "specs": {
+        "e2e/a11y.spec.ts": {
+          "total": 12,
+          "passed": 12,
+          "failed": 0
+        },
+        "e2e/layout.spec.ts (visual)": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0
+        },
+        "e2e/static-pages.spec.ts (links)": {
+          "total": 11,
+          "passed": 11,
+          "failed": 0
+        },
+        "e2e/guest-browse.spec.ts": {
+          "total": 6,
+          "passed": 6,
+          "failed": 0
+        },
+        "e2e/auth-modal.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/contact-seller.spec.ts": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0
+        },
+        "e2e/contact-us.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "e2e/security.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/meta.spec.ts": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0
+        }
+      }
+    },
+    "ipad": {
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "specs": {
+        "e2e/a11y.spec.ts": {
+          "total": 12,
+          "passed": 12,
+          "failed": 0
+        },
+        "e2e/layout.spec.ts (visual)": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0
+        },
+        "e2e/static-pages.spec.ts (links)": {
+          "total": 11,
+          "passed": 11,
+          "failed": 0
+        },
+        "e2e/guest-browse.spec.ts": {
+          "total": 6,
+          "passed": 6,
+          "failed": 0
+        },
+        "e2e/auth-modal.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/contact-seller.spec.ts": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0
+        },
+        "e2e/contact-us.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "e2e/security.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/meta.spec.ts": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0
+        }
+      }
+    },
+    "iphone-se-375": {
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "specs": {
+        "e2e/a11y.spec.ts": {
+          "total": 12,
+          "passed": 12,
+          "failed": 0
+        },
+        "e2e/layout.spec.ts (visual)": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0
+        },
+        "e2e/static-pages.spec.ts (links)": {
+          "total": 11,
+          "passed": 11,
+          "failed": 0
+        },
+        "e2e/guest-browse.spec.ts": {
+          "total": 6,
+          "passed": 6,
+          "failed": 0
+        },
+        "e2e/auth-modal.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/contact-seller.spec.ts": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0
+        },
+        "e2e/contact-us.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "e2e/security.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/meta.spec.ts": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0
+        }
+      }
+    },
+    "iphone-14": {
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "specs": {
+        "e2e/a11y.spec.ts": {
+          "total": 12,
+          "passed": 12,
+          "failed": 0
+        },
+        "e2e/layout.spec.ts (visual)": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0
+        },
+        "e2e/static-pages.spec.ts (links)": {
+          "total": 11,
+          "passed": 11,
+          "failed": 0
+        },
+        "e2e/guest-browse.spec.ts": {
+          "total": 6,
+          "passed": 6,
+          "failed": 0
+        },
+        "e2e/auth-modal.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/contact-seller.spec.ts": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0
+        },
+        "e2e/contact-us.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "e2e/security.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/meta.spec.ts": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0
+        }
+      }
+    },
+    "android-pixel-7": {
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "specs": {
+        "e2e/a11y.spec.ts": {
+          "total": 12,
+          "passed": 12,
+          "failed": 0
+        },
+        "e2e/layout.spec.ts (visual)": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0
+        },
+        "e2e/static-pages.spec.ts (links)": {
+          "total": 11,
+          "passed": 11,
+          "failed": 0
+        },
+        "e2e/guest-browse.spec.ts": {
+          "total": 6,
+          "passed": 6,
+          "failed": 0
+        },
+        "e2e/auth-modal.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/contact-seller.spec.ts": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0
+        },
+        "e2e/contact-us.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "e2e/security.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/meta.spec.ts": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0
+        }
+      }
+    },
+    "android-small-360": {
+      "total": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "specs": {
+        "e2e/a11y.spec.ts": {
+          "total": 12,
+          "passed": 12,
+          "failed": 0
+        },
+        "e2e/layout.spec.ts (visual)": {
+          "total": 9,
+          "passed": 9,
+          "failed": 0
+        },
+        "e2e/static-pages.spec.ts (links)": {
+          "total": 11,
+          "passed": 11,
+          "failed": 0
+        },
+        "e2e/guest-browse.spec.ts": {
+          "total": 6,
+          "passed": 6,
+          "failed": 0
+        },
+        "e2e/auth-modal.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/contact-seller.spec.ts": {
+          "total": 3,
+          "passed": 3,
+          "failed": 0
+        },
+        "e2e/contact-us.spec.ts": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0
+        },
+        "e2e/security.spec.ts": {
+          "total": 5,
+          "passed": 5,
+          "failed": 0
+        },
+        "e2e/meta.spec.ts": {
+          "total": 4,
+          "passed": 4,
+          "failed": 0
+        }
+      }
+    }
+  }
+}

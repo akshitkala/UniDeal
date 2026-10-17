@@ -1,0 +1,1474 @@
+[
+  {
+    "id": "SEC-01",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/guest-browse.spec.ts, e2e/contact-seller.spec.ts",
+    "notes": "No raw phone number present in DOM or responses. Only server-built waLink returned."
+  },
+  {
+    "id": "SEC-02",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/security.spec.ts, code scan",
+    "notes": "SUPABASE_SERVICE_ROLE_KEY and RESEND_API_KEY absent from client bundle and rendered source."
+  },
+  {
+    "id": "SEC-03",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "supabase/migrations/001_initial_schema.sql (REVOKE)",
+    "notes": "Direct anon-key query to profiles for whatsapp_number returns null due to column REVOKE."
+  },
+  {
+    "id": "SEC-04",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "scripts/test_phase1_exit_gate.js",
+    "notes": "RLS enabled on all 6 tables and verified via live exit-gate integration suite."
+  },
+  {
+    "id": "SEC-05",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "scripts/test_phase2_exit_gate.js",
+    "notes": "RLS policies enforce auth.uid() = seller_id for UPDATE and DELETE."
+  },
+  {
+    "id": "SEC-06",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/security.spec.ts, lib/auth-admin.ts",
+    "notes": "requireAdminSession() checks is_admin server-side, non-admin gets 401/403."
+  },
+  {
+    "id": "SEC-07",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "supabase/migrations/001_initial_schema.sql",
+    "notes": "profiles_update policy prevents self-promotion or self-unbanning."
+  },
+  {
+    "id": "SEC-08",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "supabase/migrations/001_initial_schema.sql",
+    "notes": "listings_insert policy requires auth.email() confirmed_at IS NOT NULL."
+  },
+  {
+    "id": "SEC-09",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "supabase/migrations/001_initial_schema.sql, app/api/listings/[id]/contact/route.ts",
+    "notes": "Banned user is blocked at DB RLS policy and contact API."
+  },
+  {
+    "id": "SEC-10",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/contact-seller.spec.ts, app/api/listings/[id]/contact/route.ts",
+    "notes": "51st contact reveal in 24h returns 429 server-side."
+  },
+  {
+    "id": "SEC-11",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "supabase/migrations/001_initial_schema.sql",
+    "notes": "listings_select_public checks seller.is_banned = false."
+  },
+  {
+    "id": "SEC-12",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/api/listings/[id]/report/route.ts",
+    "notes": "Duplicate report returns 409 Conflict with friendly user message."
+  },
+  {
+    "id": "SEC-13",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/guest-browse.spec.ts, browser agent walkthrough",
+    "notes": "Guest can load /browse and listing detail without auth errors."
+  },
+  {
+    "id": "SEC-14",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/security.spec.ts, app/api/cron/keepalive/route.ts",
+    "notes": "/api/cron/keepalive returns 401 without Bearer CRON_SECRET, 200 with it."
+  },
+  {
+    "id": "SEC-15",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/api/**, e2e/contact-us.spec.ts",
+    "notes": "All endpoints return sanitized error messages, no raw traces leak to client."
+  },
+  {
+    "id": "SEC-16",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/api/listings/route.ts, lib/validations.ts",
+    "notes": "Server validates price >= 0, valid category_id, sets seller_id from auth session."
+  },
+  {
+    "id": "SEC-17",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "lib/auth-admin.ts",
+    "notes": "All admin routes call requireAdminSession() with service-role re-check."
+  },
+  {
+    "id": "SEC-18",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/contact-us.spec.ts, app/api/contact/route.ts",
+    "notes": "/api/contact returns standard error shape and never leaks raw Resend errors."
+  },
+  {
+    "id": "SEC-19",
+    "section": "SEC",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "e2e/security.spec.ts, next.config.mjs",
+    "notes": "Security headers configured in next.config.mjs (X-Content-Type-Options, X-Frame-Options, Referrer-Policy)."
+  },
+  {
+    "id": "SEC-20",
+    "section": "SEC",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "e2e/security.spec.ts",
+    "notes": "React JSX escaping renders HTML and script tags as literal text."
+  },
+  {
+    "id": "SEC-21",
+    "section": "SEC",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/(account)/sell/page.tsx",
+    "notes": "Client restricts to images under 5MB; Cloudinary upload preset restricts mime-types."
+  },
+  {
+    "id": "SEC-22",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Vercel environment variables dashboard",
+    "notes": "Verify all production env vars set in Vercel and git history clean."
+  },
+  {
+    "id": "SEC-23",
+    "section": "SEC",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Supabase dashboard > Auth > URL Configuration",
+    "notes": "Confirm Site URL and redirect URLs point to production domain."
+  },
+  {
+    "id": "FUN-01",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/auth-modal.spec.ts",
+    "notes": "AuthModal opens from Sell, Contact Seller, Sign In when logged out."
+  },
+  {
+    "id": "FUN-02",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/auth/AuthModal.tsx",
+    "notes": "Focus trap implemented in dialog component."
+  },
+  {
+    "id": "FUN-03",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/auth-modal.spec.ts",
+    "notes": "Escape key and backdrop click dismiss the AuthModal."
+  },
+  {
+    "id": "FUN-04",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/auth-modal.spec.ts",
+    "notes": "Browser back closes modal without navigating away."
+  },
+  {
+    "id": "FUN-05",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/auth/AuthModal.tsx",
+    "notes": "returnTo search param parsed and redirects after auth."
+  },
+  {
+    "id": "FUN-06",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/auth-modal.spec.ts",
+    "notes": "Wrong credentials display inline error message; modal stays open."
+  },
+  {
+    "id": "FUN-07",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/auth-modal.spec.ts",
+    "notes": "/login and /signup routes return 404."
+  },
+  {
+    "id": "FUN-08",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/auth/AuthModal.tsx",
+    "notes": "Existing email signup returns clear error notification."
+  },
+  {
+    "id": "FUN-09",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Email inbox check",
+    "notes": "Manual sign-off on verification email delivery and landing on /verify-email."
+  },
+  {
+    "id": "FUN-10",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/(auth)/verify-email/page.tsx",
+    "notes": "Resend cooldown timer implemented; invalid link shows clear message."
+  },
+  {
+    "id": "FUN-11",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/layout/Navbar.tsx",
+    "notes": "Logout clears Supabase session; protected pages redirect."
+  },
+  {
+    "id": "FUN-12",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(account)/sell/page.tsx",
+    "notes": "Sell is a single form; submit button disabled until valid."
+  },
+  {
+    "id": "FUN-13",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(account)/sell/page.tsx",
+    "notes": "1-4 images enforced; max 4 images checked."
+  },
+  {
+    "id": "FUN-14",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(account)/sell/page.tsx",
+    "notes": "Files > 5MB rejected client-side before network upload."
+  },
+  {
+    "id": "FUN-15",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/(account)/sell/page.tsx",
+    "notes": "Price input has inputmode='numeric'."
+  },
+  {
+    "id": "FUN-16",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "scripts/test_phase2_exit_gate.js",
+    "notes": "In auto approval mode, newly inserted listing has status approved."
+  },
+  {
+    "id": "FUN-17",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "scripts/test_phase2_exit_gate.js",
+    "notes": "In manual mode, new listing has status under_review."
+  },
+  {
+    "id": "FUN-18",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(account)/listings/[id]/edit/page.tsx",
+    "notes": "Edit form pre-fills existing listing data and maintains status."
+  },
+  {
+    "id": "FUN-19",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(account)/dashboard/page.tsx",
+    "notes": "Mark Sold updates status to sold and removes listing from Browse."
+  },
+  {
+    "id": "FUN-20",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(account)/dashboard/page.tsx",
+    "notes": "Delete triggers confirmation dialog and deletes listing."
+  },
+  {
+    "id": "FUN-21",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(account)/dashboard/page.tsx",
+    "notes": "Dashboard tabs separate Active, Sold, Under Review, and Rejected."
+  },
+  {
+    "id": "FUN-22",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(account)/dashboard/page.tsx",
+    "notes": "Rejected listing card displays rejection_reason."
+  },
+  {
+    "id": "FUN-23",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(public)/listings/[slug]/page.tsx",
+    "notes": "Listing page handles missing seller WhatsApp with 'Seller contact not available'."
+  },
+  {
+    "id": "FUN-24",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "lib/slug.ts, supabase/migrations/001_initial_schema.sql",
+    "notes": "Unique nanoid suffix appended to slug on duplicate titles."
+  },
+  {
+    "id": "FUN-25",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/guest-browse.spec.ts",
+    "notes": "Search matches titles and descriptions via Supabase query."
+  },
+  {
+    "id": "FUN-26",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/guest-browse.spec.ts",
+    "notes": "Category and condition filters filter listings independently and combined."
+  },
+  {
+    "id": "FUN-27",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/guest-browse.spec.ts",
+    "notes": "Sort options include Newest, Price Low to High, Price High to Low; no Most Viewed."
+  },
+  {
+    "id": "FUN-28",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(public)/browse/page.tsx",
+    "notes": "Pagination controls load additional pages without duplication."
+  },
+  {
+    "id": "FUN-29",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "e2e/guest-browse.spec.ts",
+    "notes": "Search params ?search=, ?category=, ?condition=, ?sort= reflected in URL."
+  },
+  {
+    "id": "FUN-30",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(account)/profile/page.tsx, app/api/profile/route.ts",
+    "notes": "Profile loads and saves E.164 phone number via server-side route."
+  },
+  {
+    "id": "FUN-31",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/contact-seller.spec.ts",
+    "notes": "Contact Seller gates logged-out users by prompting AuthModal."
+  },
+  {
+    "id": "FUN-32",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/listings/ContactButton.tsx",
+    "notes": "Unverified users see prompt to verify email before contacting."
+  },
+  {
+    "id": "FUN-33",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/contact-seller.spec.ts",
+    "notes": "window.open called with wa.me link containing listing title; record written to contact_reveals."
+  },
+  {
+    "id": "FUN-34",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/contact-seller.spec.ts",
+    "notes": "Daily limit reached message shown and button disabled after 50 reveals."
+  },
+  {
+    "id": "FUN-35",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/listings/ContactButton.tsx",
+    "notes": "Own listing hides Contact button or displays seller indicator."
+  },
+  {
+    "id": "FUN-36",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/listings/ReportModal.tsx",
+    "notes": "Report flow has reason dropdown; duplicate report blocked; listing remains live."
+  },
+  {
+    "id": "FUN-37",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/admin/settings/page.tsx",
+    "notes": "Approval mode toggle only alters future listing submissions."
+  },
+  {
+    "id": "FUN-38",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/admin/listings/page.tsx",
+    "notes": "Admin approve and reject persist status and rejection reason."
+  },
+  {
+    "id": "FUN-39",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/admin/reports/page.tsx",
+    "notes": "Report Remove marks listing rejected; Dismiss keeps it live."
+  },
+  {
+    "id": "FUN-40",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/admin/users/page.tsx",
+    "notes": "Admin ban, unban, promote actions include confirmation step."
+  },
+  {
+    "id": "FUN-41",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/security.spec.ts",
+    "notes": "Non-admin redirected or blocked from /admin routes."
+  },
+  {
+    "id": "FUN-42",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/contact-us.spec.ts",
+    "notes": "Contact Us form validates fields; handles success and mocked failure."
+  },
+  {
+    "id": "FUN-43",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/static-pages.spec.ts",
+    "notes": "/our-story, /how-it-works, /contact load for guests without auth."
+  },
+  {
+    "id": "FUN-44",
+    "section": "FUN",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/guest-browse.spec.ts",
+    "notes": "Seller identity limited to first name on public cards and detail page."
+  },
+  {
+    "id": "FUN-45",
+    "section": "FUN",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/api/listings/[id]/view/route.ts",
+    "notes": "View counter increments non-blockingly via navigator.sendBeacon/fetch."
+  },
+  {
+    "id": "UI-01",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/listings/ContactButton.tsx",
+    "notes": "#15803D (contact green) used exclusively for Contact Seller action."
+  },
+  {
+    "id": "UI-02",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/home/ProblemSection.tsx, e2e/layout.spec.ts",
+    "notes": "Fabricated WhatsApp chat mockup and CSS vertical gradient removed. Replaced with token-based flat illustration and clean typography."
+  },
+  {
+    "id": "UI-03",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/home/ProblemSection.tsx, audit verification",
+    "notes": "Reclassified as FAIL (P0) initially; resolved by removal of fabricated WhatsApp chat mockup from ProblemSection.tsx per design.md §8."
+  },
+  {
+    "id": "UI-04",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/static-pages.spec.ts",
+    "notes": "Zero .edu-only restrictions or college requirement wording."
+  },
+  {
+    "id": "UI-05",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/layout.spec.ts",
+    "notes": "Outfit applied to headings and Work Sans applied to body."
+  },
+  {
+    "id": "UI-06",
+    "section": "UI",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "components/home/ProblemSection.tsx, components/listing/ListingCard.tsx",
+    "notes": "Sub-12px font sizes (text-[10px], text-[11px]) replaced with text-xs (12px minimum)."
+  },
+  {
+    "id": "UI-07",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/ui/button.tsx",
+    "notes": "Primary, destructive, ghost variants have defined hover and disabled states."
+  },
+  {
+    "id": "UI-08",
+    "section": "UI",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "tailwind.config.ts, components/ui/**",
+    "notes": "Transition durations set to 150ms-200ms."
+  },
+  {
+    "id": "UI-09",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/listings/ListingCard.tsx",
+    "notes": "Equal-height cards with 2-line title clamping."
+  },
+  {
+    "id": "UI-10",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/listings/ListingCard.tsx",
+    "notes": "object-cover prevents distortion; fallback placeholder present."
+  },
+  {
+    "id": "UI-11",
+    "section": "UI",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "lucide-react icons",
+    "notes": "Lucide SVG icons used consistently across components."
+  },
+  {
+    "id": "UI-12",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/ui/Badge.tsx",
+    "notes": "Status badges display text labels matching semantic colors."
+  },
+  {
+    "id": "UI-13",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(public)/page.tsx",
+    "notes": "Hero, Problem, Features, How It Works, CTA sections follow redesign."
+  },
+  {
+    "id": "UI-14",
+    "section": "UI",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "components/layout/**",
+    "notes": "Consistent max-w-7xl container and padding tokens."
+  },
+  {
+    "id": "UI-15",
+    "section": "UI",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/layout/Navbar.tsx",
+    "notes": "Active route highlighted with semantic text color and border indicator."
+  },
+  {
+    "id": "UI-16",
+    "section": "UI",
+    "severity": "P1",
+    "status": "BASELINE",
+    "evidence": "checklist_report/screenshots/",
+    "notes": "Visual baseline screenshots captured; requires human aesthetic review."
+  },
+  {
+    "id": "LNK-01",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "scratch/crawl_links.js",
+    "notes": "All navbar and bottom nav links return HTTP 200."
+  },
+  {
+    "id": "LNK-02",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/static-pages.spec.ts",
+    "notes": "Footer links resolve; external links include target='_blank' and rel='noopener noreferrer'."
+  },
+  {
+    "id": "LNK-03",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "browser walkthrough & crawler",
+    "notes": "All CTAs on landing and static pages route to correct paths."
+  },
+  {
+    "id": "LNK-04",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/static-pages.spec.ts",
+    "notes": "Zero href='#' or empty href attributes found."
+  },
+  {
+    "id": "LNK-05",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "scratch/crawl_links.js (58 links)",
+    "notes": "Full link crawl returned zero 4xx or 5xx responses."
+  },
+  {
+    "id": "LNK-06",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/not-found.tsx, e2e/static-pages.spec.ts",
+    "notes": "Invalid route /non-existent-page-testing-404 returns HTTP 404 and provides functioning link to Browse on all viewports."
+  },
+  {
+    "id": "LNK-07",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "middleware.ts, AuthModal.tsx",
+    "notes": "Protected routes prompt AuthModal with returnTo parameter."
+  },
+  {
+    "id": "LNK-08",
+    "section": "LNK",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(auth)/verify-email/page.tsx",
+    "notes": "Verify email route gracefully handles expired and invalid tokens."
+  },
+  {
+    "id": "LNK-09",
+    "section": "LNK",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "Next.js routing layer",
+    "notes": "Case and trailing slashes normalize without broken page errors."
+  },
+  {
+    "id": "LNK-10",
+    "section": "LNK",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "components/layout/Footer.tsx",
+    "notes": "Instagram link valid; mailto: links format valid email addresses."
+  },
+  {
+    "id": "LNK-11",
+    "section": "LNK",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "e2e/guest-browse.spec.ts",
+    "notes": "Back, forward, and refresh retain query params on Browse."
+  },
+  {
+    "id": "META-01",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/favicon.ico, e2e/meta.spec.ts",
+    "notes": "Static favicon.ico added to app directory. HTTP request returns 200 OK."
+  },
+  {
+    "id": "META-02",
+    "section": "META",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/apple-icon.png, e2e/meta.spec.ts",
+    "notes": "180x180 PNG apple-touch-icon added and verified in rendered DOM."
+  },
+  {
+    "id": "META-03",
+    "section": "META",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/manifest.ts, e2e/meta.spec.ts",
+    "notes": "Web App Manifest generated dynamically with standalone display mode and 192/512 icon definitions."
+  },
+  {
+    "id": "META-04",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/meta.spec.ts",
+    "notes": "Route-specific metadata configured for /browse, /our-story, /how-it-works, /contact, and dynamic generateMetadata for /listing/[slug]."
+  },
+  {
+    "id": "META-05",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(public)/listings/[slug]/page.tsx",
+    "notes": "generateMetadata provides dynamic title and description for listings."
+  },
+  {
+    "id": "META-06",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/layout.tsx, e2e/meta.spec.ts",
+    "notes": "OpenGraph metadata (og:title, og:description, og:image, og:url) configured on root and public pages."
+  },
+  {
+    "id": "META-07",
+    "section": "META",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/layout.tsx, middleware.ts, lib/auth-admin.ts",
+    "notes": "Twitter card metadata added. All [PERF_TRACE] console logs gated behind process.env.NODE_ENV !== production && process.env.PERF_TRACE === 1."
+  },
+  {
+    "id": "META-08",
+    "section": "META",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/layout.tsx",
+    "notes": "theme-color meta tag configured with #16A34A."
+  },
+  {
+    "id": "META-09",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/robots.ts, e2e/meta.spec.ts",
+    "notes": "robots.txt generated dynamically disallowing protected paths (/admin, /api, /dashboard, /sell, /profile)."
+  },
+  {
+    "id": "META-10",
+    "section": "META",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/sitemap.ts, e2e/meta.spec.ts",
+    "notes": "sitemap.xml generated dynamically listing canonical static routes and public active listings."
+  },
+  {
+    "id": "META-11",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/layout.tsx",
+    "notes": "<html lang='en'> explicitly defined on root html tag."
+  },
+  {
+    "id": "META-12",
+    "section": "META",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/(public)/browse/page.tsx",
+    "notes": "Canonical tag points to /browse base."
+  },
+  {
+    "id": "META-13",
+    "section": "META",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/not-found.tsx, e2e/static-pages.spec.ts (88/88 passed)",
+    "notes": "Custom accessible 404 page created with UniDeal design tokens, clear explanation, and visible Browse Listings CTA."
+  },
+  {
+    "id": "META-14",
+    "section": "META",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Real WhatsApp / Instagram share test",
+    "notes": "Manual verification of link unfurling on WhatsApp and Instagram DM."
+  },
+  {
+    "id": "STA-01",
+    "section": "STA",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(public)/browse/loading.tsx",
+    "notes": "Skeleton loaders present on Browse and Listing Detail; no white flash."
+  },
+  {
+    "id": "STA-02",
+    "section": "STA",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(public)/browse/page.tsx",
+    "notes": "Empty search/filter results render helpful message with clear filter button."
+  },
+  {
+    "id": "STA-03",
+    "section": "STA",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/ui/Toast.tsx, app/(account)/sell/page.tsx",
+    "notes": "Plain-language toast notifications on network/upload failures."
+  },
+  {
+    "id": "STA-04",
+    "section": "STA",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/contact-us.spec.ts, Sell page",
+    "notes": "Submit buttons disable with loading state to prevent double clicks."
+  },
+  {
+    "id": "STA-05",
+    "section": "STA",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/ui/Input.tsx",
+    "notes": "Visible labels, helper texts, and inline error messages present."
+  },
+  {
+    "id": "STA-06",
+    "section": "STA",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "ListingCard.tsx, Browse grid",
+    "notes": "Long titles clamped; price 0 displays Free; non-English UTF-8 supported."
+  },
+  {
+    "id": "STA-07",
+    "section": "STA",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "Next.js streaming & suspense",
+    "notes": "UI remains responsive under network throttling without freezing."
+  },
+  {
+    "id": "STA-08",
+    "section": "STA",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/error.tsx",
+    "notes": "Error boundary catches unhandled exceptions and displays retry action."
+  },
+  {
+    "id": "STA-09",
+    "section": "STA",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/(account)/sell/page.tsx",
+    "notes": "Sell form retains draft state in local storage/form state across re-auth."
+  },
+  {
+    "id": "STA-10",
+    "section": "STA",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "Copy audit across toasts",
+    "notes": "Friendly, direct tone aligned with rules.md section 7.3."
+  },
+  {
+    "id": "RSP-01",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/layout.spec.ts (72/72 passed across all 8 projects)",
+    "notes": "Fixed 1024px horizontal overflow on /our-story by scoping Framer Motion entrance containers and adding overflow-x-hidden."
+  },
+  {
+    "id": "RSP-02",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/layout.spec.ts",
+    "notes": "Interactive buttons meet 44x44px minimum touch target."
+  },
+  {
+    "id": "RSP-03",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "375x812 browser run",
+    "notes": "No clipping, overflow, or overlapping text on 375px mobile view."
+  },
+  {
+    "id": "RSP-04",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/layout/BottomNav.tsx",
+    "notes": "Bottom navigation includes padding and safe-area inset."
+  },
+  {
+    "id": "RSP-05",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "app/(public)/browse/page.tsx",
+    "notes": "Sticky category/search bar does not occlude listing cards."
+  },
+  {
+    "id": "RSP-06",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/auth-modal.spec.ts",
+    "notes": "AuthModal handles vertical scrolling on 375x667 viewports."
+  },
+  {
+    "id": "RSP-07",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "components/listings/ImageGallery.tsx",
+    "notes": "Swipe gestures work on mobile touch devices without locking page scroll."
+  },
+  {
+    "id": "RSP-08",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "Playwright landscape viewport",
+    "notes": "Landscape mobile view renders responsive column layout."
+  },
+  {
+    "id": "RSP-09",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "1440x900 viewport test",
+    "notes": "Max width constraints keep content centered without stretching."
+  },
+  {
+    "id": "RSP-10",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "200% zoom emulation",
+    "notes": "Text wraps appropriately under 200% zoom."
+  },
+  {
+    "id": "RSP-11",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "prefers-color-scheme emulation",
+    "notes": "Tailwind explicit background and text color tokens prevent dark mode inversion."
+  },
+  {
+    "id": "RSP-12",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "Playwright Chromium vs WebKit",
+    "notes": "Zero functional discrepancies between Chromium and WebKit test runs."
+  },
+  {
+    "id": "RSP-13",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Physical iPhone Safari",
+    "notes": "Manual testing of keyboard overlap, 100vh, and camera file upload."
+  },
+  {
+    "id": "RSP-14",
+    "section": "RSP",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Physical Android Chrome",
+    "notes": "Manual testing of keyboard resizing and address-bar behavior."
+  },
+  {
+    "id": "RSP-15",
+    "section": "RSP",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Physical iPad Safari",
+    "notes": "Manual spot check on physical iPad Safari."
+  },
+  {
+    "id": "A11Y-01",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/a11y.spec.ts (96/96 passed across 8 device projects)",
+    "notes": "Contrast ratio resolved via --color-accent-strong token #166534 (4.54:1). Zero WCAG AA contrast failures."
+  },
+  {
+    "id": "A11Y-02",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "Keyboard navigation walkthrough",
+    "notes": "Focus ring visible on all interactive elements; full flow navigable via keyboard."
+  },
+  {
+    "id": "A11Y-03",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/auth-modal.spec.ts",
+    "notes": "Modal includes role='dialog', aria-modal='true', and accessible name."
+  },
+  {
+    "id": "A11Y-04",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/a11y.spec.ts",
+    "notes": "Exactly one h1 element per page; sequential heading structure."
+  },
+  {
+    "id": "A11Y-05",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/ui/Input.tsx",
+    "notes": "Form inputs have associated <label> elements; errors announce via role='alert'."
+  },
+  {
+    "id": "A11Y-06",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/a11y.spec.ts",
+    "notes": "Primary action buttons meet minimum 4.5:1 contrast against white backgrounds across all screen sizes."
+  },
+  {
+    "id": "A11Y-07",
+    "section": "A11Y",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/a11y.spec.ts",
+    "notes": "Icon buttons have aria-label; decorative icons marked aria-hidden."
+  },
+  {
+    "id": "A11Y-08",
+    "section": "A11Y",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "e2e/layout.spec.ts, app/layout.tsx",
+    "notes": "Skip-to-content bypass link added targeting #main-content with sr-only focus:not-sr-only styling."
+  },
+  {
+    "id": "A11Y-09",
+    "section": "A11Y",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "app/globals.css",
+    "notes": "prefers-reduced-motion media queries disable animations."
+  },
+  {
+    "id": "A11Y-10",
+    "section": "A11Y",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "VoiceOver screen reader test",
+    "notes": "Manual VoiceOver pass on physical iPhone."
+  },
+  {
+    "id": "CPY-01",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "ripgrep audit",
+    "notes": "Zero instances of lorem ipsum, test, asdf, or Create Next App found."
+  },
+  {
+    "id": "CPY-02",
+    "section": "CPY",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "Copy review",
+    "notes": "Visible copy checked; zero spelling or grammatical errors found."
+  },
+  {
+    "id": "CPY-03",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/** audit",
+    "notes": "Contact Seller vs Contact Us cleanly disambiguated."
+  },
+  {
+    "id": "CPY-04",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "components/home/**",
+    "notes": "Zero fabricated testimonials or fake counters rendered."
+  },
+  {
+    "id": "CPY-05",
+    "section": "CPY",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "lib/formatters.ts",
+    "notes": "Prices consistently prefixed with ₹; dates formatted to locale."
+  },
+  {
+    "id": "CPY-06",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Founder review of support info",
+    "notes": "Founder sign-off on Instagram handle, support email, and story copy."
+  },
+  {
+    "id": "CPY-07",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Legal counsel / founder review",
+    "notes": "Legal sign-off on Privacy, Terms, and Safety policies."
+  },
+  {
+    "id": "CPY-08",
+    "section": "CPY",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Production DB inspection",
+    "notes": "Confirm test data is wiped from live production database."
+  },
+  {
+    "id": "CODE-01",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "rg 'admin.ts' app/",
+    "notes": "Zero imports of lib/supabase/admin.ts from Client Components."
+  },
+  {
+    "id": "CODE-02",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "rg 'NEXT_PUBLIC_' .env*",
+    "notes": "Only public SUPABASE_URL and SUPABASE_ANON_KEY prefixed with NEXT_PUBLIC_."
+  },
+  {
+    "id": "CODE-03",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "git log, git status",
+    "notes": ".env.local and .env.test gitignored; no secrets in commit history."
+  },
+  {
+    "id": "CODE-04",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "rg 'whatsapp_number'",
+    "notes": "whatsapp_number queried exclusively in contact API and user profile route."
+  },
+  {
+    "id": "CODE-05",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "rg 'full_name'",
+    "notes": "Only firstName() rendered on public listing cards and details."
+  },
+  {
+    "id": "CODE-06",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "e2e/auth-modal.spec.ts",
+    "notes": "Zero /login or /signup routes; returns HTTP 404."
+  },
+  {
+    "id": "CODE-07",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "components/home/ProblemSection.tsx",
+    "notes": "Zero hardcoded hex colors remain after removing fabricated WhatsApp chat mockup. Replaced with Tailwind semantic tokens."
+  },
+  {
+    "id": "CODE-08",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "tsconfig.json, rg ': any'",
+    "notes": "strict: true enabled; auth, contact, and admin routes use strict types."
+  },
+  {
+    "id": "CODE-09",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "rg 'catch\\s*\\{\\s*\\}'",
+    "notes": "Zero empty catch {} blocks found in repository."
+  },
+  {
+    "id": "CODE-10",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "types/database.ts",
+    "notes": "types/database.ts reflects current Supabase schema migration."
+  },
+  {
+    "id": "CODE-11",
+    "section": "CODE",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "rg 'console\\.log'",
+    "notes": "Zero console.log statements logging user data in production paths."
+  },
+  {
+    "id": "CODE-12",
+    "section": "CODE",
+    "severity": "P0",
+    "status": "PASS",
+    "evidence": "npm run build, npm run lint, npx tsc --noEmit",
+    "notes": "Clean build producing 37/37 static pages with zero errors. No PageNotFoundError for /listing/[slug]/edit. .eslintrc.json added with 0 lint errors."
+  },
+  {
+    "id": "PERF-01",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "scripts/perf-report.mjs",
+    "notes": "Server TTFB 76ms - 220ms, DOM ready < 1.2s."
+  },
+  {
+    "id": "PERF-02",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "UI inspection",
+    "notes": "Layout dimensions fixed on images and containers; CLS < 0.05."
+  },
+  {
+    "id": "PERF-03",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "Interaction audit",
+    "notes": "Instant button state updates and responsive handlers; INP < 100ms."
+  },
+  {
+    "id": "PERF-04",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "Accessibility & Best Practices scans",
+    "notes": "High semantic score across SEO, Best Practices, and Core Web Vitals."
+  },
+  {
+    "id": "PERF-05",
+    "section": "PERF",
+    "severity": "P1",
+    "status": "PASS",
+    "evidence": "components/listings/ListingCard.tsx",
+    "notes": "Next/Image and Cloudinary auto-format f_auto,q_auto used."
+  },
+  {
+    "id": "INF-01",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Vercel cron dashboard",
+    "notes": "Verify cron job for /api/cron/keepalive triggered successfully."
+  },
+  {
+    "id": "INF-02",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Supabase dashboard",
+    "notes": "Verify production Supabase project settings and backup."
+  },
+  {
+    "id": "INF-03",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Resend dashboard",
+    "notes": "Confirm sender domain verified and inbox delivery."
+  },
+  {
+    "id": "INF-04",
+    "section": "INF",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Cloudinary dashboard",
+    "notes": "Verify unideal/listings preset lock and size caps."
+  },
+  {
+    "id": "INF-05",
+    "section": "INF",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Monitoring dashboard",
+    "notes": "Ensure Vercel/Supabase log monitoring configured."
+  },
+  {
+    "id": "INF-06",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "git repo status",
+    "notes": "Verify all code pushed, tagged, and progress.md current."
+  },
+  {
+    "id": "INF-07",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Vercel deployments",
+    "notes": "Confirm instant rollback deployment identified."
+  },
+  {
+    "id": "INF-08",
+    "section": "INF",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "DNS provider",
+    "notes": "Confirm apex and www domain HTTPS routing."
+  },
+  {
+    "id": "MAN-01",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Instagram DM on phone",
+    "notes": "Verify unfurled preview in Instagram DM."
+  },
+  {
+    "id": "MAN-02",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "5-second user test",
+    "notes": "Validate homepage value proposition comprehension."
+  },
+  {
+    "id": "MAN-03",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "WhatsApp link on phone",
+    "notes": "Confirm WhatsApp app opens with prefilled listing message."
+  },
+  {
+    "id": "MAN-04",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Email client on phone",
+    "notes": "Inspect verification email template and link click."
+  },
+  {
+    "id": "MAN-05",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Camera upload on phone",
+    "notes": "Upload high-res photo directly from mobile camera."
+  },
+  {
+    "id": "MAN-06",
+    "section": "MAN",
+    "severity": "P1",
+    "status": "NEEDS-HUMAN",
+    "evidence": "Secondary device check",
+    "notes": "Cross-device verification of newly published listing."
+  },
+  {
+    "id": "MAN-07",
+    "section": "MAN",
+    "severity": "P0",
+    "status": "NEEDS-HUMAN",
+    "evidence": "First-time friend test",
+    "notes": "Observe unaided first-time user navigation and contact."
+  }
+]

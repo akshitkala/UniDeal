@@ -46,14 +46,14 @@ export default function TermsPage() {
         <li>Live animals.</li>
         <li>Exam papers, answer keys, or academic dishonesty services.</li>
         <li>Services, rentals, or anything that is not a physical item.</li>
-        <li>Anything else prohibited by Indian law or by your institution's rules.</li>
+        <li>{"Anything else prohibited by Indian law or by your institution's rules."}</li>
       </ul>
 
       <h2>4. Contacting sellers</h2>
       <ul>
         <li>Only verified, non-banned users can contact sellers.</li>
         <li>Each user can contact up to 50 sellers in a rolling 24-hour period.</li>
-        <li>Use contact details only to discuss the listing you contacted the seller about. Do not spam, harass, threaten, or pressure anyone, and do not save or share another person's number for other purposes.</li>
+        <li>{"Use contact details only to discuss the listing you contacted the seller about. Do not spam, harass, threaten, or pressure anyone, and do not save or share another person's number for other purposes."}</li>
       </ul>
 
       <h2>5. Deals between users</h2>
@@ -65,7 +65,7 @@ export default function TermsPage() {
       <ul>
         <li>Any verified user can report a listing.</li>
         <li>We may review reports, remove listings, and suspend or ban accounts that break these Terms or harm other users, with or without notice.</li>
-        <li>Banned users' listings are hidden from other users.</li>
+        <li>{"Banned users' listings are hidden from other users."}</li>
         <li>We may decline or remove any listing at our discretion, including through manual review before a listing goes live.</li>
       </ul>
 
@@ -81,14 +81,14 @@ export default function TermsPage() {
       <ul>
         <li>Break the law or these Terms.</li>
         <li>Attempt to access data or accounts that are not yours.</li>
-        <li>Scrape, copy, or collect data from UniDeal in bulk, or collect other users' contact details.</li>
+        <li>{"Scrape, copy, or collect data from UniDeal in bulk, or collect other users' contact details."}</li>
         <li>Interfere with how the service works, or try to get around rate limits, verification, or bans.</li>
         <li>Use UniDeal to scam, impersonate, or mislead anyone.</li>
       </ul>
 
       <h2>9. Availability</h2>
       <p>
-        UniDeal is provided free of charge and "as is" and "as available". We may change, pause, or stop any part of the service at any time, and we do not promise it will always be available or error-free.
+        {"UniDeal is provided free of charge and \"as is\" and \"as available\". We may change, pause, or stop any part of the service at any time, and we do not promise it will always be available or error-free."}
       </p>
 
       <h2>10. Limits of our responsibility</h2>
@@ -103,7 +103,7 @@ export default function TermsPage() {
 
       <h2>12. Changes to these Terms</h2>
       <p>
-        We may update these Terms from time to time. The "Last updated" date shows the latest version. Continuing to use UniDeal after changes means you accept the updated Terms.
+        {"We may update these Terms from time to time. The \"Last updated\" date shows the latest version. Continuing to use UniDeal after changes means you accept the updated Terms."}
       </p>
 
       <h2>13. Governing law</h2>

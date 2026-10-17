@@ -1,16 +1,16 @@
-# Graph Report - Unideal  (2026-10-12)
+# Graph Report - Unideal  (2026-10-17)
 
 ## Corpus Check
-- 300 files · ~385,569 words
+- 371 files · ~857,378 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2986 nodes · 4068 edges · 234 communities (172 shown, 57 thin omitted)
+- 3269 nodes · 4319 edges · 271 communities (207 shown, 59 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 40 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b2367df9`
+- Built from commit: `6d2a9ddb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,9 +18,9 @@
 - test_qa_fix_pass.js
 - validate_data.py
 - gray
-- ListingCard.tsx
+- (public)/page.tsx
 - react
-- _select_palette_for_mode
+- test_design_system_mode.py
 - Quick Reference
 - UniDeal — Playwright E2E Test Suite Report
 - Tailwind CSS Utility Reference
@@ -30,7 +30,7 @@
 - .test_init_dry_run
 - .test_check_shadcn_config_not_exists
 - Brand Guidelines v1.0
-- useAuth
+- lucide-react
 - useMotion
 - .test_get_installed_components_with_files
 - scripts/core.py
@@ -52,15 +52,16 @@
 - ContactForm.tsx
 - Typography Specifications
 - perf-report.mjs
-- test_core.py
+- scripts/search.py
 - api/contact/route.ts
 - createAdminClient
 - Logo Usage Rules
 - test_whatsapp_and_delete_account.js
 - shadcn/ui Accessibility Patterns
 - search
-- TestLandingAndStackContract
-- button
+- UniDeal — Pre-Launch Checklist & Antigravity QA Run
+- next
+- queries.ts
 - _row_identities
 - TailwindConfigGenerator
 - detect_domain
@@ -68,7 +69,7 @@
 - Asset Approval Checklist
 - Logo AI Prompt Engineering
 - Verification Report - Admin Auth Refactor
-- input
+- [slug]/page.tsx
 - Color Palette Management
 - CIP Deliverable Guide
 - States and Variants
@@ -93,70 +94,107 @@
 - .generate
 - Routing by Task Type
 - shadcn/ui Theming & Customization
-- (public)/page.tsx
-- $type
-- radius
-- lg
+- server.ts
+- P0 Defects (Blocking Launch)
+- P0 Defects (Blocking Launch)
+- generate_retest_report.js
 - Asset Organization Guide
 - Primary Color Meanings
 - Core Logo Types
 - color
-- padding-y
-- md
+- 1. Timeline of Execution
+- 1. Timeline of Execution
+- _normalize
 - compilerOptions
 - Brand Consistency Checklist
 - CIP Mockup Prompt Engineering
 - .agents/skills/design/scripts/cip/core.py
 - Color Semantics
 - database.ts
-- destructive
-- muted
-- ring
+- UniDeal Pre-Launch Retest Audit — Executive Summary
+- UniDeal Pre-Launch Retest Audit — Executive Summary
+- 2. Test Results
+- 2. Test Results
+- pending/page.tsx
+- reports/page.tsx
 - design_system.py
+- 2. Pre-Launch Verification Checklist
 - Design Principles
 - Design Principles
 - Component Specifications
 - fontSize
 - .check_shadcn_config
+- 2. Pre-Launch Verification Checklist
+- run_lighthouse.js
+- [id]/contact/route.ts
+- build_retest_markdowns.js
 - CIP Design Reference
 - Icon Design Reference
 - Copywriting Formulas
+- ProfilePage
 - Copywriting Formulas
 - .agents/skills/design-system/scripts/generate-slide.py
+- admin/layout.tsx
+- UniDeal — Accessibility Report (A11Y)
+- UniDeal — Browser Console and Network Report
+- UniDeal — Links and Navigation Report (LNK)
+- UniDeal — Performance Benchmark Report (PERF)
 - Banner Design - Multi-Format Creative Banner System
 - Messaging Framework
 - Brand Voice Framework
 - .agents/skills/brand/scripts/extract-colors.cjs
 - .agents/skills/brand/scripts/validate-asset.cjs
 - Layout Patterns
-- DesignSystemGenerator
+- test_data_contracts.py
 - Tailwind Integration
 - radius
 - Layout Patterns
+- UniDeal — Responsive and Cross-Device Report (RSP)
+- UniDeal — Accessibility Report (A11Y)
+- UniDeal — Browser Console and Network Report
+- UniDeal — Links and Navigation Report (LNK)
+- UniDeal — Performance Benchmark Report (PERF)
+- UniDeal — Responsive and Cross-Device Report (RSP)
+- UniDeal — Code Scan Report (CODE)
+- UniDeal — Content and Copywriting Report (CPY)
+- UniDeal — Code Scan Report (CODE)
 - .agents/skills/brand/references/update.md
 - Logo Design Reference
 - Token Architecture
 - design-tokens-starter.json
-- test_data_contracts.py
+- parse_decision_rules
+- UniDeal — Content and Copywriting Report (CPY)
 - package.json
-- @supabase/supabase-js
+- UniDeal — Security and Data Report (SEC)
+- UniDeal — Favicon, Metadata, and Sharing Report (META)
+- UniDeal — States and Edge Cases Report (STA)
 - .agents/skills/design-system/scripts/fetch-background.py
+- UniDeal — UI and Visual Consistency Report (UI)
+- UniDeal — Security and Data Report (SEC)
 - Primitive Tokens
 - .agents/skills/design-system/scripts/validate-tokens.cjs
-- card
+- button
 - BM25
-- test_design_system_mode.py
+- _style_is_dark_primary
 - UniDeal — QA Findings Report
+- UniDeal — Favicon, Metadata, and Sharing Report (META)
+- UniDeal — States and Edge Cases Report (STA)
+- UniDeal — UI and Visual Consistency Report (UI)
 - .agents/skills/brand/scripts/inject-brand-context.cjs
 - CIP Design Style Guide
 - .agents/skills/design-system/scripts/embed-tokens.cjs
 - dependencies
+- primary
+- listings/page.tsx
 - TestThresholdGate
+- not-found.tsx
+- .eslintrc.json
 - Brand
 - Slide Strategies
 - Component Tokens
 - .agents/skills/design-system/scripts/generate-tokens.cjs
-- primitive
+- tailwindcss
+- duration
 - Slide Strategies
 - .agents/skills/design/scripts/icon/generate.py
 - CatalogRefreshTest
@@ -171,7 +209,7 @@
 - Brand Guidelines Template
 - .agents/skills/design/scripts/logo/core.py
 - .agents/skills/design-system/scripts/slide_search_core.py
-- shadow
+- sm
 - .generate_config_string
 - Contact Reveal API
 - UniDeal Product Requirements
@@ -193,7 +231,6 @@
 - ShadcnInstaller
 - _run
 - TestTailwindConfigGenerator
-- TestGeneratedCatalogContract
 - ui-ux-pro-max
 - Query Contract
 - Pre-Delivery Checklist
@@ -238,8 +275,8 @@
 - .test_init_framework
 - .test_default_output_path_javascript
 - .test_base_config_structure
-- _palette_is_dark
-- [slug]/page.tsx
+- DesignSystemGenerator
+- api/listings/route.ts
 - seed_admin_and_listings.js
 - devDependencies
 - @playwright/test
@@ -250,24 +287,24 @@
 2. `react` - 53 edges
 3. `search()` - 43 edges
 4. `createAdminClient()` - 40 edges
-5. `requireAdminSession` - 37 edges
-6. `TestTailwindConfigGenerator` - 35 edges
-7. `search_stack()` - 35 edges
-8. `DesignSystemGenerator` - 35 edges
-9. `ShadcnInstaller` - 34 edges
-10. `useMotion()` - 30 edges
+5. `@playwright/test` - 38 edges
+6. `requireAdminSession` - 37 edges
+7. `TestTailwindConfigGenerator` - 35 edges
+8. `search_stack()` - 35 edges
+9. `DesignSystemGenerator` - 35 edges
+10. `ShadcnInstaller` - 34 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `RecentListingsSection()` --calls--> `useMotion()`  [EXTRACTED]
-  components/home/RecentListingsSection.tsx → lib/motion-variants.ts
-- `InitialListingData` --references--> `ListingCondition`  [EXTRACTED]
-  components/listing/ListingForm.tsx → types/domain.ts
+- `AdminLayout()` --calls--> `requireAdminSession`  [EXTRACTED]
+  app/admin/layout.tsx → lib/auth-admin.ts
+- `GET()` --calls--> `createAdminClient()`  [EXTRACTED]
+  app/api/profile/route.ts → lib/supabase/admin.ts
+- `ProfilePage()` --calls--> `useAuth()`  [EXTRACTED]
+  app/(account)/profile/page.tsx → contexts/AuthContext.tsx
+- `ProfilePage()` --calls--> `createClient()`  [EXTRACTED]
+  app/(account)/profile/page.tsx → lib/supabase/client.ts
 - `BrowseContent()` --calls--> `createClient()`  [EXTRACTED]
   app/(public)/browse/page.tsx → lib/supabase/client.ts
-- `ListingDetailRow` --references--> `ListingCondition`  [EXTRACTED]
-  app/(public)/listing/[slug]/page.tsx → types/domain.ts
-- `ListingDetailPage()` --calls--> `firstName()`  [EXTRACTED]
-  app/(public)/listing/[slug]/page.tsx → lib/display-name.ts
 
 ## Import Cycles
 - None detected.
@@ -276,7 +313,7 @@
 - **Phase 1 Foundation Delivery** — documents_roadmap_3_phase_1_foundation, documents_unideal_trd_v1_1_supabase_architecture, documents_unideal_trd_v1_1_row_level_security, progress_phase_1_scaffold_schema [INFERRED 0.95]
 - **Verified WhatsApp Contact Trust Flow** — documents_unideal_prd_v2_1_contact_reveal, documents_unideal_trd_v1_1_contact_api, documents_appflow_browse_contact_flow, documents_rules_v1_1_security_boundaries [INFERRED 0.95]
 
-## Communities (234 total, 57 thin omitted)
+## Communities (271 total, 59 thin omitted)
 
 ### Community 0 - "test_qa_fix_pass.js"
 Cohesion: 0.20
@@ -284,23 +321,23 @@ Nodes (4): { createChunks }, { createClient }, results, { stringToBase64URL }
 
 ### Community 1 - "validate_data.py"
 Cohesion: 0.07
-Nodes (48): Semantic quality contracts for the core UI/UX datasets., read_rows(), TestAccessibilityGuidance, TestChartsTypographyAndIcons, TestCurrentReactGuidance, TestSemanticColors, _catalog_date(), _check_app_interface_contract() (+40 more)
+Nodes (47): Semantic quality contracts for the core UI/UX datasets., read_rows(), TestAccessibilityGuidance, TestChartsTypographyAndIcons, TestCurrentReactGuidance, TestSemanticColors, _catalog_date(), _check_app_interface_contract() (+39 more)
 
 ### Community 2 - "gray"
 Cohesion: 0.05
 Nodes (53): $type, $value, $type, $value, $type, $value, $type, $value (+45 more)
 
-### Community 3 - "ListingCard.tsx"
-Cohesion: 0.12
-Nodes (22): POST(), RouteContext, ListingDetailPage(), CATEGORIES, FreshOnCampus(), Props, AnimatedCard(), conditionColors (+14 more)
+### Community 3 - "(public)/page.tsx"
+Cohesion: 0.10
+Nodes (21): metadata, CATEGORIES, FreshOnCampus(), Props, HowItWorks(), IMPORTANT: neutral outlined style or --color-accent, NEVER --color-accent-…, steps, FILLER_MESSAGES (+13 more)
 
 ### Community 4 - "react"
-Cohesion: 0.16
-Nodes (10): DashboardLoading(), ProfileLoading(), SellLoading(), PageHeaderSkeleton(), PageHeaderSkeletonProps, TableRowSkeleton(), TableRowSkeletonProps, Skeleton() (+2 more)
+Cohesion: 0.19
+Nodes (7): PageHeaderSkeleton(), PageHeaderSkeletonProps, TableRowSkeleton(), TableRowSkeletonProps, Skeleton(), SkeletonProps, react
 
-### Community 5 - "_select_palette_for_mode"
-Cohesion: 0.22
-Nodes (7): _contrast_ratio(), _derive_dark_palette(), WCAG contrast ratio for two hex colors, or None if either is invalid., Keep product brand tokens while deriving accessible dark surfaces., Pick the highest-ranked palette matching the resolved mode. Only the dark case…, _select_palette_for_mode(), TestPaletteSelection
+### Community 5 - "test_design_system_mode.py"
+Cohesion: 0.15
+Nodes (13): _contrast_ratio(), _derive_dark_palette(), _palette_is_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., WCAG contrast ratio for two hex colors, or None if either is invalid., Keep product brand tokens while deriving accessible dark surfaces., Pick the highest-ranked palette matching the resolved mode. Only the dark case… (+5 more)
 
 ### Community 6 - "Quick Reference"
 Cohesion: 0.18
@@ -315,8 +352,8 @@ Cohesion: 0.05
 Nodes (43): Arbitrary Values, Aspect Ratio, Background Colors, Border Color, Border Radius, Border Style, Border Width, Borders (+35 more)
 
 ### Community 9 - "ListingForm.tsx"
-Cohesion: 0.13
-Nodes (16): RouteContext, CategoryOption, InitialListingData, ListingForm(), ListingFormProps, CLOUDINARY_MAX_FILE_SIZE_BYTES, CLOUDINARY_MAX_IMAGES, CloudinaryUploadResponse (+8 more)
+Cohesion: 0.19
+Nodes (13): CategoryOption, ListingForm(), ListingFormProps, CLOUDINARY_MAX_FILE_SIZE_BYTES, CLOUDINARY_MAX_IMAGES, CloudinaryUploadResponse, getCloudinaryUploadPreset(), getCloudinaryUploadUrl() (+5 more)
 
 ### Community 10 - "UniDeal Browser Performance Report"
 Cohesion: 0.17
@@ -326,17 +363,17 @@ Nodes (11): 1. Environment Facts, 2. Hard Load Measurements (Cold/Warm), 3. Soft
 Cohesion: 0.05
 Nodes (37): 1. Color Palette, 2. Typography, 3. Logo Usage, 4. Voice & Tone, 5. Imagery Guidelines, 6. Design Components, Accessibility, AI Image Generation (+29 more)
 
-### Community 15 - "useAuth"
+### Community 15 - "lucide-react"
 Cohesion: 0.09
-Nodes (27): DashboardPage(), TabType, EditListingLoading(), CategoryOption, EditListingPage(), EditListingPageProps, ProfileForm, ProfilePage() (+19 more)
+Nodes (30): DashboardLoading(), DashboardPage(), TabType, EditListingLoading(), CategoryOption, EditListingPage(), EditListingPageProps, ProfileLoading() (+22 more)
 
 ### Community 16 - "useMotion"
-Cohesion: 0.07
-Nodes (35): AdminListingItem, HowItWorksClient(), steps, metadata, Beat(), OurStoryClient(), PullQuote(), useSection() (+27 more)
+Cohesion: 0.10
+Nodes (31): HowItWorksClient(), steps, metadata, Beat(), OurStoryClient(), PullQuote(), useSection(), metadata (+23 more)
 
 ### Community 18 - "scripts/core.py"
-Cohesion: 0.10
-Nodes (33): _contains_phrase(), _domain_keywords(), _exact_match_diagnostic(), _file_signature(), _get_bm25(), _legacy_successor_guidance(), _load_csv(), _load_csv_snapshot() (+25 more)
+Cohesion: 0.12
+Nodes (26): _contains_phrase(), _domain_keywords(), _file_signature(), _get_bm25(), _load_csv(), _load_csv_snapshot(), _load_product_keywords(), _load_rows_or_empty() (+18 more)
 
 ### Community 20 - "Design"
 Cohesion: 0.06
@@ -347,8 +384,8 @@ Cohesion: 0.06
 Nodes (35): 1. Visual Communication First, 2. Minimal Text Integration, 3. Expert Craftsmanship, 4. Systematic Patterns, Analog Meditation, Approach, Canvas Boundaries, Canvas Design System (+27 more)
 
 ### Community 25 - "search_stack"
-Cohesion: 0.09
-Nodes (11): _exact_stack_identifier(), Resolve a standalone API identifier even when its BM25 IDF is low., Search stack-specific guidelines, search_stack(), _valid_max_results(), Freshness and migration contracts for native, desktop, and 3D stacks., _rows(), TestNativeDesktopStackFreshness (+3 more)
+Cohesion: 0.10
+Nodes (10): _exact_stack_identifier(), Resolve a standalone API identifier even when its BM25 IDF is low., Search stack-specific guidelines, search_stack(), Freshness and migration contracts for native, desktop, and 3D stacks., _rows(), TestNativeDesktopStackFreshness, Freshness and generation-isolation contracts for web stack guidance. (+2 more)
 
 ### Community 29 - "Form & Input Components"
 Cohesion: 0.06
@@ -378,17 +415,17 @@ Nodes (30): Accessibility, Base System, Best Practices, Clean & Modern, Common F
 Cohesion: 0.18
 Nodes (8): __dirname, envPath, __filename, getAuthCookies(), IS_IDLE_TEST, IS_PROD_RUN, makeCookieHeader(), ROUTES
 
-### Community 37 - "test_core.py"
-Cohesion: 0.10
-Nodes (11): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation. Args: query: Search query (e.g.,…, format_output(), UI/UX Pro Max Search - BM25 search engine for UI/UX style guides Usage: python…, Format results for Claude consumption (token-optimized), Stdlib-only regression tests for core.py / design_system.py (unittest, not… (+3 more)
+### Community 37 - "scripts/search.py"
+Cohesion: 0.50
+Nodes (3): format_output(), UI/UX Pro Max Search - BM25 search engine for UI/UX style guides Usage: python…, Format results for Claude consumption (token-optimized)
 
 ### Community 38 - "api/contact/route.ts"
 Cohesion: 0.33
 Nodes (6): clean(), POST(), getResendClient(), ContactInput, contactSchema, resend
 
 ### Community 39 - "createAdminClient"
-Cohesion: 0.07
-Nodes (49): AdminOverviewClient(), AdminLayout(), AdminPendingQueueClient(), PendingListing, AdminPendingQueuePage(), AdminOverviewPage(), AdminReportsClient(), PendingReport (+41 more)
+Cohesion: 0.16
+Nodes (20): BulkRejectRequestBody, PATCH(), PATCH(), RouteContext, PATCH(), rejectSchema, RouteContext, GET() (+12 more)
 
 ### Community 40 - "Logo Usage Rules"
 Cohesion: 0.07
@@ -403,12 +440,20 @@ Cohesion: 0.07
 Nodes (28): Accordion, Alert, ARIA Labels, Checkbox and Radio, Color Contrast, Command Palette Navigation, Component-Specific Patterns, Dialog/Modal Navigation (+20 more)
 
 ### Community 43 - "search"
-Cohesion: 0.12
-Nodes (7): _project_row(), Resolve a deprecated in-domain alias, or expose a cross-domain redirect., Main search function with auto-domain detection, search(), _style_search_destination(), TestSearchDomains, TestStyleTaxonomy
+Cohesion: 0.11
+Nodes (8): Resolve a deprecated in-domain alias, or expose a cross-domain redirect., Main search function with auto-domain detection, search(), _style_search_destination(), TestSearchDomains, Regression tests for the public style taxonomy and search contract., read_rows(), TestStyleTaxonomy
 
-### Community 45 - "button"
-Cohesion: 0.20
-Nodes (10): fg, font-size, hover-bg, button, $type, $value, $type, $value (+2 more)
+### Community 44 - "UniDeal — Pre-Launch Checklist & Antigravity QA Run"
+Cohesion: 0.08
+Nodes (25): 0. How to use this file, 10. Accessibility (A11Y), 11. Content and copy (CPY), 12. Code scans, performance, infrastructure, human-only, 13. Launch-day sequence, 14. Sign-off, 1. MASTER PROMPT FOR ANTIGRAVITY (copy everything in the block), 2. Test account setup (do this before running) (+17 more)
+
+### Community 45 - "next"
+Cohesion: 0.13
+Nodes (7): metadata, metadata, metadata, metadata, LegalPage(), LegalPageProps, next
+
+### Community 46 - "queries.ts"
+Cohesion: 0.18
+Nodes (12): AdminOverviewClient(), AdminOverviewPage(), AdminUsersClient(), UserProfile, AdminUsersPage(), GET(), GET(), PATCH() (+4 more)
 
 ### Community 47 - "_row_identities"
 Cohesion: 0.25
@@ -438,9 +483,9 @@ Nodes (25): Common Pitfalls, Core Prompt Structure, Detailed Brief, Eco/Sustaina
 Cohesion: 0.29
 Nodes (6): CHECK 1: SECURITY REVIEW, CHECK 2: BUILD AND ROUTES, CHECK 3: AUTH BEHAVIOR, CHECK 4: FUNCTIONAL REGRESSIONS, CHECK 5: REPO HYGIENE BEFORE PUSH, Verification Report - Admin Auth Refactor
 
-### Community 54 - "input"
-Cohesion: 0.29
-Nodes (8): padding-x, input, $type, $value, focus-ring, padding-x, $type, $value
+### Community 54 - "[slug]/page.tsx"
+Cohesion: 0.17
+Nodes (9): ListingDetailClient(), ListingDetailClientProps, conditionBadges, ListingDetailPage(), ListingDetailPageProps, ContactSellerButton(), ContactSellerButtonProps, ContactState (+1 more)
 
 ### Community 55 - "Color Palette Management"
 Cohesion: 0.08
@@ -499,8 +544,8 @@ Cohesion: 0.12
 Nodes (25): get_context(), is_allowed_exception(), is_allowed_rgba(), is_inside_block(), load_css_variables(), main(), print_result(), print_summary() (+17 more)
 
 ### Community 78 - ".generate"
-Cohesion: 0.11
-Nodes (11): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., Execute searches across multiple domains., Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are… (+3 more)
+Cohesion: 0.16
+Nodes (8): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., Execute searches across multiple domains., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are…, Bucket a 1-10 dial value into its tier config. Returns None if value is None., _resolve_dial(), TestAntiPatternGating
 
 ### Community 79 - "Routing by Task Type"
 Cohesion: 0.10
@@ -510,21 +555,21 @@ Nodes (19): Banner Design Tasks, Brand Identity Tasks, Component Creation, Corpo
 Cohesion: 0.10
 Nodes (19): Base Color Presets, Best Practices, Color Customization, Color Format, Component Customization, CSS Variable System, Customize Styles, Customize Variants (+11 more)
 
-### Community 81 - "(public)/page.tsx"
-Cohesion: 0.09
-Nodes (18): reportSchema, RouteContext, validReportReasons, RouteContext, GET(), metadata, RecentListingsFetcher(), CATEGORIES (+10 more)
+### Community 81 - "server.ts"
+Cohesion: 0.11
+Nodes (13): cleanupListingImages(), DELETE(), reportSchema, RouteContext, validReportReasons, RouteContext, RouteContext, GET() (+5 more)
 
-### Community 82 - "$type"
-Cohesion: 0.60
-Nodes (5): $type, $value, border, border, border
+### Community 82 - "P0 Defects (Blocking Launch)"
+Cohesion: 0.14
+Nodes (13): BUG-01: Low Color Contrast on Brand Primary Buttons (A11Y-01 & A11Y-06), BUG-02: Missing Favicon (`/favicon.ico` returns 404) (META-01), BUG-03: Browse Page Title Lacks Route Context (META-04), BUG-04: Missing `robots.txt` File (META-09), BUG-05: Missing OpenGraph Tags on Homepage (META-06), BUG-06: Missing `sitemap.xml` (META-10), BUG-07: Hard-Coded Hex Colors Outside Design Tokens (CODE-07 & UI-02), BUG-08: Text Smaller Than 12px in Problem Section (UI-06) (+5 more)
 
-### Community 83 - "radius"
-Cohesion: 0.60
-Nodes (5): radius, radius, radius, $type, $value
+### Community 83 - "P0 Defects (Blocking Launch)"
+Cohesion: 0.14
+Nodes (13): BUG-01: Low Color Contrast on Brand Primary Buttons (A11Y-01 & A11Y-06), BUG-02: Missing Favicon (`/favicon.ico` returns 404) (META-01), BUG-03: Browse Page Title Lacks Route Context (META-04), BUG-04: Missing `robots.txt` File (META-09), BUG-05: Missing OpenGraph Tags on Homepage (META-06), BUG-06: Missing `sitemap.xml` (META-10), BUG-07: Hard-Coded Hex Colors Outside Design Tokens (CODE-07 & UI-02), BUG-08: Text Smaller Than 12px in Problem Section (UI-06) (+5 more)
 
-### Community 84 - "lg"
-Cohesion: 0.60
-Nodes (5): lg, $type, $value, lg, lg
+### Community 84 - "generate_retest_report.js"
+Cohesion: 0.15
+Nodes (12): failureList, fs, p0Failures, p1Failures, path, rawData, results, resultsPath (+4 more)
 
 ### Community 85 - "Asset Organization Guide"
 Cohesion: 0.11
@@ -539,16 +584,20 @@ Cohesion: 0.11
 Nodes (18): 1. Wordmark (Logotype), 2. Lettermark (Monogram), 3. Pictorial Mark (Brand Mark), 4. Abstract Mark, 5. Mascot, 6. Emblem, 7. Combination Mark, Aesthetic Styles (+10 more)
 
 ### Community 88 - "color"
-Cohesion: 0.11
-Nodes (19): $type, $value, background, foreground, muted-foreground, primary, primary-hover, secondary (+11 more)
+Cohesion: 0.08
+Nodes (25): $type, $value, background, destructive, foreground, muted, muted-foreground, primary-hover (+17 more)
 
-### Community 90 - "padding-y"
-Cohesion: 0.67
-Nodes (4): padding-y, padding-y, $type, $value
+### Community 89 - "1. Timeline of Execution"
+Cohesion: 0.18
+Nodes (10): 1. Timeline of Execution, 2. Commands Run, 3. Discrepancies, Blockers, & Notes, Phase A: Setup & Test Environment Initialization, Phase B: Real-Browser Pass (Antigravity Browser Agent), Phase C: Cross-Browser & Cross-Device Playwright Suite, Phase D: Static Code Scans & Link Crawling, Phase E: Performance Benchmarking (+2 more)
 
-### Community 91 - "md"
-Cohesion: 0.67
-Nodes (4): $type, $value, md, md
+### Community 90 - "1. Timeline of Execution"
+Cohesion: 0.18
+Nodes (10): 1. Timeline of Execution, 2. Commands Run, 3. Discrepancies, Blockers, & Notes, Phase A: Setup & Test Environment Initialization, Phase B: Real-Browser Pass (Antigravity Browser Agent), Phase C: Cross-Browser & Cross-Device Playwright Suite, Phase D: Static Code Scans & Link Crawling, Phase E: Performance Benchmarking (+2 more)
+
+### Community 91 - "_normalize"
+Cohesion: 0.22
+Nodes (9): _exact_match_diagnostic(), _legacy_successor_guidance(), _normalize(), Apply longest-first synonym substitution at token boundaries., Whether a stack query explicitly targets an older framework generation., Choose one coherent applicability generation for stack retrieval., Prefer the explicit successor row for a brand-new app on legacy-only stacks., _stack_query_requests_legacy() (+1 more)
 
 ### Community 92 - "compilerOptions"
 Cohesion: 0.11
@@ -571,24 +620,40 @@ Cohesion: 0.11
 Nodes (17): Accent, Applying Semantic Tokens, Background & Foreground, Border & Ring, Color Semantics, Dark Mode Overrides, Destructive, Interactive States (+9 more)
 
 ### Community 97 - "database.ts"
-Cohesion: 0.11
-Nodes (16): POST(), MAX_CONTACT_REVEALS_PER_DAY, generateNanoId, generateSlug(), config, @supabase/ssr, CompositeTypes, Constants (+8 more)
+Cohesion: 0.07
+Nodes (18): MAX_CONTACT_REVEALS_PER_DAY, config, @supabase/ssr, @supabase/supabase-js, { createClient }, { createClient }, { createClient }, { createClient } (+10 more)
 
-### Community 98 - "destructive"
-Cohesion: 0.67
-Nodes (3): destructive, $type, $value
+### Community 98 - "UniDeal Pre-Launch Retest Audit — Executive Summary"
+Cohesion: 0.20
+Nodes (9): 1. Launch Verdict & Sign-Off Gate, 2. Audit Findings Resolution Log, 3. Cross-Browser & Device Matrix (Post-Fix Retest), 4. Real Lighthouse Audit Results (Production Server `http://localhost:3000`), 5. Security & Data Invariants (All Invariants Preserved), 6. Official Sign-off Table, Severity Breakdown of Failures, Status Breakdown (Programmatically Computed from results.json) (+1 more)
 
-### Community 99 - "muted"
-Cohesion: 0.67
-Nodes (3): muted, $type, $value
+### Community 99 - "UniDeal Pre-Launch Retest Audit — Executive Summary"
+Cohesion: 0.20
+Nodes (9): 1. Launch Verdict & Sign-Off Gate, 2. Audit Findings Resolution Log, 3. Cross-Browser & Device Matrix (Post-Fix Retest), 4. Real Lighthouse Audit Results (Production Server `http://localhost:3000`), 5. Security & Data Invariants (All Invariants Preserved), 6. Official Sign-off Table, Severity Breakdown of Failures, Status Breakdown (Programmatically Computed from results.json) (+1 more)
 
-### Community 100 - "ring"
-Cohesion: 0.67
-Nodes (3): ring, $type, $value
+### Community 100 - "2. Test Results"
+Cohesion: 0.22
+Nodes (8): 1. Overview, 2. Test Results, Auth Modal, Browse & Search, Contact Seller, Listings Flow, Moderation & Support, UniDeal — Functional Testing Report (FUN)
+
+### Community 101 - "2. Test Results"
+Cohesion: 0.22
+Nodes (8): 1. Overview, 2. Test Results, Auth Modal, Browse & Search, Contact Seller, Listings Flow, Moderation & Support, UniDeal — Functional Testing Report (FUN)
+
+### Community 102 - "pending/page.tsx"
+Cohesion: 0.36
+Nodes (5): AdminPendingQueueClient(), PendingListing, AdminPendingQueuePage(), GET(), getPendingListings()
+
+### Community 103 - "reports/page.tsx"
+Cohesion: 0.36
+Nodes (5): AdminReportsClient(), PendingReport, AdminReportsPage(), GET(), getPendingReports()
 
 ### Community 104 - "design_system.py"
-Cohesion: 0.11
-Nodes (24): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_master_md(), format_page_override_md(), _generate_intelligent_overrides(), hex_to_ansi(), persist_design_system() (+16 more)
+Cohesion: 0.08
+Nodes (29): ansi_ljust(), _detect_page_type(), format_ascii_box(), format_markdown(), format_master_md(), format_page_override_md(), generate_design_system(), _generate_intelligent_overrides() (+21 more)
+
+### Community 105 - "2. Pre-Launch Verification Checklist"
+Cohesion: 0.25
+Nodes (7): 1. Overview, 2. Pre-Launch Verification Checklist, Authentication & Email Delivery (FUN / MAN), Infrastructure & Secrets (INF / SEC), Marketing, Social & Legal Sign-off (META / CPY / MAN), Real Physical Device Walkthrough (MAN / RSP), UniDeal — Needs-Human Action Items
 
 ### Community 106 - "Design Principles"
 Cohesion: 0.12
@@ -610,6 +675,22 @@ Nodes (16): $type, $value, $type, $value, $type, $value, $type, $value (+8 more)
 Cohesion: 0.21
 Nodes (6): Add all available shadcn/ui components. Args: overwrite: If True, overwrite…, List installed components. Returns: Tuple of (success, message with component…, Check if shadcn is initialized in project. Returns: True if components.json…, Get list of already installed components. Returns: List of installed component…, Read shadcn version from project package.json; fall back to a pinned default., Add shadcn/ui components. Args: components: List of component names to add…
 
+### Community 111 - "2. Pre-Launch Verification Checklist"
+Cohesion: 0.25
+Nodes (7): 1. Overview, 2. Pre-Launch Verification Checklist, Authentication & Email Delivery (FUN / MAN), Infrastructure & Secrets (INF / SEC), Marketing, Social & Legal Sign-off (META / CPY / MAN), Real Physical Device Walkthrough (MAN / RSP), UniDeal — Needs-Human Action Items
+
+### Community 112 - "run_lighthouse.js"
+Cohesion: 0.29
+Nodes (6): { execSync }, fs, outDir1, outDir2, path, targets
+
+### Community 113 - "[id]/contact/route.ts"
+Cohesion: 0.47
+Nodes (4): POST(), RouteContext, buildWhatsAppLink(), WhatsAppLinkInput
+
+### Community 114 - "build_retest_markdowns.js"
+Cohesion: 0.33
+Nodes (5): destDir, fs, mdFiles, path, srcDir
+
 ### Community 115 - "CIP Design Reference"
 Cohesion: 0.13
 Nodes (14): CIP Brief (Start Here), CIP Design Reference, Commands, Deliverable Categories, Design Styles, Detailed References, Generate Mockups, HTML Presentation Features (+6 more)
@@ -622,6 +703,10 @@ Nodes (14): Available Styles, CLI Options, Commands, Generate Batch Variations, 
 Cohesion: 0.13
 Nodes (14): AIDA (Attention-Interest-Desire-Action), Before-After-Bridge, Contrast Patterns, Copywriting Formulas, Core Formulas, Cost of Inaction, FAB (Features-Advantages-Benefits), Formula-to-Slide Mapping (+6 more)
 
+### Community 118 - "ProfilePage"
+Cohesion: 0.50
+Nodes (3): ProfilePage(), handleSave(), validate()
+
 ### Community 119 - "Copywriting Formulas"
 Cohesion: 0.13
 Nodes (14): AIDA (Attention-Interest-Desire-Action), Before-After-Bridge, Contrast Patterns, Copywriting Formulas, Core Formulas, Cost of Inaction, FAB (Features-Advantages-Benefits), Formula-to-Slide Mapping (+6 more)
@@ -629,6 +714,26 @@ Nodes (14): AIDA (Attention-Interest-Desire-Action), Before-After-Bridge, Contra
 ### Community 120 - ".agents/skills/design-system/scripts/generate-slide.py"
 Cohesion: 0.14
 Nodes (20): _e(), generate_chart_slide(), generate_cta_slide(), generate_deck(), generate_metrics_slide(), generate_problem_slide(), generate_solution_slide(), generate_testimonial_slide() (+12 more)
+
+### Community 121 - "admin/layout.tsx"
+Cohesion: 0.50
+Nodes (3): AdminLayout(), adminNavLinks, AdminShell()
+
+### Community 122 - "UniDeal — Accessibility Report (A11Y)"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Test Results, 3. Axe Violation Details, UniDeal — Accessibility Report (A11Y)
+
+### Community 123 - "UniDeal — Browser Console and Network Report"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Console Messages Observed, 3. Network Request Integrity, UniDeal — Browser Console and Network Report
+
+### Community 124 - "UniDeal — Links and Navigation Report (LNK)"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Test Results, 3. Link Crawl Verification Table, UniDeal — Links and Navigation Report (LNK)
+
+### Community 125 - "UniDeal — Performance Benchmark Report (PERF)"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Test Results, 3. Server Response Latency Benchmark (`scripts/perf-report.mjs`), UniDeal — Performance Benchmark Report (PERF)
 
 ### Community 126 - "Banner Design - Multi-Format Creative Banner System"
 Cohesion: 0.14
@@ -654,21 +759,57 @@ Nodes (13): checkManifest(), formatBytes(), formatOutput(), fs, main(), parseFil
 Cohesion: 0.14
 Nodes (13): Card Styles, Component Variants, CSS Structures, Feature Grid (3 columns), Layout Decision Flow, Layout Patterns, Layout Selection by Use Case, Metric Styles (+5 more)
 
-### Community 132 - "DesignSystemGenerator"
-Cohesion: 0.14
-Nodes (6): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., TestReasoningMatch, read_rows(), TestReasoningContract
+### Community 132 - "test_data_contracts.py"
+Cohesion: 0.09
+Nodes (9): Cross-file semantic contracts for curated design data., read_rows(), split_values(), style_identities(), TestGeneratedCatalogContract, TestLandingAndStackContract, TestReasoningContract, TestStyleIdentityContract (+1 more)
 
 ### Community 133 - "Tailwind Integration"
 Cohesion: 0.14
 Nodes (13): Animation Tokens, Base Layer, Button Example, Component Classes, CSS Variables Setup, Dark Mode Toggle, HSL Format Benefits, shadcn/ui Alignment (+5 more)
 
 ### Community 134 - "radius"
-Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, default, full, default
+Cohesion: 0.15
+Nodes (19): $type, $value, lg, $type, $value, $type, $value, $type (+11 more)
 
 ### Community 135 - "Layout Patterns"
 Cohesion: 0.14
 Nodes (13): Card Styles, Component Variants, CSS Structures, Feature Grid (3 columns), Layout Decision Flow, Layout Patterns, Layout Selection by Use Case, Metric Styles (+5 more)
+
+### Community 136 - "UniDeal — Responsive and Cross-Device Report (RSP)"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Test Results, 3. Project x Area Test Matrix, UniDeal — Responsive and Cross-Device Report (RSP)
+
+### Community 137 - "UniDeal — Accessibility Report (A11Y)"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Test Results, 3. Axe Violation Details, UniDeal — Accessibility Report (A11Y)
+
+### Community 138 - "UniDeal — Browser Console and Network Report"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Console Messages Observed, 3. Network Request Integrity, UniDeal — Browser Console and Network Report
+
+### Community 139 - "UniDeal — Links and Navigation Report (LNK)"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Test Results, 3. Link Crawl Verification Table, UniDeal — Links and Navigation Report (LNK)
+
+### Community 140 - "UniDeal — Performance Benchmark Report (PERF)"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Test Results, 3. Server Response Latency Benchmark (`scripts/perf-report.mjs`), UniDeal — Performance Benchmark Report (PERF)
+
+### Community 141 - "UniDeal — Responsive and Cross-Device Report (RSP)"
+Cohesion: 0.40
+Nodes (4): 1. Overview, 2. Test Results, 3. Project x Area Test Matrix, UniDeal — Responsive and Cross-Device Report (RSP)
+
+### Community 142 - "UniDeal — Code Scan Report (CODE)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — Code Scan Report (CODE)
+
+### Community 143 - "UniDeal — Content and Copywriting Report (CPY)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — Content and Copywriting Report (CPY)
+
+### Community 144 - "UniDeal — Code Scan Report (CODE)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — Code Scan Report (CODE)
 
 ### Community 145 - ".agents/skills/brand/references/update.md"
 Cohesion: 0.15
@@ -683,24 +824,44 @@ Cohesion: 0.15
 Nodes (12): Categories, Dark Mode, File Organization, Layer 1: Primitive Tokens, Layer 2: Semantic Tokens, Layer 3: Component Tokens, Layer Overview, Migration from Flat Tokens (+4 more)
 
 ### Community 148 - "design-tokens-starter.json"
-Cohesion: 0.15
-Nodes (12): component, $type, $value, dark, semantic, $schema, $type, $value (+4 more)
-
-### Community 149 - "test_data_contracts.py"
 Cohesion: 0.17
-Nodes (11): apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Closed, non-executable grammar for design-system decision rules., Parse the canonical condition -> action-array representation., _validate_action(), Cross-file semantic contracts for curated design data. (+3 more)
+Nodes (11): $type, $value, dark, semantic, $schema, $type, $value, semantic (+3 more)
+
+### Community 149 - "parse_decision_rules"
+Cohesion: 0.19
+Nodes (9): Find matching reasoning rule for a category., Apply reasoning rules to search results., apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Closed, non-executable grammar for design-system decision rules., Parse the canonical condition -> action-array representation. (+1 more)
+
+### Community 150 - "UniDeal — Content and Copywriting Report (CPY)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — Content and Copywriting Report (CPY)
 
 ### Community 151 - "package.json"
-Cohesion: 0.12
-Nodes (14): name, private, version, autoprefixer, eslint, eslint-config-next, postcss, react-dom (+6 more)
+Cohesion: 0.13
+Nodes (13): name, private, version, autoprefixer, @axe-core/playwright, eslint, eslint-config-next, postcss (+5 more)
 
-### Community 152 - "@supabase/supabase-js"
-Cohesion: 0.15
-Nodes (5): @supabase/supabase-js, { createClient }, { createClient }, { createClient }, { createClient }
+### Community 152 - "UniDeal — Security and Data Report (SEC)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — Security and Data Report (SEC)
+
+### Community 153 - "UniDeal — Favicon, Metadata, and Sharing Report (META)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — Favicon, Metadata, and Sharing Report (META)
+
+### Community 154 - "UniDeal — States and Edge Cases Report (STA)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — States and Edge Cases Report (STA)
 
 ### Community 155 - ".agents/skills/design-system/scripts/fetch-background.py"
 Cohesion: 0.16
 Nodes (18): generate_css_for_background(), get_background_image(), get_curated_images(), get_overlay_css(), get_pexels_search_url(), load_backgrounds_config(), load_brand_colors(), main() (+10 more)
+
+### Community 156 - "UniDeal — UI and Visual Consistency Report (UI)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — UI and Visual Consistency Report (UI)
+
+### Community 157 - "UniDeal — Security and Data Report (SEC)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — Security and Data Report (SEC)
 
 ### Community 158 - "Primitive Tokens"
 Cohesion: 0.17
@@ -710,21 +871,33 @@ Nodes (11): Border Radius, Color Scales, Gray Scale, Motion / Duration, Primary 
 Cohesion: 0.26
 Nodes (11): extensions, formatReport(), fs, getFiles(), main(), parseArgs(), path, patterns (+3 more)
 
-### Community 160 - "card"
-Cohesion: 0.20
-Nodes (12): $type, $value, bg, bg, padding, shadow, card, bg (+4 more)
+### Community 160 - "button"
+Cohesion: 0.06
+Nodes (45): $type, $value, $type, $value, bg, fg, font-size, hover-bg (+37 more)
 
 ### Community 161 - "BM25"
-Cohesion: 0.16
-Nodes (7): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., TestTokenizer
+Cohesion: 0.10
+Nodes (10): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., Stdlib-only regression tests for core.py / design_system.py (unittest, not…, TestBm25CoreBehavior (+2 more)
 
-### Community 162 - "test_design_system_mode.py"
-Cohesion: 0.15
-Nodes (10): _query_wants_dark(), True when a styles.csv row describes itself as dark-first., True when the query explicitly asks for a dark theme., Resolve the mode the rest of the output has to agree with., _resolve_color_mode(), _style_is_dark_primary(), Regression tests for color-mode coherence in design_system.py (issue #428).…, TestModeResolution (+2 more)
+### Community 162 - "_style_is_dark_primary"
+Cohesion: 0.21
+Nodes (7): _query_wants_dark(), True when a styles.csv row describes itself as dark-first., True when the query explicitly asks for a dark theme., Resolve the mode the rest of the output has to agree with., _resolve_color_mode(), _style_is_dark_primary(), TestModeResolution
 
 ### Community 163 - "UniDeal — QA Findings Report"
 Cohesion: 0.15
 Nodes (12): Part 10 — v1.2 Additions & Governance Pass (2026-09-26), Part 1 — Guest / First-Time Visitor Flows, Part 2 — Auth Flows, Part 3 — Contact Seller (Core Trust Flow), Part 4 — Sell / Edit / Dashboard Flows, Part 5 — Report Flow, Part 6 — Admin Flows, Part 7 — Security / RLS Spot-Checks (+4 more)
+
+### Community 164 - "UniDeal — Favicon, Metadata, and Sharing Report (META)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — Favicon, Metadata, and Sharing Report (META)
+
+### Community 165 - "UniDeal — States and Edge Cases Report (STA)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — States and Edge Cases Report (STA)
+
+### Community 166 - "UniDeal — UI and Visual Consistency Report (UI)"
+Cohesion: 0.50
+Nodes (3): 1. Overview, 2. Test Results, UniDeal — UI and Visual Consistency Report (UI)
 
 ### Community 167 - ".agents/skills/brand/scripts/inject-brand-context.cjs"
 Cohesion: 0.31
@@ -741,6 +914,10 @@ Nodes (8): args, fs, minimal, MINIMAL_TOKENS, path, projectRoot, tokensPath, wra
 ### Community 170 - "dependencies"
 Cohesion: 0.18
 Nodes (11): dependencies, framer-motion, lucide-react, nanoid, next, react, react-dom, resend (+3 more)
+
+### Community 171 - "primary"
+Cohesion: 0.67
+Nodes (3): primary, $type, $value
 
 ### Community 173 - "TestThresholdGate"
 Cohesion: 0.12
@@ -762,9 +939,9 @@ Nodes (9): Alert Tokens, Badge Tokens, Button Tokens, Card Tokens, Component Tok
 Cohesion: 0.40
 Nodes (9): flattenTokens(), fs, generateCSS(), generateTailwind(), main(), parseArgs(), path, resolveReference() (+1 more)
 
-### Community 181 - "primitive"
-Cohesion: 0.18
-Nodes (11): fast, normal, slow, $type, $value, $type, $value, primitive (+3 more)
+### Community 181 - "duration"
+Cohesion: 0.20
+Nodes (10): fast, normal, slow, $type, $value, $type, $value, duration (+2 more)
 
 ### Community 182 - "Slide Strategies"
 Cohesion: 0.20
@@ -818,9 +995,9 @@ Nodes (21): BM25, detect_domain(), _load_csv(), Load CSV and return list of dict
 Cohesion: 0.08
 Nodes (38): format_context(), format_result(), main(), Format a single search result for display, Slide Search CLI - Search slide design databases for strategies, layouts, copy,…, Format contextual recommendations for display., BM25, calculate_pattern_break() (+30 more)
 
-### Community 220 - "shadow"
-Cohesion: 0.47
-Nodes (6): sm, shadow, sm, sm, $type, $value
+### Community 220 - "sm"
+Cohesion: 0.60
+Nodes (5): sm, sm, sm, $type, $value
 
 ### Community 223 - ".generate_config_string"
 Cohesion: 0.20
@@ -946,45 +1123,45 @@ Nodes (3): main(), Slide Token Validator (Legacy Wrapper) Now delegates to html-
 Cohesion: 0.50
 Nodes (4): Common Sticking Points, Pre-Delivery Checklist, Query Strategy, Tips for Better Results
 
-### Community 360 - "_palette_is_dark"
-Cohesion: 0.18
-Nodes (7): _palette_is_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., _relative_luminance(), The exact reproduction from issue #428., TestEndToEndCoherence, TestLuminance
+### Community 360 - "DesignSystemGenerator"
+Cohesion: 0.15
+Nodes (7): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Select best matching result based on priority keywords., TestReasoningMatch, The exact reproduction from issue #428., TestEndToEndCoherence
 
-### Community 361 - "[slug]/page.tsx"
-Cohesion: 0.10
-Nodes (18): SellerListing, BrowseContent(), CategoryItem, ListingDetailClient(), ListingDetailClientProps, conditionBadges, ListingDetailPageProps, ListingDetailRow (+10 more)
+### Community 361 - "api/listings/route.ts"
+Cohesion: 0.13
+Nodes (15): SellerListing, POST(), BrowseContent(), CategoryItem, ListingDetailRow, CategoryItem, conditions, ListingFilters() (+7 more)
 
 ### Community 364 - "seed_admin_and_listings.js"
 Cohesion: 0.20
 Nodes (7): nanoid, { createClient }, DUMMY_LISTINGS, envPath, fs, path, seed()
 
 ### Community 365 - "devDependencies"
-Cohesion: 0.18
-Nodes (11): devDependencies, autoprefixer, eslint, eslint-config-next, @playwright/test, postcss, tailwindcss, @types/node (+3 more)
+Cohesion: 0.17
+Nodes (12): devDependencies, autoprefixer, @axe-core/playwright, eslint, eslint-config-next, @playwright/test, postcss, tailwindcss (+4 more)
 
 ### Community 368 - "scripts"
 Cohesion: 0.29
 Nodes (7): scripts, build, dev, lint, start, test:e2e, test:e2e:mobile
 
 ## Knowledge Gaps
-- **1235 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+1230 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1722 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **57 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **1411 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+1406 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1947 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **59 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `search()` connect `search` to `validate_data.py`, `test_design_system_mode.py`, `test_core.py`, `design_system.py`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py`, `.generate`, `_row_identities`, `detect_domain`, `scripts/core.py`, `search_stack`?**
+- **Why does `react` connect `react` to `ContactForm.tsx`, `(public)/page.tsx`, `pending/page.tsx`, `reports/page.tsx`, `createAdminClient`, `api/listings/route.ts`, `ListingForm.tsx`, `listings/page.tsx`, `next`, `queries.ts`, `lucide-react`, `useMotion`, `[slug]/page.tsx`, `package.json`, `admin/layout.tsx`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+- **Why does `@playwright/test` connect `@playwright/test` to `perf_soft_navs_throttled.js`, `perf_auth_hard_loads.js`, `perf_auth_hard_loads_deployed.js`, `perf_soft_navs.js`, `perf_soft_navs_deployed.js`, `perf_soft_navs_fixed.js`, `verify_auth.js`, `fixtures.ts`, `package.json`, `global.setup.ts`, `perf_hard_loads.js`, `perf_hard_loads_deployed.js`?**
   _High betweenness centrality (0.009) - this node is a cross-community bridge._
-- **Why does `react` connect `react` to `ContactForm.tsx`, `ListingCard.tsx`, `createAdminClient`, `[slug]/page.tsx`, `ListingForm.tsx`, `useAuth`, `useMotion`, `(public)/page.tsx`, `package.json`?**
+- **Why does `search()` connect `search` to `BM25`, `validate_data.py`, `scripts/search.py`, `design_system.py`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py`, `.generate`, `_row_identities`, `detect_domain`, `scripts/core.py`, `_normalize`?**
   _High betweenness centrality (0.009) - this node is a cross-community bridge._
-- **Why does `search_stack()` connect `search_stack` to `.agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py`, `scripts/core.py`, `search`, `test_core.py`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `TestTailwindConfigGenerator`) actually correct?**
   _`TailwindConfigGenerator` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `fs`, `path`, `fs` to the rest of the system?**
-  _1235 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1411 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `validate_data.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.0726775956284153 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07401129943502825 - nodes in this community are weakly interconnected._
 - **Should `gray` be split into smaller, more focused modules?**
   _Cohesion score 0.05370101596516691 - nodes in this community are weakly interconnected._

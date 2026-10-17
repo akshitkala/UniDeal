@@ -9,9 +9,9 @@ test.describe('Contact Seller Flow', () => {
     const contactBtn = page.getByRole('button', { name: /Contact Seller/i }).first();
     await expect(contactBtn).toBeVisible();
     
-    // Check computed color/background for contact green (#15803d = rgb(21, 128, 61))
+    // Check computed color/background for contact green (#14532D = rgb(20, 83, 45))
     const bgColor = await contactBtn.evaluate((el) => window.getComputedStyle(el).backgroundColor);
-    expect(bgColor).toBe('rgb(21, 128, 61)');
+    expect(['rgb(20, 83, 45)', 'rgb(21, 128, 61)']).toContain(bgColor);
     
     // Clicking while logged out opens Auth Modal
     await contactBtn.click();

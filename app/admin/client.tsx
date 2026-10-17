@@ -134,7 +134,7 @@ export default function AdminOverviewClient({ initialSettings, initialOverview }
                 <span>Auto-Approve (v1 Default)</span>
               </span>
               {approvalMode === 'auto' && (
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-primary text-white">
+                <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-primary text-white">
                   Active
                 </span>
               )}
@@ -161,7 +161,7 @@ export default function AdminOverviewClient({ initialSettings, initialOverview }
                 <span>Manual Review Queue</span>
               </span>
               {approvalMode === 'manual' && (
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-primary text-white">
+                <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-primary text-white">
                   Active
                 </span>
               )}

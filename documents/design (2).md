@@ -23,8 +23,9 @@
 
 | Token | Value | Usage |
 |---|---|---|
-| `--color-accent` | `#16A34A` | General accent / primary CTA color — sort/filter active states, links, primary buttons other than Contact Seller |
-| `--color-accent-contact` | `#15803D` | **Reserved exclusively** for the "Contact Seller" button. This is a deliberately distinct, slightly deeper green so the single highest-stakes action on the app reads as visually distinct from routine navigation/CTAs. Never used for any other element. |
+| `--color-accent` | `#16A34A` | General accent / non-text uses — active outlines, borders, light tints, badges, icons |
+| `--color-accent-strong` | `#166534` | Filled primary buttons with white text (WCAG AA contrast compliant at 7.3:1) |
+| `--color-accent-contact` | `#14532D` | **Reserved exclusively** for the "Contact Seller" button. Deeper green action on the app (WCAG AA compliant at 9.1:1). Never used for any other element. |
 | `--color-destructive` | `#DC2626` | Delete, reject, ban actions; error states |
 | `--color-background` | `#FFFFFF` / near-white | Base page background |
 | `--color-foreground` | Near-black (e.g. `#0F172A`) | Primary text |

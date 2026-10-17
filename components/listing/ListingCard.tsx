@@ -68,7 +68,7 @@ export default function ListingCard({ listing }: ListingCardProps) {
         {/* Condition Tag */}
         <div className="absolute top-2 left-2">
           <span
-            className={`text-[11px] font-medium px-2 py-0.5 rounded-full border ${
+            className={`text-xs font-medium px-2 py-0.5 rounded-full border ${
               conditionColors[listing.condition] || 'bg-surface text-neutral-muted border-border'
             }`}
           >
@@ -79,7 +79,7 @@ export default function ListingCard({ listing }: ListingCardProps) {
         {/* Negotiable Tag */}
         {listing.negotiable && (
           <div className="absolute top-2 right-2">
-            <span className="text-[11px] font-medium px-2 py-0.5 rounded-full bg-accent/90 text-white shadow-xs">
+            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-accent/90 text-white shadow-xs">
               Negotiable
             </span>
           </div>
