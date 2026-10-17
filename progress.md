@@ -1,6 +1,25 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-17 — Restore Google OAuth Sign-in & Implement Complete Auth Testing (Sign Up, Sign In, Forgot Password)
+## 2026-10-17 — Seed 1,000 Verified Campus Listings & Configure Dual-Seller Profiles
+
+Context: Cleared all legacy dummy listings from database and generated 1,000 realistic campus listings across both verified seller accounts (`akshitkala72@gmail.com` with WhatsApp `+918826164117`, and `akshitkala4@gmail.com` with WhatsApp `+918532999600`), each containing 3 verified high-resolution images selected from a 72-image category pool.
+
+- **`scripts/seed_1000_listings.js` & `scripts/seed_admin_and_listings.js`**:
+  - Purged all previous dummy listings and associated foreign key records.
+  - Configured `akshitkala72@gmail.com` (500 listings, `+918826164117`, `is_admin: true`).
+  - Configured `akshitkala4@gmail.com` (500 listings, `+918532999600`).
+  - Curated 72 distinct, pre-verified Unsplash image URLs across 6 categories (12 per category) and assigned exactly 3 distinct images to every listing.
+  - Seeded 1,000 listings in batches of 50 across all 6 campus categories:
+    - Books & Notes (Cat 1): 167 listings
+    - Electronics (Cat 2): 167 listings
+    - Furniture (Cat 3): 167 listings
+    - Clothing (Cat 4): 167 listings
+    - Sports & Fitness (Cat 5): 166 listings
+    - Miscellaneous (Cat 6): 166 listings
+  - Verified total count in Supabase: exactly 1,000 approved listings.
+- **Verification**:
+  - `npx tsc --noEmit` passed clean.
+  - `npm run build` passed clean (all 37 routes compiled).
 
 Context: Restored the Google OAuth sign-in option ("Continue with Google") in `AuthModal.tsx`, implemented the complete Forgot Password flow with Supabase `resetPasswordForEmail` and dedicated confirmation screen, and created comprehensive automated Playwright tests covering Sign Up, Sign In, Forgot Password, and Google OAuth flows across desktop and mobile viewports.
 

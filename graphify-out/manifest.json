@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "progress.md": {
-    "mtime": 1792254685.5807114,
-    "seen": 1792254701.0340033,
-    "ast_hash": "6bd3f07a5a040275a042579a0e4979c4",
+    "mtime": 1792256951.3546836,
+    "seen": 1792256971.2016778,
+    "ast_hash": "07aaad38b8c1833f96b22f35db11385d",
     "semantic_hash": ""
   },
   ".agents/skills/brand/scripts/extract-colors.cjs": {
@@ -1350,9 +1350,9 @@
     "semantic_hash": ""
   },
   "scripts/seed_admin_and_listings.js": {
-    "mtime": 1792248023.3800817,
-    "seen": 1792249477.7158144,
-    "ast_hash": "7963bd9190e8841babbc10fcc5599023",
+    "mtime": 1792256901.3413758,
+    "seen": 1792256971.1875966,
+    "ast_hash": "1b7b29d719275e8ece291522cde3e3df",
     "semantic_hash": ""
   },
   "report.md": {
@@ -3729,6 +3729,12 @@
     "mtime": 1792251859.3449786,
     "seen": 1792253695.0946012,
     "ast_hash": "015dc219be217a2912a2dfda3edb9f21",
+    "semantic_hash": ""
+  },
+  "scripts/seed_1000_listings.js": {
+    "mtime": 1792256874.0440285,
+    "seen": 1792256971.1875966,
+    "ast_hash": "31eeadb9b65d7f465a5619f3e0217205",
     "semantic_hash": ""
   }
 }
