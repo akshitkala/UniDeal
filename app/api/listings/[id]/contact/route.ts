@@ -60,12 +60,15 @@ export async function POST(_request: NextRequest, { params }: RouteContext) {
       console.error('[contact] unexpected buyer profile error:', buyerErr);
     }
 
+    const siteUrl = _request.nextUrl.origin || _request.headers.get('origin') || undefined;
+
     const waLink = buildWhatsAppLink({
       phone: whatsappNumber,
       title: listingData.title,
       price: Number(listingData.price),
       slug: listingData.slug,
       buyerFirstName,
+      siteUrl,
     });
     return NextResponse.json({ data: { waLink } });
   } catch (err) {

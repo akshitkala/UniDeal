@@ -9787,7 +9787,7 @@
       "file_type": "code",
       "norm_label": "buildwhatsapplink()",
       "source_file": "lib/whatsapp.ts",
-      "source_location": "L14"
+      "source_location": "L15"
     },
     {
       "id": "app_api_listings_id_route_delete",
@@ -48483,7 +48483,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/api/listings/[id]/contact/route.ts",
-      "source_location": "L63",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -83177,7 +83177,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/whatsapp.ts",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -92683,5 +92683,5 @@
       "source_file": "documents/UniDeal_TRD_v1.1.md"
     }
   ],
-  "built_at_commit": "4b524dddec13e5d33f0f8819e1ac18fc440c6b55"
+  "built_at_commit": "3a67e7e20aa55b1719d05a53430e333b0ad96dcc"
 }

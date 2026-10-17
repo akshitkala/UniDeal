@@ -1,7 +1,7 @@
 # Graph Report - Unideal  (2026-10-17)
 
 ## Corpus Check
-- 428 files · ~2,627,211 words
+- 428 files · ~2,627,343 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4b524ddd`
+- Built from commit: `3a67e7e2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

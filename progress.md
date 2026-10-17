@@ -1,6 +1,18 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-17 — Seed 1,000 Verified Campus Listings & Configure Dual-Seller Profiles
+## 2026-10-17 — Add Product Link to WhatsApp Message Template
+
+Context: Updated WhatsApp deep link generator (`buildWhatsAppLink` in `lib/whatsapp.ts` and `app/api/listings/[id]/contact/route.ts`) to ensure the full product link (`/listing/[slug]`) is always included in the pre-filled message, dynamically resolving `siteUrl` from the request origin with fallbacks.
+
+- **`lib/whatsapp.ts` & `app/api/listings/[id]/contact/route.ts`**:
+  - Added optional `siteUrl?: string` to `WhatsAppLinkInput`.
+  - In `POST /api/listings/[id]/contact`, derived `siteUrl` from `_request.nextUrl.origin || _request.headers.get('origin')` to ensure multi-environment fidelity (local dev, Vercel preview, production domain).
+  - Ensured the pre-filled message template always ends with `Product link: ${productUrl}`.
+  - Formatted message: `Hi, I'm [buyerFirstName]. I found your "[title]" (₹[price]) on UniDeal and I'm interested. Is it still available?\n\nProduct link: [url]`.
+- **Verification**:
+  - `npx tsc --noEmit` and `npm run build` passed clean.
+  - `e2e/contact-seller.spec.ts` passed 3/3 tests.
+  - Verified end-to-end against live contact API.
 
 Context: Cleared all legacy dummy listings from database and generated 1,000 realistic campus listings across both verified seller accounts (`akshitkala72@gmail.com` with WhatsApp `+918826164117`, and `akshitkala4@gmail.com` with WhatsApp `+918532999600`), each containing 3 verified high-resolution images selected from a 72-image category pool.
 

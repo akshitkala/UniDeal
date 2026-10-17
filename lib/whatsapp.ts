@@ -4,6 +4,7 @@ export interface WhatsAppLinkInput {
   price: number;
   slug: string;
   buyerFirstName: string;  // MUST come from firstName() in lib/display-name.ts
+  siteUrl?: string;
 }
 
 /**
@@ -21,14 +22,15 @@ export function buildWhatsAppLink(input: WhatsAppLinkInput): string {
 
   const baseMessage = `Hi, I'm ${input.buyerFirstName}. I found your "${shortTitle}" (₹${input.price}) on UniDeal and I'm interested. Is it still available?`;
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, '');
-  if (!siteUrl) {
-    console.warn('[whatsapp] NEXT_PUBLIC_SITE_URL is unset; omitting listing URL from pre-filled message.');
-  }
+  const siteUrl = (
+    input.siteUrl?.trim() ||
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '') ||
+    'https://unideal.in'
+  ).replace(/\/+$/, '');
 
-  const message = siteUrl
-    ? `${baseMessage}\n\n${siteUrl}/listing/${input.slug}`
-    : baseMessage;
+  const productUrl = `${siteUrl}/listing/${input.slug}`;
+  const message = `${baseMessage}\n\nProduct link: ${productUrl}`;
 
   return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
 }
