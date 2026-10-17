@@ -8,6 +8,7 @@ import { ArrowLeft, ShieldCheck, Eye } from 'lucide-react';
 import type { ListingCondition } from '@/types/domain';
 import ListingDetailClient from './ListingDetailClient';
 import ContactSellerButton from '@/components/listing/ContactSellerButton';
+import ReportButton from '@/components/listing/ReportButton';
 
 interface ListingDetailPageProps {
   params: {
@@ -119,7 +120,7 @@ export default async function ListingDetailPage({ params }: ListingDetailPagePro
   const sellerFirstName = firstName(listing.public_profiles?.full_name || 'Student');
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-5xl">
+    <div className="container mx-auto px-4 py-8 pb-28 md:pb-8 max-w-5xl">
       {/* Back to Browse */}
       <div className="mb-6">
         <Link
@@ -220,6 +221,11 @@ export default async function ListingDetailPage({ params }: ListingDetailPagePro
             <div className="text-sm text-neutral-text leading-relaxed whitespace-pre-line">
               {listing.description}
             </div>
+          </div>
+
+          {/* Low-emphasis Report action below the fold */}
+          <div className="pt-2 flex justify-end">
+            <ReportButton listingId={listing.id} sellerId={listing.seller_id} />
           </div>
         </div>
       </div>

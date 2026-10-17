@@ -25,7 +25,7 @@
 |---|---|---|
 | `--color-accent` | `#16A34A` | General accent / non-text uses — active outlines, borders, light tints, badges, icons |
 | `--color-accent-strong` | `#166534` | Filled primary buttons with white text (WCAG AA contrast compliant at 7.3:1) |
-| `--color-accent-contact` | `#14532D` | **Reserved exclusively** for the "Contact Seller" button. Deeper green action on the app (WCAG AA compliant at 9.1:1). Never used for any other element. |
+| `--color-accent-contact` | `#14532D` | **Reserved exclusively** for the "Contact Seller" button. Contact Seller is distinguished from primary actions by icon (generic chat/WhatsApp-style SVG), label ("Contact seller on WhatsApp"), and size (full width, taller, sticky bottom on mobile), not shade alone. Do not use the Contact token anywhere else. |
 | `--color-destructive` | `#DC2626` | Delete, reject, ban actions; error states |
 | `--color-background` | `#FFFFFF` / near-white | Base page background |
 | `--color-foreground` | Near-black (e.g. `#0F172A`) | Primary text |

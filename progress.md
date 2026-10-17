@@ -604,8 +604,55 @@ Context: Completed comprehensive real-browser verification pass strictly using P
   - `checklist_report/browser-pass-2026-10-17/journey-results.md`
   - `checklist_report/browser-pass-2026-10-17/visual-issues.md`
   - `checklist_report/browser-pass-2026-10-17/console-network.md`
-  - `checklist_report/browser-pass-2026-10-17/results-browser.json`
   - 83 full-resolution screenshots stored in `checklist_report/browser-pass-2026-10-17/screenshots/`.
+
+## 2026-10-17: Browser Pass Issue Resolution & Re-Test Pass (2026-10-17b)
+
+Context: Addressed all 7 issues identified in the October 17 browser pass per requirements and specifications:
+
+- **1. Report Button (P0, FUN-36)**:
+  - Created `components/listing/ReportButton.tsx` and integrated it below the fold on `/listing/[slug]`.
+  - Hidden on viewer's own listing (`seller_id === user.id`).
+  - Guest: opens `AuthModal` with `returnTo` set to resume report action.
+  - Logged in but unverified: shows amber alert "Verify your email to report."
+  - Verified user: opens accessible modal dialog with focus trap, Escape key, backdrop click, and popstate back dismissal.
+  - Form: labeled reason dropdown (Fake listing / Prohibited item / Misleading price / Spam / Other) and Submit button that disables while sending.
+  - Calls `POST /api/listings/[id]/report`. Success: "Thanks, we'll review this." Duplicate (409): "You've already reported this listing." Other errors: plain language.
+  - Listing stays live without auto-hide.
+  - Added Playwright spec `tests/e2e/report-listing.spec.ts` starting with `FUN-36`. Passed on both Desktop and Mobile projects. `FUN-36` updated to **PASS**.
+
+- **2. Contact Seller Distinction**:
+  - Distinguishes Contact button by icon, label, and size rather than shade alone.
+  - Replaced icon with generic chat SVG (speech bubble with call prompt; non-Meta).
+  - Explicit label: "Contact seller on WhatsApp".
+  - Full width, `min-h-[50px]`.
+  - Sticky bottom on mobile (`fixed bottom-0 pb-[max(0.75rem,env(safe-area-inset-bottom))]`) with page container `pb-28 md:pb-8` to prevent content overlap.
+  - Updated `documents/design (2).md` §2 and `documents/rules_v1.1.md` §2.
+
+- **3. /admin for Non-Admins Returns 404**:
+  - Updated `app/admin/layout.tsx` to invoke Next.js `notFound()` instead of redirecting to Home.
+  - Unauthenticated guests and non-admin users receive HTTP 404 with custom branded "Page Not Found" layout.
+  - Admin API routes continue returning 401/403.
+
+- **4. Home Problem Section Layout Rebalance**:
+  - Refactored `components/home/ProblemStory.tsx`.
+  - Single clean heading ("WhatsApp groups weren't built for this.") and concise supporting copy.
+  - 3 problem cards displayed in a balanced 3-column row on desktop (`md:grid-cols-3 gap-6`), stacked on mobile. Zero chat mockups, zero gradients, no empty margins at 1440px+.
+
+- **5. Seed Data Images**:
+  - Updated `scripts/seed_admin_and_listings.js` replacing raw `images.unsplash.com` URLs with reliable local assets (`/hero-campus.webp`, `/problem-search.jpg`, etc.) and Cloudinary assets.
+  - Cleaned 20 live database rows in Supabase that previously stored Unsplash links.
+
+- **6. Orphan-Feature Audit**:
+  - Generated `checklist_report/orphan-features.md` mapping all TRD §5 and Architecture v1.1 routes to UI triggers or "NO UI". No UI built for NO UI items.
+
+- **7. Verification Gates & Browser Re-Test (J2, J4, J7, J10)**:
+  - `npm run lint`: **PASS** (0 errors).
+  - `npx tsc --noEmit`: **PASS** (0 errors).
+  - `npm run build`: **PASS** (37/37 routes built clean).
+  - Re-ran browser journeys J2, J4, J7, and J10 via Playwright MCP browser tools against live server.
+  - Generated `checklist_report/browser-pass-2026-10-17b/journey-results.md`, `checklist_report/browser-pass-2026-10-17b/SUMMARY.md`, and 28 real screenshots in `checklist_report/browser-pass-2026-10-17b/screenshots/`.
+
 
 
 

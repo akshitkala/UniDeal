@@ -16,19 +16,23 @@ setup('authenticate as admin', async ({ page }) => {
   }
 
   await page.goto('/');
-  
-  // Wait for React hydration
+  await page.waitForLoadState('networkidle');
   await page.waitForTimeout(1000);
   
-  // Click the desktop Sign In button
-  const signInBtn = page.getByRole('button', { name: 'Sign In', exact: true }).filter({ visible: true }).first();
+  // Click Sign In button
+  const signInBtn = page.getByRole('button', { name: 'Sign In' }).first();
+  await expect(signInBtn).toBeVisible({ timeout: 10000 });
   await signInBtn.click();
   
   const dialog = page.getByRole('dialog');
+  // If first click happened before full hydration, retry click
+  if (!(await dialog.isVisible())) {
+    await signInBtn.click().catch(() => {});
+  }
   await expect(dialog).toBeVisible({ timeout: 10000 });
   
-  await dialog.getByLabel('Email Address').fill(email);
-  await dialog.getByLabel('Password').fill(password);
+  await dialog.locator('#auth-email, input[type="email"]').first().fill(email);
+  await dialog.locator('#auth-password, input[type="password"]').first().fill(password);
   await dialog.getByRole('button', { name: 'Sign In' }).click();
   
   await expect(dialog).not.toBeVisible({ timeout: 10000 });
@@ -46,16 +50,21 @@ setup('authenticate as student', async ({ page }) => {
   }
 
   await page.goto('/');
-  
+  await page.waitForLoadState('networkidle');
   await page.waitForTimeout(1000);
-  const signInBtn = page.getByRole('button', { name: 'Sign In', exact: true }).filter({ visible: true }).first();
+  
+  const signInBtn = page.getByRole('button', { name: 'Sign In' }).first();
+  await expect(signInBtn).toBeVisible({ timeout: 10000 });
   await signInBtn.click();
   
   const dialog = page.getByRole('dialog');
+  if (!(await dialog.isVisible())) {
+    await signInBtn.click().catch(() => {});
+  }
   await expect(dialog).toBeVisible({ timeout: 10000 });
 
-  await dialog.getByLabel('Email Address').fill(email);
-  await dialog.getByLabel('Password').fill(password);
+  await dialog.locator('#auth-email, input[type="email"]').first().fill(email);
+  await dialog.locator('#auth-password, input[type="password"]').first().fill(password);
   await dialog.getByRole('button', { name: 'Sign In' }).click();
   
   await expect(dialog).not.toBeVisible({ timeout: 10000 });

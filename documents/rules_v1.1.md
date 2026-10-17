@@ -30,7 +30,7 @@
 |---|---|---|
 | `--color-accent` | `#16A34A` | General accent / non-text uses (borders, active outlines, badges, icons) |
 | `--color-accent-strong` | `#166534` | Filled primary buttons with white text (WCAG AA compliant 7.3:1) |
-| `--color-accent-contact` | `#14532D` | Reserved exclusively for the "Contact Seller" button (WCAG AA compliant 9.1:1) |
+| `--color-accent-contact` | `#14532D` | Reserved exclusively for the "Contact Seller" button (WCAG AA compliant 9.1:1). Distinguished by icon, label, and size, not shade alone. Do not use the Contact token anywhere else. |
 | Typography | Outfit (headings), Work Sans (body) | See design.md for weight/scale |
 | Visual baseline | Flat/clean | No gradients, glassmorphism, or neumorphism anywhere in the app |
 

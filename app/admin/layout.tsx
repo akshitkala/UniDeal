@@ -1,17 +1,16 @@
 import type { ReactNode } from 'react';
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { requireAdminSession } from '@/lib/auth-admin';
 import AdminShell from '@/components/admin/AdminShell';
 
 /**
- * QA-01: server-side is_admin guard for ALL /admin routes.
+ * Server-side is_admin guard for ALL /admin routes.
  * Re-checks profiles.is_admin via the shared service-role verification
- * (rules.md §3.6) and redirects non-admins / signed-out users to home
- * before any admin UI is rendered.
+ * and serves the custom 404 page via notFound() for guests and non-admin users.
  */
 export default async function AdminLayout({ children }: { children: ReactNode }) {
   const { isAdmin } = await requireAdminSession();
-  if (!isAdmin) redirect('/');
+  if (!isAdmin) notFound();
 
   return <AdminShell>{children}</AdminShell>;
 }

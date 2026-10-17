@@ -467,9 +467,9 @@
     "id": "FUN-36",
     "section": "FUN",
     "severity": "P0",
-    "status": "NEEDS-HUMAN",
-    "evidence": "No matching automated Playwright test found in JSON reporter output.",
-    "notes": "Reclassified per Provenance rule: unverified by automated test suite."
+    "status": "PASS",
+    "evidence": "Automated Playwright spec tests/e2e/report-listing.spec.ts passed on both Desktop and Mobile projects.",
+    "notes": "Report button rendered below fold; verifies reason dropdown, submit disables while sending, handles 201 success notice and 409 duplicate message, listing remains live."
   },
   {
     "id": "FUN-37",

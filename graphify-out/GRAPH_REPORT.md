@@ -1,16 +1,16 @@
 # Graph Report - Unideal  (2026-10-17)
 
 ## Corpus Check
-- 393 files · ~1,367,193 words
+- 406 files · ~2,036,223 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3370 nodes · 4410 edges · 298 communities (233 shown, 60 thin omitted)
+- 3433 nodes · 4471 edges · 304 communities (237 shown, 62 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 40 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fe0288f1`
+- Built from commit: `48845e61`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,9 +18,9 @@
 - @supabase/supabase-js
 - validate_data.py
 - gray
-- ListingCard.tsx
+- browse/page.tsx
 - react
-- test_design_system_mode.py
+- DesignSystemGenerator
 - Quick Reference
 - UniDeal — Playwright E2E Test Suite Report
 - Tailwind CSS Utility Reference
@@ -49,10 +49,10 @@
 - global.setup.ts
 - UniDeal Browser Performance Report (Deployed)
 - UniDeal Performance Measurement & Latency Analysis Report
-- ContactForm.tsx
+- ContactForm
 - Typography Specifications
 - perf-report.mjs
-- test_core.py
+- generate_design_system
 - api/contact/route.ts
 - createAdminClient
 - Logo Usage Rules
@@ -194,7 +194,7 @@
 - Component Tokens
 - .agents/skills/design-system/scripts/generate-tokens.cjs
 - tailwindcss
-- duration
+- primitive
 - Slide Strategies
 - .agents/skills/design/scripts/icon/generate.py
 - CatalogRefreshTest
@@ -202,7 +202,7 @@
 - measure_contrast.js
 - run_mobile_coverage.js
 - capture_visual_baselines.js
-- verify_15_earlier_pass.js
+- Real Browser Pass — Journey Results (2026-10-17)
 - api/listings/route.ts
 - 233125fa54c11fe5b944b9c760698327ea0a987b.md
 - 2f5a931f5f95dbefc4ccac0dad7ca4b251db7659.md
@@ -226,30 +226,37 @@
 - graphify reference: query, path, explain
 - 6. Color Contrast & Button Comparison Audit
 - Brand Guidelines Template
-- 16
+- _select_palette_for_mode
 - .agents/skills/design/scripts/logo/core.py
-- 1
+- Key Changes & Verifications
 - .agents/skills/design-system/scripts/slide_search_core.py
-- 3
-- 8
+- Real Browser Pass — Visual Issues & UI Observations (2026-10-17)
+- [id]/contact/route.ts
 - destructive
-- sm
+- shadow
 - muted
 - ring
 - .generate_config_string
 - 2. Earlier-Pass Audit (15 Non-Automated Checklist Items)
+- Detailed Error Details
 - Contact Reveal API
 - UniDeal Product Requirements
 - .agents/skills/design/scripts/logo/generate.py
+- Real Browser Pass — Journey Re-test Results (2026-10-17b)
 - patch
 - test_tailwind_config_gen.py
 - .agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py
+- Orphan-Feature Audit
 - xl
 - none
 - Row Level Security Policies
 - graphify reference: add a URL and watch a folder
 - graphify reference: commit hook and native CLAUDE.md integration
 - graphify reference: incremental update and cluster-only
+- Browser Agent Journey Results (2026-10-17)
+- md
+- Console & Network Errors Log (Browser Agent) — 2026-10-17
+- browser-agent-2026-10-17/visual-issues.md
 - destructive-foreground
 - primary-foreground
 - secondary-foreground
@@ -302,7 +309,6 @@
 - .test_init_framework
 - .test_default_output_path_javascript
 - .test_base_config_structure
-- DesignSystemGenerator
 - [slug]/page.tsx
 - seed_admin_and_listings.js
 - devDependencies
@@ -311,10 +317,10 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `TailwindConfigGenerator` - 58 edges
-2. `react` - 53 edges
+2. `react` - 54 edges
 3. `search()` - 43 edges
 4. `createAdminClient()` - 40 edges
-5. `@playwright/test` - 39 edges
+5. `@playwright/test` - 40 edges
 6. `requireAdminSession` - 37 edges
 7. `TestTailwindConfigGenerator` - 35 edges
 8. `search_stack()` - 35 edges
@@ -322,16 +328,16 @@
 10. `ShadcnInstaller` - 34 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `ListingDetailRow` --references--> `ListingCondition`  [EXTRACTED]
+  app/(public)/listing/[slug]/page.tsx → types/domain.ts
 - `ListingDetailPage()` --calls--> `firstName()`  [EXTRACTED]
   app/(public)/listing/[slug]/page.tsx → lib/display-name.ts
-- `RecentListingsFetcher()` --calls--> `createClient()`  [EXTRACTED]
-  app/(public)/page.tsx → lib/supabase/server.ts
 - `AdminLayout()` --calls--> `requireAdminSession`  [EXTRACTED]
   app/admin/layout.tsx → lib/auth-admin.ts
-- `ProfilePage()` --calls--> `useAuth()`  [EXTRACTED]
-  app/(account)/profile/page.tsx → contexts/AuthContext.tsx
-- `ProfilePage()` --calls--> `createClient()`  [EXTRACTED]
-  app/(account)/profile/page.tsx → lib/supabase/client.ts
+- `RecentListingsSection()` --calls--> `useMotion()`  [EXTRACTED]
+  components/home/RecentListingsSection.tsx → lib/motion-variants.ts
+- `InitialListingData` --references--> `ListingCondition`  [EXTRACTED]
+  components/listing/ListingForm.tsx → types/domain.ts
 
 ## Import Cycles
 - None detected.
@@ -340,11 +346,11 @@
 - **Phase 1 Foundation Delivery** — documents_roadmap_3_phase_1_foundation, documents_unideal_trd_v1_1_supabase_architecture, documents_unideal_trd_v1_1_row_level_security, progress_phase_1_scaffold_schema [INFERRED 0.95]
 - **Verified WhatsApp Contact Trust Flow** — documents_unideal_prd_v2_1_contact_reveal, documents_unideal_trd_v1_1_contact_api, documents_appflow_browse_contact_flow, documents_rules_v1_1_security_boundaries [INFERRED 0.95]
 
-## Communities (298 total, 60 thin omitted)
+## Communities (304 total, 62 thin omitted)
 
 ### Community 0 - "@supabase/supabase-js"
-Cohesion: 0.09
-Nodes (9): @supabase/supabase-js, { createClient }, { createClient }, { createClient }, { createClient }, { createChunks }, { createClient }, results (+1 more)
+Cohesion: 0.07
+Nodes (14): @supabase/supabase-js, { createClient }, { createClient }, { createClient }, { createClient }, { createChunks }, { createClient }, results (+6 more)
 
 ### Community 1 - "validate_data.py"
 Cohesion: 0.07
@@ -354,17 +360,17 @@ Nodes (48): Semantic quality contracts for the core UI/UX datasets., read_rows()
 Cohesion: 0.05
 Nodes (53): $type, $value, $type, $value, $type, $value, $type, $value (+45 more)
 
-### Community 3 - "ListingCard.tsx"
-Cohesion: 0.15
-Nodes (16): DashboardLoading(), CATEGORIES, FreshOnCampus(), Props, Props, conditionColors, ListingCard(), ListingCardData (+8 more)
+### Community 3 - "browse/page.tsx"
+Cohesion: 0.11
+Nodes (23): SellerListing, BrowseContent(), CategoryItem, CategoryItem, conditions, ListingFilters(), ListingFiltersProps, CATEGORIES (+15 more)
 
 ### Community 4 - "react"
-Cohesion: 0.18
-Nodes (8): SellLoading(), PageHeaderSkeleton(), PageHeaderSkeletonProps, TableRowSkeleton(), TableRowSkeletonProps, Skeleton(), SkeletonProps, react
+Cohesion: 0.13
+Nodes (15): DashboardLoading(), EditListingLoading(), ProfileLoading(), SellLoading(), ListingCardSkeleton(), LISTING_GRID_CLASSES, ListingGridSkeleton(), ListingGridSkeletonProps (+7 more)
 
-### Community 5 - "test_design_system_mode.py"
-Cohesion: 0.11
-Nodes (15): _contrast_ratio(), _derive_dark_palette(), _palette_is_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., WCAG contrast ratio for two hex colors, or None if either is invalid., Keep product brand tokens while deriving accessible dark surfaces., Pick the highest-ranked palette matching the resolved mode. Only the dark case… (+7 more)
+### Community 5 - "DesignSystemGenerator"
+Cohesion: 0.10
+Nodes (13): DesignSystemGenerator, _palette_is_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Select best matching result based on priority keywords., _relative_luminance() (+5 more)
 
 ### Community 6 - "Quick Reference"
 Cohesion: 0.18
@@ -379,8 +385,8 @@ Cohesion: 0.05
 Nodes (43): Arbitrary Values, Aspect Ratio, Background Colors, Border Color, Border Radius, Border Style, Border Width, Borders (+35 more)
 
 ### Community 9 - "ListingForm.tsx"
-Cohesion: 0.14
-Nodes (15): RouteContext, CategoryOption, ListingForm(), ListingFormProps, CLOUDINARY_MAX_FILE_SIZE_BYTES, CLOUDINARY_MAX_IMAGES, CloudinaryUploadResponse, getCloudinaryUploadPreset() (+7 more)
+Cohesion: 0.13
+Nodes (16): RouteContext, CategoryOption, InitialListingData, ListingForm(), ListingFormProps, CLOUDINARY_MAX_FILE_SIZE_BYTES, CLOUDINARY_MAX_IMAGES, CloudinaryUploadResponse (+8 more)
 
 ### Community 10 - "UniDeal Browser Performance Report"
 Cohesion: 0.17
@@ -392,11 +398,11 @@ Nodes (37): 1. Color Palette, 2. Typography, 3. Logo Usage, 4. Voice & Tone, 5. 
 
 ### Community 15 - "lucide-react"
 Cohesion: 0.11
-Nodes (25): DashboardPage(), TabType, EditListingLoading(), CategoryOption, EditListingPage(), EditListingPageProps, ProfileLoading(), ProfileForm (+17 more)
+Nodes (26): DashboardPage(), TabType, CategoryOption, EditListingPage(), EditListingPageProps, ProfileForm, YEAR_OPTIONS, CategoryOption (+18 more)
 
 ### Community 16 - "useMotion"
 Cohesion: 0.06
-Nodes (37): metadata, HowItWorksClient(), steps, metadata, Beat(), OurStoryClient(), PullQuote(), useSection() (+29 more)
+Nodes (34): metadata, HowItWorksClient(), steps, metadata, Beat(), OurStoryClient(), PullQuote(), useSection() (+26 more)
 
 ### Community 18 - "scripts/core.py"
 Cohesion: 0.10
@@ -412,7 +418,7 @@ Nodes (35): 1. Visual Communication First, 2. Minimal Text Integration, 3. Exper
 
 ### Community 25 - "search_stack"
 Cohesion: 0.09
-Nodes (11): _exact_stack_identifier(), Resolve a standalone API identifier even when its BM25 IDF is low., Search stack-specific guidelines, search_stack(), _valid_max_results(), Freshness and migration contracts for native, desktop, and 3D stacks., _rows(), TestNativeDesktopStackFreshness (+3 more)
+Nodes (12): _exact_stack_identifier(), _project_row(), Resolve a standalone API identifier even when its BM25 IDF is low., Search stack-specific guidelines, search_stack(), _valid_max_results(), Freshness and migration contracts for native, desktop, and 3D stacks., _rows() (+4 more)
 
 ### Community 29 - "Form & Input Components"
 Cohesion: 0.06
@@ -430,9 +436,9 @@ Nodes (10): 0. Region Verification & Environment Facts, 1. Hard Load Measurement
 Cohesion: 0.13
 Nodes (14): 1. `/admin` (Admin Overview Page), 1. Environment Facts, 2. `/api/admin/overview` (Admin Overview Statistics API), 2. Route Inventory & Benchmark Summary, 3. `/api/admin/settings` (Admin Platform Settings API), 3. Detailed Attribution & Breakdown per Slow Route, 4. `/admin/listings/pending` & `/api/admin/listings/pending`, 4. Cross-Cutting Latency Patterns (+6 more)
 
-### Community 34 - "ContactForm.tsx"
-Cohesion: 0.18
-Nodes (10): metadata, ContactForm(), handleBlur(), handleChange(), handleSubmit(), validateAll(), validateField(), FieldErrors (+2 more)
+### Community 34 - "ContactForm"
+Cohesion: 0.25
+Nodes (7): metadata, ContactForm(), handleBlur(), handleChange(), handleSubmit(), validateAll(), validateField()
 
 ### Community 35 - "Typography Specifications"
 Cohesion: 0.06
@@ -442,9 +448,9 @@ Nodes (30): Accessibility, Base System, Best Practices, Clean & Modern, Common F
 Cohesion: 0.18
 Nodes (8): __dirname, envPath, __filename, getAuthCookies(), IS_IDLE_TEST, IS_PROD_RUN, makeCookieHeader(), ROUTES
 
-### Community 37 - "test_core.py"
-Cohesion: 0.10
-Nodes (11): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation. Args: query: Search query (e.g.,…, format_output(), UI/UX Pro Max Search - BM25 search engine for UI/UX style guides Usage: python…, Format results for Claude consumption (token-optimized), Stdlib-only regression tests for core.py / design_system.py (unittest, not… (+3 more)
+### Community 37 - "generate_design_system"
+Cohesion: 0.18
+Nodes (8): format_markdown(), generate_design_system(), Format design system as markdown., Main entry point for design system generation. Args: query: Search query (e.g.,…, format_output(), UI/UX Pro Max Search - BM25 search engine for UI/UX style guides Usage: python…, Format results for Claude consumption (token-optimized), TestPersistence
 
 ### Community 38 - "api/contact/route.ts"
 Cohesion: 0.33
@@ -467,16 +473,16 @@ Cohesion: 0.07
 Nodes (28): Accordion, Alert, ARIA Labels, Checkbox and Radio, Color Contrast, Command Palette Navigation, Component-Specific Patterns, Dialog/Modal Navigation (+20 more)
 
 ### Community 43 - "search"
-Cohesion: 0.12
-Nodes (7): _project_row(), Resolve a deprecated in-domain alias, or expose a cross-domain redirect., Main search function with auto-domain detection, search(), _style_search_destination(), TestSearchDomains, TestStyleTaxonomy
+Cohesion: 0.11
+Nodes (8): Resolve a deprecated in-domain alias, or expose a cross-domain redirect., Main search function with auto-domain detection, search(), _style_search_destination(), TestSearchDomains, Regression tests for the public style taxonomy and search contract., read_rows(), TestStyleTaxonomy
 
 ### Community 44 - "UniDeal — Pre-Launch Checklist & Antigravity QA Run"
 Cohesion: 0.08
 Nodes (25): 0. How to use this file, 10. Accessibility (A11Y), 11. Content and copy (CPY), 12. Code scans, performance, infrastructure, human-only, 13. Launch-day sequence, 14. Sign-off, 1. MASTER PROMPT FOR ANTIGRAVITY (copy everything in the block), 2. Test account setup (do this before running) (+17 more)
 
 ### Community 45 - "(public)/page.tsx"
-Cohesion: 0.12
-Nodes (13): metadata, RecentListingsFetcher(), FounderCta(), CATEGORIES, Hero(), HowItWorks(), IMPORTANT: neutral outlined style or --color-accent, NEVER --color-accent-…, steps (+5 more)
+Cohesion: 0.14
+Nodes (10): metadata, FounderCta(), CATEGORIES, Hero(), HowItWorks(), IMPORTANT: neutral outlined style or --color-accent, NEVER --color-accent-…, steps, ProblemStory() (+2 more)
 
 ### Community 46 - "queries.ts"
 Cohesion: 0.23
@@ -563,8 +569,8 @@ Cohesion: 0.09
 Nodes (22): @apply Directive, Best Practices, Color Customization, Complete Tailwind Config, Configuration Examples, Content Configuration, Custom Color Palette, Custom Font Sizes (+14 more)
 
 ### Community 75 - "spacing"
-Cohesion: 0.09
-Nodes (22): $type, $value, $type, $value, $type, $value, $type, $value (+14 more)
+Cohesion: 0.06
+Nodes (34): $type, $value, $type, $value, $type, $value, $type, $value (+26 more)
 
 ### Community 76 - ".agents/skills/design-system/scripts/html-token-validator.py"
 Cohesion: 0.12
@@ -583,8 +589,8 @@ Cohesion: 0.10
 Nodes (19): Base Color Presets, Best Practices, Color Customization, Color Format, Component Customization, CSS Variable System, Customize Styles, Customize Variants (+11 more)
 
 ### Community 81 - "auth-admin.ts"
-Cohesion: 0.18
-Nodes (9): cleanupListingImages(), DELETE(), POST(), RouteContext, RouteContext, GET(), createClient(), buildWhatsAppLink() (+1 more)
+Cohesion: 0.26
+Nodes (6): cleanupListingImages(), DELETE(), RouteContext, GET(), RecentListingsFetcher(), createClient()
 
 ### Community 82 - "P0 Defects (Blocking Launch)"
 Cohesion: 0.14
@@ -787,16 +793,16 @@ Cohesion: 0.14
 Nodes (13): Card Styles, Component Variants, CSS Structures, Feature Grid (3 columns), Layout Decision Flow, Layout Patterns, Layout Selection by Use Case, Metric Styles (+5 more)
 
 ### Community 132 - "test_data_contracts.py"
-Cohesion: 0.14
-Nodes (7): Cross-file semantic contracts for curated design data., read_rows(), split_values(), style_identities(), TestGeneratedCatalogContract, TestLandingAndStackContract, TestStyleIdentityContract
+Cohesion: 0.10
+Nodes (8): Cross-file semantic contracts for curated design data., read_rows(), split_values(), style_identities(), TestGeneratedCatalogContract, TestLandingAndStackContract, TestReasoningContract, TestStyleIdentityContract
 
 ### Community 133 - "Tailwind Integration"
 Cohesion: 0.14
 Nodes (13): Animation Tokens, Base Layer, Button Example, Component Classes, CSS Variables Setup, Dark Mode Toggle, HSL Format Benefits, shadcn/ui Alignment (+5 more)
 
 ### Community 134 - "radius"
-Cohesion: 0.19
-Nodes (14): $type, $value, $type, $value, $type, $value, primitive, radius (+6 more)
+Cohesion: 0.29
+Nodes (8): $type, $value, $type, $value, radius, default, full, default
 
 ### Community 135 - "Layout Patterns"
 Cohesion: 0.14
@@ -855,8 +861,8 @@ Cohesion: 0.15
 Nodes (12): component, $type, $value, dark, semantic, $schema, $type, $value (+4 more)
 
 ### Community 149 - "parse_decision_rules"
-Cohesion: 0.14
-Nodes (10): Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Closed, non-executable grammar for design-system decision rules. (+2 more)
+Cohesion: 0.17
+Nodes (9): Find matching reasoning rule for a category., Apply reasoning rules to search results., apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Closed, non-executable grammar for design-system decision rules., Parse the canonical condition -> action-array representation. (+1 more)
 
 ### Community 150 - "UniDeal — Content and Copywriting Report (CPY)"
 Cohesion: 0.50
@@ -903,12 +909,12 @@ Cohesion: 0.20
 Nodes (12): $type, $value, bg, bg, padding, shadow, card, bg (+4 more)
 
 ### Community 161 - "BM25"
-Cohesion: 0.16
-Nodes (7): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., TestTokenizer
+Cohesion: 0.10
+Nodes (10): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., Stdlib-only regression tests for core.py / design_system.py (unittest, not…, TestBm25CoreBehavior (+2 more)
 
 ### Community 162 - "_style_is_dark_primary"
-Cohesion: 0.16
-Nodes (9): _query_wants_dark(), True when a styles.csv row describes itself as dark-first., True when the query explicitly asks for a dark theme., Resolve the mode the rest of the output has to agree with., _resolve_color_mode(), _style_is_dark_primary(), TestModeResolution, Regression tests for the public style taxonomy and search contract. (+1 more)
+Cohesion: 0.21
+Nodes (7): _query_wants_dark(), True when a styles.csv row describes itself as dark-first., True when the query explicitly asks for a dark theme., Resolve the mode the rest of the output has to agree with., _resolve_color_mode(), _style_is_dark_primary(), TestModeResolution
 
 ### Community 163 - "UniDeal — QA Findings Report"
 Cohesion: 0.15
@@ -966,9 +972,9 @@ Nodes (9): Alert Tokens, Badge Tokens, Button Tokens, Card Tokens, Component Tok
 Cohesion: 0.40
 Nodes (9): flattenTokens(), fs, generateCSS(), generateTailwind(), main(), parseArgs(), path, resolveReference() (+1 more)
 
-### Community 181 - "duration"
-Cohesion: 0.20
-Nodes (10): fast, normal, slow, $type, $value, $type, $value, duration (+2 more)
+### Community 181 - "primitive"
+Cohesion: 0.18
+Nodes (11): fast, normal, slow, $type, $value, $type, $value, primitive (+3 more)
 
 ### Community 182 - "Slide Strategies"
 Cohesion: 0.20
@@ -994,9 +1000,9 @@ Nodes (7): { execSync }, fs, outJson, path, projects, results, specs
 Cohesion: 0.29
 Nodes (5): { chromium, webkit }, fs, outDir, path, projects
 
-### Community 189 - "verify_15_earlier_pass.js"
-Cohesion: 0.29
-Nodes (5): adminClient, anonClient, { createClient }, fs, path
+### Community 189 - "Real Browser Pass — Journey Results (2026-10-17)"
+Cohesion: 0.15
+Nodes (12): Journey 0: Layout-Shift Check on Browse (`/browse`), Journey 10: Mobile 375x812 Deep-Dive, Journey 1: Guest First Visit, Journey 2: Guest Taps "Contact Seller" & Auth Modal, Journey 3: Sign Up Flow (Throwaway Email), Journey 4: Verified User Contacts Seller, Journey 5: Sell Flow (Post, Edit, Mark Sold, Delete), Journey 6: Dashboard Tabs & Status Badges (+4 more)
 
 ### Community 190 - "api/listings/route.ts"
 Cohesion: 0.53
@@ -1090,37 +1096,37 @@ Nodes (3): 6. Color Contrast & Button Comparison Audit, Real Measured Contrast R
 Cohesion: 0.40
 Nodes (4): Brand Guidelines Template, Document Structure, Extractable Fields, Usage
 
-### Community 213 - "16"
-Cohesion: 0.67
-Nodes (3): $type, $value, 16
+### Community 213 - "_select_palette_for_mode"
+Cohesion: 0.24
+Nodes (7): _contrast_ratio(), _derive_dark_palette(), WCAG contrast ratio for two hex colors, or None if either is invalid., Keep product brand tokens while deriving accessible dark surfaces., Pick the highest-ranked palette matching the resolved mode. Only the dark case…, _select_palette_for_mode(), TestPaletteSelection
 
 ### Community 214 - ".agents/skills/design/scripts/logo/core.py"
 Cohesion: 0.10
 Nodes (21): BM25, detect_domain(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection, Search across all domains and combine results (+13 more)
 
-### Community 215 - "1"
-Cohesion: 0.67
-Nodes (3): $type, $value, 1
+### Community 215 - "Key Changes & Verifications"
+Cohesion: 0.20
+Nodes (9): 1. Report Button (P0, FUN-36) — RESOLVED & PASS, 2. Contact Seller Distinction — RESOLVED & PASS, 3. /admin for Non-Admins Returns 404 — RESOLVED & PASS, 4. Home Problem Section Layout Rebalance — RESOLVED & PASS, 5. Seed Images & Live Database Unsplash URLs — RESOLVED & PASS, 6. Orphan-Feature Audit — COMPLETED, 7. Re-test Journeys J2, J4, J7, J10 — ALL PASS, Browser Pass Re-Test Summary (2026-10-17b) (+1 more)
 
 ### Community 216 - ".agents/skills/design-system/scripts/slide_search_core.py"
 Cohesion: 0.08
 Nodes (38): format_context(), format_result(), main(), Format a single search result for display, Slide Search CLI - Search slide design databases for strategies, layouts, copy,…, Format contextual recommendations for display., BM25, calculate_pattern_break() (+30 more)
 
-### Community 217 - "3"
-Cohesion: 0.67
-Nodes (3): $type, $value, 3
+### Community 217 - "Real Browser Pass — Visual Issues & UI Observations (2026-10-17)"
+Cohesion: 0.29
+Nodes (6): 1. Missing "Report Listing" Button on Listing Detail Page, 2. Primary Green Button vs. Contact Seller Button Visual Discrepancy, 3. Broken External Images via Chromium ORB (Opaque Response Blocking), 4. Home Problem Section Layout Review (Post-Chat Mockup Removal), 5. Sticky Browse Search Bar Pinned Behavior, Real Browser Pass — Visual Issues & UI Observations (2026-10-17)
 
-### Community 218 - "8"
-Cohesion: 0.67
-Nodes (3): $type, $value, 8
+### Community 218 - "[id]/contact/route.ts"
+Cohesion: 0.47
+Nodes (4): POST(), RouteContext, buildWhatsAppLink(), WhatsAppLinkInput
 
 ### Community 219 - "destructive"
 Cohesion: 0.67
 Nodes (3): destructive, $type, $value
 
-### Community 220 - "sm"
-Cohesion: 0.60
-Nodes (5): sm, sm, sm, $type, $value
+### Community 220 - "shadow"
+Cohesion: 0.47
+Nodes (6): sm, shadow, sm, sm, $type, $value
 
 ### Community 221 - "muted"
 Cohesion: 0.67
@@ -1134,6 +1140,10 @@ Nodes (3): ring, $type, $value
 Cohesion: 0.20
 Nodes (6): Generate configuration file content. Returns: Configuration file as string, Generate TypeScript configuration., Generate JavaScript configuration., Format plugins array for config. Validates each plugin name against a strict…, Add indentation to JSON string., Write configuration to file. Returns: Tuple of (success, message)
 
+### Community 225 - "Detailed Error Details"
+Cohesion: 0.33
+Nodes (5): Detailed Error Details, Journey 7: External Dummy Image Loading, Journey 9: 404 Made-Up Route Verification, Real Browser Pass — Console & Network Errors Log (2026-10-17), Summary Table
+
 ### Community 226 - "Contact Reveal API"
 Cohesion: 0.40
 Nodes (5): Browse to Contact Seller Flow, Phase 3 Contact Flow, Contact Reveal, Marketplace Bridge, Contact Reveal API
@@ -1146,6 +1156,10 @@ Nodes (5): Application Folder Blueprint, UniDeal System Architecture, Scope Boun
 Cohesion: 0.25
 Nodes (10): enhance_prompt(), generate_batch(), generate_logo(), load_env(), main(), Enhance the logo prompt with style and industry modifiers, Generate a logo using Gemini models with image generation Args: aspect_ratio:…, Generate multiple logo variants with different styles (+2 more)
 
+### Community 229 - "Real Browser Pass — Journey Re-test Results (2026-10-17b)"
+Cohesion: 0.33
+Nodes (5): Journey 10: Mobile 375x812 Deep-Dive & Non-Admin 404 Check, Journey 2: Guest Taps "Contact Seller" & Auth Modal, Journey 4: Verified User Contacts Seller & Contact Differentiation, Journey 7: Report Listing & Duplicate Handling (FUN-36), Real Browser Pass — Journey Re-test Results (2026-10-17b)
+
 ### Community 230 - "patch"
 Cohesion: 0.18
 Nodes (6): Test adding components with overwrite flag., Test successful component addition., Test component addition with subprocess error., Test component addition when npx is not found., Test successful addition of all components., patch
@@ -1157,6 +1171,10 @@ Nodes (10): main(), Tailwind CSS Configuration Generator Generate tailwind.confi
 ### Community 232 - ".agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py"
 Cohesion: 0.20
 Nodes (4): Canonical regression contracts for resilient UI text layouts., read_rows(), TestTextLayoutDataContracts, TestTextLayoutRetrieval
+
+### Community 233 - "Orphan-Feature Audit"
+Cohesion: 0.33
+Nodes (5): 1. Audit Summary, 2. TRD Section 5 & Architecture Feature Inventory Cross-Reference, 3. Additional Codebase Routes (Outside TRD §5), 4. Summary of Items Marked NO UI, Orphan-Feature Audit
 
 ### Community 234 - "xl"
 Cohesion: 0.67
@@ -1181,6 +1199,14 @@ Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify refer
 ### Community 239 - "graphify reference: incremental update and cluster-only"
 Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
+
+### Community 240 - "Browser Agent Journey Results (2026-10-17)"
+Cohesion: 0.40
+Nodes (4): Browser Agent Journey Results (2026-10-17), Journeys Summary, Status: BLOCKED, Stop Condition Triggered
+
+### Community 241 - "md"
+Cohesion: 0.67
+Nodes (4): $type, $value, md, md
 
 ### Community 245 - "destructive-foreground"
 Cohesion: 0.67
@@ -1254,13 +1280,9 @@ Nodes (3): main(), Slide Token Validator (Legacy Wrapper) Now delegates to html-
 Cohesion: 0.50
 Nodes (4): Common Sticking Points, Pre-Delivery Checklist, Query Strategy, Tips for Better Results
 
-### Community 360 - "DesignSystemGenerator"
-Cohesion: 0.16
-Nodes (5): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., TestReasoningMatch, TestReasoningContract
-
 ### Community 361 - "[slug]/page.tsx"
-Cohesion: 0.09
-Nodes (19): SellerListing, BrowseContent(), CategoryItem, ListingDetailClient(), ListingDetailClientProps, conditionBadges, ListingDetailPage(), ListingDetailPageProps (+11 more)
+Cohesion: 0.12
+Nodes (13): ListingDetailClient(), ListingDetailClientProps, conditionBadges, ListingDetailPage(), ListingDetailPageProps, ListingDetailRow, ContactSellerButton(), ContactSellerButtonProps (+5 more)
 
 ### Community 364 - "seed_admin_and_listings.js"
 Cohesion: 0.20
@@ -1275,24 +1297,24 @@ Cohesion: 0.29
 Nodes (7): scripts, build, dev, lint, start, test:e2e, test:e2e:mobile
 
 ## Knowledge Gaps
-- **1475 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+1470 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 2021 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **60 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **1514 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+1509 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 2071 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **62 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `react` to `ContactForm.tsx`, `ListingCard.tsx`, `pending/page.tsx`, `reports/page.tsx`, `[slug]/page.tsx`, `ListingForm.tsx`, `listings/page.tsx`, `(public)/page.tsx`, `queries.ts`, `lucide-react`, `useMotion`, `auth-admin.ts`, `package.json`, `admin/layout.tsx`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `search()` connect `search` to `validate_data.py`, `_style_is_dark_primary`, `test_core.py`, `design_system.py`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py`, `.generate`, `_row_identities`, `detect_domain`, `scripts/core.py`, `search_stack`?**
+- **Why does `react` connect `react` to `browse/page.tsx`, `pending/page.tsx`, `reports/page.tsx`, `[slug]/page.tsx`, `ListingForm.tsx`, `listings/page.tsx`, `(public)/page.tsx`, `queries.ts`, `lucide-react`, `useMotion`, `auth-admin.ts`, `package.json`, `admin/layout.tsx`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `search()` connect `search` to `BM25`, `validate_data.py`, `generate_design_system`, `design_system.py`, `.agents/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py`, `.generate`, `_row_identities`, `detect_domain`, `scripts/core.py`, `search_stack`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `@supabase/supabase-js` connect `@supabase/supabase-js` to `database.ts`, `perf-report.mjs`, `createAdminClient`, `test_whatsapp_and_delete_account.js`, `seed_admin_and_listings.js`, `lucide-react`, `package.json`, `verify_15_earlier_pass.js`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `@supabase/supabase-js` connect `@supabase/supabase-js` to `database.ts`, `perf-report.mjs`, `createAdminClient`, `test_whatsapp_and_delete_account.js`, `seed_admin_and_listings.js`, `lucide-react`, `package.json`?**
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `TestTailwindConfigGenerator`) actually correct?**
   _`TailwindConfigGenerator` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `fs`, `path`, `fs` to the rest of the system?**
-  _1475 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1514 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `@supabase/supabase-js` be split into smaller, more focused modules?**
-  _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
 - **Should `validate_data.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.0726775956284153 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07457627118644068 - nodes in this community are weakly interconnected._

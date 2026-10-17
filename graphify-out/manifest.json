@@ -60,9 +60,9 @@
     "semantic_hash": "6f6072f269996a6d132576a719e8ca14"
   },
   "app/(public)/listing/[slug]/page.tsx": {
-    "mtime": 1792216666.690457,
-    "seen": 1792219877.2400892,
-    "ast_hash": "c9e5f8ee48c772f97909d33bfc0d714b",
+    "mtime": 1792247901.4539907,
+    "seen": 1792249477.6827624,
+    "ast_hash": "453e4e5ab18b54e64b5511aea11144e5",
     "semantic_hash": ""
   },
   "app/(public)/our-story/page.tsx": {
@@ -78,10 +78,10 @@
     "semantic_hash": ""
   },
   "app/admin/layout.tsx": {
-    "mtime": 1790085491.8662424,
-    "seen": 1790098873.1522627,
-    "ast_hash": "d393d92b9743e6cac010b8533cce8231",
-    "semantic_hash": "d393d92b9743e6cac010b8533cce8231"
+    "mtime": 1792247967.8417182,
+    "seen": 1792249477.683763,
+    "ast_hash": "5aef5c03272bcb687b10c4dccab7c494",
+    "semantic_hash": ""
   },
   "app/admin/listings/pending/page.tsx": {
     "mtime": 1791190899.3707085,
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "documents/design (2).md": {
-    "mtime": 1792214970.3600543,
-    "seen": 1792219877.3241189,
-    "ast_hash": "780a54d57da3fda33270b9d8d0fc0050",
+    "mtime": 1792247947.6514468,
+    "seen": 1792249477.7476587,
+    "ast_hash": "118dfc2c8d4a7199dc194faa3aab3eeb",
     "semantic_hash": ""
   },
   "documents/roadmap (3).md": {
@@ -264,15 +264,15 @@
     "semantic_hash": "7ad94444f3b6813bdf6602f6b7c90b49"
   },
   "documents/rules_v1.1.md": {
-    "mtime": 1792214981.1756034,
-    "seen": 1792219877.3241189,
-    "ast_hash": "0fe23d418ef8a43cf066635e9eb4e3a1",
+    "mtime": 1792247957.1875727,
+    "seen": 1792249477.7476587,
+    "ast_hash": "a058075d2316a5cd557ae776c99db51c",
     "semantic_hash": ""
   },
   "progress.md": {
-    "mtime": 1792225440.500318,
-    "seen": 1792225471.671581,
-    "ast_hash": "401376dc490530492d7024396298cac9",
+    "mtime": 1792249455.301916,
+    "seen": 1792249477.7476587,
+    "ast_hash": "ad6cc1560ffb7b63f65acd3925c1f346",
     "semantic_hash": ""
   },
   ".agents/skills/brand/scripts/extract-colors.cjs": {
@@ -672,9 +672,9 @@
     "semantic_hash": ""
   },
   "components/listing/ContactSellerButton.tsx": {
-    "mtime": 1792214953.4953613,
-    "seen": 1792219877.262971,
-    "ast_hash": "c1e1ab67aadc994f1e5e0b15d53368af",
+    "mtime": 1792247874.2717474,
+    "seen": 1792249477.7026017,
+    "ast_hash": "d6ea8fa3f064e46547ad85978a86d60e",
     "semantic_hash": ""
   },
   "components/listing/ListingCard.tsx": {
@@ -1350,10 +1350,10 @@
     "semantic_hash": ""
   },
   "scripts/seed_admin_and_listings.js": {
-    "mtime": 1789999314.8646545,
-    "seen": 1790098873.1676283,
-    "ast_hash": "ee5e2e41f663d81fedbff3fa1166b61d",
-    "semantic_hash": "ee5e2e41f663d81fedbff3fa1166b61d"
+    "mtime": 1792248023.3800817,
+    "seen": 1792249477.7158144,
+    "ast_hash": "7963bd9190e8841babbc10fcc5599023",
+    "semantic_hash": ""
   },
   "report.md": {
     "mtime": 1790364213.1529138,
@@ -1752,9 +1752,9 @@
     "semantic_hash": ""
   },
   "tests/e2e/global.setup.ts": {
-    "mtime": 1791210005.5775056,
-    "seen": 1791738935.582536,
-    "ast_hash": "cce257dba2d84f858d6e1b96a2f09019",
+    "mtime": 1792248802.0589485,
+    "seen": 1792249477.7214756,
+    "ast_hash": "9a8e809d34c5c565178fa8b4c477c8b5",
     "semantic_hash": ""
   },
   "tests/e2e/phase1.spec.ts": {
@@ -1830,9 +1830,9 @@
     "semantic_hash": ""
   },
   "components/home/ProblemStory.tsx": {
-    "mtime": 1792215032.2750926,
-    "seen": 1792219877.2624164,
-    "ast_hash": "deb94492416bee62b765690c66f20527",
+    "mtime": 1792247987.8070843,
+    "seen": 1792249477.7015817,
+    "ast_hash": "da9d3c3ad92db4dd0107381dd48a89a2",
     "semantic_hash": ""
   },
   "components/home/SafeByDesign.tsx": {
@@ -2370,9 +2370,9 @@
     "semantic_hash": ""
   },
   "checklist_report/retest-2026-10-17b/results.json": {
-    "mtime": 1792225007.9969661,
-    "seen": 1792225471.6090317,
-    "ast_hash": "71bd7d1d2578aa1ff946780024fbfb9d",
+    "mtime": 1792248882.8868823,
+    "seen": 1792249477.697034,
+    "ast_hash": "98814416c89f5a77f3c4e81fd1740d2d",
     "semantic_hash": ""
   },
   "checklist_report/retest-2026-10-17b/visual-baselines.json": {
@@ -2691,6 +2691,750 @@
     "mtime": 1792224316.570001,
     "seen": 1792225471.6721025,
     "ast_hash": "c9393d51195aecf93f6888922ae3bddc",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-agent-2026-10-17/results-browser.json": {
+    "mtime": 1792229631.6810195,
+    "seen": 1792249477.6930437,
+    "ast_hash": "6e74892e1d1a33de954a267ce8eab52b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/results-browser.json": {
+    "mtime": 1792247071.1019564,
+    "seen": 1792249477.6930437,
+    "ast_hash": "a196e1b380bb9e83d2f3058ee6f4ca28",
+    "semantic_hash": ""
+  },
+  "components/listing/ReportButton.tsx": {
+    "mtime": 1792248276.2436266,
+    "seen": 1792249477.7035804,
+    "ast_hash": "1a15993d3da030755bbfed041753bf4a",
+    "semantic_hash": ""
+  },
+  "tests/e2e/report-listing.spec.ts": {
+    "mtime": 1792248708.7703896,
+    "seen": 1792249477.7224646,
+    "ast_hash": "4681a8ceec9bee1c52d5118e8153705a",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-agent-2026-10-17/console-network.md": {
+    "mtime": 1792229620.4399302,
+    "seen": 1792249477.7395952,
+    "ast_hash": "faf9b23a27c33b644546d57f4dcc93f5",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-agent-2026-10-17/journey-results.md": {
+    "mtime": 1792229609.1255136,
+    "seen": 1792249477.7395952,
+    "ast_hash": "97ddb70f58bfd87c37395bf2750a7977",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-agent-2026-10-17/visual-issues.md": {
+    "mtime": 1792229614.8096147,
+    "seen": 1792249477.7395952,
+    "ast_hash": "692dd016dc79a7aa2df82d77cb0dffc4",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/console-network.md": {
+    "mtime": 1792247042.9929779,
+    "seen": 1792249477.7395952,
+    "ast_hash": "12e8deab8e94247222a1908b1bf55aa8",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/journey-results.md": {
+    "mtime": 1792247012.52042,
+    "seen": 1792249477.7395952,
+    "ast_hash": "4f4c47dfc4c555c47ce41ff8d74a544b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/visual-issues.md": {
+    "mtime": 1792247029.1033003,
+    "seen": 1792249477.7395952,
+    "ast_hash": "2e712d9250f04675f4f420cae9476b29",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/SUMMARY.md": {
+    "mtime": 1792249420.6187477,
+    "seen": 1792249477.7395952,
+    "ast_hash": "a7dc2b092cc2b561737cb46103650917",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/journey-results.md": {
+    "mtime": 1792249402.7535825,
+    "seen": 1792249477.7395952,
+    "ast_hash": "0ecfeccc6e6b6112303cfa2400618b79",
+    "semantic_hash": ""
+  },
+  "checklist_report/orphan-features.md": {
+    "mtime": 1792248191.8750296,
+    "seen": 1792249477.7414818,
+    "ast_hash": "deeb08dabdd0cfc535e9e1bb155ade6f",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J0_initial_desktop.png": {
+    "mtime": 1792237479.6255853,
+    "seen": 1792249477.7486575,
+    "ast_hash": "7bc6cd54e0ee48973be150acbb83cdc0",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J0_initial_mobile.png": {
+    "mtime": 1792237369.554741,
+    "seen": 1792249477.7486575,
+    "ast_hash": "945617944f4c32b3daf7607fd3ba1832",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J10_01_mobile_home_mobile.png": {
+    "mtime": 1792246750.8848324,
+    "seen": 1792249477.7486575,
+    "ast_hash": "cb87c49cdaeef2e92feefbe68e52faab",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J10_02_mobile_drawer_open_mobile.png": {
+    "mtime": 1792246784.2279866,
+    "seen": 1792249477.7486575,
+    "ast_hash": "98c2d6934ce2923c8c929762611d1154",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J10_03_auth_modal_mobile.png": {
+    "mtime": 1792246828.837708,
+    "seen": 1792249477.7486575,
+    "ast_hash": "3c3dbb73b760afc9e0d0524bb79375ee",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J10_04_browse_mobile.png": {
+    "mtime": 1792246852.4830775,
+    "seen": 1792249477.7486575,
+    "ast_hash": "142e928f56025a116712e28d2f180693",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J10_05_sticky_browse_bar_mobile.png": {
+    "mtime": 1792246863.2509131,
+    "seen": 1792249477.7486575,
+    "ast_hash": "2c804ff690623cce9ac910df442084af",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J10_06_sell_form_mobile.png": {
+    "mtime": 1792246895.1818361,
+    "seen": 1792249477.7486575,
+    "ast_hash": "2797469bdabfd2fa03a2016c2ab19e7d",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_01_home_desktop.png": {
+    "mtime": 1792239171.9625745,
+    "seen": 1792249477.7486575,
+    "ast_hash": "ed3c8585fedb86a87c944250f57d85a6",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_01_home_mobile.png": {
+    "mtime": 1792242889.2868717,
+    "seen": 1792249477.7486575,
+    "ast_hash": "cb87c49cdaeef2e92feefbe68e52faab",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_02_home_problem_desktop.png": {
+    "mtime": 1792239595.396534,
+    "seen": 1792249477.7486575,
+    "ast_hash": "ad3f945e30871aabd7802a71d105a9e3",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_02_home_problem_mobile.png": {
+    "mtime": 1792242895.812743,
+    "seen": 1792249477.7486575,
+    "ast_hash": "72134a3d6cdb2a159c0417b0d5e98562",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_02_home_problem_section_inspect.png": {
+    "mtime": 1792246926.9266346,
+    "seen": 1792249477.7486575,
+    "ast_hash": "1cf03a471a1de3db626d40c2bd0f909b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_03_home_footer_desktop.png": {
+    "mtime": 1792239602.715896,
+    "seen": 1792249477.7486575,
+    "ast_hash": "47620c41da405424464c6708f0b92a8a",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_03_home_footer_mobile.png": {
+    "mtime": 1792242902.832713,
+    "seen": 1792249477.7486575,
+    "ast_hash": "b1611bd700e7a0d339720ad8d5fe1961",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_04_browse_desktop.png": {
+    "mtime": 1792239952.991585,
+    "seen": 1792249477.7486575,
+    "ast_hash": "7bc6cd54e0ee48973be150acbb83cdc0",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_04_mobile_drawer_open.png": {
+    "mtime": 1792242942.38544,
+    "seen": 1792249477.7486575,
+    "ast_hash": "47a843af39ab6880695de08df99831b4",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_05_browse_mobile.png": {
+    "mtime": 1792242983.3429022,
+    "seen": 1792249477.7486575,
+    "ast_hash": "945617944f4c32b3daf7607fd3ba1832",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_05_search_engineering_desktop.png": {
+    "mtime": 1792240081.2826557,
+    "seen": 1792249477.7486575,
+    "ast_hash": "4b3ea52550c0fec4625b7e83e1bfdabd",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_06_filter_category_condition_desktop.png": {
+    "mtime": 1792240114.0994217,
+    "seen": 1792249477.7486575,
+    "ast_hash": "855e6969dd51f2d88ac338740f296aab",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_06_mobile_filters_open.png": {
+    "mtime": 1792242990.7032099,
+    "seen": 1792249477.7486575,
+    "ast_hash": "fb56797f01bbdd5d5272ee2c6fa4c984",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_07_listing_detail_mobile.png": {
+    "mtime": 1792243020.0669825,
+    "seen": 1792249477.7486575,
+    "ast_hash": "5486a00b1ba857c9a7975e8ecf0c0874",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_07_sort_price_asc_desktop.png": {
+    "mtime": 1792242845.5244098,
+    "seen": 1792249477.7486575,
+    "ast_hash": "ae1428733eb51b9d25a5957678e221ea",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J1_08_listing_detail_desktop.png": {
+    "mtime": 1792242866.0750535,
+    "seen": 1792249477.7486575,
+    "ast_hash": "534e1f616faaf031825aaecb9cbd3ab5",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_01_guest_listing_desktop.png": {
+    "mtime": 1792243041.8118596,
+    "seen": 1792249477.7486575,
+    "ast_hash": "6319ad0637e976bb64026be70121bba1",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_01_guest_listing_mobile.png": {
+    "mtime": 1792244210.6707978,
+    "seen": 1792249477.7486575,
+    "ast_hash": "f177f3aa5f5e65beb331d69c0c9df893",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_02_auth_modal_opened_desktop.png": {
+    "mtime": 1792243049.6606092,
+    "seen": 1792249477.7486575,
+    "ast_hash": "22e10642f3199e1aa0aaab5e00b16afa",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_02_auth_modal_opened_mobile.png": {
+    "mtime": 1792244219.829557,
+    "seen": 1792249477.7486575,
+    "ast_hash": "2100a479f05ae6de64af04c0f015c5ff",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_03_modal_closed_escape_desktop.png": {
+    "mtime": 1792243093.7579856,
+    "seen": 1792249477.7486575,
+    "ast_hash": "5b01742e885f1364d537737f425abefd",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_04_modal_closed_browser_back_desktop.png": {
+    "mtime": 1792244018.390247,
+    "seen": 1792249477.7486575,
+    "ast_hash": "5b01742e885f1364d537737f425abefd",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_05_wrong_password_desktop.png": {
+    "mtime": 1792244111.0128746,
+    "seen": 1792249477.7486575,
+    "ast_hash": "bfa25a63a456c13dd5633bcdc984c71a",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_05_wrong_password_mobile.png": {
+    "mtime": 1792244233.6278446,
+    "seen": 1792249477.7486575,
+    "ast_hash": "39ed2b28d146baa86a33dc17945560d5",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_06_action_resumed_desktop.png": {
+    "mtime": 1792244180.5008175,
+    "seen": 1792249477.7486575,
+    "ast_hash": "ba932364eed4bb42d02b8dc33f55f4f3",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J2_06_action_resumed_mobile.png": {
+    "mtime": 1792244252.7185416,
+    "seen": 1792249477.7486575,
+    "ast_hash": "ac40b14232127b05bd86dc29ca4dd25e",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J3_01_browse_before_signup_desktop.png": {
+    "mtime": 1792244299.882918,
+    "seen": 1792249477.7486575,
+    "ast_hash": "7bc6cd54e0ee48973be150acbb83cdc0",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J3_02_signup_form_desktop.png": {
+    "mtime": 1792244323.6052217,
+    "seen": 1792249477.7486575,
+    "ast_hash": "4910db14ad6c52bd5c6756cba13acd4a",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J3_03_verify_email_state_desktop.png": {
+    "mtime": 1792244360.9976535,
+    "seen": 1792249477.7486575,
+    "ast_hash": "d771f1e1a9967c69067bb01b72dd7f8c",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J4_01_user_logged_in_desktop.png": {
+    "mtime": 1792244397.1538086,
+    "seen": 1792249477.7486575,
+    "ast_hash": "6768aae2652f103c2bee4c80f44828a5",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J4_02_listing_priya_desktop.png": {
+    "mtime": 1792244407.7721932,
+    "seen": 1792249477.7486575,
+    "ast_hash": "c98cbce7f8f09b5562e4aa7d5a8c3ad6",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J4_03_contact_clicked_desktop.png": {
+    "mtime": 1792244428.5589757,
+    "seen": 1792249477.7486575,
+    "ast_hash": "3095d4fabbb770061ffdc6bde561bce2",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J4_04_own_listing_desktop.png": {
+    "mtime": 1792244440.2568462,
+    "seen": 1792249477.7486575,
+    "ast_hash": "004c62577e322fb14463a024c1862a7e",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J4_05_user_b_listing_desktop.png": {
+    "mtime": 1792244475.462852,
+    "seen": 1792249477.7486575,
+    "ast_hash": "8d9d5d9e96e56f737d6cbdb9a5b82e83",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J4_06_seller_no_contact_notice_desktop.png": {
+    "mtime": 1792244525.8059585,
+    "seen": 1792249477.7486575,
+    "ast_hash": "cd5b3d30192ad7dc7961146432b7017f",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_01_sell_form_desktop.png": {
+    "mtime": 1792244555.5685248,
+    "seen": 1792249477.7486575,
+    "ast_hash": "92f8fe81c6da3b26e9b6428cb6347ae4",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_02_error_over_5mb_desktop.png": {
+    "mtime": 1792244614.4101422,
+    "seen": 1792249477.7486575,
+    "ast_hash": "7baa748e62ab20e663efbd39d0f78085",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_03_photo_limit_desktop.png": {
+    "mtime": 1792244635.8405843,
+    "seen": 1792249477.7486575,
+    "ast_hash": "d4c3c00c0f4c835d1467effc2eac2f5d",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_04_form_filled_desktop.png": {
+    "mtime": 1792244681.1711328,
+    "seen": 1792249477.7486575,
+    "ast_hash": "17626b4b7f224345541359335ffb3626",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_05_listing_posted_desktop.png": {
+    "mtime": 1792244691.860811,
+    "seen": 1792249477.7486575,
+    "ast_hash": "1cf65f0d16184c44dff58662cc286a8f",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_06_gallery_thumbnail_2_desktop.png": {
+    "mtime": 1792244711.2183447,
+    "seen": 1792249477.7486575,
+    "ast_hash": "c6255aef66bcf6352e5a364122a7f76d",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_07_edit_page_desktop.png": {
+    "mtime": 1792244762.7701705,
+    "seen": 1792249477.7486575,
+    "ast_hash": "65aa48c2ce200089fd0782d3420205e3",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_08_edited_listing_desktop.png": {
+    "mtime": 1792244791.3154902,
+    "seen": 1792249477.7486575,
+    "ast_hash": "7a6699f995662f10fa011556ac21698a",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_09_marked_sold_desktop.png": {
+    "mtime": 1792244859.806478,
+    "seen": 1792249477.7486575,
+    "ast_hash": "352c151fb1bc50a1f38ed4b8b98a2508",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_10_second_listing_posted_desktop.png": {
+    "mtime": 1792244898.9238584,
+    "seen": 1792249477.7486575,
+    "ast_hash": "990549bc9a1529db716d031e4022fedf",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J5_11_listing_deleted_desktop.png": {
+    "mtime": 1792245911.644141,
+    "seen": 1792249477.7486575,
+    "ast_hash": "da9ebaab6ccd0bac731375136832ffb9",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J6_01_dashboard_all_desktop.png": {
+    "mtime": 1792245949.7055035,
+    "seen": 1792249477.7486575,
+    "ast_hash": "94c2f0fbed702f47265840c11825a17b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J6_01_tab_active_desktop.png": {
+    "mtime": 1792245970.0043287,
+    "seen": 1792249477.7486575,
+    "ast_hash": "94c2f0fbed702f47265840c11825a17b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J6_02_tab_under_review_desktop.png": {
+    "mtime": 1792245984.3408167,
+    "seen": 1792249477.7486575,
+    "ast_hash": "99e3472e14b8e52c0f60d6ec9aa10f46",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J6_03_tab_sold_desktop.png": {
+    "mtime": 1792245996.3460755,
+    "seen": 1792249477.7486575,
+    "ast_hash": "8f8bc3f87af758fbde23fdf4717fdbc9",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J6_04_tab_rejected_desktop.png": {
+    "mtime": 1792246013.0728066,
+    "seen": 1792249477.7486575,
+    "ast_hash": "035ff9fa3bd75a90a1bc10f3380b758b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J7_01_browse_listings_desktop.png": {
+    "mtime": 1792246034.6763115,
+    "seen": 1792249477.7486575,
+    "ast_hash": "484b7574257a743c151a3db292a22da8",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J7_02_listing_page_desktop.png": {
+    "mtime": 1792246059.8335679,
+    "seen": 1792249477.7486575,
+    "ast_hash": "efe78c733ab79e59d589ae1f3c33e8f8",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J7_03_missing_report_button_desktop.png": {
+    "mtime": 1792246146.4555562,
+    "seen": 1792249477.7486575,
+    "ast_hash": "efe78c733ab79e59d589ae1f3c33e8f8",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_01_admin_overview_desktop.png": {
+    "mtime": 1792246167.1422975,
+    "seen": 1792249477.7486575,
+    "ast_hash": "ff8945b07337a497a942f009c9692231",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_02_approval_mode_toggled_desktop.png": {
+    "mtime": 1792246186.8318937,
+    "seen": 1792249477.7486575,
+    "ast_hash": "042382e9d008fe3fd52a7e757c8526b0",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_03_pending_queue_desktop.png": {
+    "mtime": 1792246209.8786066,
+    "seen": 1792249477.7486575,
+    "ast_hash": "e086ac2f862a33e79a9d753c57f521ff",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_04_reject_modal_desktop.png": {
+    "mtime": 1792246235.573184,
+    "seen": 1792249477.7486575,
+    "ast_hash": "05d0a67bf8462ad1ad35733c8b16abdf",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_05_listing_rejected_desktop.png": {
+    "mtime": 1792246252.1143794,
+    "seen": 1792249477.7486575,
+    "ast_hash": "e3867b41b197ec539748f0fbf52ae251",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_06_item_pending_approval_desktop.png": {
+    "mtime": 1792246350.8417094,
+    "seen": 1792249477.7486575,
+    "ast_hash": "55e6af3dbc3e261e674c0790b767e76b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_07_item_approved_desktop.png": {
+    "mtime": 1792246359.5399232,
+    "seen": 1792249477.7486575,
+    "ast_hash": "e3867b41b197ec539748f0fbf52ae251",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_08_admin_reports_desktop.png": {
+    "mtime": 1792246386.423863,
+    "seen": 1792249477.7486575,
+    "ast_hash": "126a02016f0b3eea8cd364d1e650996b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_09_admin_users_desktop.png": {
+    "mtime": 1792246426.8286183,
+    "seen": 1792249477.7486575,
+    "ast_hash": "1830ab23084c483e5c0a5a64d3885d72",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_10_user_unbanned_desktop.png": {
+    "mtime": 1792246479.5387855,
+    "seen": 1792249477.7486575,
+    "ast_hash": "73d33c84d05f4899c7ddf980fe67fca8",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_11_user_banned_desktop.png": {
+    "mtime": 1792246506.1536424,
+    "seen": 1792249477.7486575,
+    "ast_hash": "7c84c582e6d561f80fc8a65629d99b4c",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_12_user_dropdown_desktop.png": {
+    "mtime": 1792246574.3900068,
+    "seen": 1792249477.7486575,
+    "ast_hash": "32c7b37089ff77b752d2070a39bcb259",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J8_13_non_admin_redirect_desktop.png": {
+    "mtime": 1792246594.4324286,
+    "seen": 1792249477.7486575,
+    "ast_hash": "c60b5f0daabdd654eb1aeded39fb958f",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J9_01_our_story_desktop.png": {
+    "mtime": 1792246624.154577,
+    "seen": 1792249477.7486575,
+    "ast_hash": "cfa61671603961aff577095d2a1af8ec",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J9_02_how_it_works_desktop.png": {
+    "mtime": 1792246641.7797897,
+    "seen": 1792249477.7486575,
+    "ast_hash": "089bbb1984bc661ca6cac938f4088749",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J9_03_contact_us_form_desktop.png": {
+    "mtime": 1792246651.8238058,
+    "seen": 1792249477.7486575,
+    "ast_hash": "c3e2302c9b25d0a0c38c7e1d2fd54e85",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J9_04_contact_us_success_desktop.png": {
+    "mtime": 1792246684.7714248,
+    "seen": 1792249477.7486575,
+    "ast_hash": "92be542a4c5bd6ab20d350e26e55d02c",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J9_05_privacy_policy_desktop.png": {
+    "mtime": 1792246693.5794015,
+    "seen": 1792249477.7486575,
+    "ast_hash": "8a6b1c75dd3fd39c0404879383f51091",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J9_06_terms_desktop.png": {
+    "mtime": 1792246707.2425103,
+    "seen": 1792249477.7486575,
+    "ast_hash": "4711bb31c8b6a51412e13d8ce8abb31c",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J9_07_safety_desktop.png": {
+    "mtime": 1792246715.808704,
+    "seen": 1792249477.7486575,
+    "ast_hash": "f18d5f80a0a3bb87b71089d6b098bbee",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17/screenshots/J9_08_404_page_desktop.png": {
+    "mtime": 1792246727.9471397,
+    "seen": 1792249477.7486575,
+    "ast_hash": "2e9b89eeca7fb620276066c35e0bca9a",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J10_01_mobile_home_mobile.png": {
+    "mtime": 1792249242.7481618,
+    "seen": 1792249477.7486575,
+    "ast_hash": "643e865e55fae4f04d4c8165b62a8429",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J10_02_mobile_drawer_open_mobile.png": {
+    "mtime": 1792249255.0471222,
+    "seen": 1792249477.7486575,
+    "ast_hash": "1e561cffbf828a8f11d825f65e78ee8f",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J10_03_browse_mobile.png": {
+    "mtime": 1792249263.4694643,
+    "seen": 1792249477.7486575,
+    "ast_hash": "f7b3a54caded38573c585532814eefbe",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J10_04_sticky_browse_bar_mobile.png": {
+    "mtime": 1792249274.524021,
+    "seen": 1792249477.7486575,
+    "ast_hash": "dc910b9938148ff08c40e9472f4b6ffa",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J10_05_sticky_contact_button_mobile.png": {
+    "mtime": 1792249293.033887,
+    "seen": 1792249477.7486575,
+    "ast_hash": "3a6f5686578716b7e2f2c79082dd683b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J10_06_report_button_mobile.png": {
+    "mtime": 1792249305.5085618,
+    "seen": 1792249477.7486575,
+    "ast_hash": "ad61d26eaec6fb9533dfb396b29da518",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J10_07_admin_404_nonadmin.png": {
+    "mtime": 1792249316.7202532,
+    "seen": 1792249477.7486575,
+    "ast_hash": "d7e688d921907fa4c01417c88f1fe138",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J10_08_admin_404_guest.png": {
+    "mtime": 1792249346.630509,
+    "seen": 1792249477.7486575,
+    "ast_hash": "91855a39e1eef037a830549a0d374c49",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J2_01_guest_listing_desktop.png": {
+    "mtime": 1792248995.776756,
+    "seen": 1792249477.7486575,
+    "ast_hash": "7dc33332418cee659b4ef63e8b0d2cfd",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J2_02_auth_modal_opened_desktop.png": {
+    "mtime": 1792249008.85318,
+    "seen": 1792249477.7486575,
+    "ast_hash": "713113d90787b4dc68d395291f57384a",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J2_03_modal_closed_escape_desktop.png": {
+    "mtime": 1792249017.7521236,
+    "seen": 1792249477.7486575,
+    "ast_hash": "e597b3898d6e90b4cbff7ea422c8cd55",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J2_04_modal_closed_browser_back_desktop.png": {
+    "mtime": 1792249034.7316065,
+    "seen": 1792249477.7486575,
+    "ast_hash": "e597b3898d6e90b4cbff7ea422c8cd55",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J2_05_wrong_password_desktop.png": {
+    "mtime": 1792249064.3650906,
+    "seen": 1792249477.7486575,
+    "ast_hash": "0f5cce0c086d3bb4dc8fa1de464799ae",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J2_06_action_resumed_desktop.png": {
+    "mtime": 1792249088.805746,
+    "seen": 1792249477.7486575,
+    "ast_hash": "32c6c3725099da6f6de74e3eca7fc399",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J4_01_user_logged_in_desktop.png": {
+    "mtime": 1792249095.7085094,
+    "seen": 1792249477.7486575,
+    "ast_hash": "32c6c3725099da6f6de74e3eca7fc399",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J4_02_listing_priya_desktop.png": {
+    "mtime": 1792249099.6569066,
+    "seen": 1792249477.7486575,
+    "ast_hash": "32c6c3725099da6f6de74e3eca7fc399",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J4_03_contact_clicked_desktop.png": {
+    "mtime": 1792249110.8533537,
+    "seen": 1792249477.7486575,
+    "ast_hash": "ef1e6a5dfe54e8b1d604f991394e000e",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J4_04_own_listing_desktop.png": {
+    "mtime": 1792249139.90034,
+    "seen": 1792249477.7486575,
+    "ast_hash": "20a482b35e1fad413db1b295a8000230",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J4_05_user_b_listing_desktop.png": {
+    "mtime": 1792249154.8695264,
+    "seen": 1792249477.7486575,
+    "ast_hash": "6998885aee5136b978d82da95c28d38b",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J4_06_seller_no_contact_notice_desktop.png": {
+    "mtime": 1792249165.0481658,
+    "seen": 1792249477.7486575,
+    "ast_hash": "bf0a1eee410336641c353702f2eadb3e",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J7_01_listing_detail_desktop.png": {
+    "mtime": 1792249175.9634726,
+    "seen": 1792249477.7486575,
+    "ast_hash": "b16f53ec030478803647b92da0dfa4c0",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J7_02_report_button_below_fold_desktop.png": {
+    "mtime": 1792249183.3793683,
+    "seen": 1792249477.7486575,
+    "ast_hash": "91edb0ba2e75d425fb0b73675d882476",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J7_03_report_modal_open_desktop.png": {
+    "mtime": 1792249193.2290833,
+    "seen": 1792249477.7486575,
+    "ast_hash": "d9774b3fba2dc76695940ca1f3ce1c16",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J7_04_report_submitted_desktop.png": {
+    "mtime": 1792249210.4069107,
+    "seen": 1792249477.7486575,
+    "ast_hash": "fccdbaab2a2b680ad5a34b2e87edc2b8",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J7_05_duplicate_report_blocked_desktop.png": {
+    "mtime": 1792249214.9473493,
+    "seen": 1792249477.7486575,
+    "ast_hash": "fccdbaab2a2b680ad5a34b2e87edc2b8",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/J7_06_listing_stays_live_desktop.png": {
+    "mtime": 1792249225.2179754,
+    "seen": 1792249477.7486575,
+    "ast_hash": "3b46b72ed679a6f7445774e89f24551d",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/problem_section_1440px.png": {
+    "mtime": 1792249364.947302,
+    "seen": 1792249477.7486575,
+    "ast_hash": "59a5b2c6d989e693e99de9a4e07ef287",
+    "semantic_hash": ""
+  },
+  "checklist_report/browser-pass-2026-10-17b/screenshots/test_test.png": {
+    "mtime": 1792248947.1707096,
+    "seen": 1792249477.7486575,
+    "ast_hash": "baa9fa5f650f0762c9efb538746fcdef",
     "semantic_hash": ""
   }
 }
