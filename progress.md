@@ -1,6 +1,19 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-17 — Add Product Link to WhatsApp Message Template
+## 2026-10-17 — Redesign Mobile Navigation Drawer with Structured User Account Card
+
+Context: Resolved confusing plain-white centered buttons under "Sell an Item" in the mobile navigation drawer. Replaced the disconnected centered text links with a structured, left-aligned User Account Card featuring visual hierarchy, avatar bubble, admin pill badge, Lucide icons, and chevron indicators.
+
+- **`components/nav/TopNav.tsx`**:
+  - Replaced plain centered links under "Sell an Item" with a dedicated, elevated **Account Card** (`rounded-xl border border-border bg-neutral-50/70 p-3`).
+  - Added user identity header with user initial avatar circle (`w-8 h-8 rounded-full bg-primary/10 text-primary font-bold`), display name, email, and green `ADMIN` badge when user has admin privileges.
+  - Formatted account items into structured left-aligned rows with icons and chevrons (`LayoutDashboard` -> Dashboard, `User` -> Profile & Settings, `Shield` -> Admin Console).
+  - Placed `Sign Out` on a distinct separated footer row with red `LogOut` icon and hover styling.
+  - Preserved `>= 44px` minimum touch targets on all interactive links.
+- **Verification**:
+  - `npx tsc --noEmit` and `npm run build` passed clean (0 errors).
+  - Playwright mobile test run (`layout.spec.ts` on `iphone-14`) passed 8/8 tests.
+  - Visual verification screenshot confirmed clean visual hierarchy and left alignment.
 
 Context: Updated WhatsApp deep link generator (`buildWhatsAppLink` in `lib/whatsapp.ts` and `app/api/listings/[id]/contact/route.ts`) to ensure the full product link (`/listing/[slug]`) is always included in the pre-filled message, dynamically resolving `siteUrl` from the request origin with fallbacks.
 

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { firstName } from '@/lib/display-name';
 import { createClient } from '@/lib/supabase/client';
-import { PlusCircle, User, LogOut, LayoutDashboard, Shield, Menu, X } from 'lucide-react';
+import { PlusCircle, User, LogOut, LayoutDashboard, Shield, Menu, X, ChevronRight } from 'lucide-react';
 
 export default function TopNav() {
   const pathname = usePathname();
@@ -222,100 +222,149 @@ export default function TopNav() {
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-white p-4 space-y-3">
-          <nav className="flex flex-col gap-2">
+        <div className="md:hidden border-t border-border bg-white p-4 space-y-4">
+          <nav className="flex flex-col space-y-1">
             <Link
               href="/browse"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded-md text-neutral-text hover:bg-surface text-sm font-medium"
+              className="py-2.5 px-3 rounded-lg text-neutral-text hover:bg-neutral-50 text-sm font-medium transition-colors"
             >
               Browse Listings
             </Link>
             <Link
               href="/how-it-works"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded-md text-neutral-muted hover:bg-surface text-sm font-medium"
+              className="py-2.5 px-3 rounded-lg text-neutral-muted hover:text-neutral-text hover:bg-neutral-50 text-sm font-medium transition-colors"
             >
               How It Works
             </Link>
             <Link
               href="/our-story"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded-md text-neutral-muted hover:bg-surface text-sm font-medium"
+              className="py-2.5 px-3 rounded-lg text-neutral-muted hover:text-neutral-text hover:bg-neutral-50 text-sm font-medium transition-colors"
             >
               Our Story
             </Link>
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded-md text-neutral-muted hover:bg-surface text-sm font-medium"
+              className="py-2.5 px-3 rounded-lg text-neutral-muted hover:text-neutral-text hover:bg-neutral-50 text-sm font-medium transition-colors"
             >
               Contact Us
             </Link>
           </nav>
 
-          <div className="pt-3 border-t border-border flex flex-col gap-2">
+          {/* Primary Action Button */}
+          <div>
             <Link
               href="/sell"
               onClick={(e) => {
                 setMobileMenuOpen(false);
                 handleSellClick(e);
               }}
-              className="w-full py-2.5 px-4 bg-primary text-white rounded-md font-medium text-sm hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary flex items-center justify-center gap-2 min-h-[44px]"
+              className="w-full py-2.5 px-4 bg-primary text-white rounded-lg font-semibold text-sm hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary shadow-xs flex items-center justify-center gap-2 min-h-[44px] transition-colors"
             >
               <PlusCircle className="w-4 h-4" />
               <span>Sell an Item</span>
             </Link>
+          </div>
 
-            {user ? (
-              <>
-                <Link
-                  href="/dashboard"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-2 px-4 bg-surface text-neutral-text rounded-md font-medium text-sm text-center min-h-[44px] flex items-center justify-center"
-                >
-                  Dashboard ({displayName})
-                </Link>
-                <Link
-                  href="/profile"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-2 px-4 bg-surface text-neutral-text rounded-md font-medium text-sm text-center min-h-[44px] flex items-center justify-center"
-                >
-                  Profile
-                </Link>
-                {isAdmin && (
+          {/* User Account Section */}
+          {user ? (
+            <div className="pt-2">
+              <div className="rounded-xl border border-border bg-neutral-50/70 p-3 space-y-2">
+                {/* User Info Header */}
+                <div className="flex items-center justify-between px-1 pb-2 border-b border-border/70">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span className="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm flex items-center justify-center shrink-0">
+                      {displayName.charAt(0).toUpperCase()}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-neutral-text truncate">
+                        {displayName}
+                      </p>
+                      <p className="text-xs text-neutral-muted truncate">
+                        {user.email}
+                      </p>
+                    </div>
+                  </div>
+                  {isAdmin && (
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 shrink-0">
+                      Admin
+                    </span>
+                  )}
+                </div>
+
+                {/* Account Action Rows */}
+                <div className="space-y-0.5 pt-1">
                   <Link
-                    href="/admin"
+                    href="/dashboard"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="w-full py-2 px-4 bg-surface text-neutral-text rounded-md font-medium text-sm text-center min-h-[44px] flex items-center justify-center"
+                    className="w-full px-2.5 py-2 rounded-lg text-neutral-text hover:bg-white text-sm font-medium flex items-center justify-between min-h-[44px] transition-colors"
                   >
-                    Admin
+                    <span className="flex items-center gap-2.5">
+                      <LayoutDashboard className="w-4 h-4 text-neutral-muted" />
+                      <span>Dashboard</span>
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-neutral-muted/70" />
                   </Link>
-                )}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    signOut();
-                  }}
-                  className="w-full py-2 px-4 text-danger rounded-md font-medium text-sm text-center min-h-[44px] flex items-center justify-center"
-                >
-                  Sign Out
-                </button>
-              </>
-            ) : (
+
+                  <Link
+                    href="/profile"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full px-2.5 py-2 rounded-lg text-neutral-text hover:bg-white text-sm font-medium flex items-center justify-between min-h-[44px] transition-colors"
+                  >
+                    <span className="flex items-center gap-2.5">
+                      <User className="w-4 h-4 text-neutral-muted" />
+                      <span>Profile & Settings</span>
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-neutral-muted/70" />
+                  </Link>
+
+                  {isAdmin && (
+                    <Link
+                      href="/admin"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="w-full px-2.5 py-2 rounded-lg text-neutral-text hover:bg-white text-sm font-medium flex items-center justify-between min-h-[44px] transition-colors"
+                    >
+                      <span className="flex items-center gap-2.5">
+                        <Shield className="w-4 h-4 text-neutral-muted" />
+                        <span>Admin Console</span>
+                      </span>
+                      <ChevronRight className="w-4 h-4 text-neutral-muted/70" />
+                    </Link>
+                  )}
+
+                  <div className="pt-1 border-t border-border/70 mt-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        signOut();
+                      }}
+                      className="w-full px-2.5 py-2 rounded-lg text-danger hover:bg-danger/5 text-sm font-medium flex items-center gap-2.5 min-h-[44px] transition-colors text-left"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      <span>Sign Out</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="pt-2 border-t border-border">
               <button
                 type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   openAuthModal({ tab: 'login' });
                 }}
-                className="w-full py-2.5 px-4 bg-surface text-neutral-text border border-border rounded-md font-medium text-sm text-center min-h-[44px] flex items-center justify-center"
+                className="w-full py-2.5 px-4 bg-white text-neutral-text border border-border rounded-lg font-medium text-sm hover:bg-neutral-50 min-h-[44px] flex items-center justify-center transition-colors shadow-xs"
               >
                 Sign In
               </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       )}
     </header>
