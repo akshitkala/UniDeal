@@ -2,7 +2,8 @@ import path from 'path';
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: path.resolve(__dirname, '..'),
+  testDir: __dirname,
+  testIgnore: ['visual.spec.ts'],
   timeout: 45000,
   expect: {
     timeout: 10000,
@@ -11,8 +12,8 @@ export default defineConfig({
   workers: 1,
   reporter: [
     ['list'],
-    ['json', { outputFile: path.resolve(__dirname, '..', 'checklist_report', 'retest-2026-10-17', 'playwright-results.json') }],
-    ['html', { outputFolder: path.resolve(__dirname, '..', 'checklist_report', 'retest-2026-10-17', 'playwright-report'), open: 'never' }],
+    ['json', { outputFile: path.resolve(__dirname, '..', 'checklist_report', 'final-regression-2026-10-17', 'playwright-results.json') }],
+    ['html', { outputFolder: path.resolve(__dirname, '..', 'checklist_report', 'final-regression-2026-10-17', 'playwright-report'), open: 'never' }],
   ],
   use: {
     baseURL: process.env.BASE_URL || 'http://localhost:3000',

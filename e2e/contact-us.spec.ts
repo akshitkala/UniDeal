@@ -63,7 +63,7 @@ test.describe('Support Contact Form Flow', () => {
     await submitBtn.click();
     
     // Check error banner
-    const errorEl = page.locator('[role="alert"]');
+    const errorEl = page.locator('[role="alert"]').first();
     await expect(errorEl).toBeVisible();
     
     // Ensure no Resend internal API keys or stack trace text are visible

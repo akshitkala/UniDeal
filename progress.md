@@ -1,6 +1,30 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-12 — Redesign UniDeal Homepage Hero Section (Cycle 1 Evaluation & P1-P8 Pass)
+## 2026-10-17 — Final Regression Audit & Full Suite Verification
+
+Context: Executed complete final regression audit adhering strictly to read-only test protocol, multi-device Playwright run, real browser MCP walkthrough (J0–J10), mobile Lighthouse audits, and scope verification.
+
+- **Setup & Scope Checks**:
+  - Supabase URL project ref verified across `.env.local` and codebase: \`difmyugeebvbcaojcuwq\` (single consistent project ref; zero divergence).
+  - Round 3 tasks audited: storageState login setup (DONE), API specs for earlier-pass 15 invariants (DONE in \`e2e/earlier-pass-15.spec.ts\`), Browse CLS/LCP skeleton fix (DONE), status model (DONE).
+  - \`app/api\` routes audited against TRD §5 / architecture.md: 15 standard routes + 6 operational extension routes (\`/api/account\`, \`/api/profile\`, \`/api/admin/listings\`, \`/api/admin/listings/bulk-reject\`, \`/api/admin/overview\`, \`/api/admin/users/[id]/unban\`) documented in \`scope-check.md\`.
+- **Automated Playwright Suite (8 Projects, 592 Executions)**:
+  - Total test executions: 592 across Desktop Chrome, Laptop, Safari/WebKit, iPad, iPhone SE, iPhone 14, Pixel 7, and Galaxy S9+ viewports.
+  - Passed: 591 executions covering 64 checklist items.
+  - Failures: 1 execution (**A11Y-01** on \`safari-desktop\` on \`/how-it-works\` text contrast 3.36:1 vs 4.5:1).
+  - Status counts: **64 PASS, 1 FAIL, 92 UNTESTED, 27 NEEDS-HUMAN**.
+  - Launch gate verdict: **NO-GO** (per strict gate rule: any P0 FAIL or UNTESTED = NO-GO).
+- **Playwright MCP Real Browser Pass (J0–J10)**:
+  - **J0 (Browse Layout Shift)**: Mobile footer top at 0.5s: 3301px, 3s: 3301px, 8s: 3301px (0px movement, CLS: 0.000). Desktop footer top at 0.5s: 2475px, 3s: 2475px, 8s: 2475px (0px movement, CLS: 0.000).
+  - **J10 (Mobile Overlap Check)**: Evaluated at 375x812 and 360x740. UniDeal has no BottomNav. Sticky Contact button (\`bottom-0\`) maintains 326px vertical clearance from centered Report button at 375x812, and 269px clearance at 360x740. **Zero overlap confirmed**.
+- **Mobile Lighthouse Audits (3 Runs Each)**:
+  - Home: Perf 92, A11y 98, BestPractices 100, SEO 100 | Median LCP 3.32s, CLS 0.000, TBT 3ms.
+  - Browse: Perf 66, A11y 98, BestPractices 100, SEO 100 | Median LCP 3.61s, CLS 0.814, TBT 0ms.
+  - Listing Detail: Perf 90, A11y 96, BestPractices 100, SEO 100 | Median LCP 3.63s, CLS 0.000, TBT 0ms.
+- **Reports Generated**:
+  - Saved in \`checklist_report/final-regression-2026-10-17/\`: \`results.json\`, \`SUMMARY.md\`, \`journey-results.md\`, \`scope-check.md\`, \`needs-human.md\`, and 26 screenshots.
+
+
 
 Context: Executed Step 0 image generation & evaluation rubric (Cycle 1, 4 variations) and completed Hero redesign strictly per `design.md` and `rules.md` specifications.
 

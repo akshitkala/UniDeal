@@ -28,6 +28,12 @@ test.describe('Security & Data Invariants (SEC)', () => {
     expect([401, 403]).toContain(banRes.status());
   });
 
+  test('FUN-41: Non-admin accessing /admin returns custom 404 Not Found page', async ({ page }) => {
+    const res = await page.goto('/admin');
+    expect(res?.status()).toBe(404);
+    await expect(page.locator('h1')).toContainText(/Page Not Found/i);
+  });
+
   test('SEC-14: /api/cron/keepalive returns 401 without CRON_SECRET, 200 with Bearer', async ({ request }) => {
     // Without auth
     const unauthorizedRes = await request.get('/api/cron/keepalive');

@@ -1,0 +1,119 @@
+{
+  "home-mobile": {
+    "runsCount": 3,
+    "medianPerf": 92,
+    "medianA11y": 98,
+    "medianBp": 100,
+    "medianSeo": 100,
+    "medianLcp": "3.32s",
+    "medianCls": "0.000",
+    "medianTbt": "3ms",
+    "rawRuns": [
+      {
+        "lcp": 3473.56,
+        "cls": 0.000003191523122512905,
+        "tbt": 3,
+        "perf": 90,
+        "a11y": 98,
+        "bp": 100,
+        "seo": 100
+      },
+      {
+        "lcp": 3318.6195,
+        "cls": 0.000003191523122512905,
+        "tbt": 0,
+        "perf": 92,
+        "a11y": 98,
+        "bp": 100,
+        "seo": 100
+      },
+      {
+        "lcp": 3318.6345000000006,
+        "cls": 0.000003191523122512905,
+        "tbt": 5.999999999999545,
+        "perf": 92,
+        "a11y": 98,
+        "bp": 100,
+        "seo": 100
+      }
+    ]
+  },
+  "browse-mobile": {
+    "runsCount": 3,
+    "medianPerf": 66,
+    "medianA11y": 98,
+    "medianBp": 100,
+    "medianSeo": 100,
+    "medianLcp": "3.61s",
+    "medianCls": "0.814",
+    "medianTbt": "0ms",
+    "rawRuns": [
+      {
+        "lcp": 3810.9797499999995,
+        "cls": 0,
+        "tbt": 0,
+        "perf": 87,
+        "a11y": 98,
+        "bp": 100,
+        "seo": 100
+      },
+      {
+        "lcp": 3611.1110400000002,
+        "cls": 0.8140947752126367,
+        "tbt": 3,
+        "perf": 66,
+        "a11y": 98,
+        "bp": 100,
+        "seo": 100
+      },
+      {
+        "lcp": 3587.09384,
+        "cls": 0.8140947752126367,
+        "tbt": 0,
+        "perf": 66,
+        "a11y": 98,
+        "bp": 100,
+        "seo": 100
+      }
+    ]
+  },
+  "listing-mobile": {
+    "runsCount": 3,
+    "medianPerf": 90,
+    "medianA11y": 96,
+    "medianBp": 100,
+    "medianSeo": 100,
+    "medianLcp": "3.63s",
+    "medianCls": "0.000",
+    "medianTbt": "0ms",
+    "rawRuns": [
+      {
+        "lcp": 3634.45075,
+        "cls": 0.00003025955861578333,
+        "tbt": 0,
+        "perf": 90,
+        "a11y": 96,
+        "bp": 100,
+        "seo": 100
+      },
+      {
+        "lcp": 4164.436,
+        "cls": 0,
+        "tbt": 0,
+        "perf": 86,
+        "a11y": 96,
+        "bp": 100,
+        "seo": 100
+      },
+      {
+        "lcp": 3528.605750000001,
+        "cls": 0.00003025955861578333,
+        "tbt": 0,
+        "perf": 90,
+        "a11y": 96,
+        "bp": 100,
+        "seo": 100
+      }
+    ]
+  }
+}

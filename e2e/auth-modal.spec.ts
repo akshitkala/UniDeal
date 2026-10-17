@@ -5,7 +5,7 @@ test.describe('Auth Modal Flows', () => {
     await page.goto('/');
     
     // Click Sign In
-    const signInBtn = page.getByRole('button', { name: 'Sign In' }).first();
+    const signInBtn = page.getByRole('button', { name: 'Sign In' }).filter({ visible: true }).first();
     await signInBtn.click();
     
     const dialog = page.getByRole('dialog');
@@ -36,7 +36,7 @@ test.describe('Auth Modal Flows', () => {
 
   test('FUN-03: Backdrop click closes the modal', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('button', { name: 'Sign In' }).first().click();
+    await page.getByRole('button', { name: 'Sign In' }).filter({ visible: true }).first().click();
     
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();
@@ -48,7 +48,7 @@ test.describe('Auth Modal Flows', () => {
 
   test('FUN-04: Browser back closes the modal and stays on the underlying page', async ({ page }) => {
     await page.goto('/browse');
-    await page.getByRole('button', { name: 'Sign In' }).first().click();
+    await page.getByRole('button', { name: 'Sign In' }).filter({ visible: true }).first().click();
     
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();
@@ -61,7 +61,7 @@ test.describe('Auth Modal Flows', () => {
 
   test('FUN-06: Wrong password shows inline error, modal stays open', async ({ page }) => {
     await page.goto('/browse');
-    await page.getByRole('button', { name: 'Sign In' }).first().click();
+    await page.getByRole('button', { name: 'Sign In' }).filter({ visible: true }).first().click();
     
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();

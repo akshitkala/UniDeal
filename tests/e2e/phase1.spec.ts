@@ -18,9 +18,10 @@ test.describe('Group 1: AUTH MATRIX', () => {
     test.use({ storageState: { cookies: [], origins: [] } });
 
     for (const route of adminRoutes) {
-      test(`Guest accessing ${route} redirects to /`, async ({ page }) => {
-        await page.goto(route);
-        await expect(page).toHaveURL('/');
+      test(`FUN-41: Guest accessing ${route} returns 404`, async ({ page }) => {
+        const response = await page.goto(route);
+        expect(response?.status()).toBe(404);
+        await expect(page.locator('h1').first()).toContainText(/Page Not Found/i);
       });
     }
 
@@ -36,9 +37,10 @@ test.describe('Group 1: AUTH MATRIX', () => {
     test.use({ storageState: 'playwright/.auth/student.json' });
 
     for (const route of adminRoutes) {
-      test(`Student accessing ${route} redirects to /`, async ({ page }) => {
-        await page.goto(route);
-        await expect(page).toHaveURL('/');
+      test(`FUN-41: Student accessing ${route} returns 404`, async ({ page }) => {
+        const response = await page.goto(route);
+        expect(response?.status()).toBe(404);
+        await expect(page.locator('h1').first()).toContainText(/Page Not Found/i);
       });
     }
 
