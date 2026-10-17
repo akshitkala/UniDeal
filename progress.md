@@ -1,6 +1,29 @@
 # UniDeal — Project Progress Log
 
-## 2026-10-17 — Implement Infinite Scroll with Pagination on Campus Marketplace Browse Page
+## 2026-10-18 — Fix Browse Back-Navigation and Layout Shift (FUN-50…53 & CLS 0.000)
+
+Context: Fixed Browse back-navigation cache loss and layout shifts. Server-renders the first page of listings, preserves instant cache and exact scroll position on browser Back, performs silent background refreshes without jumping, and verified CLS = 0.000.
+
+- **`app/(public)/browse/page.tsx` & `lib/server-listings.ts`**:
+  - Converted `/browse` to a server component that fetches categories and page 1 of listings based on searchParams on the server (`fetchServerListings`).
+  - Passes initial data to `BrowseClient` so the first page renders with 0 initial skeletons and 0 layout shifts.
+- **`app/(public)/browse/BrowseClient.tsx`**:
+  - Implemented client session cache (`unideal_browse_cache_v1`) capturing up to 100 listings, page, pagination, scrollY, full query key, and timestamp.
+  - Automatically restores exact scroll position within 5px when returning via browser Back without flashing skeletons.
+  - Controls scroll restoration (`history.scrollRestoration = 'manual'`).
+  - Silently refreshes page 1 in the background and updates changed or sold cards without moving scroll position.
+  - Invalidates cache on filter change, search query change, sort change, sign-in/sign-out, and normal nav link clicks.
+- **`components/listing/ListingCard.tsx`**:
+  - Added explicit width/height dimensions and `aspect-square` container to prevent any image layout shift.
+- **`components/nav/TopNav.tsx`**:
+  - Ensured clicking Browse in desktop nav or mobile drawer clears cache and scrolls to top.
+- **`e2e/browse-cache-nav.spec.ts`**:
+  - Added automated test suite for FUN-50, FUN-51, FUN-52, FUN-53 running across `chrome-desktop-1440`, `iphone-14`, and `safari-desktop`. (12/12 passed).
+- **Performance & Layout Shift Measurements**:
+  - 5 fresh Lighthouse mobile runs on `/browse`: Median LCP = 2,942ms, Median CLS = **0.000**.
+  - PerformanceObserver back-navigation CLS with `buffered: true` under 4x CPU slowdown and slow-4G: **0.0000** (target `< 0.1`).
+  - Full Playwright suite, `npm run build`, and `npx tsc --noEmit` passed clean.
+
 
 Context: Implemented infinite scroll with pagination on `/browse` per `design (2).md §7.2`. The initial view displays page 1 (20 items) for ultra-fast performance, and as the user scrolls within 300px of the bottom, subsequent pages are automatically loaded and appended seamlessly without duplicate keys.
 

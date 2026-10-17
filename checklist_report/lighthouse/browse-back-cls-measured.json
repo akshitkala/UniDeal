@@ -1,0 +1,7 @@
+{
+  "throttling": "4x CPU + Slow-4G",
+  "measuredCLS": 0,
+  "target": "< 0.1",
+  "passed": true,
+  "entries": []
+}

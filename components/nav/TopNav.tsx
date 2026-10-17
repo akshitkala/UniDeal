@@ -63,6 +63,13 @@ export default function TopNav() {
         <nav className="hidden md:flex items-center gap-6">
           <Link
             href="/browse"
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                sessionStorage.removeItem('unideal_browse_cache_v1');
+                sessionStorage.removeItem('unideal_browse_left_to_listing');
+                window.scrollTo(0, 0);
+              }
+            }}
             className={`text-sm font-medium transition-colors hover:text-primary ${
               pathname.startsWith('/browse') ? 'text-primary font-semibold' : 'text-neutral-text'
             }`}
@@ -226,7 +233,14 @@ export default function TopNav() {
           <nav className="flex flex-col space-y-1">
             <Link
               href="/browse"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (typeof window !== 'undefined') {
+                  sessionStorage.removeItem('unideal_browse_cache_v1');
+                  sessionStorage.removeItem('unideal_browse_left_to_listing');
+                  window.scrollTo(0, 0);
+                }
+              }}
               className="py-2.5 px-3 rounded-lg text-neutral-text hover:bg-neutral-50 text-sm font-medium transition-colors"
             >
               Browse Listings
